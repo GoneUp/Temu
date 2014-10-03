@@ -5,6 +5,7 @@
 *.pydevproject
 .project
 .metadata
+bin/
 tmp/
 *.tmp
 *.bak
@@ -41,8 +42,13 @@ local.properties
 *.sln.docstates
 
 # Build results
-obj
 
+[Dd]ebug/
+[Rr]elease/
+x64/
+build/
+[Bb]in/
+[Oo]bj/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
@@ -121,6 +127,7 @@ publish/
 # Publish Web Output
 *.Publish.xml
 *.pubxml
+*.publishproj
 
 # NuGet Packages Directory
 ## TODO: If you have NuGet Package Restore enabled, uncomment the next line
@@ -181,12 +188,13 @@ $RECYCLE.BIN/
 ## Python
 #############
 
-*.py[co]
+*.py[cod]
 
 # Packages
 *.egg
 *.egg-info
 dist/
+build/
 eggs/
 parts/
 var/
@@ -206,4 +214,3 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-build

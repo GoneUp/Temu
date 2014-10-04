@@ -8,12 +8,27 @@
     <ProjectGuid>{F515CE95-6A3F-4E5E-867A-899FFFC90D43}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DevTera</RootNamespace>
+    <RootNamespace>Temu</RootNamespace>
     <AssemblyName>LoginServer</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>veröffentlichen\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -59,27 +74,8 @@
     <Compile Include="Configuration\Configs\LoginServer.cs" />
     <Compile Include="Configuration\_TaskLoader.cs" />
     <Compile Include="Configuration\_Config.cs" />
-    <Compile Include="DatabaseManager\Database\DatabaseManager.cs" />
-    <Compile Include="DatabaseManager\Database\DatabaseStats.cs" />
-    <Compile Include="DatabaseManager\Database\DatabaseType.cs" />
-    <Compile Include="DatabaseManager\Database\Database_Exceptions\DatabaseException.cs" />
-    <Compile Include="DatabaseManager\Database\Database_Exceptions\QueryException.cs" />
-    <Compile Include="DatabaseManager\Database\Database_Exceptions\TransactionException.cs" />
-    <Compile Include="DatabaseManager\Database\MsSqlClient.cs" />
-    <Compile Include="DatabaseManager\Database\MySqlClient.cs" />
-    <Compile Include="DatabaseManager\Database\Interfaces\IDatabaseClient.cs" />
-    <Compile Include="DatabaseManager\Database\Interfaces\IQueryAdapter.cs" />
-    <Compile Include="DatabaseManager\Database\Interfaces\IRegularQueryAdapter.cs" />
-    <Compile Include="DatabaseManager\Database\Session_Details\MSSQLQueryAdapter.cs" />
-    <Compile Include="DatabaseManager\Database\Session_Details\MsSqlQueryReactor.cs" />
-    <Compile Include="DatabaseManager\Database\Session_Details\NormalQueryReactor.cs" />
-    <Compile Include="DatabaseManager\Database\Session_Details\QueryAdapter.cs" />
-    <Compile Include="DatabaseManager\Database\Session_Details\TransactionQueryReactor.cs" />
-    <Compile Include="DatabaseManager\DbQuerys.cs" />
-    <Compile Include="DatabaseManager\Managers\Database\DatabaseServer.cs" />
+    <Compile Include="Database\DbQuerys.cs" />
     <Compile Include="Data\Account\Account.cs" />
-    <Compile Include="Utils\Crypt\Crypt.cs" />
-    <Compile Include="Utils\Logger\Logger.cs" />
     <Compile Include="NetworkApi\Collections\ThreadSafeSortedList.cs" />
     <Compile Include="NetworkApi\Communication\ScsServices\Client\IScsServiceClient.cs" />
     <Compile Include="NetworkApi\Communication\ScsServices\Client\ScsServiceClient.cs" />
@@ -147,13 +143,29 @@
     <Compile Include="Network\Protocol\KeyProtocolFactory.cs" />
     <Compile Include="LoginServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="app.manifest" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{41c8e45e-54db-4cd0-8805-f54bb0ebda21}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

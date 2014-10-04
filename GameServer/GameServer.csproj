@@ -7,7 +7,7 @@
     <ProjectGuid>{5002AD9F-0FE1-45B6-B580-C48EC9A02843}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameServer</RootNamespace>
+    <RootNamespace>Temu</RootNamespace>
     <AssemblyName>GameServer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\build\</OutputPath>
+    <OutputPath>..\build\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -129,8 +129,10 @@
     <Compile Include="Communication\Logic\CreatureLogic.cs" />
     <Compile Include="Communication\Logic\GlobalLogic.cs" />
     <Compile Include="Communication\Logic\PlayerLogic.cs" />
-    <Compile Include="Configuration\Configuration.cs" />
-    <Compile Include="Data\DAO\DAOManager.cs" />
+    <Compile Include="Configuration\Configs\GameServer.cs" />
+    <Compile Include="Configuration\Systems\DatabaseSystem.cs" />
+    <Compile Include="Configuration\_Config.cs" />
+    <Compile Include="Configuration\_TaskLoader.cs" />
     <Compile Include="Controllers\BattleController.cs" />
     <Compile Include="Controllers\CraftController.cs" />
     <Compile Include="Controllers\DeathController.cs" />
@@ -147,198 +149,7 @@
     <Compile Include="Crypt\Session.cs" />
     <Compile Include="Crypt\Sha.cs" />
     <Compile Include="Crypt\Utils.cs" />
-    <Compile Include="Data\Cache.cs" />
-    <Compile Include="Data\DAO\AccountDAO.cs" />
-    <Compile Include="Data\DAO\GuildDAO.cs" />
-    <Compile Include="Data\DAO\InventoryDAO.cs" />
-    <Compile Include="Data\DAO\PlayerDAO.cs" />
-    <Compile Include="Data\DAO\QuestDAO.cs" />
-    <Compile Include="Data\DAO\SkillsDAO.cs" />
-    <Compile Include="Data\Data.cs" />
-    <Compile Include="Data\Enums\AttackStatus.cs" />
-    <Compile Include="Data\Enums\AttackType.cs" />
-    <Compile Include="Data\Enums\ChatType.cs" />
-    <Compile Include="Data\Enums\CheckNameResult.cs" />
-    <Compile Include="Data\Enums\Craft\CraftStat.cs" />
-    <Compile Include="Data\Enums\CreatureState.cs" />
-    <Compile Include="Data\Enums\DamageType.cs" />
-    <Compile Include="Data\Enums\DialogIcon.cs" />
-    <Compile Include="Data\Enums\DialogNpcString.cs" />
-    <Compile Include="Data\Enums\DialogQuestString.cs" />
-    <Compile Include="Data\Enums\EffectType.cs" />
-    <Compile Include="Data\Enums\Gather\ResourceType.cs" />
-    <Compile Include="Data\Enums\Gather\TypeName.cs" />
-    <Compile Include="Data\Enums\Gender.cs" />
-    <Compile Include="Data\Enums\ItemDressSlot.cs" />
-    <Compile Include="Data\Enums\ItemEffectType.cs" />
-    <Compile Include="Data\Enums\ItemKind.cs" />
-    <Compile Include="Data\Enums\ItemObtain.cs" />
-    <Compile Include="Data\Enums\ItemQuality.cs" />
-    <Compile Include="Data\Enums\ItemType.cs" />
-    <Compile Include="Data\Enums\Item\CombatItemType.cs" />
-    <Compile Include="Data\Enums\Item\ItemCategory.cs" />
-    <Compile Include="Data\Enums\Item\ItemResourseType.cs" />
-    <Compile Include="Data\Enums\Item\RequiredEquipmentType.cs" />
-    <Compile Include="Data\Enums\Item\StorageType.cs" />
-    <Compile Include="Data\Enums\MovementDirection.cs" />
-    <Compile Include="Data\Enums\NpcRace.cs" />
-    <Compile Include="Data\Enums\NpcSize.cs" />
-    <Compile Include="Data\Enums\NpcTitle.cs" />
-    <Compile Include="Data\Enums\ObjectFamily.cs" />
-    <Compile Include="Data\Enums\Party\PartyMember.cs" />
-    <Compile Include="Data\Enums\Pegasus\PType.cs" />
-    <Compile Include="Data\Enums\PetName.cs" />
-    <Compile Include="Data\Enums\PlayerClass.cs" />
-    <Compile Include="Data\Enums\PlayerEmotion.cs" />
-    <Compile Include="Data\Enums\PlayerMode.cs" />
-    <Compile Include="Data\Enums\Player\PlayerMoveType.cs" />
-    <Compile Include="Data\Enums\Player\PlayerRelation.cs" />
-    <Compile Include="Data\Enums\QuestStatus.cs" />
-    <Compile Include="Data\Enums\QuestStatusIcon.cs" />
-    <Compile Include="Data\Enums\QuestStepType.cs" />
-    <Compile Include="Data\Enums\QuestType.cs" />
-    <Compile Include="Data\Enums\Race.cs" />
-    <Compile Include="Data\Enums\ReportType.cs" />
-    <Compile Include="Data\Enums\RequestType.cs" />
-    <Compile Include="Data\Enums\SkillEngine\AbnormalityShowType.cs" />
-    <Compile Include="Data\Enums\SkillEngine\PushTarget.cs" />
-    <Compile Include="Data\Enums\SkillEngine\SkillType.cs" />
-    <Compile Include="Data\Enums\SkillEngine\TargetingAreaType.cs" />
-    <Compile Include="Data\Enums\SkillEngine\TargetingMethod.cs" />
-    <Compile Include="Data\Enums\SkillEngine\TargetingType.cs" />
-    <Compile Include="Data\Enums\SystemWindow.cs" />
-    <Compile Include="Data\Enums\VisualEffectType.cs" />
-    <Compile Include="Data\Interfaces\IAi.cs" />
-    <Compile Include="Data\Interfaces\IConnection.cs" />
-    <Compile Include="Data\Interfaces\IController.cs" />
-    <Compile Include="Data\Interfaces\IEffect.cs" />
-    <Compile Include="Data\Interfaces\IQuestStep.cs" />
-    <Compile Include="Data\Interfaces\IRecvPacket.cs" />
-    <Compile Include="Data\Interfaces\ISendPacket.cs" />
-    <Compile Include="Data\Interfaces\IVisible.cs" />
-    <Compile Include="Data\Structures\Account\Account.cs" />
-    <Compile Include="Data\Structures\Craft\Recipe.cs" />
-    <Compile Include="Data\Structures\Creature\Creature.cs" />
-    <Compile Include="Data\Structures\Creature\CreatureBaseStats.cs" />
-    <Compile Include="Data\Structures\Creature\CreatureEffectsImpact.cs" />
-    <Compile Include="Data\Structures\Creature\CreatureLifeStats.cs" />
-    <Compile Include="Data\Structures\Gather\Gather.cs" />
-    <Compile Include="Data\Structures\Geometry\Geom.cs" />
-    <Compile Include="Data\Structures\Geometry\Point3D.cs" />
-    <Compile Include="Data\Structures\Geometry\Polygon.cs" />
-    <Compile Include="Data\Structures\Guild\Guild.cs" />
-    <Compile Include="Data\Structures\Guild\GuildHistoryStrings.cs" />
-    <Compile Include="Data\Structures\Guild\GuildMemberRank.cs" />
-    <Compile Include="Data\Structures\Guild\GuildMemberRankPrivileges.cs" />
-    <Compile Include="Data\Structures\Guild\HistoryEvent.cs" />
-    <Compile Include="Data\Structures\Npc\Npc.cs" />
-    <Compile Include="Data\Structures\Npc\NpcShape.cs" />
-    <Compile Include="Data\Structures\Objects\Projectile.cs" />
-    <Compile Include="Data\Structures\Player\AchevesStats.cs" />
-    <Compile Include="Data\Structures\Player\Player.cs" />
-    <Compile Include="Data\Structures\Player\PlayerCraftStats.cs" />
-    <Compile Include="Data\Structures\Player\PlayerData.cs" />
-    <Compile Include="Data\Structures\Player\RaceGenderClass.cs" />
-    <Compile Include="Data\Structures\Player\Storage.cs" />
-    <Compile Include="Data\Structures\Player\StorageItem.cs" />
-    <Compile Include="Data\Structures\Player\UseSkillArgs.cs" />
-    <Compile Include="Data\Structures\Quest\Enums\QuestNpcIcon.cs" />
-    <Compile Include="Data\Structures\Quest\Enums\QuestRewardType.cs" />
-    <Compile Include="Data\Structures\Quest\Quest.cs" />
-    <Compile Include="Data\Structures\Quest\QuestData.cs" />
-    <Compile Include="Data\Structures\Quest\QuestReward.cs" />
-    <Compile Include="Data\Structures\Quest\QuestStep.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskAcquisitionHunt.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskConditions.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskDeliveItems.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskEscort.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskGather.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskGeomeunteum.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskGroupHunting.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskGuard.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskHunting.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskHuntingDelivery.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskItemThatStabbedPassed.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskItemUse.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskMovePC.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskNotImpliment.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskObjectAction.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskOverTheState.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskPlaybackVideo.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskQuarter.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskRepeat.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskSkillStrike.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskTeleport.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskVisit.cs" />
-    <Compile Include="Data\Structures\Quest\Tasks\QTaskVisitTheBlackCrack.cs" />
-    <Compile Include="Data\Structures\SkillEngine\Abnormality.cs" />
-    <Compile Include="Data\Structures\SkillEngine\AbnormalityEffect.cs" />
-    <Compile Include="Data\Structures\SkillEngine\ActionStage.cs" />
-    <Compile Include="Data\Structures\SkillEngine\Animation.cs" />
-    <Compile Include="Data\Structures\SkillEngine\AnimSeq.cs" />
-    <Compile Include="Data\Structures\SkillEngine\AreaEffect.cs" />
-    <Compile Include="Data\Structures\SkillEngine\Attack.cs" />
-    <Compile Include="Data\Structures\SkillEngine\ChargeStage.cs" />
-    <Compile Include="Data\Structures\SkillEngine\ChargingStageList.cs" />
-    <Compile Include="Data\Structures\SkillEngine\Cost.cs" />
-    <Compile Include="Data\Structures\SkillEngine\DefaultSkillSet.cs" />
-    <Compile Include="Data\Structures\SkillEngine\Precondition.cs" />
-    <Compile Include="Data\Structures\SkillEngine\ProjectileData.cs" />
-    <Compile Include="Data\Structures\SkillEngine\ProjectileSkill.cs" />
-    <Compile Include="Data\Structures\SkillEngine\Skill.cs" />
-    <Compile Include="Data\Structures\SkillEngine\SkillAction.cs" />
-    <Compile Include="Data\Structures\SkillEngine\Targeting.cs" />
-    <Compile Include="Data\Structures\SkillEngine\TargetingArea.cs" />
-    <Compile Include="Data\Structures\SkillEngine\UserSkill.cs" />
-    <Compile Include="Data\Structures\Statistical.cs" />
-    <Compile Include="Data\Structures\Template\CampfireSpawnTemplate.cs" />
-    <Compile Include="Data\Structures\Template\GatherSpawnTemplate.cs" />
-    <Compile Include="Data\Structures\Template\GatherTemplate.cs" />
-    <Compile Include="Data\Structures\Template\Gather\GSpawnTemplate.cs" />
-    <Compile Include="Data\Structures\Template\Item\CategorieStats\ChangeColorItem.cs" />
-    <Compile Include="Data\Structures\Template\Item\CategorieStats\EquipmentStat.cs" />
-    <Compile Include="Data\Structures\Template\Item\CategorieStats\IDefaultCategorieStat.cs" />
-    <Compile Include="Data\Structures\Template\Item\CategorieStats\SkillStat.cs" />
-    <Compile Include="Data\Structures\Template\Item\ItemTemplate.cs" />
-    <Compile Include="Data\Structures\Template\Item\Passivity.cs" />
-    <Compile Include="Data\Structures\Template\NpcTemplate.cs" />
-    <Compile Include="Data\Structures\Template\SpawnTemplate.cs" />
-    <Compile Include="Data\Structures\TeraObject.cs" />
-    <Compile Include="Data\Structures\Uid.cs" />
-    <Compile Include="Data\Structures\UidFactory.cs" />
-    <Compile Include="Data\Structures\World\Abnormal.cs" />
-    <Compile Include="Data\Structures\World\AttackResult.cs" />
-    <Compile Include="Data\Structures\World\Campfire.cs" />
-    <Compile Include="Data\Structures\World\Climb.cs" />
-    <Compile Include="Data\Structures\World\Continent\Area.cs" />
-    <Compile Include="Data\Structures\World\Continent\Continent.cs" />
-    <Compile Include="Data\Structures\World\Continent\Section.cs" />
-    <Compile Include="Data\Structures\World\Dialog.cs" />
-    <Compile Include="Data\Structures\World\DialogButton.cs" />
-    <Compile Include="Data\Structures\World\Duel.cs" />
-    <Compile Include="Data\Structures\World\FlyTeleport.cs" />
-    <Compile Include="Data\Structures\World\GeoLocation.cs" />
-    <Compile Include="Data\Structures\World\GeoPoint.cs" />
-    <Compile Include="Data\Structures\World\Item.cs" />
-    <Compile Include="Data\Structures\World\MapInstance.cs" />
-    <Compile Include="Data\Structures\World\Mount.cs" />
-    <Compile Include="Data\Structures\World\Party\Party.cs" />
-    <Compile Include="Data\Structures\World\Pegasus\FlyStep.cs" />
-    <Compile Include="Data\Structures\World\Pegasus\PegasusPath.cs" />
-    <Compile Include="Data\Structures\World\Pegasus\PPStage.cs" />
-    <Compile Include="Data\Structures\World\Requests\DuelInvite.cs" />
-    <Compile Include="Data\Structures\World\Requests\EmptyRequest.cs" />
-    <Compile Include="Data\Structures\World\Requests\Extract.cs" />
-    <Compile Include="Data\Structures\World\Requests\GuildCreate.cs" />
-    <Compile Include="Data\Structures\World\Requests\GuildInvite.cs" />
-    <Compile Include="Data\Structures\World\Requests\PartyInvite.cs" />
-    <Compile Include="Data\Structures\World\Requests\Request.cs" />
-    <Compile Include="Data\Structures\World\Requests\TradeStart.cs" />
-    <Compile Include="Data\Structures\World\ShoppingCart.cs" />
-    <Compile Include="Data\Structures\World\ShoppingItem.cs" />
-    <Compile Include="Data\Structures\World\Tradelist.cs" />
-    <Compile Include="Data\Structures\World\VisualEffect.cs" />
-    <Compile Include="Data\Structures\World\WorldPosition.cs" />
+    <Compile Include="Database\DbQuerys.cs" />
     <Compile Include="DungeonEngine\DungeonEngine.cs" />
     <Compile Include="DungeonEngine\Dungeons\ADungeon.cs" />
     <Compile Include="DungeonEngine\Dungeons\IoDDungeon.cs" />
@@ -653,14 +464,14 @@
     <Compile Include="SkillEngine\SkillEngine.cs" />
     <Compile Include="SkillEngine\SeUtils.cs" />
     <Compile Include="Structures\Visible.cs" />
-    <Compile Include="Utils\DelayedAction.cs" />
-    <Compile Include="Utils\Funcs.cs" />
-    <Compile Include="Utils\Log.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.3.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="Scs">
       <HintPath>..\packages\SCS.1.1.0.1\lib\net40\Scs.dll</HintPath>
@@ -672,6 +483,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="TERA.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{41c8e45e-54db-4cd0-8805-f54bb0ebda21}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -3,6 +3,7 @@ using System.Threading;
 using Communication.Interfaces;
 using Data;
 using Utils;
+using Utils.Logger;
 
 namespace Communication
 {
@@ -146,7 +147,8 @@ namespace Communication
                 }
                 catch (Exception ex)
                 {
-                    Log.ErrorException("MainLoop:", ex);
+                    Logger.WriteLine(LogState.Exception, "MainLoop: " + ex.Message + " St: " + ex.StackTrace);
+                    
                 }
 
                 Thread.Sleep(10);
@@ -163,7 +165,7 @@ namespace Communication
                 }
                 catch (Exception ex)
                 {
-                    Log.ErrorException("MapServiceLoop:", ex);
+                    Logger.WriteLine(LogState.Exception, "MapServiceLoop: " + ex.Message + " St: " + ex.StackTrace );
                 }
 
                 Thread.Sleep(1);

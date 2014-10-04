@@ -16,7 +16,7 @@ namespace Communication.Logic
                 +"----------------------------------------------------------------------------");
             
             //Init DAO
-            DAOManager.Initialize(str);
+            //DAOManager.Initialize(str);
             
             Console.WriteLine("----------------------------------------------------------------------------\n"
                 +"---===== Loading Data Files.\n"

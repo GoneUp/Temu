@@ -32,7 +32,12 @@ namespace Configuration
         }
         public static void Init_LOG_Config()
         {
-            try { LoginServer.logger.Init(); Logger.WriteLine(LogState.Info, "Logger Configuration initialized!"); }
+            try {
+                LoginServer.loginserverConfig.LogFile = string.Format(@"logs\{0}.log", DateTime.Now.ToString("d_M_yyyy HH_mm_ss"));
+                Config.WriteToXmlFile<LoginServerConfig>(Config.lsPath, LoginServer.loginserverConfig);
+
+                LoginServer.logger.Init(LoginServer.loginserverConfig.LogLevel, LoginServer.loginserverConfig.LogFile);            
+                Logger.WriteLine(LogState.Info, "Logger Configuration initialized!"); }
             catch (Exception) { }
         }
         public static void Init_DB_Config()

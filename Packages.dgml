@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="GameServer" Label="GameServer" Category="Projekt" />
+    <Node Id="SCS 1.1.0.1" Label="SCS 1.1.0.1" Category="Paket" />
+  </Nodes>
+  <Links>
+    <Link Source="GameServer" Target="SCS 1.1.0.1" Category="Installiertes Paket" />
+  </Links>
+  <Categories>
+    <Category Id="Projekt" />
+    <Category Id="Paket" />
+  </Categories>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Projekt" ValueLabel="True">
+      <Condition Expression="HasCategory('Projekt')" />
+      <Setter Property="Background" Value="Blue" />
+    </Style>
+  </Styles>
+</DirectedGraph>

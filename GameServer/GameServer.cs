@@ -8,15 +8,28 @@ using Hik.Communication.Scs.Communication.EndPoints.Tcp;
 using Hik.Communication.ScsServices.Service;
 using Network;
 using Tera.Services;
-using Utils;
-using Data.DAO;
 using Configuration;
+
+using Utils;
+using Utils.Logger;
+
+using Data.DAO;
+using Data.Enums;
+
+using Database_Manager;
+using Database_Manager.Database;
+
+
 
 namespace Tera
 {
     internal class GameServer : Global
     {
         public static TcpServer TcpServer;
+        public static GameServerConfig gameserverConfig = new GameServerConfig();
+        public static Logger logger = new Logger();
+        public static DatabaseSystem dbs = new DatabaseSystem();
+        public static DatabaseManager dbManager;
 
         #region Main
         public static void Main()
@@ -32,7 +45,7 @@ namespace Tera
             }
             catch (Exception ex)
             {
-                Log.FatalException("Can't start server!", ex);
+                Logger.WriteLine(LogState.Exception, "Main: " + ex.Message + " St: " + ex.StackTrace );
                 return;
             }
 
@@ -59,7 +72,7 @@ namespace Tera
             PrintServerInfo();
 
             //Initialize TcpServer
-            TcpServer = new TcpServer("*", Configuration.Network.GetServerPort(), Configuration.Network.GetServerMaxCon());
+            TcpServer = new TcpServer("*", gameserverConfig.ServerPort, gameserverConfig.ServerMaxConnections);
             Connection.SendAllThread.Start();
 
             //Initialize Server OpCodes
@@ -104,7 +117,7 @@ namespace Tera
             #endregion
 
             //Set SqlDatabase Connection
-            GlobalLogic.ServerStart("SERVER=" + DAOManager.MySql_Host + ";DATABASE=" + DAOManager.MySql_Database + ";UID=" + DAOManager.MySql_User + ";PASSWORD=" + DAOManager.MySql_Password + ";PORT=" + DAOManager.MySql_Port + ";charset=utf8");
+            GlobalLogic.ServerStart("");
             Console.ForegroundColor = ConsoleColor.Gray;
 
             //Start Tcp-Server Listening
@@ -127,31 +140,31 @@ namespace Tera
             Console.ForegroundColor = ConsoleColor.Gray;
             try
             {
-                if (Configuration.Server.GetServerMode() == 0)
+                if (gameserverConfig.ServerMode == eServerMode.Debug)
                 {
-                    Log.Info("ServerMode:" + Configuration.Server.GetServerMode() + "=DEBUG");
+                    Logger.WriteLine(LogState.Info, "ServerMode: DEBUG");
                     //ToDo: start functions if needed for this mode
                 }
-                else if (Configuration.Server.GetServerMode() == 1)
+                else if (gameserverConfig.ServerMode == eServerMode.Release)
                 {
-                    Log.Info("ServerMode:" + Configuration.Server.GetServerMode() + "=RELEASE");
+                    Logger.WriteLine(LogState.Info, "ServerMode: RELEASE");
                     //ToDo: start functions if needed for this mode
                 }
-                else if (Configuration.Server.GetServerMode() == 2)
+                else if (gameserverConfig.ServerMode == eServerMode.Test)
                 {
-                    Log.Info("ServerMode:" + Configuration.Server.GetServerMode() + "=TEST");
+                    Logger.WriteLine(LogState.Info, "ServerMode: TEST");
                     //ToDo: start functions if needed for this mode
                 }
-                else if (Configuration.Server.GetServerMode() != 0 || Configuration.Server.GetServerMode() != 1 || Configuration.Server.GetServerMode() != 2)
+                else 
                 {
-                    Log.Error("ServerMode:" + Configuration.Server.GetServerMode() + "=UNKNOWN");
+                    Logger.WriteLine(LogState.Info, "ServerMode:" + gameserverConfig.ServerMode + "=UNKNOWN");
                     //ToDo: start functions if needed for this mode
                 }
 
             }
             catch (Exception ex)
             {
-                Log.FatalException("ServerMode not set to a correct Mode!", ex);
+                Logger.WriteLine(LogState.Exception, "ServerMode not set to a correct Mode!", ex);
                 return;
             }
 
@@ -170,6 +183,7 @@ namespace Tera
             + "This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\nSee the GNU General Public License for more details.\n\n"
             + "Copyright (C) 2012 (ProjectS1.GameServer)\n"
             + "Author: rework by P5yl0\n "
+            + "Author: rework by GoneUp\n "
             + "----------------------------------------------------------------------------");
 
         }
@@ -178,11 +192,11 @@ namespace Tera
         {
             Console.ForegroundColor = ConsoleColor.Green;
             //Server Info
-            Console.WriteLine("---===== Database IP: " + DAOManager.MySql_Host);
-            Console.WriteLine("---===== Database Port: " + DAOManager.MySql_Port);
-            Console.WriteLine("---===== Database User: " + DAOManager.MySql_User);
-            Console.WriteLine("---===== Database Pass: ***");// + BaseDAO.MySql_Password);
-            Console.WriteLine("---===== Database Name: " + DAOManager.MySql_Database);
+            //Console.WriteLine("---===== Database IP: " + DAOManager.MySql_Host);
+            //Console.WriteLine("---===== Database Port: " + DAOManager.MySql_Port);
+            //Console.WriteLine("---===== Database User: " + DAOManager.MySql_User);
+            //Console.WriteLine("---===== Database Pass: ***");// + BaseDAO.MySql_Password);
+            //Console.WriteLine("---===== Database Name: " + DAOManager.MySql_Database);
             Console.ForegroundColor = ConsoleColor.Gray;
         }
         #endregion ConsoleOutput-Infos
@@ -191,7 +205,7 @@ namespace Tera
         //Unhandled Server Exception Event
         protected static void UnhandledException(Object sender, UnhandledExceptionEventArgs args)
         {
-            Log.FatalException("UnhandledException", (Exception)args.ExceptionObject);
+            Logger.WriteLine(LogState.Exception, "UnhandledException" + (Exception)args.ExceptionObject);
             ShutdownServer();
 
             while (true)

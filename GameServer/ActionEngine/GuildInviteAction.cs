@@ -2,6 +2,7 @@
 using Data.Structures.World.Requests;
 using Network;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.ActionEngine
 {
@@ -39,7 +40,7 @@ namespace Tera.ActionEngine
             {
                 if(!_owner.Guild.GuildMembers.ContainsKey(_owner))
                 {
-                    Log.Error("{0} sent an invite to the guild that he is not member in!",_owner.PlayerData.Name);
+                    Logger.WriteLine(LogState.Error,"{0} sent an invite to the guild that he is not member in!",_owner.PlayerData.Name);
                     Declined();
                     return;
                 }

@@ -37,7 +37,7 @@ namespace Tera.Services
             if(player.Duel == null)
                 return;
 
-            player.Duel.LastKickUtc = Funcs.GetCurrentMilliseconds();
+            player.Duel.LastKickUtc = RandomUtilities.GetCurrentMilliseconds();
         }
 
         public void FinishDuel(Player winner)
@@ -81,7 +81,7 @@ namespace Tera.Services
 
             await Task.Delay(5000);
 
-            duel.LastKickUtc = Funcs.GetCurrentMilliseconds();
+            duel.LastKickUtc = RandomUtilities.GetCurrentMilliseconds();
 
             Communication.Global.RelationService.ResendRelation(duel.Initiator);
             Communication.Global.RelationService.ResendRelation(duel.Initiated);
@@ -96,7 +96,7 @@ namespace Tera.Services
             {
                 for (int i = 0; i < Duels.Count; i++)
                 {
-                    if (Funcs.GetCurrentMilliseconds() - Duels[i].LastKickUtc >= 60000)
+                    if (RandomUtilities.GetCurrentMilliseconds() - Duels[i].LastKickUtc >= 60000)
                     {
                         Duels[i].Initiator.Duel = null;
                         Duels[i].Initiated.Duel = null;

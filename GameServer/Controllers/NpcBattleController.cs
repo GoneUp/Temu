@@ -152,20 +152,20 @@ namespace Tera.Controllers
 
             if (SelectedSkill == null)
             {
-                if (Funcs.Random().Next(0, 1000) < 250)
+                if (RandomUtilities.Random().Next(0, 1000) < 250)
                 {
-                    Global.SkillEngine.UseSkill(Npc, MoveSkills[Funcs.Random().Next(0, MoveSkills.Count)]);
+                    Global.SkillEngine.UseSkill(Npc, MoveSkills[RandomUtilities.Random().Next(0, MoveSkills.Count)]);
                     return;
                 }
 
-                SelectedSkill = AttackSkills[Funcs.Random().Next(0, AttackSkills.Count)];
+                SelectedSkill = AttackSkills[RandomUtilities.Random().Next(0, AttackSkills.Count)];
             }
 
             int distance = SeUtils.GetAttackDistance(SelectedSkill);
 
             if (Npc.Position.DistanceTo(Npc.Target.Position.X, Npc.Target.Position.Y) > distance + 30)
             {
-                long now = Funcs.GetCurrentMilliseconds();
+                long now = RandomUtilities.GetCurrentMilliseconds();
                 if (now > LastMoveUts + 1000)
                 {
                     LastMoveUts = now;

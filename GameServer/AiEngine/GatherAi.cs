@@ -9,7 +9,7 @@ namespace Tera.AiEngine
     {
         public Gather Gather;
 
-        public long DieUtc = Funcs.GetCurrentMilliseconds();
+        public long DieUtc = RandomUtilities.GetCurrentMilliseconds();
 
         public const int RespawnUtc = 30000;
 
@@ -22,7 +22,7 @@ namespace Tera.AiEngine
 
         public override void Action()
         {
-            if (Gather.CurrentGatherCounter == 0 && Funcs.GetCurrentMilliseconds() - DieUtc > RespawnUtc)
+            if (Gather.CurrentGatherCounter == 0 && RandomUtilities.GetCurrentMilliseconds() - DieUtc > RespawnUtc)
                 Gather.CurrentGatherCounter = new Random().Next(1, 3);
         }
 
@@ -33,7 +33,7 @@ namespace Tera.AiEngine
             if (Gather.CurrentGatherCounter <= 0)
             {
                 Gather.CurrentGatherCounter = 0;
-                DieUtc = Funcs.GetCurrentMilliseconds();
+                DieUtc = RandomUtilities.GetCurrentMilliseconds();
             }
         }
     }

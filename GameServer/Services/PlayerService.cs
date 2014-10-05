@@ -82,13 +82,14 @@ namespace Tera.Services
 
         public void PlayerEnterWorld(Player player)
         {
-            new SpSystemNotice(Configuration.Server.GetWelcomeMessage(), 15).Send(player.Connection);
+            new SpSystemNotice(GameServer.gameserverConfig.WelcomeMessage, 15).Send(player.Connection);
             Communication.Global.MountService.PlayerEnterWorld(player);
         }
 
         public void PlayerEndGame(Player player)
         {
-            player.LastOnlineUtc = Funcs.GetRoundedUtc();
+            
+            player.LastOnlineUtc = RandomUtilities.GetRoundedUtc();
 
             if (player.Ai != null)
             {
@@ -188,12 +189,12 @@ namespace Tera.Services
 
         public void AddExp(Player player, long value, Npc npc = null)
         {
-            value *= Configuration.GamePlay.GetServerRates();
+            value *= GameServer.gameserverConfig.ServerRates;
 
             //todo rate modifiers
-            if (player.GetLevel() >= Configuration.GamePlay.GetLevelCap())
+            if (player.GetLevel() >= GameServer.gameserverConfig.LevelCap)
             {
-                new SpSystemNotice("Sorry, but now, level cap is " + Configuration.GamePlay.GetLevelCap()).Send(player);
+                new SpSystemNotice("Sorry, but now, level cap is " + GameServer.gameserverConfig.LevelCap).Send(player);
                 return;
             }
 
@@ -247,7 +248,7 @@ namespace Tera.Services
 
             if (nearNpc != null)
             {
-                pos = Geom.GetNormal((short)Funcs.Random().Next(0, short.MaxValue))
+                pos = Geom.GetNormal((short)RandomUtilities.Random().Next(0, short.MaxValue))
                     .Multiple(150)
                     .Add(nearNpc.Position)
                     .SetZ(nearNpc.Position.Z + 200)

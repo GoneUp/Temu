@@ -7,6 +7,7 @@ using Data.Structures;
 using Data.Structures.Creature;
 using Data.Structures.Player;
 using Utils;
+using Utils.Logger;
 
 namespace Network
 {
@@ -39,7 +40,7 @@ namespace Network
 
             if (!OpCodes.Send.ContainsKey(GetType()))
             {
-                Log.Warn("UNKNOWN packet opcode: {0}", GetType().Name);
+                Logger.WriteLine(LogState.Warn,"UNKNOWN packet opcode: {0}", GetType().Name);
                 return;
             }
 
@@ -65,8 +66,8 @@ namespace Network
                     }
                     catch (Exception ex)
                     {
-                        Log.Warn("Can't write packet: {0}", GetType().Name);
-                        Log.WarnException("ASendPacket", ex);
+                        Logger.WriteLine(LogState.Warn,"Can't write packet: {0}", GetType().Name);
+                        Logger.WriteLine(LogState.Warn, "ASendPacket" + ex);
                         return;
                     }
                 }

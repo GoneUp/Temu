@@ -3,6 +3,7 @@ using Data.Structures.Player;
 using Data.Structures.Quest.Tasks;
 using Data.Structures.World.Continent;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.QuestEngine.Steps
 {
@@ -33,7 +34,7 @@ namespace Tera.QuestEngine.Steps
         {
             if(section == null)
             {
-                Log.Warn("QStepMovePc: Warning, current player section is NULL!");
+                Logger.WriteLine(LogState.Warn,"QStepMovePc: Warning, current player section is NULL!");
                 return;
             }
 

@@ -17,7 +17,7 @@ namespace Tera.Controllers
         {
             Player = player;
 
-            AutoRebirthUts = Funcs.GetCurrentMilliseconds() + 1200000; //30 minutes
+            AutoRebirthUts = RandomUtilities.GetCurrentMilliseconds() + 1200000; //30 minutes
 
             Player.LifeStats.Kill();
             PlayerLogic.PleyerDied(player);
@@ -32,7 +32,7 @@ namespace Tera.Controllers
 
         public void Action()
         {
-            if (Funcs.GetCurrentMilliseconds() >= AutoRebirthUts)
+            if (RandomUtilities.GetCurrentMilliseconds() >= AutoRebirthUts)
                 PlayerLogic.Ressurect(Player, 0, -1);
         }
     }

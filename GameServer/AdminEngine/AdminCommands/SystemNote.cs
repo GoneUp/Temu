@@ -9,6 +9,7 @@ using Data.Interfaces;
 using Data.Structures.Player;
 using Network.Server;
 using Utils;
+using Utils.Logger;
 
 
 /**
@@ -84,7 +85,7 @@ namespace Tera.AdminEngine.AdminCommands
             catch (Exception e)
             {
                 new SpChatMessage("Wrong Syntax!\n Type `systemnote {type} {option1} {option2}\nOptions are usually in seconds!", ChatType.Notice).Send(connection);
-                Log.Warn(e.ToString());
+                Logger.WriteLine(LogState.Warn,e.ToString());
             }
         }
 

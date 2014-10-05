@@ -18,7 +18,7 @@ namespace Tera.AiEngine
 
         public NpcBattleController BattleController;
 
-        protected long LastCallUts = Funcs.GetCurrentMilliseconds();
+        protected long LastCallUts = RandomUtilities.GetCurrentMilliseconds();
 
         protected long LastWalkUts;
 
@@ -74,7 +74,7 @@ namespace Tera.AiEngine
             if (Npc.NpcTemplate.IsVillager || Npc.NpcTemplate.IsObject)
                 return;
 
-            long now = Funcs.GetCurrentMilliseconds();
+            long now = RandomUtilities.GetCurrentMilliseconds();
 
             if (Npc.LifeStats.IsDead())
             {
@@ -132,7 +132,7 @@ namespace Tera.AiEngine
 
             if (PlayerInFocus != null)
             {
-                long now = Funcs.GetCurrentMilliseconds();
+                long now = RandomUtilities.GetCurrentMilliseconds();
 
                 if (NextChangeDirectionUts < now)
                 {
@@ -201,12 +201,12 @@ namespace Tera.AiEngine
                 return;
             }
 
-            long now = Funcs.GetCurrentMilliseconds();
+            long now = RandomUtilities.GetCurrentMilliseconds();
 
             if (now - 10000 < LastWalkUts)
                 return;
 
-            LastWalkUts = Funcs.GetCurrentMilliseconds() + Random.Next(5000, 10000);
+            LastWalkUts = RandomUtilities.GetCurrentMilliseconds() + Random.Next(5000, 10000);
 
             if (Random.Next(0, 100) < 50)
                 return;

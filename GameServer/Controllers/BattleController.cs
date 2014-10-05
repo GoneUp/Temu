@@ -32,7 +32,7 @@ namespace Tera.Controllers
 
                 if (!Targets.ContainsKey(creature))
                 {
-                    Targets.Add(creature, Funcs.GetCurrentMilliseconds());
+                    Targets.Add(creature, RandomUtilities.GetCurrentMilliseconds());
 
                     if (Targets.Count == 1)
                         SystemMessages.BattleBegan.Send(Player.Connection);
@@ -88,7 +88,7 @@ namespace Tera.Controllers
                                            where
                                                target.Key.LifeStats.IsDead() ||
                                                !target.Key.VisiblePlayers.Contains(Player) ||
-                                               Funcs.GetCurrentMilliseconds() - target.Value > Timeout
+                                               RandomUtilities.GetCurrentMilliseconds() - target.Value > Timeout
                                            select target.Key).ToList();
 
                 foreach (Creature creature in toRemove)
@@ -118,7 +118,7 @@ namespace Tera.Controllers
         {
             if (Contains(creature))
                 lock (TargetsLock)
-                    Targets[creature] = Funcs.GetCurrentMilliseconds();
+                    Targets[creature] = RandomUtilities.GetCurrentMilliseconds();
         }
     }
 }

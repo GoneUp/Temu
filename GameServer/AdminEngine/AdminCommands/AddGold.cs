@@ -9,6 +9,7 @@ using Data.Interfaces;
 using Data.Structures.Player;
 using Network.Server;
 using Utils;
+using Utils.Logger;
 
 /**
  * Class AddGold
@@ -55,7 +56,7 @@ namespace Tera.AdminEngine.AdminCommands
             catch (Exception e)
             {
                 new SpChatMessage("Wrong Syntax!\n Type !addgold {player} {number}", ChatType.Notice).Send(connection);
-                Log.Warn(e.ToString());
+                Logger.WriteLine(LogState.Warn,e.ToString());
             }
         }
     }

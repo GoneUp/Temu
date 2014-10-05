@@ -6,6 +6,7 @@ using Data.Structures.Creature;
 using Data.Structures.Player;
 using Data.Structures.World;
 using Utils;
+using Utils.Logger;
 
 namespace Network.Client
 {
@@ -80,7 +81,7 @@ namespace Network.Client
 
         public override void Process()
         {
-            Log.Debug("Count: " + ArgsList.Count);
+            Logger.WriteLine(LogState.Debug,"Count: " + ArgsList.Count);
             PlayerLogic.UseSkill(Connection, ArgsList);
         }
     }

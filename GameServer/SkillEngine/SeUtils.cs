@@ -204,7 +204,7 @@ namespace Tera.SkillEngine
             if (chance < 0)
                 chance = 2;
 
-            if (Funcs.Random().Next(0, 100) > chance)
+            if (RandomUtilities.Random().Next(0, 100) > chance)
                 return;
 
             result.Damage *= attacker.GameStats.CritPower;

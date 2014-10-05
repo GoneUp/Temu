@@ -6,6 +6,7 @@ using Data.Interfaces;
 using Data.Structures.Player;
 using Network.Server;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.AdminEngine.AdminCommands
 {
@@ -35,7 +36,7 @@ namespace Tera.AdminEngine.AdminCommands
             catch(Exception e)
             {
                 new SpChatMessage("Wrong syntax!\nType: !additem {item_id} {counter}", ChatType.Notice).Send(connection);
-                Log.Warn(e.ToString());
+                Logger.WriteLine(LogState.Warn,e.ToString());
             }
         }
     }

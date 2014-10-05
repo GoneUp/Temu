@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using Hik.Communication.Scs.Communication.EndPoints.Tcp;
 using Hik.Communication.Scs.Server;
 using Utils;
+using Utils.Logger;
 
 namespace Network
 {
@@ -26,7 +27,7 @@ namespace Network
 
         public void BeginListening()
         {
-            Log.Info("GameServer Listening on: {0}:{1}...", BindAddress, BindPort);
+            Logger.WriteLine(LogState.Info,"GameServer Listening on: {0}:{1}...", BindAddress, BindPort);
             Server = ScsServerFactory.CreateServer(new ScsTcpEndPoint(BindAddress, BindPort));
             Server.Start();
 
@@ -36,7 +37,7 @@ namespace Network
 
         public void ShutdownServer()
         {
-            Log.Info("Shutdown GameServer...");
+            Logger.WriteLine(LogState.Info,"Shutdown GameServer...");
             Server.Stop();
         }
 
@@ -44,11 +45,11 @@ namespace Network
         {
             string ip = Regex.Match(e.Client.RemoteEndPoint.ToString(), "([0-9]+).([0-9]+).([0-9]+).([0-9]+)").Value;
 
-            Log.Info("Client connected!");
+            Logger.WriteLine(LogState.Info,"Client connected!");
 
             if (ConnectionsTime.ContainsKey(ip))
             {
-                if (Funcs.GetCurrentMilliseconds() - ConnectionsTime[ip] < 2000)
+                if (RandomUtilities.GetCurrentMilliseconds() - ConnectionsTime[ip] < 2000)
                 {
                     Process.Start("cmd",
                                   "/c netsh advfirewall firewall add rule name=\"AutoBAN (" + ip +
@@ -56,20 +57,20 @@ namespace Network
 
                     ConnectionsTime.Remove(ip);
 
-                    Log.Info("TcpServer: FloodAttack prevent! Ip " + ip + " added to firewall");
+                    Logger.WriteLine(LogState.Info,"TcpServer: FloodAttack prevent! Ip " + ip + " added to firewall");
                     return;
                 }
-                ConnectionsTime[ip] = Funcs.GetCurrentMilliseconds();
+                ConnectionsTime[ip] = RandomUtilities.GetCurrentMilliseconds();
             }
             else
-                ConnectionsTime.Add(ip, Funcs.GetCurrentMilliseconds());
+                ConnectionsTime.Add(ip, RandomUtilities.GetCurrentMilliseconds());
 
             new Connection(e.Client);
         }
 
         protected void OnDisconnected(object sender, ServerClientEventArgs e)
         {
-            Log.Info("Client disconnected!");
+            Logger.WriteLine(LogState.Info,"Client disconnected!");
         }
     }
 }

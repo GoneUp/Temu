@@ -11,6 +11,7 @@ using Network;
 using Network.Server;
 using Tera.Controllers;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.Services
 {
@@ -389,7 +390,7 @@ namespace Tera.Services
             else
             {
                 player.Inventory.Money = 0;
-                Log.Warn("InventorService: Player {0} moneys can't be less than 0");
+                Logger.WriteLine(LogState.Warn,"InventorService: Player {0} moneys can't be less than 0");
                 ShowPlayerStorage(player, storage.StorageType);
                 return false;
             }

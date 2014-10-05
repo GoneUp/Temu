@@ -4,6 +4,7 @@ using Data.Enums;
 using Data.Interfaces;
 using Network.Server;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.AdminEngine.AdminCommands
 {
@@ -58,7 +59,7 @@ namespace Tera.AdminEngine.AdminCommands
             catch(Exception ex)
             {
                 new SpChatMessage("Error: " + ex.Message, ChatType.System).Send(connection);
-                Log.ErrorException("AdminEngine: Npc:", ex);
+                Logger.WriteLine(LogState.Exception,"AdminEngine: Npc:" + ex);
             }
         }
     }

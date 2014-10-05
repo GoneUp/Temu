@@ -83,9 +83,9 @@ namespace Tera.Controllers
 
         public void CompleteCraft()
         {
-            if (Funcs.IsLuck(LuckChance) && IsActive) //todo Craft chance
+            if (RandomUtilities.IsLuck(LuckChance) && IsActive) //todo Craft chance
             {
-                if (Funcs.IsLuck(Recipe.CriticalChancePercent) && Recipe.CriticalChancePercent != 0)
+                if (RandomUtilities.IsLuck(Recipe.CriticalChancePercent) && Recipe.CriticalChancePercent != 0)
                 {
                     SystemMessages.CraftedItem("@item:" + Recipe.CriticalResultItem.Key).Send(Player.Connection);
                     Communication.Global.StorageService.AddItem(Player, Player.Inventory, Recipe.CriticalResultItem.Key,
@@ -98,7 +98,7 @@ namespace Tera.Controllers
                                                                           Recipe.ResultItem.Value);
                 }
 
-                if (Funcs.IsLuck(ProgressStatChance))
+                if (RandomUtilities.IsLuck(ProgressStatChance))
                     Communication.Global.CraftLearnService.ProcessCraftStat(Player, Recipe.CraftStat);
 
                 new SpCraftProgress(100).Send(Player.Connection);

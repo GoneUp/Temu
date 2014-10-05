@@ -24,7 +24,7 @@ namespace Tera.AiEngine
             Npc = creature as Npc;
             Player = creature as Player;
 
-            Random = new Random((int) (DateTime.Now.Ticks + Funcs.Random().Next(int.MinValue, (int) Math.Abs(creature.Position.X))));
+            Random = new Random((int) (DateTime.Now.Ticks + RandomUtilities.Random().Next(int.MinValue, (int) Math.Abs(creature.Position.X))));
         }
 
         public virtual void Release()

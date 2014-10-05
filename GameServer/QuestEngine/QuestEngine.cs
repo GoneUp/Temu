@@ -11,6 +11,7 @@ using Network.Server;
 using Tera.Controllers;
 using Tera.QuestEngine.Steps;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.QuestEngine
 {
@@ -64,7 +65,7 @@ namespace Tera.QuestEngine
                 }
             }
 
-            Log.Info("QuestEngine: Valid quests: {0} / {1}", valid, Quests.Count);
+            Logger.WriteLine(LogState.Info,"QuestEngine: Valid quests: {0} / {1}", valid, Quests.Count);
         }
 
         public void ResendQuestData(Player player)

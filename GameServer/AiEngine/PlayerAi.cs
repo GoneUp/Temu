@@ -23,8 +23,8 @@ namespace Tera.AiEngine
         {
             base.Init(creature);
 
-            NextRegenUts = Funcs.GetCurrentMilliseconds() + 1000;
-            NextDistressUts = Funcs.GetCurrentMilliseconds() + 60000;
+            NextRegenUts = RandomUtilities.GetCurrentMilliseconds() + 1000;
+            NextDistressUts = RandomUtilities.GetCurrentMilliseconds() + 60000;
             LastBattleUts = 0;
         }
 
@@ -76,7 +76,7 @@ namespace Tera.AiEngine
                 }
             }
 
-            long now = Funcs.GetCurrentMilliseconds();
+            long now = RandomUtilities.GetCurrentMilliseconds();
 
             if (Player.Controller is BattleController)
                 LastBattleUts = now;
@@ -113,7 +113,7 @@ namespace Tera.AiEngine
             {
                 case PlayerClass.Slayer:
                 case PlayerClass.Berserker:
-                    if (LastBattleUts + 5000 < Funcs.GetCurrentMilliseconds() && Player.LifeStats.Mp > 0)
+                    if (LastBattleUts + 5000 < RandomUtilities.GetCurrentMilliseconds() && Player.LifeStats.Mp > 0)
                         CreatureLogic.MpChanged(Player, Player.LifeStats.MinusMp(Player.MaxHp / 90));
                     break;
 

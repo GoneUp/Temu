@@ -10,6 +10,7 @@ using Network.Server;
 using Tera.Controllers;
 using Network;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.ActionEngine
 {
@@ -127,7 +128,7 @@ namespace Tera.ActionEngine
             }
             catch(Exception e)
             {
-                Log.Error("Process request#{0} exception: {1}", (int)request.Type, e.ToString());
+                Logger.WriteLine(LogState.Error, "Process request#{0} exception: {1}", (int)request.Type, e.ToString());
             }
             finally
             {

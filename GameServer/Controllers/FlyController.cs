@@ -10,6 +10,7 @@ using Data.Structures.World;
 using Data.Structures.World.Pegasus;
 using Network.Server;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.Controllers
 {
@@ -164,7 +165,7 @@ namespace Tera.Controllers
             }
             catch (Exception )//e)
             {
-                Log.Warn("FlyController: Cant fly to point with FlyTraceIndex {0}", FlyTraceIndex);
+                Logger.WriteLine(LogState.Warn,"FlyController: Cant fly to point with FlyTraceIndex {0}", FlyTraceIndex);
             }
         }
 

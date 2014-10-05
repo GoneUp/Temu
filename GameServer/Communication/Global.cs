@@ -107,9 +107,9 @@ namespace Communication
             {
                 try
                 {
-                    if (Funcs.GetCurrentMilliseconds() - Cache.LastSaveUts > 600000) // Backup Every 10 Min
+                    if (RandomUtilities.GetCurrentMilliseconds() - Cache.LastSaveUts > 600000) // Backup Every 10 Min
                     {
-                        Cache.LastSaveUts = Funcs.GetCurrentMilliseconds();
+                        Cache.LastSaveUts = RandomUtilities.GetCurrentMilliseconds();
                         Cache.SaveData();
                     }
                     //Services:

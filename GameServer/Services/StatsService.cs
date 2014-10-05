@@ -7,6 +7,7 @@ using Data.Structures.Player;
 using Data.Structures.Template.Item;
 using Data.Structures.Template.Item.CategorieStats;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.Services
 {
@@ -64,7 +65,7 @@ namespace Tera.Services
                 return NpcStats[npc.NpcTemplate.HuntingZoneId][npc.NpcTemplate.Id].Clone();
             }
 
-            Log.Error("StatsService: Unknown type: {0}.", creature.GetType().Name);
+            Logger.WriteLine(LogState.Error,"StatsService: Unknown type: {0}.", creature.GetType().Name);
             return new CreatureBaseStats();
         }
 
@@ -89,7 +90,7 @@ namespace Tera.Services
                 return;
             }
 
-            Log.Error("StatsService: Unknown type: {0}.", creature.GetType().Name);
+            Logger.WriteLine(LogState.Error,"StatsService: Unknown type: {0}.", creature.GetType().Name);
         }
 
         private void UpdatePlayerStats(Player player)

@@ -15,7 +15,7 @@ namespace Tera.SkillEngine.Effects
 
         public bool IsUpdateStats = false;
 
-        public long LastTick = Funcs.GetCurrentMilliseconds();
+        public long LastTick = RandomUtilities.GetCurrentMilliseconds();
 
         //
 
@@ -43,7 +43,7 @@ namespace Tera.SkillEngine.Effects
             if (Effect.TickInterval == 0)
                 return;
 
-            long now = Funcs.GetCurrentMilliseconds();
+            long now = RandomUtilities.GetCurrentMilliseconds();
             long nextTick = LastTick + Effect.TickInterval*1000;
 
             if (nextTick < now)

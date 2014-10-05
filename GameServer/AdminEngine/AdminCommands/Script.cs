@@ -6,6 +6,7 @@ using System.Reflection;
 using Data.Interfaces;
 using Microsoft.CSharp;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.AdminEngine.AdminCommands
 {
@@ -37,9 +38,9 @@ namespace Tera.AdminEngine.AdminCommands
                         if (results.Errors.Count > 0)
                         {
                             foreach (CompilerError err in results.Errors)
-                                Log.Error("Script compile {0} error: {1}", args[1].Replace(".cs", ""), err.ErrorText);
+                                Logger.WriteLine(LogState.Error,"Script compile {0} error: {1}", args[1].Replace(".cs", ""), err.ErrorText);
 
-                            Log.Info("Script {0} not exists!", args[1].Replace(".cs", ""));
+                            Logger.WriteLine(LogState.Info,"Script {0} not exists!", args[1].Replace(".cs", ""));
                         }
                         else
                         {

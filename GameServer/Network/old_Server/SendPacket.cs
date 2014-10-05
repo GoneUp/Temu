@@ -1,6 +1,7 @@
 ﻿using System;
 using Data.Interfaces;
 using Utils;
+using Utils.Logger;
 
 namespace Network.Server
 {
@@ -30,7 +31,7 @@ namespace Network.Server
 
         public void Send(IConnection state)
         {
-            Log.Debug("SendPacket Data:\n{0}", Data.FormatHex());
+            Logger.WriteLine(LogState.Debug,"SendPacket Data:\n{0}", Data.FormatHex());
             state.PushPacket(Data);
         }
     }

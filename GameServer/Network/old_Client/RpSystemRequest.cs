@@ -6,6 +6,7 @@ using Network.Server;
 using System;
 using System.IO;
 using Utils;
+using Utils.Logger;
 
 namespace Network.Client
 {
@@ -81,7 +82,7 @@ namespace Network.Client
                     }
                     break;
                 default:
-                    Log.Debug("RpSystemRequest: Unknown system request {0}", type);
+                    Logger.WriteLine(LogState.Debug,"RpSystemRequest: Unknown system request {0}", type);
                     break;
             }
         }

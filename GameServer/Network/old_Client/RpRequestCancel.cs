@@ -1,4 +1,5 @@
 ﻿using Utils;
+using Utils.Logger;
 
 namespace Network.Client
 {
@@ -15,7 +16,7 @@ namespace Network.Client
 
         public override void Process()
         {
-            Log.Debug("Request cancel arrived from {0}", Connection.Player.PlayerData.Name);
+            Logger.WriteLine(LogState.Debug,"Request cancel arrived from {0}", Connection.Player.PlayerData.Name);
             Communication.Global.ActionEngine.ProcessRequest(Uid, false, Connection.Player);
         }
     }

@@ -14,7 +14,7 @@ namespace Tera.AiEngine
 
         public NpcMoveController MoveController;
 
-        protected long LastCallUts = Funcs.GetCurrentMilliseconds();
+        protected long LastCallUts = RandomUtilities.GetCurrentMilliseconds();
 
         protected long DieUts;
 
@@ -30,7 +30,7 @@ namespace Tera.AiEngine
                 MoveController.MoveTo(Projectile.TargetPosition);
             }
 
-            DieUts = Funcs.GetCurrentMilliseconds() + Projectile.Lifetime;
+            DieUts = RandomUtilities.GetCurrentMilliseconds() + Projectile.Lifetime;
         }
 
         public override void Release()
@@ -52,7 +52,7 @@ namespace Tera.AiEngine
                 return;
             }
 
-            long now = Funcs.GetCurrentMilliseconds();
+            long now = RandomUtilities.GetCurrentMilliseconds();
 
             if (now > DieUts)
             {

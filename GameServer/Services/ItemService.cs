@@ -9,6 +9,7 @@ using Data.Structures.World;
 using Network;
 using Network.Server;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.Services
 {
@@ -73,9 +74,9 @@ namespace Tera.Services
             if (groupId != 0)
             {
                 if (player.ItemCoodowns.ContainsKey(groupId))
-                    player.ItemCoodowns[groupId] = Funcs.GetCurrentMilliseconds();
+                    player.ItemCoodowns[groupId] = RandomUtilities.GetCurrentMilliseconds();
                 else
-                    player.ItemCoodowns.Add(groupId, Funcs.GetCurrentMilliseconds());
+                    player.ItemCoodowns.Add(groupId, RandomUtilities.GetCurrentMilliseconds());
             }
 
             Global.StorageService.RemoveItemById(player, player.Inventory, itemId, 1);
@@ -123,7 +124,7 @@ namespace Tera.Services
             if (item.ItemTemplate.RequiredSecondCharacter && secondPlayer == null)
                 return false;
 
-            if (groupId != 0 && player.ItemCoodowns.ContainsKey(groupId) && (Funcs.GetCurrentMilliseconds() - player.ItemCoodowns[groupId]) / 1000 < item.ItemTemplate.Cooltime)
+            if (groupId != 0 && player.ItemCoodowns.ContainsKey(groupId) && (RandomUtilities.GetCurrentMilliseconds() - player.ItemCoodowns[groupId]) / 1000 < item.ItemTemplate.Cooltime)
             {
                 //todo System message
                 return false;
@@ -132,7 +133,7 @@ namespace Tera.Services
             {
                 if (!Data.Data.Recipes.ContainsKey(item.ItemId))
                 {
-                    Log.Warn("ItemService: Can't find recipe {0}", item.ItemId);
+                    Logger.WriteLine(LogState.Warn,"ItemService: Can't find recipe {0}", item.ItemId);
                     return false;
                 }
 

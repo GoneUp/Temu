@@ -99,13 +99,13 @@ namespace Tera.Controllers
             else
                 chance = 100;
 
-            if(Funcs.IsLuck(chance) && IsActive)
+            if(RandomUtilities.IsLuck(chance) && IsActive)
             {
                 Global.VisibleService.Send(Player, new SpGatherEnd(Player, Gather, GatherEndCode.Normal));
 
                 if (!isQuest)
                 {
-                    if (Funcs.IsLuck(StatUpChance))
+                    if (RandomUtilities.IsLuck(StatUpChance))
                         Global.CraftLearnService.ProcessGatherStat(Player, Gather.GatherTemplate().TypeName);
 
                     int itemid = 1001;

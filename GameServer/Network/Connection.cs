@@ -13,6 +13,7 @@ using Hik.Communication.Scs.Server;
 using Network.Messages;
 using Network.Protocol;
 using Utils;
+using Utils.Logger;
 
 namespace Network
 {
@@ -36,7 +37,7 @@ namespace Network
                     }
                     catch (Exception ex)
                     {
-                        Log.ErrorException("Connection: SendAll:", ex);
+                       Logger.WriteLine(LogState.Exception,"Connection: SendAll: " + ex.Message);
                     }
                 }
 
@@ -177,12 +178,12 @@ namespace Network
                 ((ARecvPacket)Activator.CreateInstance(OpCodes.Recv[message.OpCode])).Process(this);
 
                 string opCodeLittleEndianHex = BitConverter.GetBytes(message.OpCode).ToHex();
-                Log.Debug("GsPacket opCode: 0x{0}{1} [{2}]",
+                Logger.WriteLine(LogState.Debug, "GsPacket opCode: 0x{0}{1} [{2}]",
                                  opCodeLittleEndianHex.Substring(2),
                                  opCodeLittleEndianHex.Substring(0, 2),
                                  Buffer.Length);
 
-                Log.Debug("Data:\n{0}", Buffer.FormatHex());
+                Logger.WriteLine(LogState.Debug, "Data:\n{0}", Buffer.FormatHex());
 
             }
             else
@@ -190,12 +191,12 @@ namespace Network
                 GlobalLogic.PacketReceived(Account, null, Buffer);
 
                 string opCodeLittleEndianHex = BitConverter.GetBytes(message.OpCode).ToHex();
-                Log.Debug("Unknown GsPacket opCode: 0x{0}{1} [{2}]",
+                Logger.WriteLine(LogState.Debug, "Unknown GsPacket opCode: 0x{0}{1} [{2}]",
                                  opCodeLittleEndianHex.Substring(2),
                                  opCodeLittleEndianHex.Substring(0, 2),
                                  Buffer.Length);
 
-                Log.Debug("Data:\n{0}", Buffer.FormatHex());
+                Logger.WriteLine(LogState.Debug, "Data:\n{0}", Buffer.FormatHex());
             }
         }
 
@@ -207,7 +208,7 @@ namespace Network
         public void Close()
         {
             if (_account != null)
-                _account.LastOnlineUtc = Funcs.GetCurrentMilliseconds();
+                _account.LastOnlineUtc = RandomUtilities.GetCurrentMilliseconds();
 
             Client.Disconnect();
         }

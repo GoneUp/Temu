@@ -64,7 +64,7 @@ namespace Tera.AdminEngine.AdminCommands
                 });
 
             int counter = 0;
-            int startAngle = Funcs.Random().Next(0, 359);
+            int startAngle = RandomUtilities.Random().Next(0, 359);
 
             foreach (var creature in npcs)
             {
@@ -78,8 +78,8 @@ namespace Tera.AdminEngine.AdminCommands
                     {
                         SpawnTemplate spawnTemplate = npc.SpawnTemplate.Clone();
 
-                        spawnTemplate.X += (float)(150f * Math.Cos(startAngle + counter * 30) * counter / 2 / Math.PI + Funcs.Random().Next(-25, 25));
-                        spawnTemplate.Y += (float)(150f * Math.Sin(startAngle + counter * 30) * counter / 2 / Math.PI + Funcs.Random().Next(-25, 25));
+                        spawnTemplate.X += (float)(150f * Math.Cos(startAngle + counter * 30) * counter / 2 / Math.PI + RandomUtilities.Random().Next(-25, 25));
+                        spawnTemplate.Y += (float)(150f * Math.Sin(startAngle + counter * 30) * counter / 2 / Math.PI + RandomUtilities.Random().Next(-25, 25));
 
                         Global.MapService.SpawnTeraObject(MapService.CreateNpc(spawnTemplate), npc.Instance);
                         counter++;

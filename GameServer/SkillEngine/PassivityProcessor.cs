@@ -57,7 +57,7 @@ namespace Tera.SkillEngine
                 return;
 
             if(passivity.Probability >= 0.001f && 1.0f - passivity.Probability > 0.001f)
-                if(Funcs.Random().Next(0, 100) > passivity.Probability*100)
+                if(RandomUtilities.Random().Next(0, 100) > passivity.Probability*100)
                     return;
                 
             switch (passivity.Type)

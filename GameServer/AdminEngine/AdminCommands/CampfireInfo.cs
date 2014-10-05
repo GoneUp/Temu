@@ -4,6 +4,7 @@ using Data.Interfaces;
 using Data.Structures.World;
 using Network.Server;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.AdminEngine.AdminCommands
 {
@@ -37,7 +38,7 @@ namespace Tera.AdminEngine.AdminCommands
             }
             catch (Exception ex)
             {
-                Log.ErrorException("AdminEngine: CampfireInfo", ex);
+                Logger.WriteLine(LogState.Exception,"AdminEngine: CampfireInfo: " + ex);
             }
         }
     }

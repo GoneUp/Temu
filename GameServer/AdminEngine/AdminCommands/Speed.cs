@@ -2,6 +2,7 @@
 using Data.Interfaces;
 using Network.Server;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.AdminEngine.AdminCommands
 {
@@ -16,7 +17,7 @@ namespace Tera.AdminEngine.AdminCommands
             }
             catch(Exception ex)
             {
-                Log.ErrorException("AdminEngine: Speed:", ex);
+                Logger.WriteLine(LogState.Exception,"AdminEngine: Speed: " + ex);
             }
         }
     }

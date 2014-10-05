@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using Data.Interfaces;
 using Utils;
+using Utils.Logger;
 
 namespace Network
 {
@@ -26,7 +27,7 @@ namespace Network
             }
             catch (Exception ex)
             {
-                Log.WarnException("ARecvPacket", ex);
+                Logger.WriteLine(LogState.Warn, "ARecvPacket:" + ex);
             }
         }
 
@@ -42,7 +43,7 @@ namespace Network
             }
             catch (Exception)
             {
-                Log.Warn("Missing D for: {0}", GetType());
+                Logger.WriteLine(LogState.Warn,"Missing D for: {0}", GetType());
             }
             return 0;
         }
@@ -55,7 +56,7 @@ namespace Network
             }
             catch (Exception)
             {
-                Log.Warn("Missing C for: {0}", GetType());
+                Logger.WriteLine(LogState.Warn,"Missing C for: {0}", GetType());
             }
             return 0;
         }
@@ -68,7 +69,7 @@ namespace Network
             }
             catch (Exception)
             {
-                Log.Warn("Missing H for: {0}", GetType());
+                Logger.WriteLine(LogState.Warn,"Missing H for: {0}", GetType());
             }
             return 0;
         }
@@ -81,7 +82,7 @@ namespace Network
             }
             catch (Exception)
             {
-                Log.Warn("Missing DF for: {0}", GetType());
+                Logger.WriteLine(LogState.Warn,"Missing DF for: {0}", GetType());
             }
             return 0;
         }
@@ -94,7 +95,7 @@ namespace Network
             }
             catch (Exception)
             {
-                Log.Warn("Missing F for: {0}", GetType());
+                Logger.WriteLine(LogState.Warn,"Missing F for: {0}", GetType());
             }
             return 0;
         }
@@ -107,7 +108,7 @@ namespace Network
             }
             catch (Exception)
             {
-                Log.Warn("Missing Q for: {0}", GetType());
+                Logger.WriteLine(LogState.Warn,"Missing Q for: {0}", GetType());
             }
             return 0;
         }
@@ -124,7 +125,7 @@ namespace Network
             }
             catch (Exception)
             {
-                Log.Warn("Missing S for: {0}", GetType());
+                Logger.WriteLine(LogState.Warn,"Missing S for: {0}", GetType());
             }
             return result;
         }
@@ -138,7 +139,7 @@ namespace Network
             }
             catch (Exception)
             {
-                Log.Warn("Missing byte[] for: {0}", GetType());
+                Logger.WriteLine(LogState.Warn,"Missing byte[] for: {0}", GetType());
             }
             return result;
         }

@@ -18,7 +18,7 @@ namespace Network.Client
             if (GuildName == "")
                 return;
 
-            if (Connection.Player.LastPraise != -1 && Funcs.GetRoundedUtc() - Connection.Player.LastPraise > 86400)
+            if (Connection.Player.LastPraise != -1 && RandomUtilities.GetRoundedUtc() - Connection.Player.LastPraise > 86400)
             {
                 Connection.Player.LastPraise = -1;
                 Connection.Player.PraiseGiven = 0;
@@ -32,7 +32,7 @@ namespace Network.Client
             }
 
             Connection.Player.PraiseGiven++;
-            Connection.Player.LastPraise = Funcs.GetRoundedUtc();
+            Connection.Player.LastPraise = RandomUtilities.GetRoundedUtc();
 
             Communication.Global.GuildService.PraiseGuild(GuildName);
             Communication.Global.GuildService.SendServerGuilds(Connection.Player, 1);

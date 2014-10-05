@@ -53,7 +53,7 @@ namespace Network.Server
                 WriteD(writer, Recipes[i].ResultItem.Key); //itemid
                 WriteD(writer, Recipes[i].ResultItem.Value); //counter
                 WriteD(writer, Recipes[i].Level);
-                WriteQ(writer, Funcs.GetRoundedUtc());
+                WriteQ(writer, RandomUtilities.GetRoundedUtc());
                 WriteC(writer, 0);
                 WriteD(writer, Recipes[i].NeededItems.Count);
 

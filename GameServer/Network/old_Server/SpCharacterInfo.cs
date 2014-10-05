@@ -107,7 +107,7 @@ namespace Network.Server
             WriteB(writer, "00004600AA00000000000101"); //???
 
             WriteB(writer, Player.PlayerData.Data);
-            //WriteB(writer, Funcs.HexToBytes("651D040301000500"));
+            //WriteB(writer, RandomUtilities.HexToBytes("651D040301000500"));
 
             WriteD(writer, Player.Inventory.GetItemId(1) ?? 0); //Item (hands)
             WriteD(writer, Player.Inventory.GetItemId(3) ?? 0); //Item (body)

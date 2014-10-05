@@ -8,6 +8,7 @@ using Data.Structures.Player;
 using Network.Server;
 using Tera.Controllers;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.Services
 {
@@ -65,7 +66,7 @@ namespace Tera.Services
         {
             if(craftStat.GetHashCode() > 6)
             {
-                Log.Warn("CraftService: Try to progress wrong stat {0}", craftStat.ToString());
+                Logger.WriteLine(LogState.Warn,"CraftService: Try to progress wrong stat {0}", craftStat.ToString());
             }
 
             player.PlayerCraftStats.ProgressCraftStat(craftStat);

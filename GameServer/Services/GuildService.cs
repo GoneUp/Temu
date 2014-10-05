@@ -17,7 +17,7 @@ namespace Tera.Services
     {
         public object GuildsLock = new object();
         public Dictionary<int, List<Guild>> GuildListCache = new Dictionary<int, List<Guild>>();
-        public long LastUpdateMilliseconds = Funcs.GetCurrentMilliseconds();
+        public long LastUpdateMilliseconds = RandomUtilities.GetCurrentMilliseconds();
 
         public const int MaxGuildsInTab = 16;
         public const long UpdateTimeout = 10000;
@@ -29,7 +29,7 @@ namespace Tera.Services
 
         public void Action()
         {
-            if(Funcs.GetCurrentMilliseconds() - LastUpdateMilliseconds < UpdateTimeout)
+            if(RandomUtilities.GetCurrentMilliseconds() - LastUpdateMilliseconds < UpdateTimeout)
                 return;
 
             GuildListCache = new Dictionary<int, List<Guild>>();
@@ -47,7 +47,7 @@ namespace Tera.Services
                         check++;
                 }
 
-                LastUpdateMilliseconds = Funcs.GetCurrentMilliseconds();
+                LastUpdateMilliseconds = RandomUtilities.GetCurrentMilliseconds();
             }
         }
 
@@ -57,7 +57,7 @@ namespace Tera.Services
                           {
                               GuildLogo = "",
                               GuildName = guildName,
-                              CreationDate = Funcs.GetRoundedUtc(),
+                              CreationDate = RandomUtilities.GetRoundedUtc(),
                               GuildHistory = new List<HistoryEvent>(),
                               GuildRanks = new List<GuildMemberRank>()
                           };
@@ -116,7 +116,7 @@ namespace Tera.Services
             if(guild == null)
                 return;
 
-            hEvent.Date = Funcs.GetRoundedUtc();
+            hEvent.Date = RandomUtilities.GetRoundedUtc();
 
             guild.GuildHistory.Add(hEvent);
 

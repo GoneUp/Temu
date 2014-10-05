@@ -20,6 +20,7 @@ using Network.Server;
 using Tera.Extensions;
 using Tera.SkillEngine.Patches;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.SkillEngine
 {
@@ -249,7 +250,7 @@ namespace Tera.SkillEngine
                 else
                     cooldownUtc = player.SkillCooldowns[skill.Id];
 
-                long now = Funcs.GetCurrentMilliseconds();
+                long now = RandomUtilities.GetCurrentMilliseconds();
 
                 if (cooldownUtc > now)
                     return false;
@@ -489,7 +490,7 @@ namespace Tera.SkillEngine
                         }
                         catch (Exception ex)
                         {
-                            Log.ErrorException("SkillEngine: ProcessTargets", ex);
+                            Logger.WriteLine(LogState.Exception,"SkillEngine: ProcessTargets: " + ex);
                         }
                     }
                 }
@@ -657,7 +658,7 @@ namespace Tera.SkillEngine
                     }
                     catch (Exception ex)
                     {
-                        Log.ErrorException("SkillEngine: ProcessAreaExc", ex);
+                        Logger.WriteLine(LogState.Exception,"SkillEngine: ProcessAreaExc: " +  ex);
                     }
 
                     if (targeting.Interval > 0)
@@ -670,7 +671,7 @@ namespace Tera.SkillEngine
             }
             catch (Exception ex)
             {
-                Log.ErrorException("SkillEngine: ProcessArea", ex);
+                Logger.WriteLine(LogState.Exception,"SkillEngine: ProcessArea: " + ex);
             }
         }
 

@@ -6,6 +6,7 @@ using Data.Structures.World;
 using Network;
 using Network.Server;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.Controllers
 {
@@ -78,7 +79,7 @@ namespace Tera.Controllers
             if (!Data.Data.ItemTemplates.ContainsKey(itemId))
             {
                 new SpSystemNotice("Item not exist!").Send(Player.Connection);
-                Log.Warn("NpcTradeController: Item {0} not exist!", itemId);
+                Logger.WriteLine(LogState.Warn,"NpcTradeController: Item {0} not exist!", itemId);
                 return;
             }
 
@@ -87,7 +88,7 @@ namespace Tera.Controllers
             if (item.BuyPrice == 0)
             {
                 new SpSystemNotice("Item cost not set!").Send(Player.Connection);
-                Log.Warn("Item cost not set fro item {0}", item.Id);
+                Logger.WriteLine(LogState.Warn,"Item cost not set fro item {0}", item.Id);
                 return;
             }
 

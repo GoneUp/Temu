@@ -20,6 +20,7 @@ using Tera.AiEngine;
 using Tera.Controllers;
 using Tera.Extensions;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.Services
 {
@@ -144,7 +145,7 @@ namespace Tera.Services
 
             CraftService.UpdateCraftRecipes(player);
 
-            player.LastOnlineUtc = Funcs.GetRoundedUtc();
+            player.LastOnlineUtc = RandomUtilities.GetRoundedUtc();
         }
 
         public void SendCreatureInfo(IConnection connection, Creature creature)
@@ -159,9 +160,9 @@ namespace Tera.Services
                     if (player.PlayerMount != 0 && Data.Data.Mounts.ContainsKey(player.PlayerMount))
                         new SpMountShow(player, Data.Data.Mounts[player.PlayerMount].MountId, player.PlayerMount).Send(connection);
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    Log.Error("Exception " + e);
+                    Logger.WriteLine(LogState.Exception,"Exception " + ex);
                 }
 
                 return;
@@ -206,7 +207,7 @@ namespace Tera.Services
                 return;
             }
 
-            Log.Error("SendCreatureInfo: Unknown creature type: {0}", creature.GetType().Name);
+            Logger.WriteLine(LogState.Error,"SendCreatureInfo: Unknown creature type: {0}", creature.GetType().Name);
         }
 
         public void SendRemoveCreature(IConnection connection, Creature creature)
@@ -253,7 +254,7 @@ namespace Tera.Services
                 return;
             }
 
-            Log.Error("SendRemoveCreature: Unknown creature type: {0}", creature.GetType().Name);
+            Logger.WriteLine(LogState.Error,"SendRemoveCreature: Unknown creature type: {0}", creature.GetType().Name);
         }
 
         public void ShowRelogWindow(IConnection connection, int timeout)

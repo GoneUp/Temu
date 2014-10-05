@@ -81,6 +81,21 @@ namespace DevTera
             //DbQuerys.SetUsername("prototype", "prototype");
             //DbQuerys.InsertAccountData("test23", "test", "t@t.de", 0, "1", true, 0, 0, "1", "000010000", true, true, 1, 0);
             //DbQuerys.UpdateAccountData_byID(5, "test8987", "PASSWORD", "t@t.de", 0, "1", true, 0, 0, "1", "000010000", true, true, 1);
+
+
+
+            try
+            {
+                throw new ObjectDisposedException("");
+            }
+            catch (Exception ex)
+            {
+                
+               Console.WriteLine (ex);
+               Console.WriteLine(ex.ToString());
+               Console.WriteLine(ex.Message);
+ 
+            }
         }
 
         #region ConsoleOutput-Infos

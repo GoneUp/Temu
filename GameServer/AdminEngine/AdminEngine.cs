@@ -5,6 +5,7 @@ using Data.Interfaces;
 using Data.Structures.Player;
 using Tera.AdminEngine.AdminCommands;
 using Utils;
+using Utils.Logger;
 
 namespace Tera.AdminEngine
 {
@@ -72,7 +73,7 @@ namespace Tera.AdminEngine
                     }
                     catch(Exception ex)
                     {
-                        Log.WarnException("AdminCommand: Process:", ex);
+                        Logger.WriteLine(LogState.Warn, "AdminCommand: Process:" + ex);
                     }
                     return true;
                 }
@@ -89,7 +90,7 @@ namespace Tera.AdminEngine
                     }
                     catch (Exception ex)
                     {
-                        Log.WarnException("UserCommand: Process:", ex);
+                        Logger.WriteLine(LogState.Warn, "UserCommand: Process:" + ex);
                     }
                     return true;
                 }

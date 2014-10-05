@@ -97,7 +97,7 @@ namespace Tera.Services
                                     Thread.Sleep(1);
                             }
 
-                            long now = Funcs.GetCurrentMilliseconds();
+                            long now = RandomUtilities.GetCurrentMilliseconds();
 
                             for (int j = 0; j < map[i].Campfires.Count; j++)
                             {
@@ -345,9 +345,9 @@ namespace Tera.Services
 
         public void CreateDrop(Npc npc, Player player)
         {
-            if (Funcs.IsLuck(75))
+            if (RandomUtilities.IsLuck(75))
             {
-                var money = (int)(10 * Data.Data.NpcExperience[npc.GetLevel()] / Funcs.Random().Next(20, 60));
+                var money = (int)(10 * Data.Data.NpcExperience[npc.GetLevel()] / RandomUtilities.Random().Next(20, 60));
 
                 player.Instance.AddDrop(
                     new Item
@@ -357,7 +357,7 @@ namespace Tera.Services
 
                         ItemId = 20000000,
                         Count = money,
-                        Position = Geom.RandomCirclePosition(npc.Position, Funcs.Random().Next(60, 100)),
+                        Position = Geom.RandomCirclePosition(npc.Position, RandomUtilities.Random().Next(60, 100)),
                         Instance = player.Instance,
                     });
             }
@@ -371,7 +371,7 @@ namespace Tera.Services
                 return;
 
             int count = 0;
-            int rate = Funcs.Random().Next(0, 2500);
+            int rate = RandomUtilities.Random().Next(0, 2500);
 
             if (rate < 10)
                 count = 6;
@@ -391,7 +391,7 @@ namespace Tera.Services
 
             for (int i = 0; i < count; i++)
             {
-                int itemId = items[Funcs.Random().Next(0, items.Count)];
+                int itemId = items[RandomUtilities.Random().Next(0, items.Count)];
 
                 if (!Data.Data.ItemTemplates.ContainsKey(itemId))
                     continue;
@@ -404,7 +404,7 @@ namespace Tera.Services
 
                         ItemId = itemId,
                         Count = 1,
-                        Position = Geom.RandomCirclePosition(npc.Position, Funcs.Random().Next(60, 100)),
+                        Position = Geom.RandomCirclePosition(npc.Position, RandomUtilities.Random().Next(60, 100)),
                         Instance = player.Instance,
                     });
             }
@@ -508,7 +508,7 @@ namespace Tera.Services
                 Position =
                     Geom.GetNormal(position.Heading).Multiple(50).Add(player.Position)
                     .ToWorldPosition(),
-                DespawnUts = Funcs.GetCurrentMilliseconds() + 1200000, //20 minutes
+                DespawnUts = RandomUtilities.GetCurrentMilliseconds() + 1200000, //20 minutes
             });
 
             return true;

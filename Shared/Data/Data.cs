@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ProtoBuf;
+using Tera.Data.Enums.Craft;
 using Tera.Data.Enums.Pegasus;
 using Tera.Data.Structures.Craft;
 using Tera.Data.Structures.Creature;
@@ -30,6 +31,7 @@ namespace Tera.Data
 
         public static string mountsFile = Path.GetFullPath(DataPath + "//mounts.xml");
         public static string recipesFile = Path.GetFullPath(DataPath + "//recipes.xml");
+        public static string statsFile = Path.GetFullPath(DataPath + "//stats.xml");
         public static string playerExpFile = Path.GetFullPath(ConfigPath + "playerExperience.xml");
 
         public static List<long> PlayerExperience = new List<long>(); //xml done
@@ -199,6 +201,7 @@ namespace Tera.Data
         public static int LoadRecipes()
         {
             Recipes = new Dictionary<int, Recipe>();
+            /*
             using (FileStream stream = File.OpenRead(DataPath + "recipes.bin"))
             {
                 while (stream.Position < stream.Length)
@@ -207,8 +210,9 @@ namespace Tera.Data
                     Recipes.Add(r.RecipeId, r);
                 }
             }
+             */
 
-            /*
+
             try
             {
                 XmlReader xmlFile;
@@ -216,7 +220,7 @@ namespace Tera.Data
                 DataSet ds = new DataSet();
                 ds.ReadXml(xmlFile);
 
-                for (int i = 0; i <= ds.Tables[0].Rows.Count; i++)
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                 {
                     string _CraftStat = Convert.ToString(ds.Tables[0].Rows[i].ItemArray[0]);
                     byte _CriticalChancePercent = Convert.ToByte(ds.Tables[0].Rows[i].ItemArray[1]);
@@ -229,18 +233,18 @@ namespace Tera.Data
                     short _ReqMax = Convert.ToInt16(ds.Tables[0].Rows[i].ItemArray[7]);
                     short _ReqMin = Convert.ToInt16(ds.Tables[0].Rows[i].ItemArray[8]);
                     var _ResultItem = (ds.Tables[0].Rows[i].ItemArray[9]);
-                        
+
                     if (!Recipes.ContainsKey(_RecipeId))
                     {
 
                         Recipes.Add(_RecipeId, new Recipe()
                         {
-                            CraftStat = (CraftStat)Enum.Parse(typeof(CraftStat), _CraftStat),
+                            CraftStat = (CraftStat) Enum.Parse(typeof (CraftStat), _CraftStat),
                             CriticalChancePercent = _CriticalChancePercent,
                             //CriticalResultItem = KeyValuePair<int, int>,
                             Level = _Level,
                             Name = _Name,
-                            NeededItems = { },
+                            NeededItems = {},
                             RecipeId = _RecipeId,
                             ReqMax = _ReqMax,
                             ReqMin = _ReqMin,
@@ -251,17 +255,110 @@ namespace Tera.Data
                 }
             }
             catch
-            { }
-            */
+            {
+                Console.Beep();
+            }
+            
             return Recipes.Count;
         }
 
 
         public static int LoadStats()
         {
+            /*
             using (FileStream fs = File.OpenRead(DataPath + "stats.bin"))
             {
                 Stats = Serializer.Deserialize<List<CreatureBaseStats>>(fs);
+            }
+            */
+
+            try
+            {
+                XmlReader xmlFile;
+                xmlFile = XmlReader.Create(statsFile, new XmlReaderSettings());
+                DataSet ds = new DataSet();
+                ds.ReadXml(xmlFile);
+
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    CreatureBaseStats tmpStats = new CreatureBaseStats();
+                    tmpStats.NpcId = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[0]);
+                    tmpStats.NpcName = Convert.ToString(ds.Tables[0].Rows[i].ItemArray[1]);
+
+                    var tmpClass = Convert.ToString(ds.Tables[0].Rows[i].ItemArray[2]);
+                    
+                    tmpStats.Level = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[3]);
+                    tmpStats.NpcHuntingZoneId = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[4]);
+
+                    tmpStats.Attack = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[5]);
+                    tmpStats.AttackSpeed = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[6]);
+
+                    tmpStats.Balance = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[7]);
+                    tmpStats.BalanceFactor = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[8]);
+
+                    tmpStats.Impact = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[9]);
+                    tmpStats.ImpactFactor = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[10]);
+
+                    tmpStats.CritChanse = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[11]);
+                    tmpStats.CritPower = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[12]);
+
+                    tmpStats.Movement = Convert.ToInt16(ds.Tables[0].Rows[i].ItemArray[13]);
+                    tmpStats.Power = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[14]);
+
+                    tmpStats.HpBase = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[15]);
+                    tmpStats.HpStamina = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[16]);
+
+                    tmpStats.MpBase = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[17]);
+                    tmpStats.MpStamina = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[18]);
+
+                    tmpStats.NaturalMpRegen = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[19]);
+                    tmpStats.CombatMpRegen = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[20]);
+
+                    tmpStats.Endurance = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[21]);
+                    tmpStats.Defense = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[22]);
+
+                    tmpStats.CritResist = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[23]);
+                    tmpStats.StunResist = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[24]);
+                    tmpStats.PeriodicResist = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[25]);
+                    tmpStats.WeakeningResist = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[26]);
+
+                    switch (tmpClass){
+                        case "Warrior":
+                            tmpStats.PlayerClass = Enums.PlayerClass.Warrior;
+                            break;
+                        case "Lancer":
+                            tmpStats.PlayerClass = Enums.PlayerClass.Lancer;
+                            break;
+                        case "Slayer":
+                            tmpStats.PlayerClass = Enums.PlayerClass.Slayer;
+                            break;
+                        case "Berserker":
+                            tmpStats.PlayerClass = Enums.PlayerClass.Berserker;
+                            break;
+                        case "Sorcerer":
+                            tmpStats.PlayerClass = Enums.PlayerClass.Sorcerer;
+                            break;
+                        case "Archer":
+                            tmpStats.PlayerClass = Enums.PlayerClass.Archer;
+                            break;
+                        case "Priest":
+                            tmpStats.PlayerClass = Enums.PlayerClass.Priest;
+                            break;
+                        case "Mystic":
+                            tmpStats.PlayerClass = Enums.PlayerClass.Mystic;
+                            break;
+                        default:
+                            throw new Exception("Unk Class");
+
+
+                    }
+
+                    Stats.Add(tmpStats);
+                }
+            }
+            catch
+            {
+                Console.Beep();
             }
 
             return Stats.Count;
@@ -382,7 +479,7 @@ namespace Tera.Data
         public static int LoadQuests()
         {
             using (FileStream fs = File.OpenRead(DataPath + "quests.bin"))
-                Quests = Serializer.Deserialize<Dictionary<int, Quest>>(fs);
+                //Quests = Serializer.Deserialize<Dictionary<int, Quest>>(fs);
 
             return Quests.Count;
         }

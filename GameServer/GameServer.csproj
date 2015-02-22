@@ -129,7 +129,7 @@
     <Compile Include="Communication\Logic\CreatureLogic.cs" />
     <Compile Include="Communication\Logic\GlobalLogic.cs" />
     <Compile Include="Communication\Logic\PlayerLogic.cs" />
-    <Compile Include="Configuration\Configs\GameServer.cs" />
+    <Compile Include="Configuration\Configs\GameServerConfig.cs" />
     <Compile Include="Configuration\Systems\DatabaseSystem.cs" />
     <Compile Include="Configuration\_Config.cs" />
     <Compile Include="Configuration\_TaskLoader.cs" />

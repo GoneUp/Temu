@@ -15,7 +15,7 @@ namespace Tera.Configuration
         #endregion properties
 
         #region Functions
-        public static void Init_LS_Config()
+        public static void Init_GS_Config()
         {
             try { GameServer.gameserverConfig.Init(); Logger.WriteLine(LogState.Info, "Server Configuration initialized!"); }
             catch (Exception) { }

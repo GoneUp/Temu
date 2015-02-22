@@ -5,6 +5,7 @@ using Hik.Communication.Scs.Communication.EndPoints.Tcp;
 using Hik.Communication.ScsServices.Service;
 using Tera.Communication;
 using Tera.Communication.Logic;
+using Tera.Configuration;
 using Tera.Configuration.Configs;
 using Tera.Configuration.Systems;
 using Tera.Data.Enums;
@@ -65,6 +66,12 @@ namespace Tera
             //ConsoleOutput-Infos
             PrintServerLicence();
             PrintServerInfo();
+
+            //init configs
+            Config.Init_GS_Config();
+            Config.Init_LOG_Config();
+            Config.Init_DB_Config();
+
 
             //Initialize TcpServer
             TcpServer = new TcpServer("*", gameserverConfig.ServerPort, gameserverConfig.ServerMaxConnections);

@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Communication.Interfaces;
-using Data.Structures.Player;
-using Data.Structures.World;
-using Network;
-using Data.Structures.World.Requests;
-using Network.Server;
+using Tera.Communication.Interfaces;
 using Tera.Controllers;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
+using Tera.Data.Structures.World.Requests;
+using Tera.Network;
+using Tera.Network.old_Server;
 using Utils;
 
 namespace Tera.Services

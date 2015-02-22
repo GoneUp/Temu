@@ -1,7 +1,6 @@
 ﻿using System.Text;
 
-
-namespace Network.Client
+namespace Tera.Network.Packets.ClientPackets
 {
     public class CpRequestAuth : ARecvPacket
     {

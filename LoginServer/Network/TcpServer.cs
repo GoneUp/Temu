@@ -1,11 +1,11 @@
-﻿using AccountService;
-using NetworkApi.Communication.Scs.Communication.EndPoints.Tcp;
+﻿using NetworkApi.Communication.Scs.Communication.EndPoints.Tcp;
 using NetworkApi.Communication.Scs.Communication.Messages;
 using NetworkApi.Communication.Scs.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Tera.Data.Structures.Account;
 using Utils.Logger;
 using Database_Manager.Database;
 using MySql.Data.MySqlClient;
@@ -118,24 +118,24 @@ namespace Network
 
         public static string isLoginValid(string user, string pass)
         {
-            Account Account = new Account();
-            Account = DbQuerys.GetAccountData(user, pass);
+            LoginAccount loginAccount = new LoginAccount();
+            loginAccount = DbQuerys.GetAccountData(user, pass);
 
-            if (Account == null)
+            if (loginAccount == null)
             {
                 return OpCode.LoginPacket_Auth_INVALID_PASSWORD.GetHashCode().ToString();
             }
             else
             {
-                Logger.WriteLine(LogState.Debug, "Checking Account: " + Account.Username);
+                Logger.WriteLine(LogState.Debug, "Checking Account: " + loginAccount.Username);
                 //BANN CHECK
-                if (Account.IsBanned)
+                if (loginAccount.IsBanned)
                 {
-                    Logger.WriteLine(LogState.Debug, "Account.IsBanned: " + Account.Username);
-                    Logger.WriteLine(LogState.Debug, "Account.UnBanDate: " + Account.UnBanDate);
+                    Logger.WriteLine(LogState.Debug, "Account.IsBanned: " + loginAccount.Username);
+                    Logger.WriteLine(LogState.Debug, "Account.UnBanDate: " + loginAccount.UnBanDate);
 
                     Int64 timeStampNowValue = Convert.ToInt64(DateTime.Now.Ticks);
-                    Int64 timeStampUnbannValue = Account.UnBanDate;
+                    Int64 timeStampUnbannValue = loginAccount.UnBanDate;
                     Logger.WriteLine(LogState.Debug, "timeStampNowValue: '" + timeStampNowValue + "' !");
                     Logger.WriteLine(LogState.Debug, "timeStampUnbannValue: '" + timeStampUnbannValue + "' !");
 
@@ -147,21 +147,21 @@ namespace Network
                     }
 
                     //BANNED
-                    Account = null;
+                    loginAccount = null;
                     return OpCode.LoginPacket_Auth_BANNED.GetHashCode().ToString();
                 }
 
-                if (Account.IsOnline)
+                if (loginAccount.IsOnline)
                 {
-                    Logger.WriteLine(LogState.Info, "Account: " + Account.Username + " already logged in!");
+                    Logger.WriteLine(LogState.Info, "Account: " + loginAccount.Username + " already logged in!");
                     //DbQuerys.SetIsOnline(user, false); //this for later setting offline kicking other player maybe... for now no 2nd login possible!
-                    Account = null;
+                    loginAccount = null;
                     return OpCode.LoginPacket_Auth_ONLINE.GetHashCode().ToString();
                 }
 
                 //AuthorizationSuccessfull
-                Logger.WriteLine(LogState.Info, "Account Verification for, " + Account.Username + " Ok!");
-                DbQuerys.SetLastOnlineUtc(Account.Username);
+                Logger.WriteLine(LogState.Info, "Account Verification for, " + loginAccount.Username + " Ok!");
+                DbQuerys.SetLastOnlineUtc(loginAccount.Username);
                 return OpCode.LoginPacket_Auth_OK.GetHashCode().ToString();
             }
         }

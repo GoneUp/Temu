@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Data.Structures.SkillEngine;
-using Data.Structures.World;
+using Tera.Data.Structures.SkillEngine;
+using Tera.Data.Structures.World;
 
-namespace Data.Structures.Player
+namespace Tera.Data.Structures.Player
 {
     public class UseSkillArgs
     {

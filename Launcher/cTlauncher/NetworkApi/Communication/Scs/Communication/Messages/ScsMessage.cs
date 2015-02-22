@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Hik.Communication.Scs.Communication.Messages
+namespace Tera.NetworkApi.Communication.Scs.Communication.Messages
 {
     /// <summary>
     /// Represents a message that is sent and received by server and client.

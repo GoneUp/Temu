@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
+using Tera.Data.Structures.Creature;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpNpcMove : ASendPacket //len 44
     {
@@ -23,15 +23,15 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Creature);
-            WriteF(writer, Creature.Position.X);
-            WriteF(writer, Creature.Position.Y);
-            WriteF(writer, Creature.Position.Z);
-            WriteH(writer, Creature.Position.Heading);
-            WriteH(writer, Speed);
-            WriteF(writer, X2);
-            WriteF(writer, Y2);
-            WriteF(writer, Z2);
-            WriteD(writer, 0);
+            WriteSingle(writer, Creature.Position.X);
+            WriteSingle(writer, Creature.Position.Y);
+            WriteSingle(writer, Creature.Position.Z);
+            WriteWord(writer, Creature.Position.Heading);
+            WriteWord(writer, Speed);
+            WriteSingle(writer, X2);
+            WriteSingle(writer, Y2);
+            WriteSingle(writer, Z2);
+            WriteDword(writer, 0);
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using Data.Structures.Quest.Tasks;
+﻿using Tera.Data.Structures.Quest.Tasks;
 
-namespace Data.Interfaces
+namespace Tera.Data.Interfaces
 {
     [ProtoBuf.ProtoContract]
     [ProtoBuf.ProtoInclude(1, typeof(QTaskVisit))]

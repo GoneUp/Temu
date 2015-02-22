@@ -1,15 +1,15 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using Data.Enums.Gather;
-using Data.Interfaces;
-using Data.Structures;
-using Data.Structures.Creature;
-using Data.Structures.Player;
+using Tera.Data.Enums.Gather;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Player;
 using Utils;
 using Utils.Logger;
 
-namespace Network
+namespace Tera.Network
 {
     public abstract class ASendPacket : ISendPacket
     {
@@ -55,8 +55,8 @@ namespace Network
                         {
                             using (BinaryWriter writer = new BinaryWriter(stream, new UTF8Encoding()))
                             {
-                                WriteH(writer, 0); //Reserved for length
-                                WriteH(writer, OpCodes.Send[GetType()]);
+                                WriteWord(writer, 0); //Reserved for length
+                                WriteWord(writer, OpCodes.Send[GetType()]);
                                 Write(writer);
                             }
 
@@ -78,37 +78,37 @@ namespace Network
 
         public abstract void Write(BinaryWriter writer);
 
-        protected void WriteD(BinaryWriter writer, int val)
+        protected void WriteDword(BinaryWriter writer, int val)
         {
             writer.Write(val);
         }
 
-        protected void WriteH(BinaryWriter writer, short val)
+        protected void WriteWord(BinaryWriter writer, short val)
         {
             writer.Write(val);
         }
 
-        protected void WriteC(BinaryWriter writer, byte val)
+        protected void WriteByte(BinaryWriter writer, byte val)
         {
             writer.Write(val);
         }
 
-        protected void WriteDf(BinaryWriter writer, double val)
+        protected void WriteDouble(BinaryWriter writer, double val)
         {
             writer.Write(val);
         }
 
-        protected void WriteF(BinaryWriter writer, float val)
+        protected void WriteSingle(BinaryWriter writer, float val)
         {
             writer.Write(val);
         }
 
-        protected void WriteQ(BinaryWriter writer, long val)
+        protected void WriteLong(BinaryWriter writer, long val)
         {
             writer.Write(val);
         }
 
-        protected void WriteS(BinaryWriter writer, String text)
+        protected void WriteString(BinaryWriter writer, String text)
         {
             if (text == null)
             {
@@ -122,12 +122,12 @@ namespace Network
             }
         }
 
-        protected void WriteB(BinaryWriter writer, string hex)
+        protected void WriteByte(BinaryWriter writer, string hex)
         {
             writer.Write(hex.HexSringToBytes());
         }
 
-        protected void WriteB(BinaryWriter writer, byte[] data)
+        protected void WriteByte(BinaryWriter writer, byte[] data)
         {
             writer.Write(data);
         }
@@ -149,63 +149,63 @@ namespace Network
             CreatureBaseStats baseStats = player.GameStats; // Communication.Global.StatsService.InitStats(Player)
 
             #region Base stats
-            WriteD(writer, baseStats.Power - player.EffectsImpact.ChangeOfPower);
-            WriteD(writer, baseStats.Endurance - player.EffectsImpact.ChangeOfEndurance);
-            WriteH(writer, (short) (baseStats.ImpactFactor - player.EffectsImpact.ChangeOfImpactFactor));
-            WriteH(writer, (short) (baseStats.BalanceFactor - player.EffectsImpact.ChangeOfBalanceFactor));
-            WriteH(writer, (short) (baseStats.Movement - player.EffectsImpact.ChangeOfMovement));
-            WriteH(writer, (short) (baseStats.AttackSpeed - player.EffectsImpact.ChangeOfAttackSpeed));
+            WriteDword(writer, baseStats.Power - player.EffectsImpact.ChangeOfPower);
+            WriteDword(writer, baseStats.Endurance - player.EffectsImpact.ChangeOfEndurance);
+            WriteWord(writer, (short) (baseStats.ImpactFactor - player.EffectsImpact.ChangeOfImpactFactor));
+            WriteWord(writer, (short) (baseStats.BalanceFactor - player.EffectsImpact.ChangeOfBalanceFactor));
+            WriteWord(writer, (short) (baseStats.Movement - player.EffectsImpact.ChangeOfMovement));
+            WriteWord(writer, (short) (baseStats.AttackSpeed - player.EffectsImpact.ChangeOfAttackSpeed));
 
             // Crit. stats
-            WriteF(writer, baseStats.CritChanse);
-            WriteF(writer, baseStats.CritResist);
-            WriteH(writer, 0);
-            WriteC(writer, 0);
-            WriteC(writer, 0x40); // Crit how much times?
+            WriteSingle(writer, baseStats.CritChanse);
+            WriteSingle(writer, baseStats.CritResist);
+            WriteWord(writer, 0);
+            WriteByte(writer, 0);
+            WriteByte(writer, 0x40); // Crit how much times?
 
-            WriteD(writer, baseStats.Attack); //min attack
-            WriteD(writer, baseStats.Attack); //max attack
-            WriteD(writer, baseStats.Defense);
-            WriteH(writer, (short)baseStats.Impact);
-            WriteH(writer, (short)baseStats.Balance);
+            WriteDword(writer, baseStats.Attack); //min attack
+            WriteDword(writer, baseStats.Attack); //max attack
+            WriteDword(writer, baseStats.Defense);
+            WriteWord(writer, (short)baseStats.Impact);
+            WriteWord(writer, (short)baseStats.Balance);
 
-            WriteF(writer, baseStats.WeakeningResist); // Weakening
-            WriteF(writer, baseStats.PeriodicResist); // Periodic
-            WriteF(writer, baseStats.StunResist); // Stun
+            WriteSingle(writer, baseStats.WeakeningResist); // Weakening
+            WriteSingle(writer, baseStats.PeriodicResist); // Periodic
+            WriteSingle(writer, baseStats.StunResist); // Stun
             #endregion
 
             #region Additional stats
-            WriteD(writer, player.EffectsImpact.ChangeOfPower);
-            WriteD(writer, player.EffectsImpact.ChangeOfEndurance);
-            WriteH(writer, player.EffectsImpact.ChangeOfImpactFactor);
-            WriteH(writer, player.EffectsImpact.ChangeOfBalanceFactor);
+            WriteDword(writer, player.EffectsImpact.ChangeOfPower);
+            WriteDword(writer, player.EffectsImpact.ChangeOfEndurance);
+            WriteWord(writer, player.EffectsImpact.ChangeOfImpactFactor);
+            WriteWord(writer, player.EffectsImpact.ChangeOfBalanceFactor);
 
-            WriteH(writer, player.EffectsImpact.ChangeOfMovement);
-            WriteH(writer, player.EffectsImpact.ChangeOfAttackSpeed);
+            WriteWord(writer, player.EffectsImpact.ChangeOfMovement);
+            WriteWord(writer, player.EffectsImpact.ChangeOfAttackSpeed);
 
-            WriteF(writer, player.GameStats.CritChanse - baseStats.CritChanse);
-            WriteF(writer, player.GameStats.CritResist - baseStats.CritResist);
-            WriteD(writer, 0);
+            WriteSingle(writer, player.GameStats.CritChanse - baseStats.CritChanse);
+            WriteSingle(writer, player.GameStats.CritResist - baseStats.CritResist);
+            WriteDword(writer, 0);
 
-            WriteD(writer, player.GameStats.Attack - baseStats.Attack); //min attack
-            WriteD(writer, player.GameStats.Attack - baseStats.Attack); //max attack
-            WriteD(writer, player.GameStats.Defense - baseStats.Defense);
+            WriteDword(writer, player.GameStats.Attack - baseStats.Attack); //min attack
+            WriteDword(writer, player.GameStats.Attack - baseStats.Attack); //max attack
+            WriteDword(writer, player.GameStats.Defense - baseStats.Defense);
 
-            WriteH(writer, (short)(player.GameStats.Impact - baseStats.Impact));
-            WriteH(writer, (short)(player.GameStats.Balance - baseStats.Balance));
+            WriteWord(writer, (short)(player.GameStats.Impact - baseStats.Impact));
+            WriteWord(writer, (short)(player.GameStats.Balance - baseStats.Balance));
 
-            WriteF(writer, player.GameStats.WeakeningResist - baseStats.WeakeningResist); // Weakening
-            WriteF(writer, player.GameStats.PeriodicResist - baseStats.PeriodicResist); // Periodic
-            WriteF(writer, player.GameStats.StunResist - baseStats.StunResist); // Stun
+            WriteSingle(writer, player.GameStats.WeakeningResist - baseStats.WeakeningResist); // Weakening
+            WriteSingle(writer, player.GameStats.PeriodicResist - baseStats.PeriodicResist); // Periodic
+            WriteSingle(writer, player.GameStats.StunResist - baseStats.StunResist); // Stun
             #endregion
         }
 
         protected void WriteGatherStats(BinaryWriter writer, Player player)
         {
-            WriteH(writer, player.PlayerCraftStats.GetGatherStat(TypeName.Energy));
-            WriteH(writer, player.PlayerCraftStats.GetGatherStat(TypeName.Herb));
-            WriteH(writer, 0); //unk, mb bughunting
-            WriteH(writer, player.PlayerCraftStats.GetGatherStat(TypeName.Mine));
+            WriteWord(writer, player.PlayerCraftStats.GetGatherStat(TypeName.Energy));
+            WriteWord(writer, player.PlayerCraftStats.GetGatherStat(TypeName.Herb));
+            WriteWord(writer, 0); //unk, mb bughunting
+            WriteWord(writer, player.PlayerCraftStats.GetGatherStat(TypeName.Mine));
         }
     }
 }

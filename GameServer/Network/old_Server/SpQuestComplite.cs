@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpQuestComplite : ASendPacket
     {
@@ -13,9 +13,9 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, QuestId);
-            WriteD(writer, QuestId); //QuestUId???
-            WriteH(writer, 0);
+            WriteDword(writer, QuestId);
+            WriteDword(writer, QuestId); //QuestUId???
+            WriteWord(writer, 0);
         }
     }
 }

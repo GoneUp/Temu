@@ -1,13 +1,13 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpInspectUnk : ASendPacket
     {
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, 0x0e);
-            WriteD(writer, 0x0e);
+            WriteDword(writer, 0x0e);
+            WriteDword(writer, 0x0e);
         }
     }
 }

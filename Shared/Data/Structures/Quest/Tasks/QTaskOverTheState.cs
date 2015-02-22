@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Data.Interfaces;
+using Tera.Data.Interfaces;
 
-namespace Data.Structures.Quest.Tasks
+namespace Tera.Data.Structures.Quest.Tasks
 {
     [ProtoBuf.ProtoContract]
     public class QTaskOverTheState : IQuestStep

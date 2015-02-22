@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Data.Enums
+﻿namespace Tera.Data.Enums
 {
     public enum NpcTitle
     {

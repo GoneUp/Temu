@@ -1,6 +1,6 @@
-﻿using Data.Structures.World;
+﻿using Tera.Data.Structures.World;
 
-namespace Data.Structures.Template.Gather
+namespace Tera.Data.Structures.Template.Gather
 {
     [ProtoBuf.ProtoContract]
     public class GSpawnTemplate

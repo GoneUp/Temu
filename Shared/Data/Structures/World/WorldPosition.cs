@@ -1,7 +1,7 @@
 ﻿using System;
-using Data.Structures.Geometry;
+using Tera.Data.Structures.Geometry;
 
-namespace Data.Structures.World
+namespace Tera.Data.Structures.World
 {
     [ProtoBuf.ProtoContract]
     public class WorldPosition

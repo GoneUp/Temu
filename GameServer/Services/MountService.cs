@@ -1,7 +1,7 @@
-﻿using Communication.Interfaces;
-using Data.DAO;
-using Data.Structures.Player;
-using Network.Server;
+﻿using Tera.Communication.Interfaces;
+using Tera.Data.DAO;
+using Tera.Data.Structures.Player;
+using Tera.Network.old_Server;
 
 namespace Tera.Services
 {

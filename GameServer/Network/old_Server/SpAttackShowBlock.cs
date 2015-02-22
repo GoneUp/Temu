@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
+using Tera.Data.Structures.Creature;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpAttackShowBlock : ASendPacket
     {
@@ -17,8 +17,8 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Creature);
-            WriteD(writer, SKillId);
-            WriteD(writer, 0);
+            WriteDword(writer, SKillId);
+            WriteDword(writer, 0);
         }
     }
 }

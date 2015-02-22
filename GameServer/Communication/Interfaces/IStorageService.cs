@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Data.Enums.Item;
-using Data.Structures.Player;
+using Tera.Data.Enums.Item;
+using Tera.Data.Structures.Player;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IStorageService : IComponent
     {

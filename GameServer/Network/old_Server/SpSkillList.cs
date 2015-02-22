@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpSkillList : ASendPacket
     {
@@ -14,22 +14,24 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, (short) Player.Skills.Count);
-            WriteH(writer, 8);
+            WriteWord(writer, (short) Player.Skills.Count);
+            WriteWord(writer, 8);
 
             short shift = 8;
             int counter = 1;
             foreach (var skill in Player.Skills)
             {
-                WriteH(writer, shift);
+                WriteWord(writer, shift);
                 shift += 9;
-                WriteH(writer, (short) (counter++ != Player.Skills.Count ? shift : 0));
-                WriteD(writer, skill);
+                WriteWord(writer, (short) (counter++ != Player.Skills.Count ? shift : 0));
+                WriteDword(writer, skill);
 
-                WriteC(writer,
+         
+
+                WriteByte(writer,
                        (byte)
-                       (!global::Data.Data.UserSkills[Player.TemplateId].ContainsKey(skill) ||
-                        global::Data.Data.UserSkills[Player.TemplateId][skill].IsActive
+                       (!Data.Data.UserSkills[Player.TemplateId].ContainsKey(skill) ||
+                        Data.Data.UserSkills[Player.TemplateId][skill].IsActive
                             ? 1
                             : 0));
             }

@@ -1,4 +1,4 @@
-﻿namespace Communication.Interfaces
+﻿namespace Tera.Communication.Interfaces
 {
     public interface IComponent
     {

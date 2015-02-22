@@ -1,4 +1,4 @@
-﻿namespace Data.Structures.World.Pegasus
+﻿namespace Tera.Data.Structures.World.Pegasus
 {
     [ProtoBuf.ProtoContract]
     public class PegasusPath

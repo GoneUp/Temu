@@ -1,4 +1,6 @@
-﻿namespace Network.Client
+﻿using Utils;
+
+namespace Tera.Network.old_Client
 {
     public class RpCharacterSettings1 : ARecvPacket
     {
@@ -11,7 +13,7 @@
 
         public override void Process()
         {
-            Connection.Account.UiSettings = Settings;
+            Connection.GameAccount.UiSettings = ByteUtilities.ByteArrayToString(Settings);
         }
     }
 }

@@ -1,8 +1,7 @@
 ﻿using System.IO;
-using Data.Enums;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCharacterInit : ASendPacket // Only for owner!!!
     {
@@ -15,57 +14,57 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, 0); //Name shift
-            WriteH(writer, 0); //Details shift
-            WriteH(writer, (short) Player.PlayerData.Details.Length); //Details length
+            WriteWord(writer, 0); //Name shift
+            WriteWord(writer, 0); //Details shift
+            WriteWord(writer, (short) Player.PlayerData.Details.Length); //Details length
 
-            WriteD(writer, Player.PlayerData.SexRaceClass);
+            WriteDword(writer, Player.PlayerData.SexRaceClass);
             WriteUid(writer, Player);
 
-            WriteD(writer, 11); //???
+            WriteDword(writer, 11); //???
 
-            WriteD(writer, Player.PlayerId);
-            WriteB(writer, "000000000100000000460000006E000000");
-            WriteB(writer, Player.PlayerData.Data); //PlayerData
-            WriteC(writer, 1); //Online?
-            WriteC(writer, 0); //??
-            WriteD(writer, Player.GetLevel()); //Level
+            WriteDword(writer, Player.PlayerId);
+            WriteByte(writer, "000000000100000000460000006E000000");
+            WriteByte(writer, Player.PlayerData.Data); //PlayerData
+            WriteByte(writer, 1); //Online?
+            WriteByte(writer, 0); //??
+            WriteDword(writer, Player.GetLevel()); //Level
 
-            WriteB(writer, "00000000000001000000000000000000");
-            WriteQ(writer, Player.PlayerExp);
-            WriteQ(writer, Player.GetExpShown());
-            WriteQ(writer, Player.GetExpNeed());
-            WriteB(writer, "0000000000000000461600000000000000000000");
+            WriteByte(writer, "00000000000001000000000000000000");
+            WriteLong(writer, Player.PlayerExp);
+            WriteLong(writer, Player.GetExpShown());
+            WriteLong(writer, Player.GetExpNeed());
+            WriteByte(writer, "0000000000000000461600000000000000000000");
 
-            WriteD(writer, Player.Inventory.GetItemId(1) ?? 0); //Item (hands)
-            WriteD(writer, Player.Inventory.GetItemId(3) ?? 0); //Item (body)
-            WriteD(writer, Player.Inventory.GetItemId(4) ?? 0); //Item (gloves)
-            WriteD(writer, Player.Inventory.GetItemId(5) ?? 0); //Item (shoes)
-            WriteD(writer, 0); //Item (???)
-            WriteD(writer, 0); //Item (???)
+            WriteDword(writer, Player.Inventory.GetItemId(1) ?? 0); //Item (hands)
+            WriteDword(writer, Player.Inventory.GetItemId(3) ?? 0); //Item (body)
+            WriteDword(writer, Player.Inventory.GetItemId(4) ?? 0); //Item (gloves)
+            WriteDword(writer, Player.Inventory.GetItemId(5) ?? 0); //Item (shoes)
+            WriteDword(writer, 0); //Item (???)
+            WriteDword(writer, 0); //Item (???)
 
-            WriteB(writer, "5E10C101000000000100000000000000000000000000000000000000000000000000000000");
+            WriteByte(writer, "5E10C101000000000100000000000000000000000000000000000000000000000000000000");
 
-            WriteD(writer, Player.Inventory.GetItem(1) != null ? Player.Inventory.GetItem(1).Color : 0);
-            WriteD(writer, Player.Inventory.GetItem(3) != null ? Player.Inventory.GetItem(3).Color : 0);
-            WriteD(writer, Player.Inventory.GetItem(4) != null ? Player.Inventory.GetItem(4).Color : 0);
-            WriteD(writer, Player.Inventory.GetItem(5) != null ? Player.Inventory.GetItem(5).Color : 0);
-            WriteD(writer, 0); //Item ???
-            WriteD(writer, 0); //Item ???
+            WriteDword(writer, Player.Inventory.GetItem(1) != null ? Player.Inventory.GetItem(1).Color : 0);
+            WriteDword(writer, Player.Inventory.GetItem(3) != null ? Player.Inventory.GetItem(3).Color : 0);
+            WriteDword(writer, Player.Inventory.GetItem(4) != null ? Player.Inventory.GetItem(4).Color : 0);
+            WriteDword(writer, Player.Inventory.GetItem(5) != null ? Player.Inventory.GetItem(5).Color : 0);
+            WriteDword(writer, 0); //Item ???
+            WriteDword(writer, 0); //Item ???
 
-            WriteB(writer, "0001000000000000000000000000");
+            WriteByte(writer, "0001000000000000000000000000");
 
             writer.Seek(4, SeekOrigin.Begin);
-            WriteH(writer, (short) (writer.BaseStream.Length)); //Name shift
+            WriteWord(writer, (short) (writer.BaseStream.Length)); //Name shift
             writer.Seek(0, SeekOrigin.End);
 
-            WriteS(writer, Player.PlayerData.Name);
+            WriteString(writer, Player.PlayerData.Name);
 
             writer.Seek(6, SeekOrigin.Begin);
-            WriteH(writer, (short) (writer.BaseStream.Length)); //Details shift
+            WriteWord(writer, (short) (writer.BaseStream.Length)); //Details shift
             writer.Seek(0, SeekOrigin.End);
 
-            WriteB(writer, Player.PlayerData.Details);
+            WriteByte(writer, Player.PlayerData.Details);
 
             //1603
             //C300D5002000 7A270000 87170B0000800002          7D900000000000000100000000460000006E000000650C00070D0F0400010001000000000000000000010000000000000000000100000000000000010000000000000048030000000000000000000000000000461600000000000000000000162700009C3A00009D3A00009E3A0000                  AD3F1C0F00000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000                            41006C006500680061006E006400720000000C0B10021710090A151910001006100008100C0C10150C101010160C0E100F15

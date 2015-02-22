@@ -1,8 +1,8 @@
-﻿using Data.Enums;
-using System;
+﻿using System;
+using Tera.Data.Enums;
 using Utils;
 
-namespace Data.Structures.World.Requests
+namespace Tera.Data.Structures.World.Requests
 {
     /// <summary>
     /// Represents a request made by a player.

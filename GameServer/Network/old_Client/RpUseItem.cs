@@ -1,7 +1,7 @@
-﻿using Communication;
-using Data.Structures.World;
+﻿using Tera.Communication;
+using Tera.Data.Structures.World;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpUseItem : ARecvPacket
     {

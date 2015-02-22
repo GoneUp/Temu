@@ -1,6 +1,4 @@
-﻿using Network.Server;
-
-namespace Network.Client
+﻿namespace Tera.Network.Packets.ClientPackets
 {
     public class CpDeleteCharacter : ARecvPacket
     {

@@ -3,12 +3,12 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Communication.Messages;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using Tera.NetworkApi.Communication.Scs.Communication.Messages;
 
-namespace Hik.Communication.Scs.Communication.Messengers
+namespace Tera.NetworkApi.Communication.Scs.Communication.Messengers
 {
     /// <summary>
     /// This class is a wrapper for IMessenger and is used

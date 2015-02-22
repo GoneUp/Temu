@@ -1,8 +1,8 @@
-﻿using Data.Enums.Craft;
-using Data.Enums.Gather;
-using Data.Structures.Player;
+﻿using Tera.Data.Enums.Craft;
+using Tera.Data.Enums.Gather;
+using Tera.Data.Structures.Player;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface ICraftLearnService
     {

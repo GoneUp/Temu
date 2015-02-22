@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Communication.Logic;
-using Data.Structures;
-using Data.Structures.Creature;
-using Data.Structures.Player;
-using Data.Structures.World;
-using Utils;
+using Tera.Communication.Logic;
+using Tera.Data.Structures;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
 using Utils.Logger;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     class RpUseCrosstargetSkill : ARecvPacket
     {

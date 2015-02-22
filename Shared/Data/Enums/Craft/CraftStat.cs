@@ -1,4 +1,4 @@
-namespace Data.Enums.Craft
+namespace Tera.Data.Enums.Craft
 {
     public enum CraftStat
     {

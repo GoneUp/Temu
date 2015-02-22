@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Hik.Communication.ScsServices.Service
+namespace Tera.NetworkApi.Communication.ScsServices.Service
 {
     /// <summary>
     /// Any SCS Service interface class must has this attribute.

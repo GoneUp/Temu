@@ -1,7 +1,7 @@
-﻿using Data.Structures.Player;
-using Network.Server;
+﻿using Tera.Data.Structures.Player;
+using Tera.Network.old_Server;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpGetInspectUid : ARecvPacket
     {

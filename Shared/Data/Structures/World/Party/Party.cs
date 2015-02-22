@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Data.Structures.World.Party
+namespace Tera.Data.Structures.World.Party
 {
     public class Party
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Data.Structures.Guild;
-using Data.Structures.Player;
+using Tera.Data.Structures.Guild;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpServerGuilds : ASendPacket
     {
@@ -21,15 +21,15 @@ namespace Network.Server
         }
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, 0x11);
-            WriteH(writer, 0); //First shift
-            WriteD(writer, TabId);
-            WriteD(writer, TabsCounter);
-            WriteD(writer, TotalGuilds);
-            WriteD(writer, 1);
+            WriteWord(writer, 0x11);
+            WriteWord(writer, 0); //First shift
+            WriteDword(writer, TabId);
+            WriteDword(writer, TabsCounter);
+            WriteDword(writer, TotalGuilds);
+            WriteDword(writer, 1);
 
             writer.Seek(6, SeekOrigin.Begin);
-            WriteH(writer, (short)writer.BaseStream.Length);
+            WriteWord(writer, (short)writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
             for (int i = 0; i < Guilds.Count; i++)
@@ -38,60 +38,60 @@ namespace Network.Server
 
                 short shift = (short) writer.BaseStream.Length;
 
-                WriteH(writer, shift); //Now shift
-                WriteH(writer, 0); //Next shift
+                WriteWord(writer, shift); //Now shift
+                WriteWord(writer, 0); //Next shift
 
                 int namesShift = (int) writer.BaseStream.Position;
-                WriteH(writer, 0); //Fuild Name shift
-                WriteH(writer, 0); //Guildmaster name shift
-                WriteH(writer, 0); //??? shift
-                WriteH(writer, 0); //Guild ad shift
-                WriteH(writer, 0); //Logo shift
+                WriteWord(writer, 0); //Fuild Name shift
+                WriteWord(writer, 0); //Guildmaster name shift
+                WriteWord(writer, 0); //??? shift
+                WriteWord(writer, 0); //Guild ad shift
+                WriteWord(writer, 0); //Logo shift
 
-                WriteD(writer, g.Level); //Guild Level
-                WriteD(writer, g.CreationDate); //A913E4F //Founded time
-                WriteD(writer, 0); //???
-                WriteD(writer, g.GuildMembers.Count); //Members
-                WriteD(writer, 0); //Connect rate
-                WriteD(writer, g.Praises); //Total prise
-                WriteC(writer, 0); //Can apply to guild
+                WriteDword(writer, g.Level); //Guild Level
+                WriteDword(writer, g.CreationDate); //A913E4F //Founded time
+                WriteDword(writer, 0); //???
+                WriteDword(writer, g.GuildMembers.Count); //Members
+                WriteDword(writer, 0); //Connect rate
+                WriteDword(writer, g.Praises); //Total prise
+                WriteByte(writer, 0); //Can apply to guild
 
                 writer.Seek(namesShift, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteS(writer, g.GuildName); //Name
+                WriteString(writer, g.GuildName); //Name
 
                 writer.Seek(namesShift + 2, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
                 Player leader = Communication.Global.GuildService.GetLeader(g);
-                WriteS(writer, leader != null ? leader.PlayerData.Name : "No leader"); //Owner
+                WriteString(writer, leader != null ? leader.PlayerData.Name : "No leader"); //Owner
 
                 writer.Seek(namesShift + 4, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteS(writer, "Owners"); //???
+                WriteString(writer, "Owners"); //???
 
                 writer.Seek(namesShift + 6, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteS(writer, g.GuildAd);
+                WriteString(writer, g.GuildAd);
 
                 writer.Seek(namesShift + 8, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteS(writer, "");
-                //WriteS(writer, "guildlogo_11_45_1"); //Logo
+                WriteString(writer, "");
+                //WriteString(writer, "guildlogo_11_45_1"); //Logo
 
                 if (Guilds.Count > i + 1)
                 {
                     writer.Seek(shift + 2, SeekOrigin.Begin);
-                    WriteH(writer, (short) writer.BaseStream.Length);
+                    WriteWord(writer, (short) writer.BaseStream.Length);
                     writer.Seek(0, SeekOrigin.End);
                 }
             }

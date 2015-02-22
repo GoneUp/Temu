@@ -1,11 +1,11 @@
-﻿using Data.Structures.Account;
-using Data.Structures.Player;
+﻿using Tera.Data.Structures.Account;
+using Tera.Data.Structures.Player;
 
-namespace Data.Interfaces
+namespace Tera.Data.Interfaces
 {
     public interface IConnection
     {
-        Account Account { get; set; }
+        GameAccount GameAccount { get; set; }
         Player Player { get; set; }
         bool IsValid { get; }
 

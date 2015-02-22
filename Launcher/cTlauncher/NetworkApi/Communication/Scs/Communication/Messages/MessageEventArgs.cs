@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Hik.Communication.Scs.Communication.Messages
+namespace Tera.NetworkApi.Communication.Scs.Communication.Messages
 {
     /// <summary>
     /// Stores message to be used by an event.

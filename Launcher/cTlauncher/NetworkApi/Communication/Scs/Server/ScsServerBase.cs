@@ -3,12 +3,12 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Collections;
-using Hik.Communication.Scs.Communication.Channels;
-using Hik.Communication.Scs.Communication.Protocols;
 using System;
+using Tera.NetworkApi.Collections;
+using Tera.NetworkApi.Communication.Scs.Communication.Channels;
+using Tera.NetworkApi.Communication.Scs.Communication.Protocols;
 
-namespace Hik.Communication.Scs.Server
+namespace Tera.NetworkApi.Communication.Scs.Server
 {
     /// <summary>
     /// This class provides base functionality for server classes.

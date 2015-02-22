@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCharacterState : ASendPacket //len 17
     {
@@ -15,8 +15,8 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Player);
-            WriteD(writer, Player.PlayerMode.GetHashCode());
-            WriteC(writer, 0);
+            WriteDword(writer, Player.PlayerMode.GetHashCode());
+            WriteByte(writer, 0);
         }
     }
 }

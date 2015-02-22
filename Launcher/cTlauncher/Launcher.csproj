@@ -7,7 +7,7 @@
     <ProjectGuid>{7DA2404F-381F-4005-8FA0-50148BC88CAF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cTlauncher</RootNamespace>
+    <RootNamespace>Tera</RootNamespace>
     <AssemblyName>cTlauncher</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -148,8 +148,6 @@
     <Compile Include="NetworkApi\Threading\SequentialItemProcessor.cs" />
     <Compile Include="NetworkApi\Threading\Timer.cs" />
     <Compile Include="Network\ClientConnection.cs" />
-    <Compile Include="Network\Protocol\KeyProtocol.cs" />
-    <Compile Include="Network\Protocol\KeyProtocolFactory.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

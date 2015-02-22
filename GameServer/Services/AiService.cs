@@ -1,11 +1,11 @@
-﻿using Communication.Interfaces;
-using Data.Interfaces;
-using Data.Structures.Creature;
-using Data.Structures.Gather;
-using Data.Structures.Npc;
-using Data.Structures.Objects;
-using Data.Structures.Player;
-using Tera.AiEngine;
+﻿using Tera.AiEngine;
+using Tera.Communication.Interfaces;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Gather;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Objects;
+using Tera.Data.Structures.Player;
 
 namespace Tera.Services
 {

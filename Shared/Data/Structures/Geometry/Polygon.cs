@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Data.Structures.Geometry
+namespace Tera.Data.Structures.Geometry
 {
     [ProtoBuf.ProtoContract]
     public class Polygon

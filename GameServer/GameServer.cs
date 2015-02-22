@@ -1,24 +1,19 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
-using Communication;
-using Communication.Interfaces;
-using Communication.Logic;
 using Hik.Communication.Scs.Communication.EndPoints.Tcp;
 using Hik.Communication.ScsServices.Service;
-using Network;
+using Tera.Communication;
+using Tera.Communication.Logic;
+using Tera.Configuration.Configs;
+using Tera.Configuration.Systems;
+using Tera.Data.Enums;
+using Tera.Network;
 using Tera.Services;
-using Configuration;
-
 using Utils;
 using Utils.Logger;
-
-using Data.DAO;
-using Data.Enums;
-
 using Database_Manager;
 using Database_Manager.Database;
-
 
 
 namespace Tera
@@ -84,7 +79,7 @@ namespace Tera
             #region global_components
             //Services
             FeedbackService = new FeedbackService();
-            AccountService = new AccountService();
+            AccountService = new Tera.Services.AccountService();
             PlayerService = new PlayerService();
             MapService = new MapService();
             ChatService = new ChatService();

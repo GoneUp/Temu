@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.Packets.ServerPackets
 {
     public class SpCharacterCheckNameResult : ASendPacket
     {
@@ -18,10 +18,10 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             //010008000800000016000200 0000 00000000 4E006500770074006500720061000000
-            WriteB(writer, "01000800080000001600");
-            WriteD(writer, Type);
-            WriteD(writer, Result);
-            WriteS(writer, Name);
+            WriteByte(writer, "01000800080000001600");
+            WriteDword(writer, Type);
+            WriteDword(writer, Result);
+            WriteString(writer, Name);
         }
     }
 }

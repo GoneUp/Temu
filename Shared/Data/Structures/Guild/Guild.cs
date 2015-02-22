@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Data.Enums.Item;
-using Data.Structures.Player;
+using Tera.Data.Enums.Item;
+using Tera.Data.Structures.Player;
 
-namespace Data.Structures.Guild
+namespace Tera.Data.Structures.Guild
 {
     [ProtoBuf.ProtoContract]
     public class Guild

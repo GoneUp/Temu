@@ -1,14 +1,9 @@
-﻿using Data.DAO;
-using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Utils;
+using MySql.Data.MySqlClient;
 using Utils.Logger;
 
-namespace Data.DAO
+namespace Tera.Data.DAO
 {
     public abstract class DAOManager
     {

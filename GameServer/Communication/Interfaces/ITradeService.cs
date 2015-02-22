@@ -1,6 +1,6 @@
-﻿using Data.Structures.Player;
+﻿using Tera.Data.Structures.Player;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface ITradeService : IComponent
     {

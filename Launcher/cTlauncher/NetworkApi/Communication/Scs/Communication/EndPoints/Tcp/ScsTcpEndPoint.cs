@@ -3,14 +3,13 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Client;
-using Hik.Communication.Scs.Client.Tcp;
-using Hik.Communication.Scs.Communication.EndPoints;
-using Hik.Communication.Scs.Server;
-using Hik.Communication.Scs.Server.Tcp;
 using System;
+using Tera.NetworkApi.Communication.Scs.Client;
+using Tera.NetworkApi.Communication.Scs.Client.Tcp;
+using Tera.NetworkApi.Communication.Scs.Server;
+using Tera.NetworkApi.Communication.Scs.Server.Tcp;
 
-namespace Hik.Communication.Scs.Communication.EndPoints.Tcp
+namespace Tera.NetworkApi.Communication.Scs.Communication.EndPoints.Tcp
 {
     /// <summary>
     /// Represens a TCP end point in SCS.

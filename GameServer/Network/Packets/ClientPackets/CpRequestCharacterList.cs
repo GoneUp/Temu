@@ -1,6 +1,6 @@
-﻿using Communication.Logic;
+﻿using Tera.Communication.Logic;
 
-namespace Network.Client
+namespace Tera.Network.Packets.ClientPackets
 {
     public class CpRequestCharacterList : ARecvPacket
     {

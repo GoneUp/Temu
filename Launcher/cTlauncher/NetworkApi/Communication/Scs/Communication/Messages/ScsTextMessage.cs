@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Hik.Communication.Scs.Communication.Messages
+namespace Tera.NetworkApi.Communication.Scs.Communication.Messages
 {
     /// <summary>
     /// This message is used to send/receive a text as message data.

@@ -1,7 +1,7 @@
-﻿using Communication;
-using Data.Enums;
-using Data.Interfaces;
-using Network.Server;
+﻿using Tera.Communication;
+using Tera.Data.Enums;
+using Tera.Data.Interfaces;
+using Tera.Network.old_Server;
 
 namespace Tera.AdminEngine.AdminCommands
 {

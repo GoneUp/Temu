@@ -1,9 +1,9 @@
-﻿using Communication.Interfaces;
-using Data.Interfaces;
-using Data.Structures;
-using Data.Structures.Npc;
-using Data.Structures.Player;
+﻿using Tera.Communication.Interfaces;
 using Tera.Controllers;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
 
 namespace Tera.Services
 {

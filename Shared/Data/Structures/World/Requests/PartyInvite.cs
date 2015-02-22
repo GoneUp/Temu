@@ -1,6 +1,6 @@
-﻿using Data.Enums;
+﻿using Tera.Data.Enums;
 
-namespace Data.Structures.World.Requests
+namespace Tera.Data.Structures.World.Requests
 {
     /// <summary>
     /// This request is made when player asks someone to join a party.

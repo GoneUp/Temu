@@ -1,6 +1,6 @@
-﻿using Data.Structures.Player;
+﻿using Tera.Data.Structures.Player;
 
-namespace Data.Structures.SkillEngine
+namespace Tera.Data.Structures.SkillEngine
 {
     [ProtoBuf.ProtoContract]
     public class UserSkill

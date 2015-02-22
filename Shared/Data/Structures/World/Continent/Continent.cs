@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Data.Structures.World.Continent
+namespace Tera.Data.Structures.World.Continent
 {
     [ProtoBuf.ProtoContract]
     public class Continent

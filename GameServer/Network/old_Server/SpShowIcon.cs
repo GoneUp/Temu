@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
+using Tera.Data.Structures.Creature;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpShowIcon : ASendPacket
     {
@@ -17,7 +17,7 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Creature);
-            WriteD(writer, Icon);
+            WriteDword(writer, Icon);
         }
     }
 }

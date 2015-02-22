@@ -1,15 +1,8 @@
-﻿using Database_Manager.Database;
-using Tera;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using Data.Enums;
+using Tera.Data.Enums;
 
-namespace Configuration
+namespace Tera.Configuration.Configs
 {
     /// <summary>
     /// This Configuration class is basically just a set of 

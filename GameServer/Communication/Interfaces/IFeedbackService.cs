@@ -1,11 +1,11 @@
-﻿using Data.Enums;
-using Data.Enums.Player;
-using Data.Interfaces;
-using Data.Structures.Creature;
-using Data.Structures.Player;
-using Data.Structures.SkillEngine;
+﻿using Tera.Data.Enums;
+using Tera.Data.Enums.Player;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.SkillEngine;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IFeedbackService : IComponent
     {

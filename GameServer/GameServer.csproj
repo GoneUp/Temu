@@ -7,7 +7,7 @@
     <ProjectGuid>{5002AD9F-0FE1-45B6-B580-C48EC9A02843}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Temu</RootNamespace>
+    <RootNamespace>Tera</RootNamespace>
     <AssemblyName>GameServer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -276,7 +276,6 @@
     <Compile Include="Network\Messages\KeyMessage.cs" />
     <Compile Include="Network\OpCodes.cs" />
     <Compile Include="Network\Protocol\GameProtocol.cs" />
-    <Compile Include="Network\Protocol\KeyProtocol.cs" />
     <Compile Include="Network\old_Server\SpAbnormal.cs" />
     <Compile Include="Network\old_Server\SpAttack.cs" />
     <Compile Include="Network\old_Server\SpAttackDestination.cs" />

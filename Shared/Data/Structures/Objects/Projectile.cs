@@ -1,9 +1,9 @@
 ﻿using System;
-using Data.Structures.Creature;
-using Data.Structures.SkillEngine;
-using Data.Structures.World;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.SkillEngine;
+using Tera.Data.Structures.World;
 
-namespace Data.Structures.Objects
+namespace Tera.Data.Structures.Objects
 {
     public class Projectile : Creature.Creature
     {

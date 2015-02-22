@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Enums.Player;
-using Data.Structures.Player;
+using Tera.Data.Enums.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCharacterMove : ASendPacket
     {
@@ -44,20 +44,20 @@ namespace Network.Server
         {
             WriteUid(writer, Player);
 
-            WriteF(writer, X1);
-            WriteF(writer, Y1);
-            WriteF(writer, Z1);
-            WriteH(writer, Heading);
+            WriteSingle(writer, X1);
+            WriteSingle(writer, Y1);
+            WriteSingle(writer, Z1);
+            WriteWord(writer, Heading);
 
-            WriteH(writer, Player.GameStats.Movement);
+            WriteWord(writer, Player.GameStats.Movement);
 
-            WriteF(writer, X2);
-            WriteF(writer, Y2);
-            WriteF(writer, Z2);
+            WriteSingle(writer, X2);
+            WriteSingle(writer, Y2);
+            WriteSingle(writer, Z2);
 
-            WriteH(writer, MoveType);
-            WriteH(writer, 0);
-            WriteC(writer, 0);
+            WriteWord(writer, MoveType);
+            WriteWord(writer, 0);
+            WriteByte(writer, 0);
         }
     }
 }

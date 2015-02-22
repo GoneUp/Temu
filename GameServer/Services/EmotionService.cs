@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Communication.Interfaces;
-using Data.Structures.Player;
-using Network.Server;
+using Tera.Communication.Interfaces;
+using Tera.Data.Structures.Player;
+using Tera.Network.old_Server;
 
 namespace Tera.Services
 {

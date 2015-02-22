@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Communication.Interfaces;
-using Data.Enums;
-using Data.Enums.Craft;
-using Data.Structures.Craft;
-using Data.Structures.Player;
-using Network.Server;
+using Tera.Communication.Interfaces;
 using Tera.Controllers;
+using Tera.Data.Enums;
+using Tera.Data.Enums.Craft;
+using Tera.Data.Structures.Craft;
+using Tera.Data.Structures.Player;
+using Tera.Network.old_Server;
 using Utils;
 using Utils.Logger;
 
@@ -46,6 +46,8 @@ namespace Tera.Services
         {
             new SpCharacterRecipes(player.Recipes.Select(recipe => Data.Data.Recipes[recipe]).ToList()).Send(player.Connection);
             new SpCharacterRecipes(null, true).Send(player.Connection);
+
+            
         }
 
         public void AddRecipe(Player player, int recipeId)

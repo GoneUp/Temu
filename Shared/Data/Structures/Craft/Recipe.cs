@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Data.Enums;
-using Data.Enums.Craft;
+using Tera.Data.Enums.Craft;
 
-namespace Data.Structures.Craft
+namespace Tera.Data.Structures.Craft
 {
     public class Recipe
     {

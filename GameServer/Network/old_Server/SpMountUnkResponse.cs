@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpMountUnkResponse : ASendPacket
     {
@@ -16,7 +16,7 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Player);
-            WriteD(writer, Unk1);
+            WriteDword(writer, Unk1);
         }
     }
 }

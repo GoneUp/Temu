@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Data.Enums.Pegasus;
+using Tera.Data.Enums.Pegasus;
 
-namespace Data.Structures.World.Pegasus
+namespace Tera.Data.Structures.World.Pegasus
 {
     [ProtoBuf.ProtoContract]
     public class PPStage

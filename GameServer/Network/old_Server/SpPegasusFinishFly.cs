@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpPegasusFinishFly : ASendPacket
     {

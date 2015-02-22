@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpRelog : ASendPacket
     {

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpSimpleItemInfo : ASendPacket
     {
@@ -13,9 +13,9 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, ItemId);
-            WriteD(writer, 0);
-            WriteC(writer, 0);
+            WriteDword(writer, ItemId);
+            WriteDword(writer, 0);
+            WriteByte(writer, 0);
         }
     }
 }

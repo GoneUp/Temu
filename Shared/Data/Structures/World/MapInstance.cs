@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Data.Structures.Objects;
-using Utils;
+using Tera.Data.Structures.Objects;
 using Utils.Logger;
 
-namespace Data.Structures.World
+namespace Tera.Data.Structures.World
 {
     public class MapInstance : Statistical
     {

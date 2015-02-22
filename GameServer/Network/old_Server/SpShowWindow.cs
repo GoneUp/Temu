@@ -1,9 +1,9 @@
 ﻿using System.IO;
-using Data.Enums;
-using Data.Structures.Player;
-using Data.Structures.World.Requests;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World.Requests;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpShowWindow : ASendPacket
     {
@@ -52,41 +52,41 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, 0); //Player NameShift
-            WriteH(writer, 0); //Target NameShift
-            WriteH(writer, 0); //Packet Length
-            WriteH(writer, (short) (Request.Type == RequestType.Extraction ? 4 : 0));
+            WriteWord(writer, 0); //Player NameShift
+            WriteWord(writer, 0); //Target NameShift
+            WriteWord(writer, 0); //Packet Length
+            WriteWord(writer, (short) (Request.Type == RequestType.Extraction ? 4 : 0));
 
             WriteUid(writer, Request.Owner);
             WriteUid(writer, Request.Target);
 
-            WriteD(writer, Request.Type.GetHashCode());
-            WriteD(writer, Request.UID);
-            WriteD(writer, 0);
-            WriteD(writer, Request.Timeout);
+            WriteDword(writer, Request.Type.GetHashCode());
+            WriteDword(writer, Request.UID);
+            WriteDword(writer, 0);
+            WriteDword(writer, Request.Timeout);
 
             writer.Seek(4, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
-            WriteS(writer, Request.Owner.PlayerData.Name);
-            WriteH(writer, 0);
+            WriteString(writer, Request.Owner.PlayerData.Name);
+            WriteWord(writer, 0);
 
             writer.Seek(6, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
             if (Request.Target != null)
-                WriteS(writer, Request.Target.PlayerData.Name);
+                WriteString(writer, Request.Target.PlayerData.Name);
             else
-                WriteH(writer, 0);
-            WriteH(writer, 0);
+                WriteWord(writer, 0);
+            WriteWord(writer, 0);
 
             if (Request.Type == RequestType.Extraction)
-                WriteD(writer, 0); // ExtractSubtype
+                WriteDword(writer, 0); // ExtractSubtype
 
             writer.Seek(8, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
         }
     }

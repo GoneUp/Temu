@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using Communication;
-using Data.Structures.Player;
-using Data.Structures.World.Requests;
 using System.Collections.Generic;
-using Network;
+using Tera.Communication;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World.Requests;
+using Tera.Network;
 
 namespace Tera.ActionEngine
 {

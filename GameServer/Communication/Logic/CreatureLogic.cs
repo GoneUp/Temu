@@ -1,10 +1,10 @@
-﻿using Data.Enums;
-using Data.Structures.Creature;
-using Data.Structures.Npc;
-using Data.Structures.Objects;
-using Data.Structures.Player;
+﻿using Tera.Data.Enums;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Objects;
+using Tera.Data.Structures.Player;
 
-namespace Communication.Logic
+namespace Tera.Communication.Logic
 {
     public class CreatureLogic : Global
     {

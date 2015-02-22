@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.World;
+using Tera.Data.Structures.World;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpRemoveItem : ASendPacket
     {

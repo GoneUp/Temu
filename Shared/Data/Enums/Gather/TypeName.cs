@@ -1,4 +1,4 @@
-﻿namespace Data.Enums.Gather
+﻿namespace Tera.Data.Enums.Gather
 {
     public enum TypeName
     {

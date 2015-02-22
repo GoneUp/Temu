@@ -3,12 +3,12 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Client;
-using Hik.Communication.Scs.Communication;
-using Hik.Communication.Scs.Communication.Messengers;
 using System.Runtime.Remoting.Messaging;
+using Tera.NetworkApi.Communication.Scs.Client;
+using Tera.NetworkApi.Communication.Scs.Communication;
+using Tera.NetworkApi.Communication.Scs.Communication.Messengers;
 
-namespace Hik.Communication.ScsServices.Communication
+namespace Tera.NetworkApi.Communication.ScsServices.Communication
 {
     /// <summary>
     /// This class extends RemoteInvokeProxy to provide auto connect/disconnect mechanism

@@ -1,6 +1,6 @@
-using Communication;
-using Data.Structures.World;
-using Network.Server;
+using Tera.Communication;
+using Tera.Data.Structures.World;
+using Tera.Network.old_Server;
 using Utils;
 
 namespace Tera.Extensions

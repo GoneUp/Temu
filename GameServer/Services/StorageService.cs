@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Communication.Interfaces;
-using Data.Enums;
-using Data.Enums.Item;
-using Data.Structures.Player;
-using Data.Structures.Template.Item;
-using Data.Structures.World.Requests;
-using Network;
-using Network.Server;
+using Tera.Communication.Interfaces;
 using Tera.Controllers;
+using Tera.Data.Enums;
+using Tera.Data.Enums.Item;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Template.Item;
+using Tera.Data.Structures.World.Requests;
+using Tera.Network;
+using Tera.Network.old_Server;
 using Utils;
 using Utils.Logger;
 

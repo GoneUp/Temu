@@ -1,7 +1,7 @@
-﻿using Data.Structures.Player;
-using Data.Structures.World.Requests;
+﻿using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World.Requests;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IDuelService : IComponent
     {

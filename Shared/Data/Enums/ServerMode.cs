@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Data.Enums
+namespace Tera.Data.Enums
 {
     [Serializable]
     public enum eServerMode

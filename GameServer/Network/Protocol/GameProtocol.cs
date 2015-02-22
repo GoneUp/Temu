@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Crypt;
 using Hik.Communication.Scs.Communication.Messages;
 using Hik.Communication.Scs.Communication.Protocols;
-using Network.Messages;
+using Tera.Crypt;
+using Tera.Network.Messages;
 
-namespace Network.Protocol
+namespace Tera.Network.Protocol
 {
     public class GameProtocol : IScsWireProtocol
     {

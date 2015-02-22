@@ -1,6 +1,6 @@
 ﻿using System;
-using Data.Enums;
-using Data.Structures.SkillEngine;
+using Tera.Data.Enums;
+using Tera.Data.Structures.SkillEngine;
 
 namespace Tera.SkillEngine.Patches
 {

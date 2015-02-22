@@ -1,14 +1,12 @@
-using Communication;
-using Data.Enums;
-using Data.Structures.Player;
-using Data.Structures.World.Requests;
-using Network.Server;
 using System;
 using System.IO;
-using Utils;
+using Tera.Communication;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World.Requests;
 using Utils.Logger;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpSystemRequest : ARecvPacket
     {

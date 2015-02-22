@@ -1,11 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using Data.Interfaces;
-using Utils;
+using Tera.Data.Interfaces;
 using Utils.Logger;
 
-namespace Network
+namespace Tera.Network
 {
     public abstract class ARecvPacket : IRecvPacket
     {

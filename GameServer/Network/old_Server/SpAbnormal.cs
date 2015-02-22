@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.World;
+using Tera.Data.Structures.World;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpAbnormal : ASendPacket
     {
@@ -17,9 +17,9 @@ namespace Network.Server
             WriteUid(writer, Abnormal.Creature);
             WriteUid(writer, Abnormal.Caster);
 
-            WriteD(writer, Abnormal.Abnormality.Id);
-            WriteD(writer, Abnormal.Abnormality.Time);
-            WriteD(writer, 1); //Type?
+            WriteDword(writer, Abnormal.Abnormality.Id);
+            WriteDword(writer, Abnormal.Abnormality.Time);
+            WriteDword(writer, 1); //Type?
         }
     }
 }

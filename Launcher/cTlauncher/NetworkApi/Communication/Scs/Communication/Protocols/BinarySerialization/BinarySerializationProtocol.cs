@@ -3,9 +3,6 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Communication;
-using Hik.Communication.Scs.Communication.Messages;
-using Hik.Communication.Scs.Communication.Protocols;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,8 +11,9 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters;
 using System.Runtime.Serialization.Formatters.Binary;
+using Tera.NetworkApi.Communication.Scs.Communication.Messages;
 
-namespace Hik.Communication.Scs.Communication.Protocols.BinarySerialization
+namespace Tera.NetworkApi.Communication.Scs.Communication.Protocols.BinarySerialization
 {
     /// <summary>
     /// Default communication protocol between server and clients to send and receive a message.
@@ -58,7 +56,7 @@ namespace Hik.Communication.Scs.Communication.Protocols.BinarySerialization
         ///             This method is synchronized. So, only one thread can call it concurrently.
         /// 
         /// </summary>
-        /// <param name="message">Message to be serialized</param><exception cref="T:Hik.Communication.Scs.Communication.CommunicationException">Throws CommunicationException if message is bigger than maximum allowed message length.</exception>
+        /// <param name="message">Message to be serialized</param><exception cref="T:Tera.NetworkApi.Communication.Scs.Communication.CommunicationException">Throws CommunicationException if message is bigger than maximum allowed message length.</exception>
         public byte[] GetBytes(IScsMessage message)
         {
             byte[] numArray = this.SerializeMessage(message);
@@ -168,7 +166,7 @@ namespace Hik.Communication.Scs.Communication.Protocols.BinarySerialization
         /// Returns a boolean value indicates that if there is a need to re-call this method.
         /// 
         /// </returns>
-        /// <exception cref="T:Hik.Communication.Scs.Communication.CommunicationException">Throws CommunicationException if message is bigger than maximum allowed message length.</exception>
+        /// <exception cref="T:Tera.NetworkApi.Communication.Scs.Communication.CommunicationException">Throws CommunicationException if message is bigger than maximum allowed message length.</exception>
         private bool ReadSingleMessage(ICollection<IScsMessage> messages)
         {
             this._receiveMemoryStream.Position = 0L;

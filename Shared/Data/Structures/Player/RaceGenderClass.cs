@@ -1,6 +1,6 @@
-﻿using Data.Enums;
+﻿using Tera.Data.Enums;
 
-namespace Data.Structures.Player
+namespace Tera.Data.Structures.Player
 {
     [ProtoBuf.ProtoContract]
     public class RaceGenderClass

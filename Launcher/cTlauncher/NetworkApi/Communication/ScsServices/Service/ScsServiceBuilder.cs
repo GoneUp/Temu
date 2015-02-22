@@ -3,10 +3,10 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Communication.EndPoints;
-using Hik.Communication.Scs.Server;
+using Tera.NetworkApi.Communication.Scs.Communication.EndPoints;
+using Tera.NetworkApi.Communication.Scs.Server;
 
-namespace Hik.Communication.ScsServices.Service
+namespace Tera.NetworkApi.Communication.ScsServices.Service
 {
     /// <summary>
     /// This class is used to build ScsService applications.

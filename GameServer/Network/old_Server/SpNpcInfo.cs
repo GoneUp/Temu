@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Npc;
+using Tera.Data.Structures.Npc;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpNpcInfo : ASendPacket
     {
@@ -22,35 +22,35 @@ namespace Network.Server
         {
             if (TestNpcHex != null)
             {
-                WriteB(writer, TestNpcHex);
+                WriteByte(writer, TestNpcHex);
                 return;
             }
 
-            WriteD(writer, 0); //???
-            WriteH(writer, 0); //Shit shift
+            WriteDword(writer, 0); //???
+            WriteWord(writer, 0); //Shit shift
 
             WriteUid(writer, Npc);
             WriteUid(writer, Npc.Target);
-            WriteF(writer, Npc.Position.X);
-            WriteF(writer, Npc.Position.Y);
-            WriteF(writer, Npc.Position.Z);
-            WriteH(writer, Npc.Position.Heading);
-            WriteD(writer, 12); //???
-            WriteD(writer, Npc.SpawnTemplate.NpcId);
-            WriteH(writer, Npc.SpawnTemplate.Type);
-            WriteD(writer, 0); //ModelId
+            WriteSingle(writer, Npc.Position.X);
+            WriteSingle(writer, Npc.Position.Y);
+            WriteSingle(writer, Npc.Position.Z);
+            WriteWord(writer, Npc.Position.Heading);
+            WriteDword(writer, 12); //???
+            WriteDword(writer, Npc.SpawnTemplate.NpcId);
+            WriteWord(writer, Npc.SpawnTemplate.Type);
+            WriteDword(writer, 0); //ModelId
             
-            WriteB(writer, "000000000500000001010100000000000000000000000000000000000000");
+            WriteByte(writer, "000000000500000001010100000000000000000000000000000000000000");
 
             WriteUid(writer, Npc.Target); //If 1 agressiv
 
-            WriteB(writer, "000000000000000000");
+            WriteByte(writer, "000000000000000000");
 
             writer.Seek(8, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length); //Shit shift
+            WriteWord(writer, (short) writer.BaseStream.Length); //Shit shift
             writer.Seek(0, SeekOrigin.End);
 
-            WriteB(writer, "45C5C8B958C72000E4C2D8D5B4CC0000"); //Shit
+            WriteByte(writer, "45C5C8B958C72000E4C2D8D5B4CC0000"); //Shit
         }
     }
 }

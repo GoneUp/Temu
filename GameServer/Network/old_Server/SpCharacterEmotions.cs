@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Enums;
-using Data.Structures.Creature;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Creature;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCharacterEmotions : ASendPacket
     {
@@ -27,9 +27,9 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Creature);
-            WriteD(writer, EmotionId);
-            WriteD(writer, Duration);
-            WriteC(writer, 0); //unk
+            WriteDword(writer, EmotionId);
+            WriteDword(writer, Duration);
+            WriteByte(writer, 0); //unk
         }
     }
 }

@@ -3,15 +3,14 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Communication;
-using Hik.Communication.Scs.Communication.Messages;
-using Hik.Communication.Scs.Communication.Protocols;
-using Hik.Threading;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using Tera.NetworkApi.Communication.Scs.Communication.Messages;
+using Tera.NetworkApi.Communication.Scs.Communication.Protocols;
+using Tera.NetworkApi.Threading;
 
-namespace Hik.Communication.Scs.Communication.Messengers
+namespace Tera.NetworkApi.Communication.Scs.Communication.Messengers
 {
     /// <summary>
     /// This class adds SendMessageAndWaitForResponse(...) and SendAndReceiveMessage methods
@@ -218,7 +217,7 @@ namespace Hik.Communication.Scs.Communication.Messengers
         /// <returns>
         /// Response message
         /// </returns>
-        /// <exception cref="T:System.TimeoutException">Throws TimeoutException if can not receive reply message in timeout value</exception><exception cref="T:Hik.Communication.Scs.Communication.CommunicationException">Throws CommunicationException if communication fails before reply message.</exception>
+        /// <exception cref="T:System.TimeoutException">Throws TimeoutException if can not receive reply message in timeout value</exception><exception cref="T:Tera.NetworkApi.Communication.Scs.Communication.CommunicationException">Throws CommunicationException if communication fails before reply message.</exception>
         public IScsMessage SendMessageAndWaitForResponse(IScsMessage message, int timeoutMilliseconds)
         {
             RequestReplyMessenger<T>.WaitingMessage waitingMessage = new RequestReplyMessenger<T>.WaitingMessage();

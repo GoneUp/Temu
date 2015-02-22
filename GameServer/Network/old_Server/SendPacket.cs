@@ -1,9 +1,9 @@
 ﻿using System;
-using Data.Interfaces;
+using Tera.Data.Interfaces;
 using Utils;
 using Utils.Logger;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SendPacket
     {

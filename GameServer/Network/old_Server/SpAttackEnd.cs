@@ -1,10 +1,10 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using Data.Structures.SkillEngine;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.SkillEngine;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpAttackEnd : ASendPacket //len 42
     {
@@ -27,14 +27,14 @@ namespace Network.Server
                 model = ((Npc) Creature).SpawnTemplate.NpcId;
 
             WriteUid(writer, Creature);
-            WriteF(writer, Creature.Position.X);
-            WriteF(writer, Creature.Position.Y);
-            WriteF(writer, Creature.Position.Z);
-            WriteH(writer, Creature.Position.Heading);
-            WriteD(writer, model);
-            WriteD(writer, Attack.Args.SkillId + 0x4000000);
-            WriteD(writer, 0);
-            WriteD(writer, Attack.UID);
+            WriteSingle(writer, Creature.Position.X);
+            WriteSingle(writer, Creature.Position.Y);
+            WriteSingle(writer, Creature.Position.Z);
+            WriteWord(writer, Creature.Position.Heading);
+            WriteDword(writer, model);
+            WriteDword(writer, Attack.Args.SkillId + 0x4000000);
+            WriteDword(writer, 0);
+            WriteDword(writer, Attack.UID);
         }
     }
 }

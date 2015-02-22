@@ -8,7 +8,7 @@
     <ProjectGuid>{F515CE95-6A3F-4E5E-867A-899FFFC90D43}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Temu</RootNamespace>
+    <RootNamespace>Tera</RootNamespace>
     <AssemblyName>LoginServer</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <TargetFrameworkProfile>
@@ -62,6 +62,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\build\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Scs, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SCS.1.1.0.1\lib\net40\Scs.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -75,7 +79,6 @@
     <Compile Include="Configuration\_TaskLoader.cs" />
     <Compile Include="Configuration\_Config.cs" />
     <Compile Include="Database\DbQuerys.cs" />
-    <Compile Include="Data\Account\Account.cs" />
     <Compile Include="NetworkApi\Collections\ThreadSafeSortedList.cs" />
     <Compile Include="NetworkApi\Communication\ScsServices\Client\IScsServiceClient.cs" />
     <Compile Include="NetworkApi\Communication\ScsServices\Client\ScsServiceClient.cs" />
@@ -147,6 +150,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="app.manifest" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -166,6 +170,7 @@
       <Name>Shared</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

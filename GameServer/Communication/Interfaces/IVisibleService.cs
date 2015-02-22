@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Data.Enums.SkillEngine;
-using Data.Interfaces;
-using Data.Structures.Creature;
-using Data.Structures.Geometry;
-using Data.Structures.World;
+using Tera.Data.Enums.SkillEngine;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Geometry;
+using Tera.Data.Structures.World;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IVisibleService : IComponent
     {

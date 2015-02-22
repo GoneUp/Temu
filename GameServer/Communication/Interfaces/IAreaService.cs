@@ -1,8 +1,8 @@
-﻿using Data.Structures.Player;
-using Data.Structures.World;
-using Data.Structures.World.Continent;
+﻿using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
+using Tera.Data.Structures.World.Continent;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IAreaService : IComponent
     {

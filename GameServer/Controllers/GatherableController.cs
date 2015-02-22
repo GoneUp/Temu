@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Communication;
-using Data.Enums.Gather;
-using Data.Interfaces;
-using Data.Structures.Gather;
-using Data.Structures.Player;
-using Network;
-using Network.Server;
 using Tera.AiEngine;
+using Tera.Communication;
+using Tera.Data.Enums.Gather;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Gather;
+using Tera.Data.Structures.Player;
+using Tera.Network;
+using Tera.Network.old_Server;
 using Utils;
 
 namespace Tera.Controllers

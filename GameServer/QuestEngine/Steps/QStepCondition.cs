@@ -1,5 +1,5 @@
-﻿using Data.Structures.Player;
-using Data.Structures.Quest.Tasks;
+﻿using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Quest.Tasks;
 
 namespace Tera.QuestEngine.Steps
 {

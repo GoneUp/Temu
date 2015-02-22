@@ -1,6 +1,6 @@
-﻿using Data.Structures;
+﻿using Tera.Data.Structures;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpDialogShow : ARecvPacket
     {

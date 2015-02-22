@@ -1,7 +1,6 @@
 ﻿using System.IO;
-using Utils;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpUISettings : ASendPacket
     {
@@ -14,7 +13,7 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteB(writer, UISettings);
+            WriteByte(writer, UISettings);
         }
     }
 }

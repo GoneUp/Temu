@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Data.Structures.Template
+namespace Tera.Data.Structures.Template
 {
     public class GatherSpawnTemplate
     {

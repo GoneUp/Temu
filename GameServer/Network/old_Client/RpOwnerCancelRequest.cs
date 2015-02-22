@@ -1,8 +1,8 @@
 ﻿
 
-using Data.Structures.World.Requests;
+using Tera.Data.Structures.World.Requests;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpOwnerCancelRequest : ARecvPacket
     {

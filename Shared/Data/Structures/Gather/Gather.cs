@@ -1,6 +1,6 @@
-﻿using Data.Structures.Template;
+﻿using Tera.Data.Structures.Template;
 
-namespace Data.Structures.Gather
+namespace Tera.Data.Structures.Gather
 {
     public class Gather : Creature.Creature
     {

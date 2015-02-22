@@ -1,8 +1,8 @@
-﻿using Communication.Logic;
-using Data.Enums;
-using Data.Structures.Creature;
-using Data.Structures.Player;
-using Network.Server;
+﻿using Tera.Communication.Logic;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Player;
+using Tera.Network.old_Server;
 
 namespace Tera.SkillEngine.Effects
 {

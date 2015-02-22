@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Enums.Gather;
-using Data.Structures.Player;
+using Tera.Data.Enums.Gather;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCharacterGatherstats : ASendPacket
     {
@@ -15,11 +15,11 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, GatherStats.GetGatherStat(TypeName.Energy));
-            WriteH(writer, GatherStats.GetGatherStat(TypeName.Herb));
-            WriteH(writer, 0); //unk, mb bughunting
-            WriteH(writer, GatherStats.GetGatherStat(TypeName.Mine));
-            WriteQ(writer, 0);
+            WriteWord(writer, GatherStats.GetGatherStat(TypeName.Energy));
+            WriteWord(writer, GatherStats.GetGatherStat(TypeName.Herb));
+            WriteWord(writer, 0); //unk, mb bughunting
+            WriteWord(writer, GatherStats.GetGatherStat(TypeName.Mine));
+            WriteLong(writer, 0);
         }
     }
 }

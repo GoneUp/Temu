@@ -1,8 +1,8 @@
-﻿using Communication.Logic;
-using Data.Structures.Player;
-using Data.Structures.World;
+﻿using Tera.Communication.Logic;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpUseDelaySkill : ARecvPacket
     {

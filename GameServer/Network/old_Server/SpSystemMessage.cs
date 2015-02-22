@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpSystemMessage : ASendPacket
     {
@@ -16,11 +16,11 @@ namespace Network.Server
         {
             for (int i = 0; i < Args.Length; i++)
             {
-                WriteH(writer, (short) (i == 0 ? 6 : 11));
+                WriteWord(writer, (short) (i == 0 ? 6 : 11));
                 writer.Write(Encoding.Unicode.GetBytes(Args[i]));
             }
 
-            WriteH(writer, 0);
+            WriteWord(writer, 0);
         }
     }
 }

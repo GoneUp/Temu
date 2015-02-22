@@ -1,5 +1,6 @@
 ﻿using System.IO;
-namespace Network.Server
+
+namespace Tera.Network.old_Server
 {
     public class SpCraftInitBar : ASendPacket
     {
@@ -14,8 +15,8 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteC(writer, Unk);
-            WriteD(writer, MaxChance);
+            WriteByte(writer, Unk);
+            WriteDword(writer, MaxChance);
         }
     }
 }

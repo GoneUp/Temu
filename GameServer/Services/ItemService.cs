@@ -1,13 +1,13 @@
-﻿using Communication;
-using Communication.Interfaces;
-using Data.Enums.Item;
-using Data.Structures;
-using Data.Structures.Player;
-using Data.Structures.Template.Item;
-using Data.Structures.Template.Item.CategorieStats;
-using Data.Structures.World;
-using Network;
-using Network.Server;
+﻿using Tera.Communication;
+using Tera.Communication.Interfaces;
+using Tera.Data.Enums.Item;
+using Tera.Data.Structures;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Template.Item;
+using Tera.Data.Structures.Template.Item.CategorieStats;
+using Tera.Data.Structures.World;
+using Tera.Network;
+using Tera.Network.old_Server;
 using Utils;
 using Utils.Logger;
 

@@ -1,6 +1,6 @@
-using Data.Structures.Template.Item;
+using Tera.Data.Structures.Template.Item;
 
-namespace Data.Structures.World
+namespace Tera.Data.Structures.World
 {
     public class ShoppingItem
     {

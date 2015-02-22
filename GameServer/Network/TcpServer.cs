@@ -6,7 +6,7 @@ using Hik.Communication.Scs.Server;
 using Utils;
 using Utils.Logger;
 
-namespace Network
+namespace Tera.Network
 {
     public class TcpServer
     {

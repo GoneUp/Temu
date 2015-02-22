@@ -7,7 +7,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 
-namespace Hik.Communication.Scs.Client.Tcp
+namespace Tera.NetworkApi.Communication.Scs.Client.Tcp
 {
     /// <summary>
     /// This class is used to simplify TCP socket operations.

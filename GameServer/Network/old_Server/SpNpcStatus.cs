@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
-using Data.Structures.Npc;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Npc;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpNpcStatus : ASendPacket
     {
@@ -22,10 +22,10 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Npc);
-            WriteC(writer, 0);
-            WriteD(writer, Unk1);
+            WriteByte(writer, 0);
+            WriteDword(writer, Unk1);
             WriteUid(writer, Target);
-            WriteD(writer, Unk2);
+            WriteDword(writer, Unk2);
         }
     }
 }

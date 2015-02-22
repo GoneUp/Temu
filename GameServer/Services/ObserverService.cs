@@ -1,8 +1,8 @@
-﻿using Communication.Interfaces;
-using Data.Structures.Creature;
-using Data.Structures.Player;
-using Network.Server;
+﻿using Tera.Communication.Interfaces;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Player;
 using Tera.Extensions;
+using Tera.Network.old_Server;
 using Utils;
 
 namespace Tera.Services

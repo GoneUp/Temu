@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpPartyVote : ASendPacket
     {
@@ -13,7 +13,7 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteQ(writer, PlayerUid);
+            WriteLong(writer, PlayerUid);
         }
     }
 }

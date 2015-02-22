@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Communication.Interfaces;
-using Data.Structures.Player;
-using Data.Structures.World;
-using Data.Structures.World.Continent;
+using Tera.Communication.Interfaces;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
+using Tera.Data.Structures.World.Continent;
 
 namespace Tera.Services
 {

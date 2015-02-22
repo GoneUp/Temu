@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
-using Communication;
-using Data.Enums;
-using Data.Structures.Player;
-using Data.Structures.Quest;
-using Data.Structures.Quest.Tasks;
-using Network;
-using Network.Server;
+using Tera.Communication;
 using Tera.Controllers;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Quest;
+using Tera.Data.Structures.Quest.Tasks;
 using Tera.Extensions;
+using Tera.Network;
+using Tera.Network.old_Server;
 using Tera.QuestEngine.Steps;
 
 namespace Tera.QuestEngine

@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Hik.Threading
+namespace Tera.NetworkApi.Threading
 {
     /// <summary>
     /// This class is used to process items sequentially in a multithreaded manner.

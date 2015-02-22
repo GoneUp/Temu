@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Communication;
-using Data.Enums;
-using Data.Structures.Player;
-using Data.Structures.Quest.Tasks;
-using Data.Structures.World;
+using Tera.Communication;
 using Tera.Controllers;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Quest.Tasks;
+using Tera.Data.Structures.World;
 
 namespace Tera.QuestEngine.Steps
 {

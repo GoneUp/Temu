@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using System.Threading;
 
-namespace Hik.Collections
+namespace Tera.NetworkApi.Collections
 {
     /// <summary>
     /// This class is used to store key-value based items in a thread safe manner.

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 using Utils.Logger;
 
-namespace Data.Structures
+namespace Tera.Data.Structures
 {
     public abstract class Statistical
     {

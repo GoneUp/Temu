@@ -1,4 +1,4 @@
-﻿namespace Network.Client
+﻿namespace Tera.Network.old_Client
 {
     class RpPartyPromoteMember : ARecvPacket
     {

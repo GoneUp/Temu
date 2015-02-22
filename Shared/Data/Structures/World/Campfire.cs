@@ -1,4 +1,4 @@
-namespace Data.Structures.World
+namespace Tera.Data.Structures.World
 {
     public class Campfire : Creature.Creature
     {

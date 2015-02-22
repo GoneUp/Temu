@@ -1,6 +1,6 @@
-﻿using Data.Structures.Player;
-using Data.Structures.World.Requests;
-using Network;
+﻿using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World.Requests;
+using Tera.Network;
 using Utils;
 using Utils.Logger;
 

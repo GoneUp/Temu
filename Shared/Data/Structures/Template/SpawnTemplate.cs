@@ -1,4 +1,4 @@
-﻿namespace Data.Structures.Template
+﻿namespace Tera.Data.Structures.Template
 {
     [ProtoBuf.ProtoContract]
     public class SpawnTemplate

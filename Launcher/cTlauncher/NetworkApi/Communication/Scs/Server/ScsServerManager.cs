@@ -5,7 +5,7 @@
 
 using System.Threading;
 
-namespace Hik.Communication.Scs.Server
+namespace Tera.NetworkApi.Communication.Scs.Server
 {
     /// <summary>
     /// Provides some functionality that are used by servers.

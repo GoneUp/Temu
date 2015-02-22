@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpWarehouseItems : ASendPacket
     {
@@ -18,17 +18,17 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, (short)Player.CharacterWarehouse.Items.Count);
-            WriteH(writer, 0);
+            WriteWord(writer, (short)Player.CharacterWarehouse.Items.Count);
+            WriteWord(writer, 0);
             WriteUid(writer, Player);
-            WriteB(writer, "0100000000000000");
-            WriteD(writer, Offset);
-            WriteD(writer, 0); // last busy slot
-            WriteD(writer, Player.CharacterWarehouse.Items.Count);
-            WriteQ(writer, Player.CharacterWarehouse.Money);
+            WriteByte(writer, "0100000000000000");
+            WriteDword(writer, Offset);
+            WriteDword(writer, 0); // last busy slot
+            WriteDword(writer, Player.CharacterWarehouse.Items.Count);
+            WriteLong(writer, Player.CharacterWarehouse.Money);
 
             writer.Seek(6, SeekOrigin.Begin);
-            WriteH(writer, (short)writer.BaseStream.Length);
+            WriteWord(writer, (short)writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
             int i = 0;
@@ -46,30 +46,30 @@ namespace Network.Server
                     i++;
                     short s = (short)writer.BaseStream.Length;
 
-                    WriteH(writer, s);
-                    WriteH(writer, 0); //next shift
-                    WriteD(writer, 0);
-                    WriteD(writer, item.Value.ItemId);
+                    WriteWord(writer, s);
+                    WriteWord(writer, 0); //next shift
+                    WriteDword(writer, 0);
+                    WriteDword(writer, item.Value.ItemId);
                     WriteUid(writer, item.Value);
-                    WriteD(writer, 0x0002655f);
-                    WriteD(writer, 0);
-                    WriteD(writer, item.Key);
-                    WriteD(writer, 1);
-                    WriteD(writer, 1);
-                    WriteD(writer, item.Value.Amount);
-                    WriteB(writer, new byte[18]);
+                    WriteDword(writer, 0x0002655f);
+                    WriteDword(writer, 0);
+                    WriteDword(writer, item.Key);
+                    WriteDword(writer, 1);
+                    WriteDword(writer, 1);
+                    WriteDword(writer, item.Value.Amount);
+                    WriteByte(writer, new byte[18]);
 
                     if (Player.CharacterWarehouse.Items.Count > i)
                     {
                         writer.Seek(s + 2, SeekOrigin.Begin);
-                        WriteH(writer, (short)writer.BaseStream.Length);
+                        WriteWord(writer, (short)writer.BaseStream.Length);
                         writer.Seek(0, SeekOrigin.End);
                     }
                 }
             }
 
             writer.Seek(24, SeekOrigin.Begin);
-            WriteD(writer, (last + 1 < Offset + 71 && last != Offset) ? last + 1 : last);
+            WriteDword(writer, (last + 1 < Offset + 71 && last != Offset) ? last + 1 : last);
             writer.Seek(0, SeekOrigin.End);
         }
     }

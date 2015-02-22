@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.World;
+using Tera.Data.Structures.World;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCampfire : ASendPacket
     {
@@ -14,13 +14,13 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, 0);
+            WriteDword(writer, 0);
             WriteUid(writer, Campfire);
-            WriteD(writer, Campfire.Type);
-            WriteF(writer, Campfire.Position.X);
-            WriteF(writer, Campfire.Position.Y);
-            WriteF(writer, Campfire.Position.Z);
-            WriteD(writer, Campfire.Status);
+            WriteDword(writer, Campfire.Type);
+            WriteSingle(writer, Campfire.Position.X);
+            WriteSingle(writer, Campfire.Position.Y);
+            WriteSingle(writer, Campfire.Position.Z);
+            WriteDword(writer, Campfire.Status);
         }
     }
 }

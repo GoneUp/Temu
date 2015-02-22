@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Data.Structures.Npc;
-using Data.Structures.Quest;
-using Data.Structures.Quest.Enums;
-using Data.Structures.World;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Quest;
+using Tera.Data.Structures.Quest.Enums;
+using Tera.Data.Structures.World;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpShowDialog : ASendPacket
     {
@@ -36,41 +36,41 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, (short) Buttons.Count); //Buttons count
+            WriteWord(writer, (short) Buttons.Count); //Buttons count
             int buttonsShift = (int) writer.BaseStream.Position;
-            WriteH(writer, 0); //First button shift
+            WriteWord(writer, 0); //First button shift
 
-            WriteH(writer, (short) (Quest == null ? 0 : 1));
+            WriteWord(writer, (short) (Quest == null ? 0 : 1));
             int rewardShift = (int) writer.BaseStream.Position;
-            WriteH(writer, 0);
+            WriteWord(writer, 0);
 
             WriteUid(writer, Npc);
-            WriteD(writer, Stage); //Stage?
-            WriteD(writer, DialogId); //DialogId
-            WriteD(writer, Special1);
-            WriteD(writer, Special2);
-            WriteD(writer, Page); //Page?
-            WriteD(writer, DialogUid); //DialogUid
-            WriteB(writer, new byte[5]);
-            WriteD(writer, 1);
-            WriteB(writer, new byte[7]);
-            WriteB(writer, "FFFFFFFF");
+            WriteDword(writer, Stage); //Stage?
+            WriteDword(writer, DialogId); //DialogId
+            WriteDword(writer, Special1);
+            WriteDword(writer, Special2);
+            WriteDword(writer, Page); //Page?
+            WriteDword(writer, DialogUid); //DialogUid
+            WriteByte(writer, new byte[5]);
+            WriteDword(writer, 1);
+            WriteByte(writer, new byte[7]);
+            WriteByte(writer, "FFFFFFFF");
 
             int i = 1;
             foreach (DialogButton dialogButton in Buttons)
             {
                 writer.Seek(buttonsShift, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteH(writer, (short) writer.BaseStream.Position);
+                WriteWord(writer, (short) writer.BaseStream.Position);
                 buttonsShift = (int) writer.BaseStream.Position;
-                WriteH(writer, 0);
+                WriteWord(writer, 0);
 
-                WriteH(writer, (short) (writer.BaseStream.Position + 10));
-                WriteD(writer, i++);
-                WriteD(writer, dialogButton.Icon.GetHashCode());
-                WriteS(writer, dialogButton.Text);
+                WriteWord(writer, (short) (writer.BaseStream.Position + 10));
+                WriteDword(writer, i++);
+                WriteDword(writer, dialogButton.Icon.GetHashCode());
+                WriteString(writer, dialogButton.Text);
             }
 
             if (Quest != null)
@@ -78,30 +78,30 @@ namespace Network.Server
                 int itemsShift = 0;
 
                 writer.Seek(rewardShift, SeekOrigin.Begin);
-                WriteH(writer, (short)writer.BaseStream.Length);
+                WriteWord(writer, (short)writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteH(writer, (short)writer.BaseStream.Position);
-                WriteH(writer, 0);
+                WriteWord(writer, (short)writer.BaseStream.Position);
+                WriteWord(writer, 0);
 
                 if (Reward != null && Reward.Items != null)
                 {
-                    WriteH(writer, (short) Reward.Items.Count);
+                    WriteWord(writer, (short) Reward.Items.Count);
                     itemsShift = (int) writer.BaseStream.Position;
-                    WriteH(writer, 0);
+                    WriteWord(writer, 0);
                 }
                 else
-                    WriteD(writer, 0);
+                    WriteDword(writer, 0);
 
-                WriteD(writer, 0);
-                WriteD(writer, Quest.QuestRewardType == QuestRewardType.Choice ? 1 : 3); //1 Selectable reward //2 Unspecified reward //3 All
-                WriteD(writer, Quest.RewardExp);
-                WriteD(writer, Quest.RewardMoney);
-                WriteD(writer, 0);
-                WriteD(writer, 0); //Polici points
-                WriteD(writer, 0);
-                WriteD(writer, 0); //Reputation levels [exp]
-                WriteD(writer, 0); //Reputation
+                WriteDword(writer, 0);
+                WriteDword(writer, Quest.QuestRewardType == QuestRewardType.Choice ? 1 : 3); //1 Selectable reward //2 Unspecified reward //3 All
+                WriteDword(writer, Quest.RewardExp);
+                WriteDword(writer, Quest.RewardMoney);
+                WriteDword(writer, 0);
+                WriteDword(writer, 0); //Polici points
+                WriteDword(writer, 0);
+                WriteDword(writer, 0); //Reputation levels [exp]
+                WriteDword(writer, 0); //Reputation
 
                 if (Reward == null || Reward.Items == null)
                     return;
@@ -109,15 +109,15 @@ namespace Network.Server
                 for (int x = 0; x < Reward.Items.Count; x++)
                 {
                     writer.Seek(itemsShift, SeekOrigin.Begin);
-                    WriteH(writer, (short) writer.BaseStream.Length);
+                    WriteWord(writer, (short) writer.BaseStream.Length);
                     writer.Seek(0, SeekOrigin.End);
 
-                    WriteH(writer, (short)writer.BaseStream.Position);
+                    WriteWord(writer, (short)writer.BaseStream.Position);
                     itemsShift = (int) writer.BaseStream.Position;
-                    WriteH(writer, 0);
+                    WriteWord(writer, 0);
 
-                    WriteD(writer, Reward.Items[x].Key);
-                    WriteD(writer, Reward.Items[x].Value);
+                    WriteDword(writer, Reward.Items[x].Key);
+                    WriteDword(writer, Reward.Items[x].Value);
                 }
             }
         }

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Communication.Interfaces;
-using Data.Interfaces;
-using Data.Structures.Player;
 using Tera.AdminEngine.AdminCommands;
+using Tera.Communication.Interfaces;
+using Tera.Data.Interfaces;
 using Utils;
 using Utils.Logger;
 
@@ -62,7 +61,7 @@ namespace Tera.AdminEngine
             if (msg.Length < 2)
                 return false;
 
-            if (msg[0] == '!' && connection.Account.isGM == true)
+            if (msg[0] == '!' && connection.GameAccount.IsGM)
             {
                 string cmd = msg.Substring(1).Split(' ')[0];
                 if (AdminCommands.ContainsKey(cmd))

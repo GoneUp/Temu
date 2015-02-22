@@ -1,6 +1,6 @@
-﻿using Data.Structures.Creature;
+﻿using Tera.Data.Structures.Creature;
 
-namespace Data.Interfaces
+namespace Tera.Data.Interfaces
 {
     public interface IEffect
     {

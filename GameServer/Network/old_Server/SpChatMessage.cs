@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
-using Data.Enums;
-using Data.Structures.Player;
+﻿using System.IO;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpChatMessage : ASendPacket
     {
@@ -27,9 +26,9 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, 0); //Sender shift
-            WriteH(writer, 0); //Message shift
-            WriteD(writer, Type.GetHashCode());
+            WriteWord(writer, 0); //Sender shift
+            WriteWord(writer, 0); //Message shift
+            WriteDword(writer, Type.GetHashCode());
 
             WriteUid(writer, Player);
 
@@ -37,31 +36,31 @@ namespace Network.Server
 
             if (Player != null)
             {
-                if (Player.Connection.Account.isGM == true)
+                if (Player.Connection.GameAccount.IsGM == true)
                 { isGm = (byte)1; }
                 else
                 { isGm = (byte)0; }
             }
 
-            WriteC(writer, 0); //Blue shit
-            WriteC(writer, isGm); //GM
+            WriteByte(writer, 0); //Blue shit
+            WriteByte(writer, isGm); //GM
 
             if (Player != null)
             {
                 writer.Seek(4, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteS(writer, Player.PlayerData.Name);
+                WriteString(writer, Player.PlayerData.Name);
             }
 
             writer.Seek(6, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
-            WriteS(writer, Message);
+            WriteString(writer, Message);
 
-            WriteC(writer, 0);
+            WriteByte(writer, 0);
         }
     }
 }

@@ -3,14 +3,14 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Communication.Messages;
-using Hik.Communication.Scs.Communication.Messengers;
-using Hik.Communication.ScsServices.Communication.Messages;
 using System;
 using System.Runtime.Remoting.Messaging;
 using System.Runtime.Remoting.Proxies;
+using Tera.NetworkApi.Communication.Scs.Communication.Messages;
+using Tera.NetworkApi.Communication.Scs.Communication.Messengers;
+using Tera.NetworkApi.Communication.ScsServices.Communication.Messages;
 
-namespace Hik.Communication.ScsServices.Communication
+namespace Tera.NetworkApi.Communication.ScsServices.Communication
 {
     /// <summary>
     /// This class is used to generate a dynamic proxy to invoke remote methods.

@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCharacterBind : ASendPacket //len 21
     {
@@ -15,11 +15,11 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             //TODO:
-            WriteD(writer, Player.Position.MapId);
-            WriteF(writer, Player.Position.X);
-            WriteF(writer, Player.Position.Y);
-            WriteF(writer, Player.Position.Z);
-            WriteC(writer, 0); //NOT Heading
+            WriteDword(writer, Player.Position.MapId);
+            WriteSingle(writer, Player.Position.X);
+            WriteSingle(writer, Player.Position.Y);
+            WriteSingle(writer, Player.Position.Z);
+            WriteByte(writer, 0); //NOT Heading
         }
     }
 }

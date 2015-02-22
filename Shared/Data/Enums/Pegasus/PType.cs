@@ -1,4 +1,4 @@
-﻿namespace Data.Enums.Pegasus
+﻿namespace Tera.Data.Enums.Pegasus
 {
     public enum PType
     {

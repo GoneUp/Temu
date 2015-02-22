@@ -1,6 +1,6 @@
 ﻿using Hik.Communication.Scs.Communication.Messages;
 
-namespace Network.Messages
+namespace Tera.Network.Messages
 {
     public class KeyMessage : ScsMessage
     {

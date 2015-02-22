@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
-using Data.Interfaces;
-using Data.Structures.Account;
-using Data.Structures.Creature;
-using Data.DAO;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Account;
+using Tera.Data.Structures.Creature;
 
-namespace Communication.Logic
+namespace Tera.Communication.Logic
 {
     public class GlobalLogic : Global
     {
@@ -44,9 +43,9 @@ namespace Communication.Logic
             Data.Cache.SaveData();
         }
 
-        public static void PacketSent(Account account, string name, byte[] buffer)
+        public static void PacketSent(GameAccount gameAccount, string name, byte[] buffer)
         {
-            if (account == null)
+            if (gameAccount == null)
                 return;
 
             string callStack = "";
@@ -58,9 +57,9 @@ namespace Communication.Logic
                     callStack += string.Format("{0}\n", frame);
         }
 
-        public static void PacketReceived(Account account, Type type, byte[] buffer)
+        public static void PacketReceived(GameAccount gameAccount, Type type, byte[] buffer)
         {
-            if (account == null)
+            if (gameAccount == null)
                 return;
 
             string callStack = "";

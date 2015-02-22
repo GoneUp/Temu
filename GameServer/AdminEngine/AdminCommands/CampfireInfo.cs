@@ -1,8 +1,8 @@
 ﻿using System;
-using Data.Enums;
-using Data.Interfaces;
-using Data.Structures.World;
-using Network.Server;
+using Tera.Data.Enums;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.World;
+using Tera.Network.old_Server;
 using Utils;
 using Utils.Logger;
 

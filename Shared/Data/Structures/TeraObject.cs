@@ -1,4 +1,4 @@
-﻿namespace Data.Structures
+﻿namespace Tera.Data.Structures
 {
     public abstract class TeraObject : Uid
     {

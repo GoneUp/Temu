@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Hik.Communication.ScsServices.Service
+namespace Tera.NetworkApi.Communication.ScsServices.Service
 {
     /// <summary>
     /// Base class for all services that is serviced by IScsServiceApplication.

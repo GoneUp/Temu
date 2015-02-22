@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpSystemNotice : ASendPacket
     {
@@ -15,13 +15,13 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, 15); //Text shift
-            WriteH(writer, 1);
-            WriteC(writer, 0x99);
-            WriteC(writer, 0xFF);
-            WriteC(writer, 0);
-            WriteD(writer, TimeoutSeconds);
-            WriteS(writer, Text);
+            WriteWord(writer, 15); //Text shift
+            WriteWord(writer, 1);
+            WriteByte(writer, 0x99);
+            WriteByte(writer, 0xFF);
+            WriteByte(writer, 0);
+            WriteDword(writer, TimeoutSeconds);
+            WriteString(writer, Text);
         }
     }
 }

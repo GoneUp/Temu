@@ -1,10 +1,10 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using Data.Structures.SkillEngine;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.SkillEngine;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpAttack : ASendPacket
     {
@@ -27,31 +27,31 @@ namespace Network.Server
 
             if (Attack.Stage == 0)
             {
-                WriteH(writer, 1); //Unk count
-                WriteH(writer, 50); //Shift
+                WriteWord(writer, 1); //Unk count
+                WriteWord(writer, 50); //Shift
             }
             else
-                WriteD(writer, 0);
+                WriteDword(writer, 0);
 
             WriteUid(writer, Creature);
-            WriteF(writer, Attack.Args.StartPosition.X);
-            WriteF(writer, Attack.Args.StartPosition.Y);
-            WriteF(writer, Attack.Args.StartPosition.Z);
-            WriteH(writer, Attack.Args.StartPosition.Heading);
-            WriteD(writer, model);
-            WriteD(writer, Attack.Args.SkillId + 0x4000000);
-            WriteD(writer, Attack.Stage);
-            WriteF(writer, Creature.Attack.Speed);
+            WriteSingle(writer, Attack.Args.StartPosition.X);
+            WriteSingle(writer, Attack.Args.StartPosition.Y);
+            WriteSingle(writer, Attack.Args.StartPosition.Z);
+            WriteWord(writer, Attack.Args.StartPosition.Heading);
+            WriteDword(writer, model);
+            WriteDword(writer, Attack.Args.SkillId + 0x4000000);
+            WriteDword(writer, Attack.Stage);
+            WriteSingle(writer, Creature.Attack.Speed);
 
             if (Creature is Player)
-                WriteD(writer, Attack.UID);
+                WriteDword(writer, Attack.UID);
             else
-                WriteD(writer, 0);
+                WriteDword(writer, 0);
 
             if (Attack.Stage == 0)
             {
-                WriteB(writer, "000032000000000000000000803F0000803F");
-                WriteD(writer, Attack.UID);
+                WriteByte(writer, "000032000000000000000000803F0000803F");
+                WriteDword(writer, Attack.UID);
             }
         }
     }

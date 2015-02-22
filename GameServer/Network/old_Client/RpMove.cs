@@ -1,7 +1,7 @@
-﻿using Communication.Logic;
-using Data.Enums.Player;
+﻿using Tera.Communication.Logic;
+using Tera.Data.Enums.Player;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpMove : ARecvPacket
     {

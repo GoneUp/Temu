@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Data.Enums.SkillEngine;
+using Tera.Data.Enums.SkillEngine;
 
-namespace Data.Structures.SkillEngine
+namespace Tera.Data.Structures.SkillEngine
 {
     [ProtoBuf.ProtoContract]
     public class Targeting

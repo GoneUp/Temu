@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
+using Tera.Data.Structures.Creature;
 using Utils;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpNpcHpWindow : ASendPacket
     {
@@ -20,28 +20,28 @@ namespace Network.Server
 
             lock (Creature.EffectsLock)
             {
-                WriteH(writer, (short) Creature.Effects.Count);
+                WriteWord(writer, (short) Creature.Effects.Count);
                 int effectShift = (int) writer.BaseStream.Position;
-                WriteH(writer, 0); //first Abnormal shift
-                WriteD(writer, 0); //unk
+                WriteWord(writer, 0); //first Abnormal shift
+                WriteDword(writer, 0); //unk
                 WriteUid(writer, Creature);
-                WriteF(writer, (Creature.LifeStats.Hp/(Creature.MaxHp/100F))/100F);
-                WriteD(writer, 0);
-                WriteD(writer, Creature.GetLevel()); //npc level
-                WriteB(writer, "00000000000000000000000000000000401F000005000000".HexSringToBytes()); // ololo o_O
+                WriteSingle(writer, (Creature.LifeStats.Hp/(Creature.MaxHp/100F))/100F);
+                WriteDword(writer, 0);
+                WriteDword(writer, Creature.GetLevel()); //npc level
+                WriteByte(writer, "00000000000000000000000000000000401F000005000000".HexSringToBytes()); // ololo o_O
 
                 for (int i = 0; i < Creature.Effects.Count; i++)
                 {
                     writer.Seek(effectShift, SeekOrigin.Begin);
-                    WriteH(writer, (short) writer.BaseStream.Length);
+                    WriteWord(writer, (short) writer.BaseStream.Length);
                     writer.Seek(0, SeekOrigin.End);
 
-                    WriteH(writer, (short) writer.BaseStream.Length);
+                    WriteWord(writer, (short) writer.BaseStream.Length);
                     effectShift = (int) writer.BaseStream.Position;
-                    WriteH(writer, 0); //posible next Abnormal shift
-                    WriteD(writer, Creature.Effects[i].Abnormality.Id);
-                    WriteD(writer, Creature.Effects[i].TimeRemain);
-                    WriteD(writer, 1);
+                    WriteWord(writer, 0); //posible next Abnormal shift
+                    WriteDword(writer, Creature.Effects[i].Abnormality.Id);
+                    WriteDword(writer, Creature.Effects[i].TimeRemain);
+                    WriteDword(writer, 1);
                 }
             }
         }

@@ -1,6 +1,6 @@
-﻿using Data.Enums;
+﻿using Tera.Data.Enums;
 
-namespace Data.Structures.Template.Item
+namespace Tera.Data.Structures.Template.Item
 {
     [ProtoBuf.ProtoContract]
     public class Passivity

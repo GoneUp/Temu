@@ -1,6 +1,6 @@
-﻿using Data.Enums;
+﻿using Tera.Data.Enums;
 
-namespace Data.Structures.World.Requests
+namespace Tera.Data.Structures.World.Requests
 {
     /// <summary>
     /// When player requests to extract an item.

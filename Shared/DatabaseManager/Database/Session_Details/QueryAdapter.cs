@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Database_Manager.Database;
 using Database_Manager.Session_Details.Interfaces;
 using MySql.Data.MySqlClient;

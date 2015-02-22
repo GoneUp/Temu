@@ -1,10 +1,10 @@
 ﻿using System;
-using Communication;
-using Data.Enums;
-using Data.Interfaces;
-using Data.Structures.Player;
-using Data.Structures.World;
-using Network.Server;
+using Tera.Communication;
+using Tera.Data.Enums;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
+using Tera.Network.old_Server;
 using Tera.Services;
 using Utils;
 using Utils.Logger;

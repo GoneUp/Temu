@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Hik.Communication.ScsServices.Service
+namespace Tera.NetworkApi.Communication.ScsServices.Service
 {
     /// <summary>
     /// Represents a SCS Service Application that is used to construct and manage a SCS service.

@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Enums;
-using Data.Structures.Npc;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Npc;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpNpcIcon : ASendPacket //len 17
     {
@@ -20,8 +20,8 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Npc);
-            WriteD(writer, Icon.GetHashCode());
-            WriteC(writer, Status);
+            WriteDword(writer, Icon.GetHashCode());
+            WriteByte(writer, Status);
         }
     }
 }

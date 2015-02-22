@@ -3,11 +3,11 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Communication;
-using Hik.Threading;
 using System;
+using Tera.NetworkApi.Communication.Scs.Communication;
+using Tera.NetworkApi.Threading;
 
-namespace Hik.Communication.Scs.Client
+namespace Tera.NetworkApi.Communication.Scs.Client
 {
     /// <summary>
     /// This class is used to automatically re-connect to server if disconnected.

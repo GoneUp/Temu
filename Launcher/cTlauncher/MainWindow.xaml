@@ -1,4 +1,4 @@
-﻿<Window x:Name="MainForm" x:Class="cTlauncher.MainWindow"
+﻿<Window x:Name="MainForm" x:Class="Tera.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="214.232" Width="741.404" Loaded="MainForm_Loaded" ResizeMode="NoResize" Background="#FF355870">

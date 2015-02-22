@@ -1,4 +1,4 @@
-﻿namespace Data.Structures.Creature
+﻿namespace Tera.Data.Structures.Creature
 {
     public class CreatureLifeStats
     {

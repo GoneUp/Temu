@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Data.Interfaces;
-using Data.Structures.Player;
-using Data.Structures.World.Party;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World.Party;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IPartyService : IComponent
     {

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
-using Data.Enums;
-using Data.Interfaces;
-using Data.Structures.Quest.Enums;
+using Tera.Data.Enums;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Quest.Enums;
 
-namespace Data.Structures.Quest
+namespace Tera.Data.Structures.Quest
 {
     [ProtoBuf.ProtoContract]
     public class Quest

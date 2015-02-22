@@ -1,16 +1,12 @@
-﻿using Data.Enums.Item;
-using Data.Structures.Account;
-using Data.Structures.Player;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Utils;
+using MySql.Data.MySqlClient;
+using Tera.Data.Enums.Item;
+using Tera.Data.Structures.Account;
+using Tera.Data.Structures.Player;
 using Utils.Logger;
 
-namespace Data.DAO
+namespace Tera.Data.DAO
 {
     public class InventoryDAO : DAOManager
     {
@@ -103,12 +99,12 @@ namespace Data.DAO
             return storage;
         }
 
-        public Storage LoadAccountStorage(Account account)
+        public Storage LoadAccountStorage(GameAccount gameAccount)
         {
             string SQL = "SELECT * FROM `inventory` WHERE "
                 + "`accountname` = ?accountname AND `storagetype` = ?type";
             MySqlCommand cmd = new MySqlCommand(SQL, InventoryDAOConnection);
-            cmd.Parameters.AddWithValue("?accountname", account.Username);
+            cmd.Parameters.AddWithValue("?accountname", gameAccount.Username);
             cmd.Parameters.AddWithValue("?type", StorageType.AccountWarehouse.ToString());
             MySqlDataReader LoadAccountStorageReader = cmd.ExecuteReader();
 

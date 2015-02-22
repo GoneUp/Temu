@@ -1,5 +1,7 @@
 ﻿
-namespace Network.Client
+using Tera.Data.Enums.Item;
+
+namespace Tera.Network.old_Client
 {
     class RpWarehouseAddItemToInventory : ARecvPacket
     {
@@ -49,8 +51,8 @@ namespace Network.Client
             Communication.Global.StorageService.PlaceItemToOtherStorage(Connection.Player, Connection.Player,
                                                                         Connection.Player.CharacterWarehouse, FromSlot,
                                                                         Connection.Player.Inventory, ToSlot, Count);
-            Communication.Global.StorageService.ShowPlayerStorage(Connection.Player, Data.Enums.Item.StorageType.Inventory);
-            Communication.Global.StorageService.ShowPlayerStorage(Connection.Player, Data.Enums.Item.StorageType.CharacterWarehouse, false, Offset % 72 != 0 ? 0 : Offset);
+            Communication.Global.StorageService.ShowPlayerStorage(Connection.Player, StorageType.Inventory);
+            Communication.Global.StorageService.ShowPlayerStorage(Connection.Player, StorageType.CharacterWarehouse, false, Offset % 72 != 0 ? 0 : Offset);
         }
     }
 }

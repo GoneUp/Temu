@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpSkillCooldown : ASendPacket
     {
@@ -15,8 +15,8 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, SkillId);
-            WriteD(writer, Time);
+            WriteDword(writer, SkillId);
+            WriteDword(writer, Time);
         }
     }
 }

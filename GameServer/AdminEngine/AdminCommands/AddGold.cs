@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Communication;
-using Data.Enums;
-using Data.Interfaces;
-using Data.Structures.Player;
-using Network.Server;
+using Tera.Communication;
+using Tera.Data.Enums;
+using Tera.Data.Interfaces;
+using Tera.Network.old_Server;
 using Utils;
 using Utils.Logger;
 

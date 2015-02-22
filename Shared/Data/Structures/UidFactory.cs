@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
-using Data.Enums;
-using Data.Structures.Objects;
-using Data.Structures.Player;
-using Data.Structures.SkillEngine;
-using Data.Structures.World;
-using Data.Structures.World.Requests;
-using Utils;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Objects;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.SkillEngine;
+using Tera.Data.Structures.World;
+using Tera.Data.Structures.World.Requests;
 using Utils.Logger;
 
-namespace Data.Structures
+namespace Tera.Data.Structures
 {
     public class UidFactory
     {

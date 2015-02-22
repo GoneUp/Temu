@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpRemoveCharacter : ASendPacket
     {
@@ -15,7 +15,7 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Player);
-            WriteD(writer, 1); //mb hide timer?
+            WriteDword(writer, 1); //mb hide timer?
         }
     }
 }

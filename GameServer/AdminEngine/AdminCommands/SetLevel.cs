@@ -1,5 +1,5 @@
-﻿using Communication;
-using Data.Interfaces;
+﻿using Tera.Communication;
+using Tera.Data.Interfaces;
 
 namespace Tera.AdminEngine.AdminCommands
 {

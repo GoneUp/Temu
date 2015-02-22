@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Communication.Interfaces;
-using Data.Enums;
-using Data.Structures.Creature;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using Data.Structures.Template.Item;
-using Data.Structures.Template.Item.CategorieStats;
+using Tera.Communication.Interfaces;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Template.Item;
+using Tera.Data.Structures.Template.Item.CategorieStats;
 using Utils;
 using Utils.Logger;
 

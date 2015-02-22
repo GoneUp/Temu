@@ -1,4 +1,4 @@
-﻿namespace Data.Structures.Player
+﻿namespace Tera.Data.Structures.Player
 {
     [ProtoBuf.ProtoContract]
     public class AchivesStats

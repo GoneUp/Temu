@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Data.Structures;
-using Data.Structures.Creature;
-using Data.Structures.World;
+using Tera.Data.Structures;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.World;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpUseSkill : ARecvPacket
     {

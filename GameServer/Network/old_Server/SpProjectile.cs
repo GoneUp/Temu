@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Objects;
+using Tera.Data.Structures.Objects;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpProjectile : ASendPacket // len 60
     {
@@ -15,29 +15,29 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Projectile.Parent);
-            WriteD(writer, Projectile.GetModelId());
-            WriteD(writer, 0);
+            WriteDword(writer, Projectile.GetModelId());
+            WriteDword(writer, 0);
             WriteUid(writer, Projectile);
-            WriteD(writer, Projectile.ProjectileSkill.Id);
+            WriteDword(writer, Projectile.ProjectileSkill.Id);
 
-            WriteF(writer, Projectile.Position.X);
-            WriteF(writer, Projectile.Position.Y);
-            WriteF(writer, Projectile.Position.Z);
+            WriteSingle(writer, Projectile.Position.X);
+            WriteSingle(writer, Projectile.Position.Y);
+            WriteSingle(writer, Projectile.Position.Z);
 
             if (Projectile.TargetPosition != null)
             {
-                WriteF(writer, Projectile.TargetPosition.X);
-                WriteF(writer, Projectile.TargetPosition.Y);
-                WriteF(writer, Projectile.TargetPosition.Z);
+                WriteSingle(writer, Projectile.TargetPosition.X);
+                WriteSingle(writer, Projectile.TargetPosition.Y);
+                WriteSingle(writer, Projectile.TargetPosition.Z);
             }
             else
             {
-                WriteF(writer, Projectile.Position.X);
-                WriteF(writer, Projectile.Position.Y);
-                WriteF(writer, Projectile.Position.Z);
+                WriteSingle(writer, Projectile.Position.X);
+                WriteSingle(writer, Projectile.Position.Y);
+                WriteSingle(writer, Projectile.Position.Z);
             }
 
-            WriteF(writer, Projectile.Speed); //Speed here
+            WriteSingle(writer, Projectile.Speed); //Speed here
         }
     }
 }

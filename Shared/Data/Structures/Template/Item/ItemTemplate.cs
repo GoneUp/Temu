@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Data.Enums;
-using Data.Enums.Item;
-using Data.Structures.Template.Item.CategorieStats;
+using Tera.Data.Enums;
+using Tera.Data.Enums.Item;
+using Tera.Data.Structures.Template.Item.CategorieStats;
 
-namespace Data.Structures.Template.Item
+namespace Tera.Data.Structures.Template.Item
 {
     [ProtoBuf.ProtoContract]
     public class ItemTemplate

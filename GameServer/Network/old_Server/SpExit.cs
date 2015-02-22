@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpExit : ASendPacket
     {
@@ -15,8 +15,8 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, Unk1);
-            WriteD(writer, Unk2);
+            WriteDword(writer, Unk1);
+            WriteDword(writer, Unk2);
         }
     }
 }

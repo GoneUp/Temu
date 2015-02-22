@@ -1,8 +1,7 @@
 ﻿using System.IO;
-using Data.Enums;
-using Data.Enums.Craft;
+using Tera.Data.Enums.Craft;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCraftWindow : ASendPacket
     {
@@ -15,7 +14,7 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, CraftStat.GetHashCode());
+            WriteDword(writer, CraftStat.GetHashCode());
         }
     }
 }

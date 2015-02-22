@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Data.Interfaces;
-using Data.Structures.Creature;
-using Data.Structures.SkillEngine;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.SkillEngine;
 using Utils;
 
-namespace Data.Structures.World
+namespace Tera.Data.Structures.World
 {
     public class Abnormal
     {

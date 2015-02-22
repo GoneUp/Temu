@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using Data.Enums.Item;
-using Data.Interfaces;
-using Data.Structures.Player;
+using Tera.Data.Enums.Item;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Player;
 using Utils;
 
-namespace Data.Structures.Account
+namespace Tera.Data.Structures.Account
 {
     [ProtoBuf.ProtoContract]
-    public class Account : TeraObject
+    public class GameAccount : TeraAccount
     {
         public IConnection Connection;
 
@@ -16,26 +16,12 @@ namespace Data.Structures.Account
             get { return Connection != null; }
         }
 
-        [ProtoBuf.ProtoMember(1)]
-        public int AccountId;
-
-        [ProtoBuf.ProtoMember(2)]
-        public string Username;
-        public string Password;
-        public string Email;
-        public byte AccessLevel;
-        public byte Membership;
-        public bool isGM;
-        public long LastOnlineUtc;
-        public int Coins;
-        public string Ip;
-
 
         [ProtoBuf.ProtoMember(3)]
         public List<Player.Player> Players = new List<Player.Player>();
 
         [ProtoBuf.ProtoMember(4)]
-        public byte[] UiSettings = null;
+        public string UiSettings = null;
 
         [ProtoBuf.ProtoMember(10)]
         public Storage AccountWarehouse = new Storage{StorageType = StorageType.AccountWarehouse};

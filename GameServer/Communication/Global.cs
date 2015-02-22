@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading;
-using Communication.Interfaces;
-using Data;
+using Tera.Communication.Interfaces;
+using Tera.Data;
 using Utils;
 using Utils.Logger;
 
-namespace Communication
+namespace Tera.Communication
 {
     public class Global
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Data.Structures.Guild;
-using Data.Structures.Player;
+using Tera.Data.Structures.Guild;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpGuildMemberList : ASendPacket
     {
@@ -24,61 +24,61 @@ namespace Network.Server
         {
             if (Guild == null)
             {
-                WriteH(writer, 0);
-                WriteH(writer, 0x000b);
-                WriteC(writer, 1);
-                WriteC(writer, 1);
-                WriteC(writer, 1);
+                WriteWord(writer, 0);
+                WriteWord(writer, 0x000b);
+                WriteByte(writer, 1);
+                WriteByte(writer, 1);
+                WriteByte(writer, 1);
 
                 return;
             }
 
-            WriteH(writer, (short)Guild.GuildMembers.Count);
-            WriteH(writer, 0x000b); //header end shift
-            WriteC(writer, 1);
-            WriteC(writer, 1);
-            WriteC(writer, 1);
+            WriteWord(writer, (short)Guild.GuildMembers.Count);
+            WriteWord(writer, 0x000b); //header end shift
+            WriteByte(writer, 1);
+            WriteByte(writer, 1);
+            WriteByte(writer, 1);
 
             int ch = 0;
 
             foreach (KeyValuePair<Player, int> guildMember in Guild.GuildMembers)
             {
-                WriteH(writer, (short)writer.BaseStream.Length);
+                WriteWord(writer, (short)writer.BaseStream.Length);
 
-                WriteH(writer, 0); // first member end shift
+                WriteWord(writer, 0); // first member end shift
 
                 short nameStartShiftFlag = (short)writer.BaseStream.Length;
 
-                WriteH(writer, 0); //name start shift
-                WriteH(writer, 0); //name end shift
-                WriteD(writer, guildMember.Key.PlayerId);
-                WriteB(writer, "010000000100000001000000"); // unk datas, possible curent zone
-                WriteD(writer, guildMember.Value);
-                WriteD(writer, guildMember.Key.GetLevel());
-                WriteD(writer, guildMember.Key.PlayerData.Race.GetHashCode());
-                WriteD(writer, guildMember.Key.PlayerData.Class.GetHashCode());
-                WriteD(writer, 1); //possible mapid
-                WriteD(writer, Communication.Global.PlayerService.IsPlayerOnline(guildMember.Key) ? 0 : 1);
-                WriteD(writer, guildMember.Key.LastOnlineUtc);
-                WriteD(writer, 0); // unk datas 2
-                WriteC(writer, 0); // blue bird near member name
+                WriteWord(writer, 0); //name start shift
+                WriteWord(writer, 0); //name end shift
+                WriteDword(writer, guildMember.Key.PlayerId);
+                WriteByte(writer, "010000000100000001000000"); // unk datas, possible curent zone
+                WriteDword(writer, guildMember.Value);
+                WriteDword(writer, guildMember.Key.GetLevel());
+                WriteDword(writer, guildMember.Key.PlayerData.Race.GetHashCode());
+                WriteDword(writer, guildMember.Key.PlayerData.Class.GetHashCode());
+                WriteDword(writer, 1); //possible mapid
+                WriteDword(writer, Communication.Global.PlayerService.IsPlayerOnline(guildMember.Key) ? 0 : 1);
+                WriteDword(writer, guildMember.Key.LastOnlineUtc);
+                WriteDword(writer, 0); // unk datas 2
+                WriteByte(writer, 0); // blue bird near member name
 
                 writer.Seek(nameStartShiftFlag, SeekOrigin.Begin);
-                WriteH(writer, (short)writer.BaseStream.Length);
+                WriteWord(writer, (short)writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteS(writer, guildMember.Key.PlayerData.Name);
+                WriteString(writer, guildMember.Key.PlayerData.Name);
 
                 writer.Seek(nameStartShiftFlag + 2, SeekOrigin.Begin);
-                WriteH(writer, (short)writer.BaseStream.Length);
+                WriteWord(writer, (short)writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteH(writer, 0);
+                WriteWord(writer, 0);
 
                 if (Guild.GuildMembers.Count > ch + 1)
                 {
                     writer.Seek(nameStartShiftFlag - 2, SeekOrigin.Begin);
-                    WriteH(writer, (short)writer.BaseStream.Length);
+                    WriteWord(writer, (short)writer.BaseStream.Length);
                     writer.Seek(0, SeekOrigin.End);
                 }
                 ch++;

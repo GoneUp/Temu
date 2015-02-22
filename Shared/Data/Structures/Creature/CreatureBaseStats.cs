@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using Data.Enums;
-using Data.Structures.Template.Item;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Template.Item;
 
-namespace Data.Structures.Creature
+namespace Tera.Data.Structures.Creature
 {
     [ProtoBuf.ProtoContract]
     public class CreatureBaseStats

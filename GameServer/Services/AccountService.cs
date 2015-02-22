@@ -1,9 +1,6 @@
-﻿using Communication.Interfaces;
-using Communication.Logic;
-using Data;
-using Data.DAO;
-using Data.Enums.Item;
-using Data.Interfaces;
+﻿using Tera.Communication.Interfaces;
+using Tera.Data.DAO;
+using Tera.Data.Interfaces;
 using Utils;
 
 namespace Tera.Services
@@ -13,17 +10,17 @@ namespace Tera.Services
         public void Authorized(IConnection connection, string accountName)
         {
 
-            connection.Account = DAOManager.accountDAO.LoadAccount(accountName);
-            connection.Account.AccountWarehouse = DAOManager.inventoryDAO.LoadAccountStorage(connection.Account);
-            connection.Account.Players = Communication.Global.PlayerService.OnAuthorized(connection.Account);
+            connection.GameAccount = DAOManager.accountDAO.LoadAccount(accountName);
+            connection.GameAccount.AccountWarehouse = DAOManager.inventoryDAO.LoadAccountStorage(connection.GameAccount);
+            connection.GameAccount.Players = Communication.Global.PlayerService.OnAuthorized(connection.GameAccount);
         }
 
         public void AbortExitAction(IConnection connection)
         {
-            if (connection.Account.ExitAction != null)
+            if (connection.GameAccount.ExitAction != null)
             {
-                connection.Account.ExitAction.Abort();
-                connection.Account.ExitAction = null;
+                connection.GameAccount.ExitAction.Abort();
+                connection.GameAccount.ExitAction = null;
             }
         }
 

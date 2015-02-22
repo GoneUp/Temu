@@ -1,7 +1,7 @@
 ﻿using System;
-using Data.Structures.World;
+using Tera.Data.Structures.World;
 
-namespace Data.Structures.Geometry
+namespace Tera.Data.Structures.Geometry
 {
     [ProtoBuf.ProtoContract]
     public class Point3D

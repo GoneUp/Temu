@@ -1,4 +1,4 @@
-﻿namespace Data.Structures.Template.Item.CategorieStats
+﻿namespace Tera.Data.Structures.Template.Item.CategorieStats
 {
     [ProtoBuf.ProtoContract]
     [ProtoBuf.ProtoInclude(1, typeof(ChangeColorItem))]

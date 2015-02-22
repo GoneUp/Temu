@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpExtractProgressbar : ASendPacket
     {
@@ -15,8 +15,8 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, (short) (IsForStop ? 0 : 257)); //oO
-            WriteD(writer, Counter);
+            WriteWord(writer, (short) (IsForStop ? 0 : 257)); //oO
+            WriteDword(writer, Counter);
         }
     }
 }

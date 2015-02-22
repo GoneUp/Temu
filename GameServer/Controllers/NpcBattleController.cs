@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Communication;
-using Data.Structures.Creature;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using Data.Structures.SkillEngine;
 using Tera.AiEngine;
+using Tera.Communication;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.SkillEngine;
 using Tera.SkillEngine;
 using Utils;
 

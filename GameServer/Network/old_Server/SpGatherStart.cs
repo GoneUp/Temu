@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Structures.Gather;
-using Data.Structures.Player;
+using Tera.Data.Structures.Gather;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpGatherStart : ASendPacket
     {

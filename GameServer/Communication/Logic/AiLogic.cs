@@ -1,8 +1,8 @@
-﻿using Data.Structures.Creature;
-using Data.Structures.Player;
-using Data.Structures.SkillEngine;
+﻿using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.SkillEngine;
 
-namespace Communication.Logic
+namespace Tera.Communication.Logic
 {
     public class AiLogic : Global
     {

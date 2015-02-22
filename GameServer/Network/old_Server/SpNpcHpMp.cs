@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
+using Tera.Data.Structures.Creature;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpNpcHpMp : ASendPacket
     {
@@ -18,13 +18,13 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Creature);
-            WriteF(writer, (Creature.LifeStats.Hp/(Creature.MaxHp/100F))/100F);
-            WriteC(writer, (byte) (IsFreandly ? 0 : 1));
+            WriteSingle(writer, (Creature.LifeStats.Hp/(Creature.MaxHp/100F))/100F);
+            WriteByte(writer, (byte) (IsFreandly ? 0 : 1));
 
-            WriteD(writer, 0x00000000);
-            WriteD(writer, 0x00000000);
-            WriteD(writer, 0x401F0000);
-            WriteD(writer, 0x05000000);
+            WriteDword(writer, 0x00000000);
+            WriteDword(writer, 0x00000000);
+            WriteDword(writer, 0x401F0000);
+            WriteDword(writer, 0x05000000);
         }
     }
 }

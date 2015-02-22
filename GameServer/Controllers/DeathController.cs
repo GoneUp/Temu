@@ -1,8 +1,8 @@
-﻿using Communication;
-using Communication.Logic;
-using Data.Interfaces;
-using Data.Structures.Player;
-using Network.Server;
+﻿using Tera.Communication;
+using Tera.Communication.Logic;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Player;
+using Tera.Network.old_Server;
 using Utils;
 
 namespace Tera.Controllers

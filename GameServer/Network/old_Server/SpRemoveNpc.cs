@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Npc;
+using Tera.Data.Structures.Npc;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpRemoveNpc : ASendPacket //len 32
     {
@@ -17,11 +17,11 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Npc);
-            WriteF(writer, Npc.Position.X);
-            WriteF(writer, Npc.Position.Y);
-            WriteF(writer, Npc.Position.Z);
-            WriteD(writer, DespawnType);
-            WriteD(writer, 0);
+            WriteSingle(writer, Npc.Position.X);
+            WriteSingle(writer, Npc.Position.Y);
+            WriteSingle(writer, Npc.Position.Z);
+            WriteDword(writer, DespawnType);
+            WriteDword(writer, 0);
         }
     }
 }

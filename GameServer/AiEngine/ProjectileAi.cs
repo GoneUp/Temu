@@ -1,9 +1,9 @@
-﻿using Communication;
-using Communication.Logic;
-using Data.Enums.SkillEngine;
-using Data.Structures.Creature;
-using Data.Structures.Objects;
+﻿using Tera.Communication;
+using Tera.Communication.Logic;
 using Tera.Controllers;
+using Tera.Data.Enums.SkillEngine;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Objects;
 using Utils;
 
 namespace Tera.AiEngine

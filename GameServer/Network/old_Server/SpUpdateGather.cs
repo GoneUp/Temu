@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Enums.Gather;
+using Tera.Data.Enums.Gather;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpUpdateGather : ASendPacket
     {
@@ -16,8 +16,8 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, Type.GetHashCode());
-            WriteH(writer, Value);
+            WriteDword(writer, Type.GetHashCode());
+            WriteWord(writer, Value);
         }
     }
 }

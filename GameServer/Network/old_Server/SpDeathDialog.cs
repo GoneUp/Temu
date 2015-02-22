@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpDeathDialog : ASendPacket
     {
@@ -13,10 +13,10 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, 30); //Timeout in minutes
-            WriteD(writer, CurrentSection);
-            WriteD(writer, 0);
-            WriteH(writer, 0);
+            WriteDword(writer, 30); //Timeout in minutes
+            WriteDword(writer, CurrentSection);
+            WriteDword(writer, 0);
+            WriteWord(writer, 0);
         }
     }
 }

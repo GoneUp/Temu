@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Data.Structures.Player;
-using Data.Structures.Template.Item;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Template.Item;
 using Utils;
 
-namespace Data.Structures.World
+namespace Tera.Data.Structures.World
 {
     public class ShoppingCart
     {

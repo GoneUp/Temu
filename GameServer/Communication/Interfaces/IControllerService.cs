@@ -1,7 +1,7 @@
-﻿using Data.Interfaces;
-using Data.Structures.Player;
+﻿using Tera.Data.Interfaces;
+using Tera.Data.Structures.Player;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IControllerService : IComponent
     {

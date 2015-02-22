@@ -1,6 +1,6 @@
-﻿using Communication.Interfaces;
-using Data.Structures.Player;
+﻿using Tera.Communication.Interfaces;
 using Tera.Controllers;
+using Tera.Data.Structures.Player;
 
 namespace Tera.Services
 {

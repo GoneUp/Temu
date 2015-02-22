@@ -1,4 +1,4 @@
-﻿namespace Data.Enums.Player
+﻿namespace Tera.Data.Enums.Player
 {
     public enum PlayerMoveType
     {

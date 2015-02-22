@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCharacterThings : ASendPacket
     {
@@ -16,24 +16,24 @@ namespace Network.Server
         {
             WriteUid(writer, Player);
 
-            WriteD(writer, Player.Inventory.GetItemId(1) ?? 0); //Item (hands)
-            WriteD(writer, Player.Inventory.GetItemId(3) ?? 0); //Item (body)
-            WriteD(writer, Player.Inventory.GetItemId(4) ?? 0); //Item (gloves)
-            WriteD(writer, Player.Inventory.GetItemId(5) ?? 0); //Item (shoes)
-            WriteD(writer, 0); //Item ???
-            WriteD(writer, 0); //Item ???
-            WriteD(writer, 0); //Item ???
-            WriteD(writer, 0); //Item ???
-            WriteD(writer, 0); //Item ???
-            WriteD(writer, 0); //Item ???
+            WriteDword(writer, Player.Inventory.GetItemId(1) ?? 0); //Item (hands)
+            WriteDword(writer, Player.Inventory.GetItemId(3) ?? 0); //Item (body)
+            WriteDword(writer, Player.Inventory.GetItemId(4) ?? 0); //Item (gloves)
+            WriteDword(writer, Player.Inventory.GetItemId(5) ?? 0); //Item (shoes)
+            WriteDword(writer, 0); //Item ???
+            WriteDword(writer, 0); //Item ???
+            WriteDword(writer, 0); //Item ???
+            WriteDword(writer, 0); //Item ???
+            WriteDword(writer, 0); //Item ???
+            WriteDword(writer, 0); //Item ???
 
-            WriteD(writer, Player.Inventory.GetItem(1) != null ? Player.Inventory.GetItem(1).Color : 0);
-            WriteD(writer, Player.Inventory.GetItem(3) != null ? Player.Inventory.GetItem(3).Color : 0);
-            WriteD(writer, Player.Inventory.GetItem(4) != null ? Player.Inventory.GetItem(4).Color : 0);
-            WriteD(writer, Player.Inventory.GetItem(5) != null ? Player.Inventory.GetItem(5).Color : 0); WriteD(writer, 0); //Item ???
-            WriteD(writer, 0); //Item ???
-            WriteD(writer, 0); //Item ???
-            WriteD(writer, 0); //Item ???
+            WriteDword(writer, Player.Inventory.GetItem(1) != null ? Player.Inventory.GetItem(1).Color : 0);
+            WriteDword(writer, Player.Inventory.GetItem(3) != null ? Player.Inventory.GetItem(3).Color : 0);
+            WriteDword(writer, Player.Inventory.GetItem(4) != null ? Player.Inventory.GetItem(4).Color : 0);
+            WriteDword(writer, Player.Inventory.GetItem(5) != null ? Player.Inventory.GetItem(5).Color : 0); WriteDword(writer, 0); //Item ???
+            WriteDword(writer, 0); //Item ???
+            WriteDword(writer, 0); //Item ???
+            WriteDword(writer, 0); //Item ???
         }
     }
 }

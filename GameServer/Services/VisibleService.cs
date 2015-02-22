@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Communication.Interfaces;
-using Data.Enums.SkillEngine;
-using Data.Interfaces;
-using Data.Structures.Creature;
-using Data.Structures.Geometry;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using Data.Structures.World;
+using Tera.Communication.Interfaces;
+using Tera.Data.Enums.SkillEngine;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Geometry;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
 using Tera.Extensions;
 
 namespace Tera.Services

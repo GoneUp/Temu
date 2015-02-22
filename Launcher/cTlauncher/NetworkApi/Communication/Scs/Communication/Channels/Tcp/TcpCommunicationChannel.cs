@@ -3,16 +3,14 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Communication;
-using Hik.Communication.Scs.Communication.Channels;
-using Hik.Communication.Scs.Communication.EndPoints;
-using Hik.Communication.Scs.Communication.EndPoints.Tcp;
-using Hik.Communication.Scs.Communication.Messages;
 using System;
 using System.Net;
 using System.Net.Sockets;
+using Tera.NetworkApi.Communication.Scs.Communication.EndPoints;
+using Tera.NetworkApi.Communication.Scs.Communication.EndPoints.Tcp;
+using Tera.NetworkApi.Communication.Scs.Communication.Messages;
 
-namespace Hik.Communication.Scs.Communication.Channels.Tcp
+namespace Tera.NetworkApi.Communication.Scs.Communication.Channels.Tcp
 {
     /// <summary>
     /// This class is used to communicate with a remote application over TCP/IP protocol.

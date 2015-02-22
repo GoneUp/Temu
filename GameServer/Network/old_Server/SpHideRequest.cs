@@ -1,8 +1,7 @@
-﻿using Data.Structures.Player;
-using Data.Structures.World.Requests;
-using System.IO;
+﻿using System.IO;
+using Tera.Data.Structures.World.Requests;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpHideRequest : ASendPacket
     {
@@ -18,8 +17,8 @@ namespace Network.Server
             // todo places
             WriteUid(writer, Request.Owner);
             WriteUid(writer, Request.Target);
-            WriteD(writer, (int)Request.Type);
-            WriteD(writer, Request.UID);
+            WriteDword(writer, (int)Request.Type);
+            WriteDword(writer, Request.UID);
         }
     }
 }

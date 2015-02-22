@@ -1,20 +1,20 @@
-﻿using Data.Enums;
-using Data.Enums.Player;
-using Data.Interfaces;
-using Data.Structures;
-using Data.Structures.Account;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Tera.Data.Enums;
+using Tera.Data.Enums.Player;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures;
+using Tera.Data.Structures.Account;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IPlayerService : IComponent
     {
         List<Player> GetOnline();
         void Send(ISendPacket packet);
         void InitPlayer(Player player, bool isProlog);
-        List<Player> OnAuthorized(Account account);
+        List<Player> OnAuthorized(GameAccount gameAccount);
         void PlayerEnterWorld(Player player);
         void PlayerEndGame(Player player);
         CheckNameResult CheckName(string name, short type);

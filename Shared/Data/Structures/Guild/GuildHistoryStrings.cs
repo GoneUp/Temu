@@ -1,4 +1,4 @@
-﻿namespace Data.Structures.Guild
+﻿namespace Tera.Data.Structures.Guild
 {
     public class GuildHistoryStrings
     {

@@ -1,6 +1,6 @@
-﻿using Data.Enums.Gather;
+﻿using Tera.Data.Enums.Gather;
 
-namespace Data.Structures.Template
+namespace Tera.Data.Structures.Template
 {
     [ProtoBuf.ProtoContract]
     public class GatherTemplate

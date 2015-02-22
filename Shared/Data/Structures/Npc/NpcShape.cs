@@ -1,4 +1,4 @@
-﻿namespace Data.Structures.Npc
+﻿namespace Tera.Data.Structures.Npc
 {
     [ProtoBuf.ProtoContract]
     public class NpcShape

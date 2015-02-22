@@ -1,24 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Data;
-using Data.Enums;
-using Data.Enums.Player;
-using Data.Interfaces;
-using Data.Structures;
-using Data.Structures.Creature;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using Data.Structures.SkillEngine;
-using Data.Structures.World;
-using Data.DAO;
+using Tera.Data;
+using Tera.Data.Enums;
+using Tera.Data.Enums.Player;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.SkillEngine;
+using Tera.Data.Structures.World;
 
-namespace Communication.Logic
+namespace Tera.Communication.Logic
 {
     public class PlayerLogic : Global
     {
         public static void PlayerSelected(IConnection connection, int playerId, bool isProlog)
         {
-            connection.Player = connection.Account.Players.FirstOrDefault(player => player.PlayerId == playerId);
+            connection.Player = connection.GameAccount.Players.FirstOrDefault(player => player.PlayerId == playerId);
 
             if(connection.Player == null)
                 return;
@@ -69,7 +68,7 @@ namespace Communication.Logic
 
         public static void CreateCharacter(IConnection connection, PlayerData playerData)
         {
-            if (connection.Account.Players.Count >= 8
+            if (connection.GameAccount.Players.Count >= 8
                 || PlayerService.CheckName(playerData.Name, 1) != CheckNameResult.Ok
                 || !PlayerService.CheckNameForUse(playerData.Name, 1))
             {

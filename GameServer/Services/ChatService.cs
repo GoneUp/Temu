@@ -1,10 +1,9 @@
-﻿using Communication;
-using Communication.Interfaces;
-using Data.Enums;
-using Data.Interfaces;
-using Data.Structures;
-using Data.Structures.Player;
-using Network.Server;
+﻿using Tera.Communication;
+using Tera.Communication.Interfaces;
+using Tera.Data.Enums;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Player;
+using Tera.Network.old_Server;
 
 namespace Tera.Services
 {

@@ -1,5 +1,5 @@
-﻿using Data.Interfaces;
-using Data.Structures.Player;
+﻿using Tera.Data.Interfaces;
+using Tera.Data.Structures.Player;
 
 namespace Tera.Controllers
 {

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCraftProgress : ASendPacket
     {
@@ -20,11 +20,11 @@ namespace Network.Server
         }
         public override void Write(BinaryWriter writer)
         {
-            WriteC(writer, Unk);
-            WriteC(writer, State);
-            WriteH(writer, Unk2);
-            WriteC(writer, Unk3);
-            WriteC(writer, Unk4);
+            WriteByte(writer, Unk);
+            WriteByte(writer, State);
+            WriteWord(writer, Unk2);
+            WriteByte(writer, Unk3);
+            WriteByte(writer, Unk4);
         }
     }
 }

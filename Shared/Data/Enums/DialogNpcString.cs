@@ -1,4 +1,4 @@
-﻿namespace Data.Enums
+﻿namespace Tera.Data.Enums
 {
     //@npc:DialogNpcString
     public enum DialogNpcString

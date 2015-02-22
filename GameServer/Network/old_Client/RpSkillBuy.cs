@@ -1,6 +1,6 @@
-﻿using Communication.Logic;
+﻿using Tera.Communication.Logic;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpSkillBuy : ARecvPacket
     {

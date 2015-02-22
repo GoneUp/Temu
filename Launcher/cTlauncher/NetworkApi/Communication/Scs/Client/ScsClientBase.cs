@@ -3,15 +3,15 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Communication;
-using Hik.Communication.Scs.Communication.Channels;
-using Hik.Communication.Scs.Communication.Messages;
-using Hik.Communication.Scs.Communication.Messengers;
-using Hik.Communication.Scs.Communication.Protocols;
-using Hik.Threading;
 using System;
+using Tera.NetworkApi.Communication.Scs.Communication;
+using Tera.NetworkApi.Communication.Scs.Communication.Channels;
+using Tera.NetworkApi.Communication.Scs.Communication.Messages;
+using Tera.NetworkApi.Communication.Scs.Communication.Messengers;
+using Tera.NetworkApi.Communication.Scs.Communication.Protocols;
+using Tera.NetworkApi.Threading;
 
-namespace Hik.Communication.Scs.Client
+namespace Tera.NetworkApi.Communication.Scs.Client
 {
     /// <summary>
     /// This class provides base functionality for client classes.
@@ -185,7 +185,7 @@ namespace Hik.Communication.Scs.Client
         /// Sends a message to the server.
         /// 
         /// </summary>
-        /// <param name="message">Message to be sent</param><exception cref="T:Hik.Communication.Scs.Communication.CommunicationStateException">Throws a CommunicationStateException if client is not connected to the server.</exception>
+        /// <param name="message">Message to be sent</param><exception cref="T:Tera.NetworkApi.Communication.Scs.Communication.CommunicationStateException">Throws a CommunicationStateException if client is not connected to the server.</exception>
         public void SendMessage(IScsMessage message)
         {
             if (this.CommunicationState != CommunicationStates.Connected)

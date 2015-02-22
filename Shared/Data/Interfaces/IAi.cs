@@ -1,7 +1,7 @@
-﻿using Data.Structures.Creature;
-using Data.Structures.SkillEngine;
+﻿using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.SkillEngine;
 
-namespace Data.Interfaces
+namespace Tera.Data.Interfaces
 {
     public interface IAi
     {

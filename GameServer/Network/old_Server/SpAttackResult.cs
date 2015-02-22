@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
-using Data.Structures.World;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.World;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpAttackResult : ASendPacket
     {
@@ -36,51 +36,51 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, (short) (VisualEffect != null ? VisualEffect.Times.Count : 0)); //count of timesteps
+            WriteWord(writer, (short) (VisualEffect != null ? VisualEffect.Times.Count : 0)); //count of timesteps
             int timesShift = (int) writer.BaseStream.Position;
-            WriteH(writer, 0); //shift
+            WriteWord(writer, 0); //shift
 
             WriteUid(writer, Creature); //attacker uniqueid
             WriteUid(writer, Target); //target unique id
 
-            WriteD(writer, Creature.GetModelId());
-            WriteD(writer, SkillId + 0x4000000);
-            WriteQ(writer, 0);
-            WriteD(writer, AttackUid);
+            WriteDword(writer, Creature.GetModelId());
+            WriteDword(writer, SkillId + 0x4000000);
+            WriteLong(writer, 0);
+            WriteDword(writer, AttackUid);
 
-            WriteD(writer, 0);
+            WriteDword(writer, 0);
 
-            WriteD(writer, Damage); //damage ;)
-            WriteD(writer, AttackType); // 1 - Normal, 65537 - Critical
-            WriteC(writer, 0);
+            WriteDword(writer, Damage); //damage ;)
+            WriteDword(writer, AttackType); // 1 - Normal, 65537 - Critical
+            WriteByte(writer, 0);
 
             if (VisualEffect != null)
             {
-                WriteF(writer, VisualEffect.Position.X);
-                WriteF(writer, VisualEffect.Position.Y);
-                WriteF(writer, VisualEffect.Position.Z);
-                WriteH(writer, VisualEffect.Position.Heading);
+                WriteSingle(writer, VisualEffect.Position.X);
+                WriteSingle(writer, VisualEffect.Position.Y);
+                WriteSingle(writer, VisualEffect.Position.Z);
+                WriteWord(writer, VisualEffect.Position.Heading);
 
-                WriteD(writer, VisualEffect.Type.GetHashCode());
-                WriteD(writer, 0);
-                WriteD(writer, AttackUid);
+                WriteDword(writer, VisualEffect.Type.GetHashCode());
+                WriteDword(writer, 0);
+                WriteDword(writer, AttackUid);
 
                 foreach (int time in VisualEffect.Times)
                 {
                     writer.Seek(timesShift, SeekOrigin.Begin);
-                    WriteH(writer, (short) writer.BaseStream.Length);
+                    WriteWord(writer, (short) writer.BaseStream.Length);
                     writer.Seek(0, SeekOrigin.End);
 
-                    WriteH(writer, (short) writer.BaseStream.Position);
+                    WriteWord(writer, (short) writer.BaseStream.Position);
                     timesShift = (int) writer.BaseStream.Position;
-                    WriteH(writer, 0);
+                    WriteWord(writer, 0);
 
-                    WriteD(writer, time);
-                    WriteB(writer, "0000803F0000803F000080BF");
+                    WriteDword(writer, time);
+                    WriteByte(writer, "0000803F0000803F000080BF");
                 }
             }
             else
-                WriteB(writer, new byte[27]); //unk
+                WriteByte(writer, new byte[27]); //unk
         }
     }
 }

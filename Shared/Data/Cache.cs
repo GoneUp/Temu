@@ -2,19 +2,19 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Data.Structures.Account;
-using Data.Structures.Guild;
-using Data.Structures.Player;
 using ProtoBuf;
+using Tera.Data.DAO;
+using Tera.Data.Structures.Account;
+using Tera.Data.Structures.Guild;
+using Tera.Data.Structures.Player;
 using Utils;
 using Utils.Logger;
-using Data.DAO;
 
-namespace Data
+namespace Tera.Data
 {
     public class Cache
     {
-        protected static Dictionary<string, Account> Accounts;
+        protected static Dictionary<string, GameAccount> Accounts;
         public static Dictionary<int, Guild> Guilds; 
 
         public static List<string> UsedNames = new List<string>();
@@ -34,17 +34,17 @@ namespace Data
             if (!File.Exists("cache.bin"))
             {
                 Logger.WriteLine(LogState.Warn, "Data: Cache file not found!");
-                Accounts = new Dictionary<string, Account>();
+                Accounts = new Dictionary<string, GameAccount>();
                 return;
             }
             using (FileStream fs = File.OpenRead("cache.bin"))
             {
-                Accounts = Serializer.DeserializeWithLengthPrefix<Dictionary<string, Account>>(fs, PrefixStyle.Fixed32);
+                Accounts = Serializer.DeserializeWithLengthPrefix<Dictionary<string, GameAccount>>(fs, PrefixStyle.Fixed32);
             }
             if (Accounts == null)
-                Accounts = new Dictionary<string, Account>();
+                Accounts = new Dictionary<string, GameAccount>();
 
-            foreach (KeyValuePair<string, Account> account in Accounts)
+            foreach (KeyValuePair<string, GameAccount> account in Accounts)
             {
                 DAOManager.accountDAO.SaveAccount(account.Value);
                 foreach (Player player in account.Value.Players)
@@ -123,19 +123,19 @@ namespace Data
                 , (stopwatch.ElapsedMilliseconds / 1000.0).ToString("0.00"), Guilds.Count);
         }
 
-        public static Account GetAccount(string accountName)
+        public static GameAccount GetAccount(string accountName)
         {
             string key = accountName.ToLower();
 
             if (!Accounts.ContainsKey(key))
-                Accounts.Add(key, new Account {Username = accountName});
+                Accounts.Add(key, new GameAccount {Username = accountName});
 
             return Accounts[key];
         }
 
         public static void RestorePlayerGuilds()
         {
-            foreach (KeyValuePair<string, Account> account in Accounts)
+            foreach (KeyValuePair<string, GameAccount> account in Accounts)
                 foreach (var pl in account.Value.Players)
                     if (pl.GuildIdAndRank.Key != 0 && Guilds.ContainsKey(pl.GuildIdAndRank.Key))
                     {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Data.Enums.Craft;
-using Data.Enums.Gather;
+using Tera.Data.Enums.Craft;
+using Tera.Data.Enums.Gather;
 
-namespace Data.Structures.Player
+namespace Tera.Data.Structures.Player
 {
     [ProtoBuf.ProtoContract]
     public class PlayerCraftStats

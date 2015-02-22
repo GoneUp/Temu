@@ -1,6 +1,6 @@
-﻿using Data.Structures.World;
+﻿using Tera.Data.Structures.World;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IGeoService : IComponent
     {

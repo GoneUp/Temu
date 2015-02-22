@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using Communication;
-using Data.Enums;
-using Data.Enums.Craft;
-using Data.Enums.Item;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using Data.Structures.Quest;
-using Data.Structures.World;
-using Data.Structures.World.Requests;
-using Network.Server;
+using Tera.Communication;
+using Tera.Data.Enums;
+using Tera.Data.Enums.Craft;
+using Tera.Data.Enums.Item;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Quest;
+using Tera.Data.Structures.World;
+using Tera.Data.Structures.World.Requests;
 using Tera.Extensions;
+using Tera.Network.old_Server;
 
 namespace Tera.Controllers
 {

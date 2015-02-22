@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpComplitedQuests : ASendPacket
     {
@@ -14,21 +14,21 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, (short) QuestsIds.Count);
+            WriteWord(writer, (short) QuestsIds.Count);
             int shift = (int) writer.BaseStream.Position;
-            WriteH(writer, 0);
+            WriteWord(writer, 0);
 
             for (int i = 0; i < QuestsIds.Count; i++)
             {
                 writer.Seek(shift, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 shift = (int) writer.BaseStream.Position;
-                WriteH(writer, 0);
+                WriteWord(writer, 0);
 
-                WriteD(writer, QuestsIds[i]);
+                WriteDword(writer, QuestsIds[i]);
             }
         }
     }

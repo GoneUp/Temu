@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCharacterDeath : ASendPacket
     {
@@ -17,10 +17,10 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Player);
-            WriteF(writer, Player.Position.X);
-            WriteF(writer, Player.Position.Y);
-            WriteF(writer, Player.Position.Z);
-            WriteH(writer, (short) (IsDeath ? 0 : 1));
+            WriteSingle(writer, Player.Position.X);
+            WriteSingle(writer, Player.Position.Y);
+            WriteSingle(writer, Player.Position.Z);
+            WriteWord(writer, (short) (IsDeath ? 0 : 1));
         }
     }
 }

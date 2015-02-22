@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Data.Enums;
-using Data.Interfaces;
+using Tera.Data.Enums;
+using Tera.Data.Interfaces;
 
-namespace Data.Structures.Quest
+namespace Tera.Data.Structures.Quest
 {
     [ProtoBuf.ProtoContract]
     public class QuestStep

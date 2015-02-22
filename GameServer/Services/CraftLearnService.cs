@@ -1,8 +1,8 @@
-﻿using Communication.Interfaces;
-using Data.Enums.Craft;
-using Data.Enums.Gather;
-using Data.Structures.Player;
-using Network.Server;
+﻿using Tera.Communication.Interfaces;
+using Tera.Data.Enums.Craft;
+using Tera.Data.Enums.Gather;
+using Tera.Data.Structures.Player;
+using Tera.Network.old_Server;
 
 namespace Tera.Services
 {

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Communication.Interfaces;
-using Data.Enums.Player;
-using Data.Structures.Player;
-using Network.Server;
+using Tera.Communication.Interfaces;
+using Tera.Data.Enums.Player;
+using Tera.Data.Structures.Player;
 using Tera.Extensions;
+using Tera.Network.old_Server;
 
 namespace Tera.Services
 {

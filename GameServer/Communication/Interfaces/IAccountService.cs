@@ -1,6 +1,6 @@
-﻿using Data.Interfaces;
+﻿using Tera.Data.Interfaces;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IAccountService : IComponent
     {

@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Gather;
+using Tera.Data.Structures.Gather;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpRemoveGather : ASendPacket
     {
@@ -17,7 +17,7 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Gather);
-            WriteC(writer, DespawnType);
+            WriteByte(writer, DespawnType);
         }
     }
 }

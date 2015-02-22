@@ -1,9 +1,8 @@
-﻿using Data.Enums;
-using Data.Structures.Geometry;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using Data.Structures.Template.Item;
-using Data.Structures.World;
+﻿using Tera.Data.Enums;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Template.Item;
+using Tera.Data.Structures.World;
 using Utils;
 
 namespace Tera.SkillEngine

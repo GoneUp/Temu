@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
+using Tera.Data.Structures.Creature;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpNpcEmotion : ASendPacket //len 32
     {
@@ -21,9 +21,9 @@ namespace Network.Server
             WriteUid(writer, Creature);
             WriteUid(writer, Target);
 
-            WriteD(writer, 0);
-            WriteD(writer, Emotion);
-            WriteD(writer, 0);
+            WriteDword(writer, 0);
+            WriteDword(writer, Emotion);
+            WriteDword(writer, 0);
         }
     }
 }

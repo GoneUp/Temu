@@ -1,4 +1,4 @@
-﻿using Data.Structures.World;
+﻿using Tera.Data.Structures.World;
 using Tera.SkillEngine.Effects;
 
 namespace Tera.SkillEngine

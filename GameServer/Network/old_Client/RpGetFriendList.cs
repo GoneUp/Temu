@@ -1,4 +1,4 @@
-﻿namespace Network.Client
+﻿namespace Tera.Network.old_Client
 {
     public class RpGetFriendList : ARecvPacket
     {

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpItemInfo : ASendPacket
     {
@@ -19,105 +19,105 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, 0);
+            WriteDword(writer, 0);
             int creatorShift = (int) writer.BaseStream.Position;
-            WriteH(writer, 0); //Creator name shift?
+            WriteWord(writer, 0); //Creator name shift?
             int soulboundShift = (int) writer.BaseStream.Position;
-            WriteH(writer, 0); //Soulbound name shift
-            WriteH(writer, 19); //19
-            WriteH(writer, 0);
+            WriteWord(writer, 0); //Soulbound name shift
+            WriteWord(writer, 19); //19
+            WriteWord(writer, 0);
 
-            WriteQ(writer, ItemUniqueId); //ItemUniqueId
-            WriteD(writer, ItemId); //ItemId
-            WriteQ(writer, ItemUniqueId); //ItemUniqueId
+            WriteLong(writer, ItemUniqueId); //ItemUniqueId
+            WriteDword(writer, ItemId); //ItemId
+            WriteLong(writer, ItemUniqueId); //ItemUniqueId
 
-            WriteD(writer, 0); //???
-            WriteD(writer, 0);
-            WriteD(writer, 0); //???
+            WriteDword(writer, 0); //???
+            WriteDword(writer, 0);
+            WriteDword(writer, 0); //???
 
-            WriteD(writer, 0);
-            WriteD(writer, 1);
-            WriteD(writer, 1); //Count
-            WriteD(writer, 0); //Enchant level
-            WriteD(writer, 0);
-            WriteC(writer, 1); //Can't trade
-            WriteD(writer, 0);
-            WriteD(writer, 0); //EffectId
-            WriteD(writer, 0); //EffectId on enchant +3
-            WriteD(writer, 0); //EffectId on enchant +6
-            WriteD(writer, 0); //EffectId on enchant +9
-            WriteD(writer, 0);
-            WriteD(writer, 0);
-            WriteD(writer, 0);
-            WriteD(writer, 0);
-            WriteD(writer, 0);
-            WriteD(writer, 0);
-            WriteD(writer, 0);
-            WriteD(writer, 0);
-            WriteD(writer, 0);
-            WriteD(writer, 0);
-            WriteD(writer, 0);
-            WriteH(writer, 0);
-            WriteC(writer, 0);
-            WriteC(writer, 0); //Requires Identification Scroll to remove
-            WriteC(writer, 0); //Masterwork
-            WriteD(writer, 0);
+            WriteDword(writer, 0);
+            WriteDword(writer, 1);
+            WriteDword(writer, 1); //Count
+            WriteDword(writer, 0); //Enchant level
+            WriteDword(writer, 0);
+            WriteByte(writer, 1); //Can't trade
+            WriteDword(writer, 0);
+            WriteDword(writer, 0); //EffectId
+            WriteDword(writer, 0); //EffectId on enchant +3
+            WriteDword(writer, 0); //EffectId on enchant +6
+            WriteDword(writer, 0); //EffectId on enchant +9
+            WriteDword(writer, 0);
+            WriteDword(writer, 0);
+            WriteDword(writer, 0);
+            WriteDword(writer, 0);
+            WriteDword(writer, 0);
+            WriteDword(writer, 0);
+            WriteDword(writer, 0);
+            WriteDword(writer, 0);
+            WriteDword(writer, 0);
+            WriteDword(writer, 0);
+            WriteDword(writer, 0);
+            WriteWord(writer, 0);
+            WriteByte(writer, 0);
+            WriteByte(writer, 0); //Requires Identification Scroll to remove
+            WriteByte(writer, 0); //Masterwork
+            WriteDword(writer, 0);
 
 
-            WriteC(writer, 0); //Show "Stats Totals when Equipped"
+            WriteByte(writer, 0); //Show "Stats Totals when Equipped"
 
             //"Stats Totals when Equipped"
-            WriteD(writer, 0); //Attack
-            WriteD(writer, 0); //Defence
-            WriteD(writer, 0); //Knockdown
-            WriteD(writer, 0); //Resist to knockdown
-            WriteF(writer, 0); //Crit chanse (float)
-            WriteF(writer, 0); //Crit resist (float)
-            WriteF(writer, 0); //Crit power (float)
-            WriteD(writer, 0); //Damage
-            WriteD(writer, 0); //Balance
-            WriteD(writer, 0); //Attack speed
-            WriteD(writer, 0); //Movement
-            WriteD(writer, 0); //Binding (float)
-            WriteD(writer, 0); //Poison (float)
-            WriteD(writer, 0); //Stun (float)
+            WriteDword(writer, 0); //Attack
+            WriteDword(writer, 0); //Defence
+            WriteDword(writer, 0); //Knockdown
+            WriteDword(writer, 0); //Resist to knockdown
+            WriteSingle(writer, 0); //Crit chanse (float)
+            WriteSingle(writer, 0); //Crit resist (float)
+            WriteSingle(writer, 0); //Crit power (float)
+            WriteDword(writer, 0); //Damage
+            WriteDword(writer, 0); //Balance
+            WriteDword(writer, 0); //Attack speed
+            WriteDword(writer, 0); //Movement
+            WriteDword(writer, 0); //Binding (float)
+            WriteDword(writer, 0); //Poison (float)
+            WriteDword(writer, 0); //Stun (float)
 
-            WriteD(writer, 0); //Add attack
-            WriteD(writer, 0); //Add defence
-            WriteD(writer, 0); //Add knockdown
-            WriteD(writer, 0); //Add resist to knockdown
-            WriteD(writer, 0); //Add crit chanse (float)
-            WriteD(writer, 0); //Add crit resist (float)
-            WriteD(writer, 0); //Add crit power (float)
-            WriteD(writer, 0); //Add damage
-            WriteD(writer, 0); //Add Balance
-            WriteD(writer, 0); //Add attack speed
-            WriteD(writer, 0); //Add movement
-            WriteD(writer, 0); //Add Binding (float)
-            WriteD(writer, 0); //Add poison (float)
-            WriteD(writer, 0); //Add stun (float)
+            WriteDword(writer, 0); //Add attack
+            WriteDword(writer, 0); //Add defence
+            WriteDword(writer, 0); //Add knockdown
+            WriteDword(writer, 0); //Add resist to knockdown
+            WriteDword(writer, 0); //Add crit chanse (float)
+            WriteDword(writer, 0); //Add crit resist (float)
+            WriteDword(writer, 0); //Add crit power (float)
+            WriteDword(writer, 0); //Add damage
+            WriteDword(writer, 0); //Add Balance
+            WriteDword(writer, 0); //Add attack speed
+            WriteDword(writer, 0); //Add movement
+            WriteDword(writer, 0); //Add Binding (float)
+            WriteDword(writer, 0); //Add poison (float)
+            WriteDword(writer, 0); //Add stun (float)
 
-            WriteD(writer, 0); //Min attack
-            WriteD(writer, 0); //Add min attack
+            WriteDword(writer, 0); //Min attack
+            WriteDword(writer, 0); //Add min attack
 
-            WriteD(writer, 3);
-            WriteD(writer, 0);
-            WriteD(writer, 0);
-            WriteD(writer, 0);
-            WriteD(writer, 1); //Item level
-            WriteD(writer, 0);
+            WriteDword(writer, 3);
+            WriteDword(writer, 0);
+            WriteDword(writer, 0);
+            WriteDword(writer, 0);
+            WriteDword(writer, 1); //Item level
+            WriteDword(writer, 0);
 
             writer.Seek(creatorShift, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
-            WriteS(writer, CreatorName); //Creator name
+            WriteString(writer, CreatorName); //Creator name
 
             writer.Seek(soulboundShift, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
-            WriteS(writer, SoulboundName); //Soulbound name
+            WriteString(writer, SoulboundName); //Soulbound name
         }
     }
 }

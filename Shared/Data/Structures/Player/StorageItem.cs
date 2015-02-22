@@ -1,6 +1,6 @@
-﻿using Data.Structures.Template.Item;
+﻿using Tera.Data.Structures.Template.Item;
 
-namespace Data.Structures.Player
+namespace Tera.Data.Structures.Player
 {
     [ProtoBuf.ProtoContract]
     public class StorageItem : TeraObject

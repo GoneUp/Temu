@@ -1,7 +1,6 @@
-﻿using Utils;
-using Utils.Logger;
+﻿using Utils.Logger;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpRequestCancel : ARecvPacket
     {

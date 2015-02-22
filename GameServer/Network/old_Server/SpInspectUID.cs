@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpInspectUid : ASendPacket
     {
@@ -14,7 +14,7 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, 0);
+            WriteDword(writer, 0);
             WriteUid(writer, Player);
         }
     }

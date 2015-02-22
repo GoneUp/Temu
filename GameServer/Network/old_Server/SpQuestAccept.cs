@@ -1,7 +1,6 @@
 ﻿using System.IO;
-using Utils;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpQuestAccept : ASendPacket
     {
@@ -14,10 +13,10 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, 0x0006); //shift??
-            WriteH(writer, 0x0040); //shift??
-            WriteB(writer, "3600320034000B00510075006500730074004E0061006D0065000B00");
-            WriteS(writer, Options);
+            WriteWord(writer, 0x0006); //shift??
+            WriteWord(writer, 0x0040); //shift??
+            WriteByte(writer, "3600320034000B00510075006500730074004E0061006D0065000B00");
+            WriteString(writer, Options);
         }
     }
 }

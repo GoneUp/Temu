@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Data.Structures.Player;
-using Data.Structures.Quest.Tasks;
-using Data.Structures.World.Continent;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Quest.Tasks;
+using Tera.Data.Structures.World.Continent;
 using Utils;
 using Utils.Logger;
 

@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Enums.Player;
-using Data.Structures.Creature;
+using Tera.Data.Enums.Player;
+using Tera.Data.Structures.Creature;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCharacterRelation : ASendPacket
     {
@@ -18,7 +18,7 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Creature);
-            WriteD(writer, Relation.GetHashCode());
+            WriteDword(writer, Relation.GetHashCode());
         }
     }
 }

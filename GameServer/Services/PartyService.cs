@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Communication.Interfaces;
-using Data.Enums;
-using Data.Interfaces;
-using Data.Structures.Player;
-using Data.Structures.World.Party;
-using Network;
-using Network.Server;
+using Tera.Communication.Interfaces;
+using Tera.Data.Enums;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World.Party;
+using Tera.Network;
+using Tera.Network.old_Server;
 
 namespace Tera.Services
 {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Data.Interfaces;
-using Data.Structures.Guild;
-using Data.Structures.Player;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Guild;
+using Tera.Data.Structures.Player;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IGuildService : IComponent
     {

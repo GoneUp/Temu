@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpMountShow : ASendPacket
     {
@@ -19,8 +19,8 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Player);
-            WriteD(writer, Mount);
-            WriteD(writer, SkillId); //MountSkillId
+            WriteDword(writer, Mount);
+            WriteDword(writer, SkillId); //MountSkillId
         }
     }
 }

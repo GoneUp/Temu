@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Text;
-using Data.Structures.Guild;
+using Tera.Data.Structures.Guild;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpGuildHistory : ASendPacket
     {
@@ -15,52 +15,52 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, (short) Guild.GuildHistory.Count); //possible history events counter
-            WriteH(writer, 0); //header end shift
-            WriteD(writer, 1);
-            WriteD(writer, 1);
+            WriteWord(writer, (short) Guild.GuildHistory.Count); //possible history events counter
+            WriteWord(writer, 0); //header end shift
+            WriteDword(writer, 1);
+            WriteDword(writer, 1);
 
             writer.Seek(6, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
             for (int i = 0; i < Guild.GuildHistory.Count; i++)
             {
                 short sh = (short) writer.BaseStream.Length;
 
-                WriteH(writer, sh);
-                WriteH(writer, 0); //next event shift
+                WriteWord(writer, sh);
+                WriteWord(writer, 0); //next event shift
 
-                WriteH(writer, 0); //initiator name start shift
-                WriteH(writer, 0); //initiator name end shift
-                WriteD(writer, Guild.GuildHistory[i].Date);
-                WriteD(writer, 0);
-                WriteD(writer, 11);
+                WriteWord(writer, 0); //initiator name start shift
+                WriteWord(writer, 0); //initiator name end shift
+                WriteDword(writer, Guild.GuildHistory[i].Date);
+                WriteDword(writer, 0);
+                WriteDword(writer, 11);
 
                 writer.Seek(sh + 4, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteS(writer, Guild.GuildHistory[i].Initiator);
+                WriteString(writer, Guild.GuildHistory[i].Initiator);
 
                 writer.Seek(sh + 6, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
                 for (int j = 0; j < Guild.GuildHistory[i].Args.Length; j++)
                 {
                     if (j != 0)
-                        WriteH(writer, 11);
+                        WriteWord(writer, 11);
 
                     writer.Write(Encoding.Unicode.GetBytes(Guild.GuildHistory[i].Args[j]));
                 }
 
-                WriteH(writer, 0);
+                WriteWord(writer, 0);
 
                 if (Guild.GuildHistory.Count > i + 1)
                 {
                     writer.Seek(sh + 2, SeekOrigin.Begin);
-                    WriteH(writer, (short) writer.BaseStream.Length);
+                    WriteWord(writer, (short) writer.BaseStream.Length);
                     writer.Seek(0, SeekOrigin.End);
                 }
             }

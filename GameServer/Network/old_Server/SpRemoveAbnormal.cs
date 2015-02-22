@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.World;
+using Tera.Data.Structures.World;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpRemoveAbnormal : ASendPacket
     {
@@ -15,7 +15,7 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Abnormal.Creature);
-            WriteD(writer, Abnormal.Abnormality.Id);
+            WriteDword(writer, Abnormal.Abnormality.Id);
         }
     }
 }

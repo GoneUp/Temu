@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Objects;
+using Tera.Data.Structures.Objects;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpRemoveProjectile : ASendPacket
     {
@@ -15,7 +15,7 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Projectile);
-            WriteC(writer, 1);
+            WriteByte(writer, 1);
         }
     }
 }

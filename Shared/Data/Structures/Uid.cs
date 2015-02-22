@@ -1,6 +1,6 @@
-﻿using Data.Enums;
+﻿using Tera.Data.Enums;
 
-namespace Data.Structures
+namespace Tera.Data.Structures
 {
     public abstract class Uid : Statistical
     {

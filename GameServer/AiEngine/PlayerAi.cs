@@ -1,10 +1,10 @@
-﻿using Communication;
-using Communication.Logic;
-using Data.Enums;
-using Data.Structures.Creature;
-using Data.Structures.World;
-using Network.Server;
+﻿using Tera.Communication;
+using Tera.Communication.Logic;
 using Tera.Controllers;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.World;
+using Tera.Network.old_Server;
 using Utils;
 
 namespace Tera.AiEngine

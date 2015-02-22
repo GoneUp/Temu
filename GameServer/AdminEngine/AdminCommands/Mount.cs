@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Data.Enums.SkillEngine;
-using Data.Interfaces;
-using Data.Structures.SkillEngine;
+using Tera.Data.Enums.SkillEngine;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.SkillEngine;
 
 namespace Tera.AdminEngine.AdminCommands
 {

@@ -1,103 +1,102 @@
-﻿using Data.Enums;
-using Data.Structures.Account;
-using Data.Structures.Player;
-using System.IO;
-using Utils;
+﻿using System.IO;
+using Tera.Data.Structures.Account;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.Packets.ServerPackets
 {
     public class SpSendCharacterList : ASendPacket
     {
-        protected Account Account;
+        protected GameAccount GameAccount;
 
-        public SpSendCharacterList(Account account)
+        public SpSendCharacterList(GameAccount gameAccount)
         {
-            Account = account;
+            GameAccount = gameAccount;
         }
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, (short) Account.Players.Count); //Characters count
-            WriteH(writer, (short) (Account.Players.Count == 0 ? 0 : 27));
-            WriteB(writer, new byte[9]);
-            WriteD(writer, 8); //Max character count
-            WriteD(writer, 1);
-            WriteH(writer, 0);
+            WriteWord(writer, (short) GameAccount.Players.Count); //Characters count
+            WriteWord(writer, (short) (GameAccount.Players.Count == 0 ? 0 : 27));
+            WriteByte(writer, new byte[9]);
+            WriteDword(writer, 8); //Max character count
+            WriteDword(writer, 1);
+            WriteWord(writer, 0);
 
-            for (int i = 0; i < Account.Players.Count; i++)
+            for (int i = 0; i < GameAccount.Players.Count; i++)
             {
-                Player player = Account.Players[i];
+                Player player = GameAccount.Players[i];
                 while ((player.PlayerLevel + 1) != Data.Data.PlayerExperience.Count - 1
                 && player.PlayerExp >= Data.Data.PlayerExperience[player.PlayerLevel])
                     player.PlayerLevel++;
+           
 
                 short check1 = (short) writer.BaseStream.Position;
-                WriteH(writer, check1); //Check1
-                WriteH(writer, 0); //Check2
-                WriteH(writer, 0); //Name shift
-                WriteH(writer, 0); //Details shift
-                WriteH(writer, (short) player.PlayerData.Details.Length); //Details length
+                WriteWord(writer, check1); //Check1
+                WriteWord(writer, 0); //Check2
+                WriteWord(writer, 0); //Name shift
+                WriteWord(writer, 0); //Details shift
+                WriteWord(writer, (short) player.PlayerData.Details.Length); //Details length
 
-                WriteD(writer, player.PlayerId); //PlayerId
-                WriteD(writer, player.PlayerData.Gender.GetHashCode()); //Gender
-                WriteD(writer, player.PlayerData.Race.GetHashCode()); //Race
-                WriteD(writer, player.PlayerData.Class.GetHashCode()); //Class
-                WriteD(writer, player.GetLevel()); //Level
+                WriteDword(writer, player.PlayerId); //PlayerId
+                WriteDword(writer, player.PlayerData.Gender.GetHashCode()); //Gender
+                WriteDword(writer, player.PlayerData.Race.GetHashCode()); //Race
+                WriteDword(writer, player.PlayerData.Class.GetHashCode()); //Class
+                WriteDword(writer, player.GetLevel()); //Level
 
-                WriteB(writer, "260B000087050000"); //A0860100A0860100
-                WriteB(writer, player.ZoneDatas ?? new byte[12]);
-                WriteD(writer, player.LastOnlineUtc);
-                WriteB(writer, "00000000008F480900000000006AD376B0"); //Unk
-                //WriteB(writer, "000000A0860100A0860100000000000000 00000000 00008F7E 00000000 0000000F B9090000 00000001 91DDB1"); //New character, play start video
-                WriteD(writer, player.Inventory.GetItemId(1) ?? 0); //Item (hands)
-                WriteD(writer, 0); //Item (earing1?)
-                WriteD(writer, 0); //Item (earing2?)
-                WriteD(writer, player.Inventory.GetItemId(3) ?? 0); //Item (body)
-                WriteD(writer, player.Inventory.GetItemId(4) ?? 0); //Item (gloves)
-                WriteD(writer, player.Inventory.GetItemId(5) ?? 0); //Item (boots)
-                WriteD(writer, 0); //Item (ring1)
-                WriteD(writer, 0); //Item (ring2)
-                WriteD(writer, 0); //Item ?
-                WriteD(writer, 0); //Item ?
-                WriteD(writer, 0); //Item ?
+                WriteByte(writer, "260B000087050000"); //A0860100A0860100
+                WriteByte(writer, player.ZoneDatas ?? new byte[12]);
+                WriteDword(writer, player.LastOnlineUtc);
+                WriteByte(writer, "00000000008F480900000000006AD376B0"); //Unk
+                //WriteByte(writer, "000000A0860100A0860100000000000000 00000000 00008F7E 00000000 0000000F B9090000 00000001 91DDB1"); //New character, play start video
+                WriteDword(writer, player.Inventory.GetItemId(1) ?? 0); //Item (hands)
+                WriteDword(writer, 0); //Item (earing1?)
+                WriteDword(writer, 0); //Item (earing2?)
+                WriteDword(writer, player.Inventory.GetItemId(3) ?? 0); //Item (body)
+                WriteDword(writer, player.Inventory.GetItemId(4) ?? 0); //Item (gloves)
+                WriteDword(writer, player.Inventory.GetItemId(5) ?? 0); //Item (boots)
+                WriteDword(writer, 0); //Item (ring1)
+                WriteDword(writer, 0); //Item (ring2)
+                WriteDword(writer, 0); //Item ?
+                WriteDword(writer, 0); //Item ?
+                WriteDword(writer, 0); //Item ?
 
-                WriteB(writer, player.PlayerData.Data);
-                WriteC(writer, 0); //Offline?
-                WriteB(writer, "0000000000000000000000000089E66EB0"); //???
-                WriteB(writer, new byte[48]);
+                WriteByte(writer, player.PlayerData.Data);
+                WriteByte(writer, 0); //Offline?
+                WriteByte(writer, "0000000000000000000000000089E66EB0"); //???
+                WriteByte(writer, new byte[48]);
 
-                WriteD(writer, player.Inventory.GetItem(1) != null ? player.Inventory.GetItem(1).Color : 0);
-                WriteD(writer, player.Inventory.GetItem(3) != null ? player.Inventory.GetItem(3).Color : 0);
-                WriteD(writer, player.Inventory.GetItem(4) != null ? player.Inventory.GetItem(4).Color : 0);
-                WriteD(writer, player.Inventory.GetItem(5) != null ? player.Inventory.GetItem(5).Color : 0);
+                WriteDword(writer, player.Inventory.GetItem(1) != null ? player.Inventory.GetItem(1).Color : 0);
+                WriteDword(writer, player.Inventory.GetItem(3) != null ? player.Inventory.GetItem(3).Color : 0);
+                WriteDword(writer, player.Inventory.GetItem(4) != null ? player.Inventory.GetItem(4).Color : 0);
+                WriteDword(writer, player.Inventory.GetItem(5) != null ? player.Inventory.GetItem(5).Color : 0);
 
-                WriteB(writer, new byte[28]); //16 bytes possible colors
+                WriteByte(writer, new byte[28]); //16 bytes possible colors
 
-                WriteD(writer, 0); //Rested (current)
-                WriteD(writer, 10000); //Rested (max)
+                WriteDword(writer, 0); //Rested (current)
+                WriteDword(writer, 10000); //Rested (max)
                                 
-                WriteC(writer, 1);
-                WriteC(writer, (byte) (player.PlayerExp == 0 ? 1 : 0)); //Intro video flag
+                WriteByte(writer, 1);
+                WriteByte(writer, (byte) (player.PlayerExp == 0 ? 1 : 0)); //Intro video flag
 
-                WriteD(writer, 0); //Now start only in Island of Dawn
-                //WriteD(writer, player.Exp == 0 ? 1 : 0); //Prolog or IslandOfDawn dialog window
+                WriteDword(writer, 0); //Now start only in Island of Dawn
+                //WriteDword(writer, player.Exp == 0 ? 1 : 0); //Prolog or IslandOfDawn dialog window
 
                 writer.Seek(check1 + 4, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length); //Name shift
+                WriteWord(writer, (short) writer.BaseStream.Length); //Name shift
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteS(writer, player.PlayerData.Name);
+                WriteString(writer, player.PlayerData.Name);
 
                 writer.Seek(check1 + 6, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length); //Details shift
+                WriteWord(writer, (short) writer.BaseStream.Length); //Details shift
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteB(writer, player.PlayerData.Details);
+                WriteByte(writer, player.PlayerData.Details);
 
-                if (i != Account.Players.Count - 1)
+                if (i != GameAccount.Players.Count - 1)
                 {
                     writer.Seek(check1 + 2, SeekOrigin.Begin);
-                    WriteH(writer, (short) writer.BaseStream.Length); //Check2
+                    WriteWord(writer, (short) writer.BaseStream.Length); //Check2
                     writer.Seek(0, SeekOrigin.End);
                 }
             }

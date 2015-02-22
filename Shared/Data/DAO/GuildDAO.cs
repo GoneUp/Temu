@@ -1,18 +1,13 @@
-﻿using MySql.Data.MySqlClient;
-using Data.Enums.Item;
-using Data.Structures.Account;
-using Data.Structures.Player;
-using Data.Structures.Guild;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using MySql.Data.MySqlClient;
+using Tera.Data.Structures.Guild;
+using Tera.Data.Structures.Player;
 using Utils;
 using Utils.Logger;
-using System.Diagnostics;
 
-namespace Data.DAO
+namespace Tera.Data.DAO
 {
     public class GuildDAO : DAOManager
     {

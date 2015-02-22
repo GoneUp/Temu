@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Data.Structures.Geometry;
+using Tera.Data.Structures.Geometry;
 
-namespace Data.Structures.World.Continent
+namespace Tera.Data.Structures.World.Continent
 {
     [ProtoBuf.ProtoContract]
     public class Area

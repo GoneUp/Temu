@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Data.Structures.Template;
+using Tera.Data.Structures.Template;
 
-namespace Data.Structures.Npc
+namespace Tera.Data.Structures.Npc
 {
     public class Npc : Creature.Creature
     {

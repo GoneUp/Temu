@@ -1,7 +1,6 @@
-﻿using Data.Interfaces;
-using Data.Structures.Player;
+﻿using Tera.Data.Interfaces;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IAdminEngine : IComponent
     {

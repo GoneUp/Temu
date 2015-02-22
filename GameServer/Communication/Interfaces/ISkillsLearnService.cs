@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Data.Structures.Player;
-using Data.Structures.SkillEngine;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.SkillEngine;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface ISkillsLearnService : IComponent
     {

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCharacterZoneData : ASendPacket
     {
@@ -13,8 +13,8 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteC(writer, 0);
-            WriteB(writer, Datas);
+            WriteByte(writer, 0);
+            WriteByte(writer, Datas);
         }
     }
 }

@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Hik.Communication.Scs.Communication.Channels
+namespace Tera.NetworkApi.Communication.Scs.Communication.Channels
 {
     /// <summary>
     /// Represents a communication listener.

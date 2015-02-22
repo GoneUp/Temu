@@ -1,4 +1,4 @@
-﻿namespace Data.Structures.SkillEngine
+﻿namespace Tera.Data.Structures.SkillEngine
 {
     [ProtoBuf.ProtoContract]
     public class Cost

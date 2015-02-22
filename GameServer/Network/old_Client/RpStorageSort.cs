@@ -1,6 +1,6 @@
-﻿using Data.Enums.Item;
+﻿using Tera.Data.Enums.Item;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpStorageSort : ARecvPacket
     {

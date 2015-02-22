@@ -1,6 +1,6 @@
 ﻿using Utils;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpUISettings : ARecvPacket
     {
@@ -13,7 +13,7 @@ namespace Network.Client
 
         public override void Process()
         {
-            Connection.Account.UiSettings = UISettings;
+            Connection.GameAccount.UiSettings = ByteUtilities.ByteArrayToString(UISettings);
         }
     }
 }

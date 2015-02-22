@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Gather;
+using Tera.Data.Structures.Gather;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpGatherInfo : ASendPacket
     {
@@ -15,11 +15,11 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Gather);
-            WriteD(writer, Gather.Id);
-            WriteD(writer, Gather.CurrentGatherCounter); //gather counter
-            WriteF(writer, Gather.Position.X);
-            WriteF(writer, Gather.Position.Y);
-            WriteF(writer, Gather.Position.Z);
+            WriteDword(writer, Gather.Id);
+            WriteDword(writer, Gather.CurrentGatherCounter); //gather counter
+            WriteSingle(writer, Gather.Position.X);
+            WriteSingle(writer, Gather.Position.Y);
+            WriteSingle(writer, Gather.Position.Z);
         }
     }
 }

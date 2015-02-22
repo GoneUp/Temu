@@ -6,7 +6,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Hik.Communication.Scs.Communication
+namespace Tera.NetworkApi.Communication.Scs.Communication
 {
     /// <summary>
     /// This application is thrown if communication is not expected state.

@@ -1,4 +1,4 @@
-﻿namespace Data.Enums.Item
+﻿namespace Tera.Data.Enums.Item
 {
     public enum StorageType
     {

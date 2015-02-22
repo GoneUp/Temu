@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Crypt
+namespace Tera.Crypt
 {
     public class Cryptor
     {

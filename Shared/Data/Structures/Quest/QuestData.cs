@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Data.Enums;
+using Tera.Data.Enums;
 
-namespace Data.Structures.Quest
+namespace Tera.Data.Structures.Quest
 {
     [ProtoBuf.ProtoContract]
     public class QuestData

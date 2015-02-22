@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpFriendUpdate : ASendPacket
     {
@@ -19,24 +19,24 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, (short) Friends.Count);
+            WriteWord(writer, (short) Friends.Count);
 
             var shift = (int) writer.BaseStream.Position;
-            WriteH(writer, 0);
+            WriteWord(writer, 0);
 
             for (int i = 0; i < Friends.Count; i++)
             {
                 writer.Seek(shift, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteH(writer, (short) writer.BaseStream.Position);
+                WriteWord(writer, (short) writer.BaseStream.Position);
                 shift = (int) writer.BaseStream.Position;
-                WriteH(writer, 0); //next friend shift
-                WriteD(writer, Friends[i].PlayerId);
-                WriteD(writer, Friends[i].GetLevel());
-                WriteB(writer, "00000000010000000200000007000000");
-                WriteH(writer, 0);
+                WriteWord(writer, 0); //next friend shift
+                WriteDword(writer, Friends[i].PlayerId);
+                WriteDword(writer, Friends[i].GetLevel());
+                WriteByte(writer, "00000000010000000200000007000000");
+                WriteWord(writer, 0);
             }
         }
     }

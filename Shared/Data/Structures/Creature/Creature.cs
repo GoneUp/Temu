@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Data.Enums;
-using Data.Interfaces;
-using Data.Structures.Objects;
-using Data.Structures.SkillEngine;
-using Data.Structures.World;
+using Tera.Data.Enums;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Objects;
+using Tera.Data.Structures.SkillEngine;
+using Tera.Data.Structures.World;
 
-namespace Data.Structures.Creature
+namespace Tera.Data.Structures.Creature
 {
     public abstract class Creature : TeraObject
     {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Data.Structures.Quest;
+using Tera.Data.Structures.Quest;
 using Utils;
 
-namespace Data.Structures.World
+namespace Tera.Data.Structures.World
 {
     public class Dialog
     {

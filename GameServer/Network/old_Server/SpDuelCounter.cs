@@ -1,12 +1,12 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpDuelCounter : ASendPacket
     {
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, 0x1388);
+            WriteWord(writer, 0x1388);
         }
     }
 }

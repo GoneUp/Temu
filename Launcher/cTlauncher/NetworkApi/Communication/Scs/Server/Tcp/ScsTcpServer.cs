@@ -3,12 +3,11 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Communication.Channels;
-using Hik.Communication.Scs.Communication.Channels.Tcp;
-using Hik.Communication.Scs.Communication.EndPoints.Tcp;
-using Hik.Communication.Scs.Server;
+using Tera.NetworkApi.Communication.Scs.Communication.Channels;
+using Tera.NetworkApi.Communication.Scs.Communication.Channels.Tcp;
+using Tera.NetworkApi.Communication.Scs.Communication.EndPoints.Tcp;
 
-namespace Hik.Communication.Scs.Server.Tcp
+namespace Tera.NetworkApi.Communication.Scs.Server.Tcp
 {
     /// <summary>
     /// This class is used to create a TCP server.

@@ -1,8 +1,7 @@
-﻿using Data.Enums;
-using Data.Enums.Craft;
-using Data.Structures.Player;
+﻿using Tera.Data.Enums.Craft;
+using Tera.Data.Structures.Player;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface ICraftService : IComponent
     {

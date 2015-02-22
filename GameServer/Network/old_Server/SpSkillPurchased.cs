@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.SkillEngine;
+using Tera.Data.Structures.SkillEngine;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpSkillPurchased : ASendPacket
     {
@@ -14,11 +14,11 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteC(writer, 1); //IsActive?
-            WriteC(writer, 0); //???
+            WriteByte(writer, 1); //IsActive?
+            WriteByte(writer, 0); //???
 
-            WriteD(writer, Skill.PrevSkillId);
-            WriteD(writer, Skill.SkillId);
+            WriteDword(writer, Skill.PrevSkillId);
+            WriteDword(writer, Skill.SkillId);
         }
     }
 }

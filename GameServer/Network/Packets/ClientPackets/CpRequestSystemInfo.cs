@@ -1,4 +1,4 @@
-﻿namespace Network.Client
+﻿namespace Tera.Network.Packets.ClientPackets
 {
     public class CpRequestSystemInfo : ARecvPacket
     {

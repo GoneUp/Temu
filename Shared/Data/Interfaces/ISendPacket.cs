@@ -1,4 +1,4 @@
-﻿namespace Data.Interfaces
+﻿namespace Tera.Data.Interfaces
 {
     public interface ISendPacket
     {

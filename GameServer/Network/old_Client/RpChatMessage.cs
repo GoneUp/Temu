@@ -1,7 +1,7 @@
-﻿using Communication.Logic;
-using Data.Enums;
+﻿using Tera.Communication.Logic;
+using Tera.Data.Enums;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpChatMessage : ARecvPacket
     {

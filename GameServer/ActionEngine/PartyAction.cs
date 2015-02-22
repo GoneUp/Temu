@@ -1,6 +1,6 @@
-﻿using Communication;
-using Data.Structures.Player;
-using Data.Structures.World.Requests;
+﻿using Tera.Communication;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World.Requests;
 
 namespace Tera.ActionEngine
 {

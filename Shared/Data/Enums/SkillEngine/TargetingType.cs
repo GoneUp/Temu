@@ -1,4 +1,4 @@
-﻿namespace Data.Enums.SkillEngine
+﻿namespace Tera.Data.Enums.SkillEngine
 {
     public enum TargetingType
     {

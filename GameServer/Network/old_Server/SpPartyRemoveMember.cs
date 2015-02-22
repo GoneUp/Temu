@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpPartyRemoveMember : ASendPacket
     {
@@ -14,15 +14,15 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, 0); //name shift
-            WriteD(writer, 11);
-            WriteD(writer, Player.PlayerId);
+            WriteWord(writer, 0); //name shift
+            WriteDword(writer, 11);
+            WriteDword(writer, Player.PlayerId);
 
             writer.Seek(4, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
-            WriteS(writer, Player.PlayerData.Name);
+            WriteString(writer, Player.PlayerData.Name);
         }
     }
 }

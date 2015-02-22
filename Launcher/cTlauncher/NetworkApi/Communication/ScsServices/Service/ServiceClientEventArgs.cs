@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Hik.Communication.ScsServices.Service
+namespace Tera.NetworkApi.Communication.ScsServices.Service
 {
     /// <summary>
     /// Stores service client informations to be used by an event.

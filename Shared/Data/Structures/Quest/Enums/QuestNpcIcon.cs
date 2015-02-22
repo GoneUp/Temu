@@ -1,4 +1,4 @@
-﻿namespace Data.Structures.Quest.Enums
+﻿namespace Tera.Data.Structures.Quest.Enums
 {
     public enum QuestNpcIcon
     {

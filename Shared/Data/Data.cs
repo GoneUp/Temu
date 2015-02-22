@@ -4,25 +4,24 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Data.Enums.Pegasus;
-using Data.Structures.Craft;
-using Data.Structures.Creature;
-using Data.Structures.Quest;
-using Data.Structures.SkillEngine;
-using Data.Structures.Template;
-using Data.Structures.Template.Gather;
-using Data.Structures.Template.Item;
-using Data.Structures.World;
-using Data.Structures.World.Continent;
-using Data.Structures.World.Pegasus;
 using ProtoBuf;
+using Tera.Data.Enums.Pegasus;
+using Tera.Data.Structures.Craft;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Quest;
+using Tera.Data.Structures.SkillEngine;
+using Tera.Data.Structures.Template;
+using Tera.Data.Structures.Template.Gather;
+using Tera.Data.Structures.Template.Item;
+using Tera.Data.Structures.World;
+using Tera.Data.Structures.World.Continent;
+using Tera.Data.Structures.World.Pegasus;
 using Utils;
 using Utils.Logger;
 using System.Xml;
 using System.Data;
-using Data.Enums.Craft;
 
-namespace Data
+namespace Tera.Data
 {
     public class Data
     {

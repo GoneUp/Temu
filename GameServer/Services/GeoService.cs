@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Communication.Interfaces;
-using Data.Structures.Template;
-using Data.Structures.World;
+using Tera.Communication.Interfaces;
+using Tera.Data.Structures.Template;
+using Tera.Data.Structures.World;
 
 namespace Tera.Services
 {

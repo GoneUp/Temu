@@ -1,7 +1,7 @@
-﻿using Data.Interfaces;
-using Data.Structures.Creature;
+﻿using Tera.Data.Interfaces;
+using Tera.Data.Structures.Creature;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IAiService : IComponent
     {

@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpTradeHideWindow : ASendPacket
     {
@@ -22,8 +22,8 @@ namespace Network.Server
         {
             WriteUid(writer, Player1);
             WriteUid(writer, Player2);
-            WriteD(writer, TradeId);
-            WriteD(writer, Type);
+            WriteDword(writer, TradeId);
+            WriteDword(writer, Type);
         }
     }
 }

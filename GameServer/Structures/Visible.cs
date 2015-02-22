@@ -1,11 +1,11 @@
-﻿using Communication.Logic;
-using Data.Interfaces;
-using Data.Structures.Creature;
-using Data.Structures.Gather;
-using Data.Structures.Npc;
-using Data.Structures.Objects;
-using Data.Structures.Player;
-using Data.Structures.World;
+﻿using Tera.Communication.Logic;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Gather;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Objects;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
 using Tera.Extensions;
 
 namespace Tera.Structures

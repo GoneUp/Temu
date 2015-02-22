@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Structures.Guild;
-using Data.Structures.Player;
+using Tera.Data.Structures.Guild;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpGuildRanking : ASendPacket
     {
@@ -17,84 +17,84 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, (short) Guild.GuildRanks.Count);
-            WriteH(writer, 0); //header end shift
-            WriteH(writer, 0); //guild name start shift
-            WriteH(writer, 0); //guild name end shift
-            WriteH(writer, 0); //leader name start
-            WriteH(writer, 0); //leader name end
-            WriteH(writer, 0); //status name start
-            WriteH(writer, 0); //status name end
-            WriteB(writer, "D30000000000000000000000");
-            WriteD(writer, Communication.Global.GuildService.GetLeader(Guild).PlayerId);
-            WriteD(writer, Guild.CreationDate);
-            WriteB(writer, "00000000010000000000000000000000FFFFFFFF");
+            WriteWord(writer, (short) Guild.GuildRanks.Count);
+            WriteWord(writer, 0); //header end shift
+            WriteWord(writer, 0); //guild name start shift
+            WriteWord(writer, 0); //guild name end shift
+            WriteWord(writer, 0); //leader name start
+            WriteWord(writer, 0); //leader name end
+            WriteWord(writer, 0); //status name start
+            WriteWord(writer, 0); //status name end
+            WriteByte(writer, "D30000000000000000000000");
+            WriteDword(writer, Communication.Global.GuildService.GetLeader(Guild).PlayerId);
+            WriteDword(writer, Guild.CreationDate);
+            WriteByte(writer, "00000000010000000000000000000000FFFFFFFF");
 
-            WriteH(writer, 1); //???
+            WriteWord(writer, 1); //???
 
             //20
 
             writer.Seek(8, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
-            WriteS(writer, Guild.GuildName);
+            WriteString(writer, Guild.GuildName);
 
             writer.Seek(10, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
-            WriteS(writer, Guild.GuildTitle);
+            WriteString(writer, Guild.GuildTitle);
 
             writer.Seek(12, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
-            WriteS(writer, Communication.Global.GuildService.GetLeader(Guild).PlayerData.Name);
+            WriteString(writer, Communication.Global.GuildService.GetLeader(Guild).PlayerData.Name);
 
             writer.Seek(14, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
-            WriteS(writer, Guild.GuildMessage);
+            WriteString(writer, Guild.GuildMessage);
 
             writer.Seek(16, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
-            WriteS(writer, Communication.Global.GuildService.GetPlayerRank(Player).RankName);
+            WriteString(writer, Communication.Global.GuildService.GetPlayerRank(Player).RankName);
 
             writer.Seek(18, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
-            WriteS(writer, Guild.GuildAd);
+            WriteString(writer, Guild.GuildAd);
 
             writer.Seek(6, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
             for (int i = 0; i < Guild.GuildRanks.Count; i++)
             {
                 short sh = (short) writer.BaseStream.Length;
 
-                WriteH(writer, sh);
-                WriteH(writer, 0);
-                WriteH(writer, 0);
-                WriteD(writer, Guild.GuildRanks[i].RankId);
+                WriteWord(writer, sh);
+                WriteWord(writer, 0);
+                WriteWord(writer, 0);
+                WriteDword(writer, Guild.GuildRanks[i].RankId);
 
-                WriteD(writer, Guild.GuildRanks[i].RankPrivileges);
+                WriteDword(writer, Guild.GuildRanks[i].RankPrivileges);
 
                 writer.Seek(sh + 4, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteS(writer, Guild.GuildRanks[i].RankName);
+                WriteString(writer, Guild.GuildRanks[i].RankName);
 
                 if (Guild.GuildRanks.Count > i + 1)
                 {
                     writer.Seek(sh + 2, SeekOrigin.Begin);
-                    WriteH(writer, (short) writer.BaseStream.Length);
+                    WriteWord(writer, (short) writer.BaseStream.Length);
                     writer.Seek(0, SeekOrigin.End);
                 }
             }

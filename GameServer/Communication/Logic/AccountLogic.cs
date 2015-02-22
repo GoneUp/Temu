@@ -1,10 +1,10 @@
 ﻿using System.Linq;
-using Data;
-using Data.Interfaces;
-using Data.Structures.Player;
+using Tera.Data;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Player;
 using Utils;
 
-namespace Communication.Logic
+namespace Tera.Communication.Logic
 {
     public class AccountLogic : Global
     {
@@ -24,7 +24,7 @@ namespace Communication.Logic
 
         public static void ClientDisconnected(IConnection connection)
         {
-            if (connection.Account != null && connection.Player != null)
+            if (connection.GameAccount != null && connection.Player != null)
             {
                 Player player = connection.Player;
                 new DelayedAction(() => PlayerLogic.PlayerEndGame(player), LogoutTimeout*1000);
@@ -36,7 +36,7 @@ namespace Communication.Logic
             AccountService.AbortExitAction(connection);
             FeedbackService.ShowRelogWindow(connection, LogoutTimeout);
 
-            connection.Account.ExitAction = new DelayedAction(
+            connection.GameAccount.ExitAction = new DelayedAction(
                 () =>
                     {
                         FeedbackService.Relog(connection);
@@ -46,7 +46,7 @@ namespace Communication.Logic
         //ToDo
         public static void RemovePlayer(IConnection connection, int playerId)
         {
-            Player p = connection.Account.Players.FirstOrDefault(player => player.PlayerId == playerId);
+            Player p = connection.GameAccount.Players.FirstOrDefault(player => player.PlayerId == playerId);
 
             if (p == null)
             { return; }
@@ -56,7 +56,7 @@ namespace Communication.Logic
 
             PartyService.LeaveParty(p);
             GuildService.LeaveGuild(p, p.Guild);
-            connection.Account.Players.Remove(connection.Account.Players.FirstOrDefault(player => player.PlayerId == playerId));
+            connection.GameAccount.Players.Remove(connection.GameAccount.Players.FirstOrDefault(player => player.PlayerId == playerId));
             FeedbackService.SendCharRemove(connection);
         }
 
@@ -65,7 +65,7 @@ namespace Communication.Logic
             AccountService.AbortExitAction(connection);
             FeedbackService.ShowExitWindow(connection, LogoutTimeout);
 
-            connection.Account.ExitAction = new DelayedAction(
+            connection.GameAccount.ExitAction = new DelayedAction(
                 () =>
                 {
                     FeedbackService.Exit(connection);
@@ -75,8 +75,8 @@ namespace Communication.Logic
 
         public static void AbortExitAction(IConnection connection)
         {
-            if (connection.Account.ExitAction != null)
-                connection.Account.ExitAction.Abort();
+            if (connection.GameAccount.ExitAction != null)
+                connection.GameAccount.ExitAction.Abort();
         }
     }
 }

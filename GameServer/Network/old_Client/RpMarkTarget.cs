@@ -1,8 +1,8 @@
-﻿using Communication.Logic;
-using Data.Structures;
-using Data.Structures.Creature;
+﻿using Tera.Communication.Logic;
+using Tera.Data.Structures;
+using Tera.Data.Structures.Creature;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpMarkTarget : ARecvPacket
     {

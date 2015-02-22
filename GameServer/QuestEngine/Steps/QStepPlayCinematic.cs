@@ -1,5 +1,6 @@
-﻿using Data.Structures.Quest.Tasks;
-using Network.Server;
+﻿using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Quest.Tasks;
+using Tera.Network.old_Server;
 
 namespace Tera.QuestEngine.Steps
 {
@@ -12,7 +13,7 @@ namespace Tera.QuestEngine.Steps
             QTaskPlaybackVideo = qTaskPlaybackVideo;
         }
 
-        public override void Init(Data.Structures.Player.Player player)
+        public override void Init(Player player)
         {
             base.Init(player);
             new SpQuestMovie(QTaskPlaybackVideo.MovieId).Send(player.Connection);

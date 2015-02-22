@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpPartyMemberPosition : ASendPacket
     {
@@ -13,13 +13,13 @@ namespace Network.Server
         }
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, 11); // ^(*,..,*)^
-            WriteD(writer, Player.PlayerId);
-            WriteF(writer, Player.Position.X);
-            WriteF(writer, Player.Position.Y);
-            WriteB(writer, "00303CC5"); //Z?
-            WriteD(writer, Player.Position.MapId);
-            WriteD(writer, 4);// possible ID of mark
+            WriteDword(writer, 11); // ^(*,..,*)^
+            WriteDword(writer, Player.PlayerId);
+            WriteSingle(writer, Player.Position.X);
+            WriteSingle(writer, Player.Position.Y);
+            WriteByte(writer, "00303CC5"); //Z?
+            WriteDword(writer, Player.Position.MapId);
+            WriteDword(writer, 4);// possible ID of mark
         }
     }
 }

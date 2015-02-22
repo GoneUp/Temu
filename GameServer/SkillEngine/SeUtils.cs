@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using Communication;
-using Data.Enums;
-using Data.Enums.SkillEngine;
-using Data.Structures.Creature;
-using Data.Structures.Geometry;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using Data.Structures.SkillEngine;
-using Data.Structures.World;
+using Tera.Communication;
+using Tera.Data.Enums;
+using Tera.Data.Enums.SkillEngine;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Geometry;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.SkillEngine;
+using Tera.Data.Structures.World;
 using Tera.Extensions;
 using Utils;
 

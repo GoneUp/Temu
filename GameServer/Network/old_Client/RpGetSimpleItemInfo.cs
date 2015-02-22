@@ -1,6 +1,6 @@
-﻿using Network.Server;
+﻿using Tera.Network.old_Server;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpGetSimpleItemInfo : ARecvPacket
     {

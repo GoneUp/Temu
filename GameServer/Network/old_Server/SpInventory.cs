@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpInventory : ASendPacket
     {
@@ -21,19 +21,19 @@ namespace Network.Server
         {
             lock (Player.Inventory.ItemsLock)
             {
-                WriteH(writer, (short) Player.Inventory.Items.Count);
-                WriteH(writer, 0); //first item shift
+                WriteWord(writer, (short) Player.Inventory.Items.Count);
+                WriteWord(writer, 0); //first item shift
                 WriteUid(writer, Player);
-                WriteQ(writer, Player.Inventory.Money);
-                WriteC(writer, (byte) (IsInventory ? 1 : 0));
-                WriteH(writer, 1); //Unk
-                WriteD(writer, Player.Inventory.Size); //Size
+                WriteLong(writer, Player.Inventory.Money);
+                WriteByte(writer, (byte) (IsInventory ? 1 : 0));
+                WriteWord(writer, 1); //Unk
+                WriteDword(writer, Player.Inventory.Size); //Size
 
-                WriteD(writer, 34); //EU ???
-                WriteD(writer, 34); //EU ???
+                WriteDword(writer, 34); //EU ???
+                WriteDword(writer, 34); //EU ???
 
                 writer.Seek(6, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
                 int counter = 0;
@@ -43,36 +43,36 @@ namespace Network.Server
                     counter++;
                     short nowShift = (short) writer.BaseStream.Length;
 
-                    WriteH(writer, nowShift); //Now shift
-                    WriteH(writer, 0); //Next shift
+                    WriteWord(writer, nowShift); //Now shift
+                    WriteWord(writer, 0); //Next shift
 
-                    WriteD(writer, inventoryItem.Value.ItemId);
+                    WriteDword(writer, inventoryItem.Value.ItemId);
                     WriteUid(writer, inventoryItem.Value);
-                    WriteD(writer, 7441);
-                    WriteD(writer, 0);
-                    WriteD(writer, inventoryItem.Key);
-                    WriteD(writer, 0);
-                    WriteD(writer, inventoryItem.Value.Amount);
-                    WriteD(writer, 0);
-                    WriteD(writer, 0);
-                    WriteD(writer, 1); //Binded?
-                    WriteD(writer, 0);
-                    WriteD(writer, 0);
-                    WriteD(writer, 0);
-                    WriteD(writer, 0);
-                    WriteC(writer, 0);
-                    WriteD(writer, 0); //EffectId
-                    WriteD(writer, 0); //EffectId
-                    WriteD(writer, 0); //EffectId
-                    WriteD(writer, 0); //EffectId
-                    WriteB(writer, new byte[65]); //unk
-                    WriteD(writer, 1); //Item Level
-                    WriteD(writer, 0);
+                    WriteDword(writer, 7441);
+                    WriteDword(writer, 0);
+                    WriteDword(writer, inventoryItem.Key);
+                    WriteDword(writer, 0);
+                    WriteDword(writer, inventoryItem.Value.Amount);
+                    WriteDword(writer, 0);
+                    WriteDword(writer, 0);
+                    WriteDword(writer, 1); //Binded?
+                    WriteDword(writer, 0);
+                    WriteDword(writer, 0);
+                    WriteDword(writer, 0);
+                    WriteDword(writer, 0);
+                    WriteByte(writer, 0);
+                    WriteDword(writer, 0); //EffectId
+                    WriteDword(writer, 0); //EffectId
+                    WriteDword(writer, 0); //EffectId
+                    WriteDword(writer, 0); //EffectId
+                    WriteByte(writer, new byte[65]); //unk
+                    WriteDword(writer, 1); //Item Level
+                    WriteDword(writer, 0);
 
                     if (counter < Player.Inventory.Items.Count)
                     {
                         writer.Seek(nowShift + 2, SeekOrigin.Begin);
-                        WriteH(writer, (short) writer.BaseStream.Length);
+                        WriteWord(writer, (short) writer.BaseStream.Length);
                         writer.Seek(0, SeekOrigin.End);
                     }
                 }

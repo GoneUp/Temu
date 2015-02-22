@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Tera;
-using Utils;
-using Utils.Logger;
 using System.IO;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using System.Xml;
-using System.Data;
 using System.Xml.Serialization;
-using System.Reflection;
-using Database_Manager.Database;
+using Tera.Configuration.Configs;
+using Utils.Logger;
 
-namespace Configuration
+namespace Tera.Configuration
 {
     public class Config
     {

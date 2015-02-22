@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.Packets.ServerPackets
 {
     public class SpSendVersion : ASendPacket
     {
@@ -13,7 +13,7 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteC(writer, (byte) (Version == OpCodes.Version ? 1 : 0));
+            WriteByte(writer, (byte) (Version == OpCodes.Version ? 1 : 0));
         }
     }
 }

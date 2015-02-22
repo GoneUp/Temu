@@ -1,6 +1,6 @@
-﻿using Data.Enums;
+﻿using Tera.Data.Enums;
 
-namespace Data.Structures.World
+namespace Tera.Data.Structures.World
 {
     public class DialogButton
     {

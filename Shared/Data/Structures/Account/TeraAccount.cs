@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Utils;
+using System.Threading.Tasks;
 
-namespace AccountService
+namespace Tera.Data.Structures.Account
 {
-    public class Account
+    public abstract class TeraAccount : TeraObject 
     {
-        public Account()
-        {
-            Username = this.Username;
-        }
         public uint AccountId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -28,5 +24,4 @@ namespace AccountService
         public long UnBanDate { get; set; }//BanTime as Ticks this is better to save into db :)
         public long RegisterDate { get; set; }
     }
-
 }

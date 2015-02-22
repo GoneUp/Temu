@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using Communication;
-using Communication.Interfaces;
-using Data.Enums;
-using Data.Enums.Player;
-using Data.Interfaces;
-using Data.Structures.Creature;
-using Data.Structures.Gather;
-using Data.Structures.Npc;
-using Data.Structures.Objects;
-using Data.Structures.Player;
-using Data.Structures.SkillEngine;
-using Data.Structures.World;
-using Data.Structures.World.Requests;
-using Network;
-using Network.Server;
 using Tera.AiEngine;
+using Tera.Communication;
+using Tera.Communication.Interfaces;
 using Tera.Controllers;
+using Tera.Data.Enums;
+using Tera.Data.Enums.Player;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Gather;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Objects;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.SkillEngine;
+using Tera.Data.Structures.World;
+using Tera.Data.Structures.World.Requests;
 using Tera.Extensions;
+using Tera.Network;
+using Tera.Network.old_Server;
+using Tera.Network.Packets.ServerPackets;
 using Utils;
 using Utils.Logger;
 
@@ -59,9 +60,9 @@ namespace Tera.Services
 
         public void SendPlayerList(IConnection connection)
         {
-            new SpSendCharacterList(connection.Account).Send(connection);
-            if (connection.Account.UiSettings != null)
-                new SpUISettings(connection.Account.UiSettings).Send(connection);
+            new SpSendCharacterList(connection.GameAccount).Send(connection);
+            if (connection.GameAccount.UiSettings != null)
+                new SpUISettings(ByteUtilities.StringToByteArray(connection.GameAccount.UiSettings)).Send(connection);
         }
 
         public void SendCheckNameResult(IConnection connection, string name, short type, CheckNameResult result)

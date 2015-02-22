@@ -1,6 +1,6 @@
-﻿using Network.Server;
+﻿using Tera.Network.old_Server;
 
-namespace Network
+namespace Tera.Network
 {
     public class SystemMessages
     {

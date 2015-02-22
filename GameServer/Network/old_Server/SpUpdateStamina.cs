@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpUpdateStamina : ASendPacket
     {
@@ -14,9 +14,9 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, Player.LifeStats.Stamina); //NowStamina
-            WriteD(writer, 120); //MaxStamina
-            WriteH(writer, 3); //???
+            WriteDword(writer, Player.LifeStats.Stamina); //NowStamina
+            WriteDword(writer, 120); //MaxStamina
+            WriteWord(writer, 3); //???
         }
     }
 }

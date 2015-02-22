@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Data.Structures.Geometry;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using Network.Server;
+using Tera.Data.Structures.Geometry;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
+using Tera.Network.old_Server;
 
 namespace Tera.DungeonEngine.Dungeons
 {

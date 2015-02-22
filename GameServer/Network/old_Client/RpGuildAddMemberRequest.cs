@@ -1,8 +1,8 @@
-﻿using Data.Structures;
-using Data.Structures.Player;
-using Data.Structures.World.Requests;
+﻿using Tera.Data.Structures;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World.Requests;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpGuildAddMemberRequest : ARecvPacket
     {

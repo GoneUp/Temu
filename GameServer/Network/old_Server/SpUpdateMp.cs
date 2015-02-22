@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
+using Tera.Data.Structures.Creature;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpUpdateMp : ASendPacket
     {
@@ -18,21 +18,21 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, Creature.LifeStats.Mp);
-            WriteD(writer, Creature.MaxMp);
-            WriteD(writer, Diff); //added Mp
+            WriteDword(writer, Creature.LifeStats.Mp);
+            WriteDword(writer, Creature.MaxMp);
+            WriteDword(writer, Diff); //added Mp
 
             if (Attacker != null)
             {
-                WriteD(writer, 1);
+                WriteDword(writer, 1);
                 WriteUid(writer, Attacker);
                 WriteUid(writer, Creature);
             }
             else
             {
-                WriteD(writer, 0);
+                WriteDword(writer, 0);
                 WriteUid(writer, Creature);
-                WriteQ(writer, 0);
+                WriteLong(writer, 0);
             }
         }
     }

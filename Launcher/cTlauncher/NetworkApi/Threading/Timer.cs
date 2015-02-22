@@ -6,7 +6,7 @@
 using System;
 using System.Threading;
 
-namespace Hik.Threading
+namespace Tera.NetworkApi.Threading
 {
     /// <summary>
     /// This class is a timer that performs some tasks periodically.

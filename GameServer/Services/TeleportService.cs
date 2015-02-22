@@ -1,10 +1,10 @@
 ﻿using System;
-using Communication.Interfaces;
-using Data.Structures.Player;
-using Data.Structures.World;
-using Network.Server;
+using Tera.Communication.Interfaces;
 using Tera.Controllers;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
 using Tera.DungeonEngine.Dungeons;
+using Tera.Network.old_Server;
 
 namespace Tera.Services
 {

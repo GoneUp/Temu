@@ -1,4 +1,4 @@
-﻿namespace Data.Enums.Party
+﻿namespace Tera.Data.Enums.Party
 {
     public enum PartyMember
     {

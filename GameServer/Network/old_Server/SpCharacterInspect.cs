@@ -1,8 +1,7 @@
 ﻿using System.IO;
-using Data.Enums.Gather;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCharacterInspect : ASendPacket
     {
@@ -15,80 +14,80 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, 5);
-            WriteH(writer, 0); // Items shift
+            WriteWord(writer, 5);
+            WriteWord(writer, 0); // Items shift
             
-            WriteD(writer, 0);
+            WriteDword(writer, 0);
 
-            WriteH(writer, 0); // Name shift
-            WriteH(writer, 0); // Name end
+            WriteWord(writer, 0); // Name shift
+            WriteWord(writer, 0); // Name end
             // Unk shifts
-            WriteH(writer, 0); // Name end + 2
-            WriteH(writer, 0); // Name end + 4
+            WriteWord(writer, 0); // Name end + 2
+            WriteWord(writer, 0); // Name end + 4
 
-            WriteD(writer, Player.PlayerData.SexRaceClass);
+            WriteDword(writer, Player.PlayerData.SexRaceClass);
             WriteUid(writer, Player);
 
-            WriteQ(writer, 0x6f3);
-            WriteD(writer, 0x46);
+            WriteLong(writer, 0x6f3);
+            WriteDword(writer, 0x46);
 
-            WriteH(writer, (short)Player.PlayerLevel);
+            WriteWord(writer, (short)Player.PlayerLevel);
             WriteGatherStats(writer, Player);
 
-            WriteH(writer, 2);
-            WriteH(writer, 0x40d1);
-            WriteD(writer, 0);
-            WriteH(writer, 0);
+            WriteWord(writer, 2);
+            WriteWord(writer, 0x40d1);
+            WriteDword(writer, 0);
+            WriteWord(writer, 0);
 
             // Experience
-            WriteQ(writer, Player.GetExpShown());
-            WriteQ(writer, Player.GetExpNeed());
+            WriteLong(writer, Player.GetExpShown());
+            WriteLong(writer, Player.GetExpNeed());
 
-            WriteD(writer, 0);
-            WriteD(writer, 0x90b202);
-            WriteD(writer, 0x501403);
-            WriteD(writer, 0xa0f3a0);
+            WriteDword(writer, 0);
+            WriteDword(writer, 0x90b202);
+            WriteDword(writer, 0x501403);
+            WriteDword(writer, 0xa0f3a0);
 
-            WriteD(writer, 0x4533);
-            WriteD(writer, 0);
-            WriteD(writer, 0);
+            WriteDword(writer, 0x4533);
+            WriteDword(writer, 0);
+            WriteDword(writer, 0);
 
             WriteStats(writer, Player);
 
-            WriteH(writer, 3);
-            WriteD(writer, 0x76);
-            WriteD(writer, 0x78);
+            WriteWord(writer, 3);
+            WriteDword(writer, 0x76);
+            WriteDword(writer, 0x78);
 
             // Levels
-            WriteD(writer, 1); // Item level
-            WriteD(writer, 1); // Inventory level
+            WriteDword(writer, 1); // Item level
+            WriteDword(writer, 1); // Inventory level
 
-            WriteB(writer, new byte[14]);
+            WriteByte(writer, new byte[14]);
 
             // Name
             writer.Seek(12, SeekOrigin.Begin);
-            WriteH(writer, (short)writer.BaseStream.Length); // Name shift
+            WriteWord(writer, (short)writer.BaseStream.Length); // Name shift
             writer.Seek(0, SeekOrigin.End);
 
-            WriteS(writer, Player.PlayerData.Name);
+            WriteString(writer, Player.PlayerData.Name);
 
             writer.Seek(14, SeekOrigin.Begin);
-            WriteH(writer, (short)writer.BaseStream.Length); // Name end
+            WriteWord(writer, (short)writer.BaseStream.Length); // Name end
             writer.Seek(0, SeekOrigin.End);
 
-            WriteH(writer, 0);
+            WriteWord(writer, 0);
             writer.Seek(16, SeekOrigin.Begin);
-            WriteH(writer, (short)writer.BaseStream.Length); // Unk1 shift
+            WriteWord(writer, (short)writer.BaseStream.Length); // Unk1 shift
             writer.Seek(0, SeekOrigin.End);
 
-            WriteH(writer, 0);
+            WriteWord(writer, 0);
             writer.Seek(18, SeekOrigin.Begin);
-            WriteH(writer, (short)writer.BaseStream.Length); // Unk2 shift
+            WriteWord(writer, (short)writer.BaseStream.Length); // Unk2 shift
             writer.Seek(0, SeekOrigin.End);
 
-            WriteH(writer, 0);
+            WriteWord(writer, 0);
             writer.Seek(6, SeekOrigin.Begin);
-            WriteH(writer, (short)writer.BaseStream.Length); // Items shift
+            WriteWord(writer, (short)writer.BaseStream.Length); // Items shift
             writer.Seek(0, SeekOrigin.End);
 
             short lastShift = -1;
@@ -97,25 +96,25 @@ namespace Network.Server
                     if (Player.Inventory.Items.ContainsKey(i))
                     {
                         // this shift
-                        WriteH(writer, (short)writer.BaseStream.Length);
+                        WriteWord(writer, (short)writer.BaseStream.Length);
                         lastShift = (short)writer.BaseStream.Length;
                         // next item shift
-                        WriteH(writer, 0);
+                        WriteWord(writer, 0);
 
-                        WriteD(writer, Player.Inventory.Items[i].ItemId);
+                        WriteDword(writer, Player.Inventory.Items[i].ItemId);
 
                         WriteUid(writer, Player.Inventory.Items[i]);
 
-                        WriteD(writer, 0x6f3);
-                        WriteD(writer, 0);
+                        WriteDword(writer, 0x6f3);
+                        WriteDword(writer, 0);
 
-                        WriteD(writer, i);
-                        WriteD(writer, 0);
-                        WriteD(writer, Player.Inventory.Items[i].ItemTemplate.Level);
-                        WriteB(writer, new byte[94]);
+                        WriteDword(writer, i);
+                        WriteDword(writer, 0);
+                        WriteDword(writer, Player.Inventory.Items[i].ItemTemplate.Level);
+                        WriteByte(writer, new byte[94]);
 
                         writer.Seek(lastShift, SeekOrigin.Begin);
-                        WriteH(writer, (short)writer.BaseStream.Length);
+                        WriteWord(writer, (short)writer.BaseStream.Length);
                         writer.Seek(0, SeekOrigin.End);
                     }
 
@@ -123,7 +122,7 @@ namespace Network.Server
                 return;
 
             writer.Seek(lastShift, SeekOrigin.Begin);
-            WriteH(writer, 0);
+            WriteWord(writer, 0);
             writer.Seek(0, SeekOrigin.End);
         }
     }

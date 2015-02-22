@@ -3,10 +3,10 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Communication.Messages;
 using System;
+using Tera.NetworkApi.Communication.Scs.Communication.Messages;
 
-namespace Hik.Communication.ScsServices.Communication.Messages
+namespace Tera.NetworkApi.Communication.ScsServices.Communication.Messages
 {
     /// <summary>
     /// This message is sent as response message to a ScsRemoteInvokeMessage.

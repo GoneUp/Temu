@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Utils.Logger;
 
-
-namespace Configuration
+namespace Tera.Configuration
 {
     public class Task
     {

@@ -1,6 +1,6 @@
-﻿using Data.Structures.Player;
+﻿using Tera.Data.Structures.Player;
 
-namespace Data.Interfaces
+namespace Tera.Data.Interfaces
 {
     public interface IVisible
     {

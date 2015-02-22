@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
-using Communication;
-using Communication.Interfaces;
-using Communication.Logic;
-using Data;
-using Data.Enums;
-using Data.Enums.Player;
-using Data.Interfaces;
-using Data.Structures;
-using Data.Structures.Gather;
-using Data.Structures.Geometry;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using Data.Structures.World;
-using Network.Server;
+using Tera.Communication;
+using Tera.Communication.Interfaces;
+using Tera.Communication.Logic;
 using Tera.Controllers;
+using Tera.Data;
+using Tera.Data.DAO;
+using Tera.Data.Enums;
+using Tera.Data.Enums.Item;
+using Tera.Data.Enums.Player;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures;
+using Tera.Data.Structures.Account;
+using Tera.Data.Structures.Gather;
+using Tera.Data.Structures.Geometry;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
 using Tera.Extensions;
+using Tera.Network.old_Server;
 using Tera.Structures;
 using Utils;
-using Data.DAO;
-using Data.Structures.Account;
-using Data.Enums.Item;
 
 namespace Tera.Services
 {
@@ -61,9 +61,9 @@ namespace Tera.Services
             PlayersOnline.Add(player);
         }
 
-        public List<Player> OnAuthorized(Account account)
+        public List<Player> OnAuthorized(GameAccount gameAccount)
         {
-            var list = DAOManager.playerDAO.LoadAccountPlayers(account.Username);
+            var list = DAOManager.playerDAO.LoadAccountPlayers(gameAccount.Username);
 
             foreach (var player in list)
             {
@@ -73,7 +73,7 @@ namespace Tera.Services
                 player.Skills = DAOManager.skillDAO.LoadSkills(player);
                 //player.Guild = DAOManager.guildDAO.LoadPlayerGuild(player);
 
-                if (account.isGM.Equals(true))
+                if (gameAccount.IsGM.Equals(true))
                 { player.PlayerData.IsGM = true; }
 
             }
@@ -138,7 +138,7 @@ namespace Tera.Services
             Player player = new Player
             {
                 PlayerData = playerData,
-                AccountName = connection.Account.Username,
+                AccountName = connection.GameAccount.Username,
                 Position = new WorldPosition
                 {
                     MapId = 13,
@@ -150,7 +150,7 @@ namespace Tera.Services
             };
 
             player.Id = DAOManager.playerDAO.SaveNewPlayer(player);
-            connection.Account.Players.Add(player);
+            connection.GameAccount.Players.Add(player);
             return player;
         }
 

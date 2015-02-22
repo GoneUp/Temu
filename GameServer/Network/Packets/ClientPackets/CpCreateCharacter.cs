@@ -1,8 +1,8 @@
-﻿using Communication.Logic;
-using Data.Enums;
-using Data.Structures.Player;
+﻿using Tera.Communication.Logic;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Player;
 
-namespace Network.Client
+namespace Tera.Network.Packets.ClientPackets
 {
     public class CpCreateCharacter : ARecvPacket
     {

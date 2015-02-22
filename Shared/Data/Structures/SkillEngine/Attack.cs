@@ -1,9 +1,9 @@
 ﻿using System;
-using Data.Enums;
-using Data.Structures.Player;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Player;
 using Utils;
 
-namespace Data.Structures.SkillEngine
+namespace Tera.Data.Structures.SkillEngine
 {
     public class Attack : Uid
     {

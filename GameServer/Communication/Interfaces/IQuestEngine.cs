@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using Data.Structures.Quest;
-using Data.Structures.World;
-using Data.Structures.World.Continent;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Quest;
+using Tera.Data.Structures.World;
+using Tera.Data.Structures.World.Continent;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IQuestEngine : IComponent
     {

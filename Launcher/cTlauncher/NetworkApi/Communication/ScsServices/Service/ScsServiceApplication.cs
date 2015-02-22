@@ -3,16 +3,16 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Collections;
-using Hik.Communication.Scs.Communication.Messages;
-using Hik.Communication.Scs.Communication.Messengers;
-using Hik.Communication.Scs.Server;
-using Hik.Communication.ScsServices.Communication.Messages;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Tera.NetworkApi.Collections;
+using Tera.NetworkApi.Communication.Scs.Communication.Messages;
+using Tera.NetworkApi.Communication.Scs.Communication.Messengers;
+using Tera.NetworkApi.Communication.Scs.Server;
+using Tera.NetworkApi.Communication.ScsServices.Communication.Messages;
 
-namespace Hik.Communication.ScsServices.Service
+namespace Tera.NetworkApi.Communication.ScsServices.Service
 {
     /// <summary>
     /// Implements IScsServiceApplication and provides all functionallity.

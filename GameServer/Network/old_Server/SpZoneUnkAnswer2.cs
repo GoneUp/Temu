@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpZoneUnkAnswer2 : ASendPacket
     {
@@ -16,21 +16,21 @@ namespace Network.Server
         }
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, 0);
-            WriteH(writer, 0);
-            WriteD(writer, Params);
+            WriteWord(writer, 0);
+            WriteWord(writer, 0);
+            WriteDword(writer, Params);
 
             writer.Seek(4, SeekOrigin.Begin);
-            WriteH(writer, (short)writer.BaseStream.Length);
+            WriteWord(writer, (short)writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
-            WriteH(writer,Unk1);
+            WriteWord(writer,Unk1);
 
             writer.Seek(6, SeekOrigin.Begin);
-            WriteH(writer, (short)writer.BaseStream.Length);
+            WriteWord(writer, (short)writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
-            WriteH(writer, Unk2);
+            WriteWord(writer, Unk2);
         }
     }
 }

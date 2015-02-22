@@ -1,6 +1,6 @@
 ﻿using System;
-using Data.Structures.Creature;
-using Data.Structures.Gather;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Gather;
 using Utils;
 
 namespace Tera.AiEngine

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Data.Structures.Npc;
-using Data.Structures.Player;
-using Data.Structures.Quest;
-using Data.Structures.World.Continent;
 using Tera.Controllers;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Quest;
+using Tera.Data.Structures.World.Continent;
 
 namespace Tera.QuestEngine.Steps
 {

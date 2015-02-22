@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
-using Data.Structures.World;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.World;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCreatureMoveTo : ASendPacket
     {
@@ -22,10 +22,10 @@ namespace Network.Server
         {
             WriteUid(writer, Creature);
             WriteUid(writer, Target);
-            WriteF(writer, Position.X);
-            WriteF(writer, Position.Y);
-            WriteF(writer, Position.Z);
-            WriteH(writer, Position.Heading);
+            WriteSingle(writer, Position.X);
+            WriteSingle(writer, Position.Y);
+            WriteSingle(writer, Position.Z);
+            WriteWord(writer, Position.Heading);
         }
     }
 }

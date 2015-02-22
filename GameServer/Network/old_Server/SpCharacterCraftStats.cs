@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCharacterCraftStats : ASendPacket
     {
@@ -14,15 +14,15 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, 6); // craft skill counter?
-            WriteH(writer, 0); //first skill shift
-            WriteD(writer, 0);
-            WriteH(writer, 1);
-            WriteH(writer, 0); //craft skills end shift
-            WriteB(writer, "009A0100000D000000");
+            WriteWord(writer, 6); // craft skill counter?
+            WriteWord(writer, 0); //first skill shift
+            WriteDword(writer, 0);
+            WriteWord(writer, 1);
+            WriteWord(writer, 0); //craft skills end shift
+            WriteByte(writer, "009A0100000D000000");
 
             writer.Seek(6, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
             int i = 0;
@@ -32,23 +32,23 @@ namespace Network.Server
 
                 short position = (short) writer.BaseStream.Length;
 
-                WriteH(writer, position);
-                WriteH(writer, 0); //next skill shift
-                WriteD(writer, skill.Key.GetHashCode());
-                WriteD(writer, skill.Key.GetHashCode());
-                WriteD(writer, skill.Value);
+                WriteWord(writer, position);
+                WriteWord(writer, 0); //next skill shift
+                WriteDword(writer, skill.Key.GetHashCode());
+                WriteDword(writer, skill.Key.GetHashCode());
+                WriteDword(writer, skill.Value);
 
                 if (i < Player.PlayerCraftStats.CraftSkillCollection.Count)
                 {
                     writer.Seek(position + 2, SeekOrigin.Begin);
-                    WriteH(writer, (short) writer.BaseStream.Length);
+                    WriteWord(writer, (short) writer.BaseStream.Length);
                     writer.Seek(0, SeekOrigin.End);
                 }
             }
 
             i = 0;
             writer.Seek(14, SeekOrigin.Begin);
-            WriteH(writer, (short) writer.BaseStream.Length);
+            WriteWord(writer, (short) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
             foreach (var extractSkill in Player.PlayerCraftStats.ExtractSkillCollection)
@@ -57,16 +57,16 @@ namespace Network.Server
 
                 short position = (short) writer.BaseStream.Length;
 
-                WriteH(writer, position);
-                WriteH(writer, 0); //next skill shift
-                WriteD(writer, extractSkill.Key.GetHashCode());
-                WriteD(writer, extractSkill.Key.GetHashCode());
-                WriteD(writer, extractSkill.Value);
+                WriteWord(writer, position);
+                WriteWord(writer, 0); //next skill shift
+                WriteDword(writer, extractSkill.Key.GetHashCode());
+                WriteDword(writer, extractSkill.Key.GetHashCode());
+                WriteDword(writer, extractSkill.Value);
 
                 if (i < Player.PlayerCraftStats.ExtractSkillCollection.Count)
                 {
                     writer.Seek(position + 2, SeekOrigin.Begin);
-                    WriteH(writer, (short) writer.BaseStream.Length);
+                    WriteWord(writer, (short) writer.BaseStream.Length);
                     writer.Seek(0, SeekOrigin.End);
                 }
             }

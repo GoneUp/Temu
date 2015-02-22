@@ -1,6 +1,6 @@
-﻿using Data.Interfaces;
+﻿using Tera.Data.Interfaces;
 
-namespace Data.Structures.Quest.Tasks
+namespace Tera.Data.Structures.Quest.Tasks
 {
     /// <summary>
     /// Delive item(s) to NPC

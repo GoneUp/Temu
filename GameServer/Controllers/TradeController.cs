@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Data.Enums;
-using Data.Structures.Player;
-using Data.Structures.Template.Item;
-using Data.Structures.World;
-using Network;
-using Network.Server;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.Template.Item;
+using Tera.Data.Structures.World;
+using Tera.Network;
+using Tera.Network.old_Server;
 using Utils;
 using Utils.Logger;
 

@@ -6,7 +6,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Hik.Communication.ScsServices.Communication.Messages
+namespace Tera.NetworkApi.Communication.ScsServices.Communication.Messages
 {
     /// <summary>
     /// Represents a SCS Remote Exception.

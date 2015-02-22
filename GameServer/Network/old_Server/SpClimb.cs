@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Structures.Player;
-using Data.Structures.World;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpClimb : ASendPacket
     {
@@ -19,17 +19,17 @@ namespace Network.Server
         {
             WriteUid(writer, Player);
 
-            WriteF(writer, Climb.X1);
-            WriteF(writer, Climb.Y1);
-            WriteF(writer, Climb.Z1);
+            WriteSingle(writer, Climb.X1);
+            WriteSingle(writer, Climb.Y1);
+            WriteSingle(writer, Climb.Z1);
 
-            WriteH(writer, Climb.Heading);
+            WriteWord(writer, Climb.Heading);
 
-            WriteF(writer, Climb.X2);
-            WriteF(writer, Climb.Y2);
-            WriteF(writer, Climb.Z2);
+            WriteSingle(writer, Climb.X2);
+            WriteSingle(writer, Climb.Y2);
+            WriteSingle(writer, Climb.Z2);
 
-            WriteC(writer, 0);
+            WriteByte(writer, 0);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Data.Interfaces;
+﻿using Tera.Data.Interfaces;
 
 namespace Tera.AdminEngine.AdminCommands
 {

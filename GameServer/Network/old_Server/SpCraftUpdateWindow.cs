@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCraftUpdateWindow : ASendPacket
     {
@@ -15,10 +15,10 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Item);
-            WriteD(writer, Item.ItemId);
-            WriteD(writer, /*Item.ItemTemplate.Extraction*/ 0); // in original "Tier" and i don't know, what that mean
-            WriteD(writer, 0);
-            WriteC(writer, 0);
+            WriteDword(writer, Item.ItemId);
+            WriteDword(writer, /*Item.ItemTemplate.Extraction*/ 0); // in original "Tier" and i don't know, what that mean
+            WriteDword(writer, 0);
+            WriteByte(writer, 0);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
+using Tera.Data.Structures.Creature;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpDirectionChange : ASendPacket
     {
@@ -19,9 +19,9 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Creature);
-            WriteH(writer, NewHeading);
-            WriteH(writer, Time);
-            WriteH(writer, 0); //unk
+            WriteWord(writer, NewHeading);
+            WriteWord(writer, Time);
+            WriteWord(writer, 0); //unk
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Data.Enums;
-
-namespace Network.Client
+﻿namespace Tera.Network.old_Client
 {
     public class RpGetItemInfo : ARecvPacket
     {

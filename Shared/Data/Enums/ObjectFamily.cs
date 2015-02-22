@@ -1,4 +1,4 @@
-﻿namespace Data.Enums
+﻿namespace Tera.Data.Enums
 {
     public enum ObjectFamily
     {

@@ -1,10 +1,9 @@
-﻿using Data.Structures.Player;
+﻿using System.Collections.Generic;
 using MySql.Data.MySqlClient;
-using System.Collections.Generic;
-using Utils;
+using Tera.Data.Structures.Player;
 using Utils.Logger;
 
-namespace Data.DAO
+namespace Tera.Data.DAO
 {
     public class SkillsDAO : DAOManager
     {

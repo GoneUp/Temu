@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Data.Enums.Item;
+using Tera.Data.Enums.Item;
 
-namespace Data.Structures.Player
+namespace Tera.Data.Structures.Player
 {
     [ProtoBuf.ProtoContract]
     public class Storage

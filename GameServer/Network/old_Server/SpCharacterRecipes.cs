@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Data.Structures.Craft;
+using Tera.Data.Structures.Craft;
 using Utils;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpCharacterRecipes : ASendPacket
     {
@@ -25,58 +25,58 @@ namespace Network.Server
         {
             if(IsForCraftReset)
             {
-                WriteD(writer, 0);
-                WriteC(writer, 1);
-                WriteC(writer, 1);
+                WriteDword(writer, 0);
+                WriteByte(writer, 1);
+                WriteByte(writer, 1);
                 return;
             }
 
-            WriteH(writer, (short) Recipes.Count);
-            WriteD(writer, 0); // first recipe shift
+            WriteWord(writer, (short) Recipes.Count);
+            WriteDword(writer, 0); // first recipe shift
 
             writer.Seek(6, SeekOrigin.Begin);
-            WriteD(writer, (int) writer.BaseStream.Length);
+            WriteDword(writer, (int) writer.BaseStream.Length);
             writer.Seek(0, SeekOrigin.End);
 
             for (int i = 0; i < Recipes.Count; i++)
             {
-                WriteH(writer, (short)writer.BaseStream.Length);
+                WriteWord(writer, (short)writer.BaseStream.Length);
                 short recShift = (short) writer.BaseStream.Length;
-                WriteH(writer, 0);
+                WriteWord(writer, 0);
 
-                WriteH(writer, (short) Recipes[i].NeededItems.Count);
-                WriteH(writer, 0); //items start shift
+                WriteWord(writer, (short) Recipes[i].NeededItems.Count);
+                WriteWord(writer, 0); //items start shift
 
-                WriteD(writer, Recipes[i].RecipeId);
-                WriteD(writer, Recipes[i].CraftStat.GetHashCode());
-                WriteD(writer, 0); // O_o
-                WriteD(writer, Recipes[i].ResultItem.Key); //itemid
-                WriteD(writer, Recipes[i].ResultItem.Value); //counter
-                WriteD(writer, Recipes[i].Level);
-                WriteQ(writer, RandomUtilities.GetRoundedUtc());
-                WriteC(writer, 0);
-                WriteD(writer, Recipes[i].NeededItems.Count);
+                WriteDword(writer, Recipes[i].RecipeId);
+                WriteDword(writer, Recipes[i].CraftStat.GetHashCode());
+                WriteDword(writer, 0); // O_o
+                WriteDword(writer, Recipes[i].ResultItem.Key); //itemid
+                WriteDword(writer, Recipes[i].ResultItem.Value); //counter
+                WriteDword(writer, Recipes[i].Level);
+                WriteLong(writer, RandomUtilities.GetRoundedUtc());
+                WriteByte(writer, 0);
+                WriteDword(writer, Recipes[i].NeededItems.Count);
 
                 writer.Seek(recShift + 4, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
                 int counter = 1;
                 foreach (KeyValuePair<int, int> itm in Recipes[i].NeededItems)
                 {
-                    WriteH(writer, (short) writer.BaseStream.Length);
+                    WriteWord(writer, (short) writer.BaseStream.Length);
 
                     short sh1 = (short) writer.BaseStream.Length;
 
-                    WriteH(writer, 0);
+                    WriteWord(writer, 0);
 
-                    WriteD(writer, itm.Key); //itemid
-                    WriteD(writer, itm.Value); //counter
+                    WriteDword(writer, itm.Key); //itemid
+                    WriteDword(writer, itm.Value); //counter
 
                     if (counter < Recipes[i].NeededItems.Count)
                     {
                         writer.Seek(sh1, SeekOrigin.Begin);
-                        WriteH(writer, (short) writer.BaseStream.Length);
+                        WriteWord(writer, (short) writer.BaseStream.Length);
                         writer.Seek(0, SeekOrigin.End);
                     }
                     counter++;
@@ -85,7 +85,7 @@ namespace Network.Server
                 if (i + 1 < Recipes.Count)
                 {
                     writer.Seek(recShift, SeekOrigin.Begin);
-                    WriteH(writer, (short)writer.BaseStream.Length);
+                    WriteWord(writer, (short)writer.BaseStream.Length);
                     writer.Seek(0, SeekOrigin.End);
                 }
             }

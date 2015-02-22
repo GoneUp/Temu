@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Network.Client;
-using Network.Server;
+using Tera.Network.old_Client;
+using Tera.Network.old_Server;
+using Tera.Network.Packets.ClientPackets;
+using Tera.Network.Packets.ServerPackets;
 
-namespace Network
+namespace Tera.Network
 {
     public class OpCodes
     {

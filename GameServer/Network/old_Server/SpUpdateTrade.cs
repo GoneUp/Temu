@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Structures.Player;
-using Data.Structures.World;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpUpdateTrade : ASendPacket
     {
@@ -17,50 +17,50 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteH(writer, (short) ShoppingCart.BuyItems.Count);
+            WriteWord(writer, (short) ShoppingCart.BuyItems.Count);
             short buyItemShift = (short) writer.BaseStream.Position;
-            WriteH(writer, 0); //first buyitem shift
+            WriteWord(writer, 0); //first buyitem shift
 
-            WriteH(writer, (short) ShoppingCart.SellItems.Count);
+            WriteWord(writer, (short) ShoppingCart.SellItems.Count);
             short sellItemShift = (short) writer.BaseStream.Position;
-            WriteH(writer, 0); //first sellitem shift
+            WriteWord(writer, 0); //first sellitem shift
 
             WriteUid(writer, Player);
-            WriteD(writer, ShoppingCart.Uid);
-            WriteQ(writer, 0);
-            WriteQ(writer, ShoppingCart.GetBuyItemsPrice());
-            WriteB(writer, "9A9999999999A93F"); // shit from traidlist
-            WriteQ(writer, ShoppingCart.GetSellItemsPrice());
+            WriteDword(writer, ShoppingCart.Uid);
+            WriteLong(writer, 0);
+            WriteLong(writer, ShoppingCart.GetBuyItemsPrice());
+            WriteByte(writer, "9A9999999999A93F"); // shit from traidlist
+            WriteLong(writer, ShoppingCart.GetSellItemsPrice());
 
             foreach (var item in ShoppingCart.BuyItems)
             {
                 writer.Seek(buyItemShift, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteH(writer, (short) writer.BaseStream.Position);
+                WriteWord(writer, (short) writer.BaseStream.Position);
                 buyItemShift = (short) writer.BaseStream.Position;
-                WriteH(writer, 0);
+                WriteWord(writer, 0);
 
-                WriteD(writer, item.ItemTemplate.Id);
-                WriteD(writer, item.Count);
+                WriteDword(writer, item.ItemTemplate.Id);
+                WriteDword(writer, item.Count);
             }
 
             foreach (var item in ShoppingCart.SellItems)
             {
                 writer.Seek(sellItemShift, SeekOrigin.Begin);
-                WriteH(writer, (short) writer.BaseStream.Length);
+                WriteWord(writer, (short) writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                WriteH(writer, (short) (writer.BaseStream.Length));
+                WriteWord(writer, (short) (writer.BaseStream.Length));
                 sellItemShift = (short) writer.BaseStream.Position;
-                WriteH(writer, 0);
+                WriteWord(writer, 0);
 
-                WriteD(writer, item.ItemTemplate.Id);
-                WriteD(writer, item.Count);
-                WriteD(writer, 0);
-                WriteD(writer, 0);
-                WriteH(writer, 0);
+                WriteDword(writer, item.ItemTemplate.Id);
+                WriteDword(writer, item.Count);
+                WriteDword(writer, 0);
+                WriteDword(writer, 0);
+                WriteWord(writer, 0);
             }
         }
     }

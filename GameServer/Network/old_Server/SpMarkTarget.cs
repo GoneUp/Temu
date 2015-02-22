@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Creature;
+using Tera.Data.Structures.Creature;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpMarkTarget : ASendPacket
     {
@@ -19,8 +19,8 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Creature);
-            WriteD(writer, SkillId);
-            WriteC(writer, Flag);
+            WriteDword(writer, SkillId);
+            WriteByte(writer, Flag);
         }
     }
 }

@@ -1,16 +1,10 @@
-﻿using cTlauncher;
-using Hik.Communication.Scs.Client;
-using Hik.Communication.Scs.Communication.EndPoints.Tcp;
-using Hik.Communication.Scs.Communication.Messages;
-using Hik.Communication.Scs.Communication.Messengers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System;
+using Tera.NetworkApi.Communication.Scs.Client;
+using Tera.NetworkApi.Communication.Scs.Communication.EndPoints.Tcp;
+using Tera.NetworkApi.Communication.Scs.Communication.Messages;
+using Tera.NetworkApi.Communication.Scs.Communication.Messengers;
 
-namespace Network
+namespace Tera.Network
 {
     public class ClientConnection
     {

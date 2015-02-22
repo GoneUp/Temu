@@ -1,6 +1,6 @@
-﻿using Data.Structures.World;
+﻿using Tera.Data.Structures.World;
 
-namespace Data.Structures.Template
+namespace Tera.Data.Structures.Template
 {
     [ProtoBuf.ProtoContract]
     public class CampfireSpawnTemplate

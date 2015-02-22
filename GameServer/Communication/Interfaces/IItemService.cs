@@ -1,7 +1,7 @@
-﻿using Data.Structures.Player;
-using Data.Structures.World;
+﻿using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
 
-namespace Communication.Interfaces
+namespace Tera.Communication.Interfaces
 {
     public interface IItemService : IComponent
     {

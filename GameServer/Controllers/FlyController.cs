@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Communication.Logic;
-using Data.Enums;
-using Data.Enums.Pegasus;
-using Data.Enums.Player;
-using Data.Interfaces;
-using Data.Structures.Player;
-using Data.Structures.World;
-using Data.Structures.World.Pegasus;
-using Network.Server;
+using Tera.Communication.Logic;
+using Tera.Data.Enums;
+using Tera.Data.Enums.Pegasus;
+using Tera.Data.Enums.Player;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
+using Tera.Data.Structures.World.Pegasus;
+using Tera.Network.old_Server;
 using Utils;
 using Utils.Logger;
 

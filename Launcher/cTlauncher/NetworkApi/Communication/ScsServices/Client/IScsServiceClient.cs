@@ -3,10 +3,10 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Client;
 using System;
+using Tera.NetworkApi.Communication.Scs.Client;
 
-namespace Hik.Communication.ScsServices.Client
+namespace Tera.NetworkApi.Communication.ScsServices.Client
 {
     /// <summary>
     /// Represents a service client that consumes a SCS service.

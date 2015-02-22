@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Structures.Npc;
-using Data.Structures.Player;
+using Tera.Data.Structures.Npc;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpUpdateExp : ASendPacket
     {
@@ -19,17 +19,17 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteQ(writer, Added);
-            WriteQ(writer, Player.PlayerExp);
-            WriteQ(writer, Player.GetExpShown());
-            WriteQ(writer, Player.GetExpNeed());
+            WriteLong(writer, Added);
+            WriteLong(writer, Player.PlayerExp);
+            WriteLong(writer, Player.GetExpShown());
+            WriteLong(writer, Player.GetExpNeed());
             WriteUid(writer, Npc);
 
             /*new EXP params like death penalty or something else*/
 
-            WriteQ(writer, 0);
-            WriteD(writer, 0);
-            WriteB(writer, "461600000000803F00000000");
+            WriteLong(writer, 0);
+            WriteDword(writer, 0);
+            WriteByte(writer, "461600000000803F00000000");
         }
     }
 }

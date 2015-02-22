@@ -3,14 +3,13 @@
 // MVID: A2E8A751-E997-4D34-AEF6-43942DCF18A6
 // Assembly location: C:\Users\sh4m4_000\Desktop\PjS1Server\build\Scs.dll
 
-using Hik.Communication.Scs.Communication;
-using Hik.Communication.Scs.Communication.EndPoints;
-using Hik.Communication.Scs.Communication.Messages;
-using Hik.Communication.Scs.Communication.Messengers;
-using Hik.Communication.Scs.Communication.Protocols;
 using System;
+using Tera.NetworkApi.Communication.Scs.Communication.EndPoints;
+using Tera.NetworkApi.Communication.Scs.Communication.Messages;
+using Tera.NetworkApi.Communication.Scs.Communication.Messengers;
+using Tera.NetworkApi.Communication.Scs.Communication.Protocols;
 
-namespace Hik.Communication.Scs.Communication.Channels
+namespace Tera.NetworkApi.Communication.Scs.Communication.Channels
 {
     /// <summary>
     /// This class provides base functionality for all communication channel classes.

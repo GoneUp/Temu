@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Structures.Player;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpPegasusFlight : ASendPacket
     {
@@ -21,9 +21,9 @@ namespace Network.Server
         public override void Write(BinaryWriter writer)
         {
             WriteUid(writer, Player);
-            WriteD(writer, TeleportId);
-            WriteD(writer, State);
-            WriteD(writer, Time);
+            WriteDword(writer, TeleportId);
+            WriteDword(writer, State);
+            WriteDword(writer, Time);
         }
     }
 }

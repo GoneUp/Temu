@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Data.Enums;
+using Tera.Data.Enums;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public class SpSystemWindow : ASendPacket
     {
@@ -14,7 +14,7 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-            WriteD(writer, Window.GetHashCode());
+            WriteDword(writer, Window.GetHashCode());
         }
     }
 }

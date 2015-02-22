@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
-using Data.Enums;
-using Data.Enums.Item;
-using Data.Interfaces;
-using Data.Structures.Quest;
-using Data.Structures.World;
-using Data.Structures.World.Party;
-using Data.Structures.World.Requests;
+using Tera.Data.Enums;
+using Tera.Data.Enums.Item;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Quest;
+using Tera.Data.Structures.World;
+using Tera.Data.Structures.World.Party;
+using Tera.Data.Structures.World.Requests;
 using Utils;
 
-namespace Data.Structures.Player
+namespace Tera.Data.Structures.Player
 {
     [ProtoBuf.ProtoContract]
     public class Player : Creature.Creature

@@ -1,17 +1,10 @@
-﻿using Data.DAO;
-using Data.Structures.Account;
-using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Utils;
+using MySql.Data.MySqlClient;
+using Tera.Data.Structures.Account;
 using Utils.Logger;
 
-namespace Data.DAO
+namespace Tera.Data.DAO
 {
     public class AccountDAO : DAOManager
     {
@@ -29,29 +22,29 @@ namespace Data.DAO
             , (stopwatch.ElapsedMilliseconds / 1000.0).ToString("0.00"));
         }
 
-        public Account LoadAccount(string username)
+        public GameAccount LoadAccount(string username)
         {
                 string SqlQuery = "SELECT * FROM `accounts` WHERE `username` = ?username";
                 MySqlCommand SqlCommand = new MySqlCommand(SqlQuery, AccountDAOConnection);
                 SqlCommand.Parameters.AddWithValue("?username", username);
                 MySqlDataReader AccountReader = SqlCommand.ExecuteReader();
 
-                Account acc = new Account();
+                GameAccount acc = new GameAccount();
                 if (AccountReader.HasRows)
                 {
                     while (AccountReader.Read())
                     {
-                        acc.AccountId = AccountReader.GetInt32(0);
+                        acc.AccountId = AccountReader.GetUInt32(0);
                         acc.Username = AccountReader.GetString(1);
                         acc.Password = AccountReader.GetString(2);
                         acc.Email = AccountReader.GetString(3);
                         acc.AccessLevel = (byte)AccountReader.GetInt32(4);
-                        acc.Membership = (byte)AccountReader.GetInt32(5);
-                        acc.isGM = AccountReader.GetBoolean(6);
+                        acc.Membership = AccountReader.GetString(5);
+                        acc.IsGM = AccountReader.GetBoolean(6);
                         acc.LastOnlineUtc = AccountReader.GetInt64(7);
-                        acc.Coins = (int)AccountReader.GetInt32(8);
+                        acc.Coins = AccountReader.GetUInt32(8);
                         acc.Ip = AccountReader.GetString(9);
-                        acc.UiSettings = ByteUtilities.StringToByteArray(AccountReader.GetString(10));
+                        acc.UiSettings = AccountReader.GetString(10);
 
                     }
                 }
@@ -82,12 +75,12 @@ namespace Data.DAO
             return count;
         }
 
-        public bool SaveAccount(Account account)
+        public bool SaveAccount(GameAccount gameAccount)
         {
             string SqlQuery = "INSERT INTO `accounts` (`username`,`password`) VALUES(?username, ?password);";
             MySqlCommand SqlCommand = new MySqlCommand(SqlQuery, AccountDAOConnection);
-            SqlCommand.Parameters.AddWithValue("?username", account.Username);
-            SqlCommand.Parameters.AddWithValue("?password", account.Password);
+            SqlCommand.Parameters.AddWithValue("?username", gameAccount.Username);
+            SqlCommand.Parameters.AddWithValue("?password", gameAccount.Password);
             try
             {
                 SqlCommand.ExecuteNonQuery();

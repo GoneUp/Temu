@@ -1,7 +1,7 @@
 ﻿using System;
-using Data.Enums.Craft;
-using Data.Interfaces;
-using Network.Server;
+using Tera.Data.Enums.Craft;
+using Tera.Data.Interfaces;
+using Tera.Network.old_Server;
 
 namespace Tera.AdminEngine.AdminCommands
 {

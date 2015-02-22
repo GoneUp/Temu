@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using Communication;
-using Data.Enums;
-using Data.Structures.Creature;
-using Data.Structures.Player;
-using Data.Structures.SkillEngine;
-using Data.Structures.World;
-using Network.Server;
+using Tera.Communication;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World;
+using Tera.Network.old_Server;
 
 namespace Tera.SkillEngine
 {

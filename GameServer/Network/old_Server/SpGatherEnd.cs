@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Data.Structures.Gather;
-using Data.Structures.Player;
+using Tera.Data.Structures.Gather;
+using Tera.Data.Structures.Player;
 
-namespace Network.Server
+namespace Tera.Network.old_Server
 {
     public enum GatherEndCode
     {
@@ -28,7 +28,7 @@ namespace Network.Server
         {
             WriteUid(writer, Player);
             WriteUid(writer, Gather);
-            WriteD(writer, EndCode.GetHashCode());
+            WriteDword(writer, EndCode.GetHashCode());
         }
     }
 }

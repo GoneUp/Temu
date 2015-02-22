@@ -1,8 +1,8 @@
 ﻿using System;
-using Data.Structures.World;
+using Tera.Data.Structures.World;
 using Utils;
 
-namespace Data.Structures.Geometry
+namespace Tera.Data.Structures.Geometry
 {
     public abstract class Geom
     {

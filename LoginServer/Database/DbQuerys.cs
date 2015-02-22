@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Data;
-using AccountService;
+using Tera.Data.Structures.Account;
 using Utils.Logger;
 using DevTera;
 using Utils.Crypt;
@@ -207,7 +207,7 @@ namespace Database_Manager.Database
         public static bool UserExists(string Username)
         {
             DataTable Data = new DataTable();
-            Account Account = new Account();
+            LoginAccount loginAccount = new LoginAccount();
 
             using (IQueryAdapter dbClient = LoginServer.dbManager.getQueryreactor())
             {
@@ -219,7 +219,7 @@ namespace Database_Manager.Database
                 {
                     foreach (DataRow Row in Data.Rows)
                     {
-                        Account = new Account()
+                        loginAccount = new LoginAccount()
                         {
                             AccountId = uint.Parse(Row["id"].ToString()),
                             Username = Row["username"].ToString(),
@@ -239,7 +239,7 @@ namespace Database_Manager.Database
                         };
 
 
-                        if (Account.Username != null || Account.Username == Username)
+                        if (loginAccount.Username != null || loginAccount.Username == Username)
                         {
                             Logger.WriteLine(LogState.Debug, "User {0} found!!", Username);
                             return true;
@@ -254,7 +254,7 @@ namespace Database_Manager.Database
         public static bool VerifyUser(string Username, string Password)
         {
             DataTable Data = new DataTable();
-            Account Account = new Account();
+            LoginAccount loginAccount = new LoginAccount();
 
             using (IQueryAdapter dbClient = LoginServer.dbManager.getQueryreactor())
             {
@@ -266,7 +266,7 @@ namespace Database_Manager.Database
                 {
                     foreach (DataRow Row in Data.Rows)
                     {
-                        Account = new Account()
+                        loginAccount = new LoginAccount()
                         {
                             AccountId = uint.Parse(Row["id"].ToString()),
                             Username = Row["username"].ToString(),
@@ -287,14 +287,14 @@ namespace Database_Manager.Database
 
                     }
 
-                    if (Account.Username != null)
+                    if (loginAccount.Username != null)
                     {
-                        if (Account.Username != Username)
+                        if (loginAccount.Username != Username)
                         {
                             Logger.WriteLine(LogState.Error, "Account.Username missmatch!");
                             return false;
                         }
-                        if (Account.Username == Username && Account.Password == Password)
+                        if (loginAccount.Username == Username && loginAccount.Password == Password)
                         {
                             Logger.WriteLine(LogState.Info, "Verify ok!");
                             return true;
@@ -403,10 +403,10 @@ namespace Database_Manager.Database
         }
 
         //Read AccountData for Username&Pass, return as Account()
-        public static Account GetAccountData(string Username, string Password)
+        public static LoginAccount GetAccountData(string Username, string Password)
         {
             DataTable Data = new DataTable();
-            Account Account = new Account();
+            LoginAccount loginAccount = new LoginAccount();
 
             using (IQueryAdapter dbClient = LoginServer.dbManager.getQueryreactor())
             {
@@ -418,7 +418,7 @@ namespace Database_Manager.Database
                 {
                     foreach (DataRow Row in Data.Rows)
                     {
-                        Account = new Account()
+                        loginAccount = new LoginAccount()
                         {
                             AccountId = uint.Parse(Row["id"].ToString()),
                             Username = Row["username"].ToString(),
@@ -437,18 +437,18 @@ namespace Database_Manager.Database
                             RegisterDate = Convert.ToInt64((long.Parse(Row["registerdate"].ToString()))),
                         };
 
-                        return Account;
+                        return loginAccount;
                     }
                 }
             }
             Logger.WriteLine(LogState.Error, "Get Account Data failed, wrong pass?");
-            Account = null;
-            return Account;
+            loginAccount = null;
+            return loginAccount;
         }
         public static int GetCurrentAccountCount()
         {
             DataTable Data = new DataTable();
-            Account Account = new Account();
+            LoginAccount loginAccount = new LoginAccount();
 
             using (IQueryAdapter dbClient = LoginServer.dbManager.getQueryreactor())
             {
@@ -460,7 +460,7 @@ namespace Database_Manager.Database
                 {
                     foreach (DataRow Row in Data.Rows)
                     {
-                        Account = new Account()
+                        loginAccount = new LoginAccount()
                         {
                             AccountId = uint.Parse(Row["Id"].ToString()),
                             Username = Row["Username"].ToString(),

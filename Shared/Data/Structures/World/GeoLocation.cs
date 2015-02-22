@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data.Structures.World
+namespace Tera.Data.Structures.World
 {
     [ProtoBuf.ProtoContract]
     public class GeoLocation

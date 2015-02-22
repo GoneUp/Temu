@@ -1,8 +1,8 @@
-﻿using Data.Enums;
-using Data.Structures.Creature;
-using Data.Structures.Npc;
+﻿using Tera.Data.Enums;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Npc;
 
-namespace Data.Structures.Template
+namespace Tera.Data.Structures.Template
 {
     [ProtoBuf.ProtoContract]
     public class NpcTemplate

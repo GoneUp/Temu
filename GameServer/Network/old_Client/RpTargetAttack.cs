@@ -1,7 +1,7 @@
-﻿using Communication.Logic;
-using Data.Structures.Player;
+﻿using Tera.Communication.Logic;
+using Tera.Data.Structures.Player;
 
-namespace Network.Client
+namespace Tera.Network.old_Client
 {
     public class RpTargetAttack : ARecvPacket
     {

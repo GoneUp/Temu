@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Communication.Interfaces;
-using Communication.Logic;
-using Data.Enums.SkillEngine;
-using Data.Structures.Player;
-using Data.Structures.SkillEngine;
-using Network;
-using Network.Server;
+using Tera.Communication.Interfaces;
+using Tera.Communication.Logic;
+using Tera.Data.Enums.SkillEngine;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.SkillEngine;
+using Tera.Network;
+using Tera.Network.old_Server;
 
 namespace Tera.Services
 {

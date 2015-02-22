@@ -1,6 +1,6 @@
-﻿using Data.Structures.World.Requests;
+﻿using Tera.Data.Structures.World.Requests;
 
-namespace Data.Structures.World
+namespace Tera.Data.Structures.World
 {
     public class Duel
     {

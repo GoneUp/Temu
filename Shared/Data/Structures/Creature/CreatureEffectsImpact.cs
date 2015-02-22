@@ -1,6 +1,6 @@
-﻿using Data.Enums;
+﻿using Tera.Data.Enums;
 
-namespace Data.Structures.Creature
+namespace Tera.Data.Structures.Creature
 {
     public class CreatureEffectsImpact
     {

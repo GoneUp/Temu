@@ -1,17 +1,12 @@
-﻿using Data.Enums;
-using Data.Structures.Player;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Utils;
+using MySql.Data.MySqlClient;
+using Tera.Data.Enums;
+using Tera.Data.Structures.Player;
 using Utils.Logger;
 
-namespace Data.DAO
+namespace Tera.Data.DAO
 {
     public class PlayerDAO : DAOManager
     {

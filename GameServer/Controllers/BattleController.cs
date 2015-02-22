@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Communication;
-using Communication.Logic;
-using Data.Enums;
-using Data.Interfaces;
-using Data.Structures.Creature;
-using Data.Structures.Player;
-using Network;
-using Network.Server;
+using Tera.Communication;
+using Tera.Communication.Logic;
+using Tera.Data.Enums;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Creature;
+using Tera.Data.Structures.Player;
+using Tera.Network;
+using Tera.Network.old_Server;
 using Tera.SkillEngine;
 using Utils;
 

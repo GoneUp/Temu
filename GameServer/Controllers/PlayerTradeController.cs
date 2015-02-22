@@ -1,10 +1,9 @@
-﻿using Data.Enums.Item;
-using Data.Interfaces;
-using Data.Structures;
-using Data.Structures.Player;
-using Data.Structures.World.Requests;
-using Network;
-using Network.Server;
+﻿using Tera.Data.Enums.Item;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Player;
+using Tera.Data.Structures.World.Requests;
+using Tera.Network;
+using Tera.Network.old_Server;
 
 namespace Tera.Controllers
 {

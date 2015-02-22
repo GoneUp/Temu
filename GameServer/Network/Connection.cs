@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Threading;
-using Communication.Logic;
-using Crypt;
-using Data.Interfaces;
-using Data.Structures.Account;
-using Data.Structures.Player;
 using Hik.Communication.Scs.Communication;
 using Hik.Communication.Scs.Communication.Messages;
 using Hik.Communication.Scs.Server;
-using Network.Messages;
-using Network.Protocol;
+using Network;
+using Tera.Communication.Logic;
+using Tera.Crypt;
+using Tera.Data.Interfaces;
+using Tera.Data.Structures.Account;
+using Tera.Data.Structures.Player;
+using Tera.Network.Messages;
+using Tera.Network.Protocol;
 using Utils;
 using Utils.Logger;
 
-namespace Network
+namespace Tera.Network
 {
     public class Connection : IConnection
     {
@@ -45,18 +46,18 @@ namespace Network
             }
         }
 
-        private Account _account;
+        private GameAccount m_gameAccount;
 
-        public Account Account
+        public GameAccount GameAccount
         {
-            get { return _account; }
+            get { return m_gameAccount; }
             set
             {
                 if (value.Connection != null)
                     value.Connection.Close();
 
-                _account = value;
-                _account.Connection = this;
+                m_gameAccount = value;
+                m_gameAccount.Connection = this;
             }
         }
 
@@ -93,9 +94,9 @@ namespace Network
         {
             AccountLogic.ClientDisconnected(this);
 
-            if (_account != null)
-                _account.Connection = null;
-            _account = null;
+            if (m_gameAccount != null)
+                m_gameAccount.Connection = null;
+            m_gameAccount = null;
 
             if (Player != null)
                 Player.Connection = null;
@@ -173,7 +174,7 @@ namespace Network
 
             if (OpCodes.Recv.ContainsKey(message.OpCode))
             {
-               GlobalLogic.PacketReceived(Account, OpCodes.Recv[message.OpCode], Buffer);
+               GlobalLogic.PacketReceived(GameAccount, OpCodes.Recv[message.OpCode], Buffer);
 
                 ((ARecvPacket)Activator.CreateInstance(OpCodes.Recv[message.OpCode])).Process(this);
 
@@ -188,7 +189,7 @@ namespace Network
             }
             else
             {
-                GlobalLogic.PacketReceived(Account, null, Buffer);
+                GlobalLogic.PacketReceived(GameAccount, null, Buffer);
 
                 string opCodeLittleEndianHex = BitConverter.GetBytes(message.OpCode).ToHex();
                 Logger.WriteLine(LogState.Debug, "Unknown GsPacket opCode: 0x{0}{1} [{2}]",
@@ -207,8 +208,8 @@ namespace Network
 
         public void Close()
         {
-            if (_account != null)
-                _account.LastOnlineUtc = RandomUtilities.GetCurrentMilliseconds();
+            if (m_gameAccount != null)
+                m_gameAccount.LastOnlineUtc = RandomUtilities.GetCurrentMilliseconds();
 
             Client.Disconnect();
         }
@@ -222,7 +223,7 @@ namespace Network
             lock (SendLock)
             {
                 short opCode = BitConverter.ToInt16(data, 2);
-                GlobalLogic.PacketSent(Account,
+                GlobalLogic.PacketSent(GameAccount,
                                        OpCodes.SendNames.ContainsKey(opCode)
                                            ? OpCodes.SendNames[opCode]
                                            : "unk",

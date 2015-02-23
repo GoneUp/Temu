@@ -273,7 +273,6 @@
     <Compile Include="Network\old_Client\RpZoneUnk.cs" />
     <Compile Include="Network\Connection.cs" />
     <Compile Include="Network\Messages\GameMessage.cs" />
-    <Compile Include="Network\Messages\KeyMessage.cs" />
     <Compile Include="Network\OpCodes.cs" />
     <Compile Include="Network\Protocol\GameProtocol.cs" />
     <Compile Include="Network\old_Server\SpAbnormal.cs" />

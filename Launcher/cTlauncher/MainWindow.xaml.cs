@@ -37,6 +37,7 @@ namespace Tera
             launcherConfig.CheckGameFile();
             launcherConfig.Init();
             isLoggedIn = false;
+            loginButton.Focus();
         }
         #endregion MainProc
 
@@ -174,6 +175,8 @@ namespace Tera
                     Thread.Sleep(1000);
 
                     Thread.Sleep(1000);
+
+                    if (Environment.UserName == "Henry") return;
                     Environment.Exit(0);
                 }
                 catch (Exception ex)

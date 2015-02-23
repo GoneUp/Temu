@@ -5,7 +5,6 @@ using System.Threading;
 using Hik.Communication.Scs.Communication;
 using Hik.Communication.Scs.Communication.Messages;
 using Hik.Communication.Scs.Server;
-using Network;
 using Tera.Communication.Logic;
 using Tera.Crypt;
 using Tera.Data.Interfaces;

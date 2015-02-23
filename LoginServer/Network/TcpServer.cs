@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Tera.Data.Structures.Account;
+using Tera.Network.Protocol;
 using Utils.Logger;
 using Database_Manager.Database;
 using MySql.Data.MySqlClient;

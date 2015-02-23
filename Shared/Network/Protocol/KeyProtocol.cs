@@ -1,32 +1,67 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.IO;
 using Hik.Communication.Scs.Communication.Messages;
-using Hik.Communication.Scs.Communication.Protocols.BinarySerialization;
+using Hik.Communication.Scs.Communication.Protocols;
+using Tera.Network.Messages;
 
-namespace Network
+namespace Tera.Network.Protocol
 {
-    /// <summary>
-    /// This class is a sample custom wire protocol to use as wire protocol in SCS framework.
-    /// It extends BinarySerializationProtocol.
-    /// It is used just to send/receive ScsTextMessage messages.
-    /// 
-    /// Since BinarySerializationProtocol automatically writes message length to the beggining
-    /// of the message, a message format of this class is:
-    /// 
-    /// [Message length (4 bytes)][UTF-8 encoded text (N bytes)]
-    /// 
-    /// So, total length of the message = (N + 4) bytes;
-    /// </summary>
-    public class KeyProtocol : BinarySerializationProtocol
+    public class KeyProtocol : IScsWireProtocol
     {
-        protected override byte[] SerializeMessage(IScsMessage message)
+        protected MemoryStream Stream = new MemoryStream();
+
+        public byte[] GetBytes(IScsMessage message)
         {
-            return Encoding.UTF8.GetBytes(((ScsTextMessage)message).Text);
+            return ((KeyMessage)message).Key;
         }
 
-        protected override IScsMessage DeserializeMessage(byte[] bytes)
+        public IEnumerable<IScsMessage> CreateMessages(byte[] receivedBytes)
         {
-            //Decode UTF8 encoded text and create a ScsTextMessage object
-            return new ScsTextMessage(Encoding.UTF8.GetString(bytes));
+            Stream.Write(receivedBytes, 0, receivedBytes.Length);
+
+            List<IScsMessage> messages = new List<IScsMessage>();
+
+            // ReSharper disable CSharpWarnings::CS0642
+            while (ReadKeyMessage(messages)) ;
+            // ReSharper restore CSharpWarnings::CS0642
+
+            return messages;
+        }
+
+        public void Reset()
+        {
+        }
+
+        private bool ReadKeyMessage(List<IScsMessage> messages)
+        {
+            Stream.Position = 0;
+
+            if (Stream.Length < 128)
+                return false;
+
+            KeyMessage message = new KeyMessage { Key = new byte[128] };
+
+            Stream.Read(message.Key, 0, 128);
+
+            messages.Add(message);
+
+            TrimStream();
+
+            return true;
+        }
+
+        private void TrimStream()
+        {
+            if (Stream.Position == Stream.Length)
+            {
+                Stream = new MemoryStream();
+                return;
+            }
+
+            byte[] remaining = new byte[Stream.Length - Stream.Position];
+            Stream.Read(remaining, 0, remaining.Length);
+            Stream = new MemoryStream();
+            Stream.Write(remaining, 0, remaining.Length);
         }
     }
 }

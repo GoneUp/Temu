@@ -10,7 +10,7 @@ namespace Tera.Configuration
     {
         #region properties
         public static string lsFileType = "conf.";
-        public static string lsFileName = "loginserver";
+        public static string lsFileName = "gameserver";
         public static string lsPath = Path.Combine("Configuration", string.Format("{0}.xml", lsFileType + lsFileName));
         #endregion properties
 

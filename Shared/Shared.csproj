@@ -260,6 +260,7 @@
     <Compile Include="Data\Structures\World\Tradelist.cs" />
     <Compile Include="Data\Structures\World\VisualEffect.cs" />
     <Compile Include="Data\Structures\World\WorldPosition.cs" />
+    <Compile Include="Network\Messages\KeyMessage.cs" />
     <Compile Include="Network\Protocol\KeyProtocol.cs" />
     <Compile Include="Network\Protocol\KeyProtocolFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

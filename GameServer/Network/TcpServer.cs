@@ -45,7 +45,7 @@ namespace Tera.Network
         {
             string ip = Regex.Match(e.Client.RemoteEndPoint.ToString(), "([0-9]+).([0-9]+).([0-9]+).([0-9]+)").Value;
 
-            Logger.WriteLine(LogState.Info,"Client connected!");
+            Logger.WriteLine(LogState.Info,"Client " + ip + " connected!");
 
             if (ConnectionsTime.ContainsKey(ip))
             {

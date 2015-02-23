@@ -198,25 +198,25 @@ namespace Tera.Configuration.Configs
                 Config.CreateDefaultFolder();
                 // Create a new configuration object and initialize some variables
                 //Server Config
-                Tera.GameServer.gameserverConfig.ServerListenIP = _ServerListenIP;
-                Tera.GameServer.gameserverConfig.ServerPort = _ServerPort;
-                Tera.GameServer.gameserverConfig.ServerExternalIP = _ServerExternalIP;
-                Tera.GameServer.gameserverConfig.ServerMaxConnections = _ServerMaxConnections;
-                Tera.GameServer.gameserverConfig.InterServerPort = _InterServerPort;
-                Tera.GameServer.gameserverConfig.InterServerPassword = _InterServerPassword;
+                GameServer.gameserverConfig.ServerListenIP = _ServerListenIP;
+                GameServer.gameserverConfig.ServerPort = _ServerPort;
+                GameServer.gameserverConfig.ServerExternalIP = _ServerExternalIP;
+                GameServer.gameserverConfig.ServerMaxConnections = _ServerMaxConnections;
+                GameServer.gameserverConfig.InterServerPort = _InterServerPort;
+                GameServer.gameserverConfig.InterServerPassword = _InterServerPassword;
                 //Database Config
-                Tera.GameServer.gameserverConfig.DbHost = _DbHost;
-                Tera.GameServer.gameserverConfig.DbPort = _DbPort;
-                Tera.GameServer.gameserverConfig.DbName = _DbName;
-                Tera.GameServer.gameserverConfig.DbUser = _DbUser;
-                Tera.GameServer.gameserverConfig.DbPassword = _DbPassword;
-                Tera.GameServer.gameserverConfig.DbConnectionString = _DbConnectionString;
-                Tera.GameServer.gameserverConfig.DbMinPoolSize = _DbMinPoolSize;
-                Tera.GameServer.gameserverConfig.DbMaxPoolSize = _DbMaxPoolSize;
-                Tera.GameServer.gameserverConfig.DbType = _DbType;
+                GameServer.gameserverConfig.DbHost = _DbHost;
+                GameServer.gameserverConfig.DbPort = _DbPort;
+                GameServer.gameserverConfig.DbName = _DbName;
+                GameServer.gameserverConfig.DbUser = _DbUser;
+                GameServer.gameserverConfig.DbPassword = _DbPassword;
+                GameServer.gameserverConfig.DbConnectionString = _DbConnectionString;
+                GameServer.gameserverConfig.DbMinPoolSize = _DbMinPoolSize;
+                GameServer.gameserverConfig.DbMaxPoolSize = _DbMaxPoolSize;
+                GameServer.gameserverConfig.DbType = _DbType;
                 //Logging Config
-                Tera.GameServer.gameserverConfig.LogLevel = _LogLevel;
-                Tera.GameServer.gameserverConfig.LogFile = _LogFile;
+                GameServer.gameserverConfig.LogLevel = _LogLevel;
+                GameServer.gameserverConfig.LogFile = _LogFile;
                 // Serialize the configuration object to a file
             Config.WriteToXmlFile<GameServerConfig>(Config.lsPath,  Tera.GameServer.gameserverConfig);
             }

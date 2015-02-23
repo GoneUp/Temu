@@ -1,6 +1,6 @@
 ﻿using Hik.Communication.Scs.Communication.Protocols;
 
-namespace Network
+namespace Tera.Network.Protocol
 {
     public class KeyProtocolFactory : IScsWireProtocolFactory
     {

@@ -8,9 +8,9 @@
 
         public override void Read()
         {
-            Unk1 = ReadD(); // 0
-            Unk2 = ReadD(); // 0
-            Unk3 = ReadD(); // 1
+            Unk1 = ReadDword(); // 0
+            Unk2 = ReadDword(); // 0
+            Unk3 = ReadDword(); // 1
         }
 
         public override void Process()

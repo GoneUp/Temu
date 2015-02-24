@@ -7,10 +7,10 @@
 
         public override void Read()
         {
-            DialogUid = ReadD();
-            SelectedIndex = ReadD();
-            ReadD(); //FFFFFFFF
-            ReadD(); //FFFFFFFF
+            DialogUid = ReadDword();
+            SelectedIndex = ReadDword();
+            ReadDword(); //FFFFFFFF
+            ReadDword(); //FFFFFFFF
         }
 
         public override void Process()

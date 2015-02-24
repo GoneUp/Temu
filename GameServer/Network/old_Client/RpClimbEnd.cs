@@ -9,10 +9,10 @@
 
         public override void Read()
         {
-            X = ReadF();
-            Y = ReadF();
-            Z = ReadF();
-            Heading = (short) ReadH();
+            X = Single();
+            Y = Single();
+            Z = Single();
+            Heading = (short) ReadWord();
         }
 
         public override void Process()

@@ -6,7 +6,7 @@
 
         public override void Read()
         {
-            EmotionId = ReadD();
+            EmotionId = ReadDword();
         }
 
         public override void Process()

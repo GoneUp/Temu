@@ -20,18 +20,18 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            X1 = ReadF();
-            Y1 = ReadF();
-            Z1 = ReadF();
-            Heading = (short) ReadH();
+            X1 = Single();
+            Y1 = Single();
+            Z1 = Single();
+            Heading = (short) ReadWord();
 
-            X2 = ReadF();
-            Y2 = ReadF();
-            Z2 = ReadF();
+            X2 = Single();
+            Y2 = Single();
+            Z2 = Single();
 
-            MoveType = (PlayerMoveType)ReadH();
-            Unk2 = (short) ReadH();
-            Unk3 = (short) ReadH();
+            MoveType = (PlayerMoveType)ReadWord();
+            Unk2 = (short) ReadWord();
+            Unk3 = (short) ReadWord();
         }
 
         public override void Process()

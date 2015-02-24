@@ -8,7 +8,7 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            UISettings = ReadB((int)Reader.BaseStream.Length);
+            UISettings = ReadByte((int)Reader.BaseStream.Length);
         }
 
         public override void Process()

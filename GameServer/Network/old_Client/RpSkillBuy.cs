@@ -9,9 +9,9 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            ReadD(); //DialogId
-            SkillId = ReadD();
-            IsActive = ReadC() > 0;
+            ReadDword(); //DialogId
+            SkillId = ReadDword();
+            IsActive = ReadByte() > 0;
         }
 
         public override void Process()

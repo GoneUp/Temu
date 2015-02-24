@@ -10,7 +10,7 @@ namespace Tera.Communication.Interfaces
     public interface IFeedbackService : IComponent
     {
         void ShowShutdownTicks();
-        void OnCheckVersion(IConnection connection, int version);
+        void OnCheckVersion(IConnection connection, int[] version);
         void OnAuthorized(IConnection connection);
         void SendPlayerList(IConnection connection);
         void SendCheckNameResult(IConnection connection, string name, short type, CheckNameResult result);

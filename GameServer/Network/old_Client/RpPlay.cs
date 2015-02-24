@@ -9,8 +9,8 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            PlayerId = ReadD();
-            IsProlog = ReadC() == 1;
+            PlayerId = ReadDword();
+            IsProlog = ReadByte() == 1;
         }
 
         public override void Process()

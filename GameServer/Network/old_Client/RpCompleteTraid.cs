@@ -6,9 +6,9 @@
 
         public override void Read()
         {
-            ReadD(); //04070000
-            ReadD(); //0
-            DialogUid = ReadD();
+            ReadDword(); //04070000
+            ReadDword(); //0
+            DialogUid = ReadDword();
         }
 
         public override void Process()

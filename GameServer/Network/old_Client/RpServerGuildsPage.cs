@@ -6,7 +6,7 @@
 
         public override void Read()
         {
-            TabId = ReadD();
+            TabId = ReadDword();
         }
 
         public override void Process()

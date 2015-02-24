@@ -9,10 +9,10 @@
 
         public override void Read()
         {
-            Unk1 = ReadD(); //Unk
-            Unk2 = ReadD(); //Unk
-            Slot = ReadD();
-            Counter = ReadD();
+            Unk1 = ReadDword(); //Unk
+            Unk2 = ReadDword(); //Unk
+            Slot = ReadDword();
+            Counter = ReadDword();
         }
 
         public override void Process()

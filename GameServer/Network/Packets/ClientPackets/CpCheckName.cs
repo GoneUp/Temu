@@ -9,10 +9,10 @@ namespace Tera.Network.Packets.ClientPackets
 
         public override void Read()
         {
-            ReadB(14);
-            Type = (short) ReadH();
-            ReadH();
-            Name = ReadS();
+            ReadByte(14);
+            Type = (short) ReadWord();
+            ReadWord();
+            Name = ReadString();
         }
 
         public override void Process()

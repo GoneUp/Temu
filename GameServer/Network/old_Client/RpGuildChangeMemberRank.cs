@@ -8,8 +8,8 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            MemberId = ReadD();
-            NewRank = ReadD();
+            MemberId = ReadDword();
+            NewRank = ReadDword();
         }
 
         public override void Process()

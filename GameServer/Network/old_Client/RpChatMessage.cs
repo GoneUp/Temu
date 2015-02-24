@@ -11,9 +11,9 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            Length = (short) ReadH();
-            Type = (ChatType) ReadD();
-            Message = ReadS();
+            Length = (short) ReadWord();
+            Type = (ChatType) ReadDword();
+            Message = ReadString();
         }
 
         public override void Process()

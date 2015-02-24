@@ -6,7 +6,7 @@
 
         public override void Read()
         {
-            RecipeId = ReadD();
+            RecipeId = ReadDword();
         }
 
         public override void Process()

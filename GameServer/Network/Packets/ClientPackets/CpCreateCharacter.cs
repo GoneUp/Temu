@@ -11,17 +11,17 @@ namespace Tera.Network.Packets.ClientPackets
         public override void Read()
         {
             //shifts
-            short nameShift = (short) ReadH();
-            short detailsShift = (short) ReadH();
-            short detailsLength = (short) ReadH();
+            short nameShift = (short) ReadWord();
+            short detailsShift = (short) ReadWord();
+            short detailsLength = (short) ReadWord();
 
-            PlayerData.Gender = (Gender) ReadD();
-            PlayerData.Race = (Race) ReadD();
-            PlayerData.Class = (PlayerClass) ReadD();
-            PlayerData.Data = ReadB(8);
-            ReadC();
-            PlayerData.Name = ReadS();
-            PlayerData.Details = ReadB(detailsLength);
+            PlayerData.Gender = (Gender) ReadDword();
+            PlayerData.Race = (Race) ReadDword();
+            PlayerData.Class = (PlayerClass) ReadDword();
+            PlayerData.Data = ReadByte(8);
+            ReadByte();
+            PlayerData.Name = ReadString();
+            PlayerData.Details = ReadByte(detailsLength);
         }
 
         public override void Process()

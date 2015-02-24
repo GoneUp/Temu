@@ -8,9 +8,9 @@
 
         public override void Read()
         {
-            X = ReadF();
-            Y = ReadF();
-            Z = ReadF();
+            X = Single();
+            Y = Single();
+            Z = Single();
         }
 
         public override void Process()

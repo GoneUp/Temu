@@ -8,7 +8,7 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            TargetId = ReadQ();
+            TargetId = ReadLong();
         }
 
         public override void Process()

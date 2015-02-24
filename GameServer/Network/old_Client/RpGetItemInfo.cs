@@ -7,10 +7,10 @@
 
         public override void Read()
         {
-            ReadH(); // 38
-            ViewMode = ReadH(); // 20 - inventory, 24 - inspect
-            ReadH(); // 0
-            ItemUid = ReadQ();
+            ReadWord(); // 38
+            ViewMode = ReadWord(); // 20 - inventory, 24 - inspect
+            ReadWord(); // 0
+            ItemUid = ReadLong();
         }
 
         public override void Process()

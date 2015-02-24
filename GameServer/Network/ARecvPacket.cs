@@ -34,7 +34,7 @@ namespace Tera.Network
 
         public abstract void Process();
 
-        protected int ReadD()
+        protected int ReadDword()
         {
             try
             {
@@ -47,7 +47,7 @@ namespace Tera.Network
             return 0;
         }
 
-        protected int ReadC()
+        protected int ReadByte()
         {
             try
             {
@@ -60,7 +60,7 @@ namespace Tera.Network
             return 0;
         }
 
-        protected int ReadH()
+        protected int ReadWord()
         {
             try
             {
@@ -73,7 +73,7 @@ namespace Tera.Network
             return 0;
         }
 
-        protected double ReadDf()
+        protected double ReadDouble()
         {
             try
             {
@@ -86,7 +86,7 @@ namespace Tera.Network
             return 0;
         }
 
-        protected float ReadF()
+        protected float Single()
         {
             try
             {
@@ -99,7 +99,7 @@ namespace Tera.Network
             return 0;
         }
 
-        protected long ReadQ()
+        protected long ReadLong()
         {
             try
             {
@@ -112,7 +112,7 @@ namespace Tera.Network
             return 0;
         }
 
-        protected String ReadS()
+        protected String ReadString()
         {
             Encoding encoding = Encoding.Unicode;
             String result = "";
@@ -129,7 +129,7 @@ namespace Tera.Network
             return result;
         }
 
-        protected byte[] ReadB(int length)
+        protected byte[] ReadByte(int length)
         {
             byte[] result = new byte[length];
             try

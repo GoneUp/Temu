@@ -6,7 +6,7 @@
 
         public override void Read()
         {
-            Unk = ReadD();
+            Unk = ReadDword();
         }
 
         public override void Process()

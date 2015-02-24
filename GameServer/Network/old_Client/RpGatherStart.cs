@@ -6,7 +6,7 @@
 
         public override void Read()
         {
-            GatherUid = ReadQ();
+            GatherUid = ReadLong();
         }
 
         public override void Process()

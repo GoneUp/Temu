@@ -10,15 +10,15 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            int storageType = ReadD();
+            int storageType = ReadDword();
 
             if(storageType == 0)
                 Type = StorageType.Inventory;
             else
             {
                 Type = StorageType.CharacterWarehouse;
-                From = ReadD();
-                To = ReadD();
+                From = ReadDword();
+                To = ReadDword();
             }
             // Inventory
             // D (0)

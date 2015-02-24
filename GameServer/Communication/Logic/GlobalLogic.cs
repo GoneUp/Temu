@@ -71,7 +71,7 @@ namespace Tera.Communication.Logic
                     callStack += string.Format("{0}\n", frame);
         }
 
-        public static void CheckVersion(IConnection connection, int version)
+        public static void CheckVersion(IConnection connection, int[] version)
         {
             FeedbackService.OnCheckVersion(connection, version);
         }

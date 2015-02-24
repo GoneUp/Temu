@@ -6,7 +6,7 @@
 
         public override void Read()
         {
-            Type = ReadD();
+            Type = ReadDword();
         }
 
         public override void Process()

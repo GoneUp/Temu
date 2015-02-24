@@ -14,18 +14,18 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            ReadD();//1
-            ReadD();//3
-            ReadD();//1
-            Offset = ReadD();
-            Money = ReadD();
-            ReadD();//0
-            FromSlot = ReadD();//from slot
-            ReadD();//
-            ReadD();//7
-            ItemId = ReadD();//id
-            Count = ReadD();//counter
-            ToSlot = ReadD();//to slot
+            ReadDword();//1
+            ReadDword();//3
+            ReadDword();//1
+            Offset = ReadDword();
+            Money = ReadDword();
+            ReadDword();//0
+            FromSlot = ReadDword();//from slot
+            ReadDword();//
+            ReadDword();//7
+            ItemId = ReadDword();//id
+            Count = ReadDword();//counter
+            ToSlot = ReadDword();//to slot
         }
 
         public override void Process()

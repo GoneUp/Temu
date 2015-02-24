@@ -7,13 +7,13 @@
 
         public override void Read()
         {
-            ReadQ(); // My uid
-            ReadQ(); // Other uid
-            ReadD(); // Trade id
-            ReadQ(); // My uid
-            Slot = ReadD();
-            Count = ReadD(); // count
-            //Money = ReadQ();
+            ReadLong(); // My uid
+            ReadLong(); // Other uid
+            ReadDword(); // Trade id
+            ReadLong(); // My uid
+            Slot = ReadDword();
+            Count = ReadDword(); // count
+            //Money = ReadLong();
         }
 
         public override void Process()

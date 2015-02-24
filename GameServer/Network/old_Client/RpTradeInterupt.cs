@@ -6,9 +6,9 @@
 
         public override void Read()
         {
-            ReadQ(); //my uid
-            ReadQ(); //other uid
-            Uid = ReadD(); //TradeUid
+            ReadLong(); //my uid
+            ReadLong(); //other uid
+            Uid = ReadDword(); //TradeUid
         }
 
         public override void Process()

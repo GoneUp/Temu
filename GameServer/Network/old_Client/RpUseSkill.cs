@@ -16,26 +16,26 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            int count = ReadH();
-            ReadH();
+            int count = ReadWord();
+            ReadWord();
 
-            SkillId = ReadD() - 0x4000000;
+            SkillId = ReadDword() - 0x4000000;
 
-            StartPosition.X = ReadF();
-            StartPosition.Y = ReadF();
-            StartPosition.Z = ReadF();
-            StartPosition.Heading = (short) ReadH();
+            StartPosition.X = Single();
+            StartPosition.Y = Single();
+            StartPosition.Z = Single();
+            StartPosition.Heading = (short) ReadWord();
 
-            TargetPosition.X = ReadF();
-            TargetPosition.Y = ReadF();
-            TargetPosition.Z = ReadF();
+            TargetPosition.X = Single();
+            TargetPosition.Y = Single();
+            TargetPosition.Z = Single();
             TargetPosition.Heading = StartPosition.Heading;
 
             for (int i = 0; i < count; i++)
             {
-                ReadD(); //shifts
+                ReadDword(); //shifts
 
-                long uid = ReadQ();
+                long uid = ReadLong();
 
                 Creature creature = (Creature) TeraObject.GetObject(uid);
 

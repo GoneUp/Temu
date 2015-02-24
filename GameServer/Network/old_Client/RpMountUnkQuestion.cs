@@ -7,8 +7,8 @@
 
         public override void Read()
         {
-            Uid = ReadQ();
-            Unk2 = ReadD(); //30
+            Uid = ReadLong();
+            Unk2 = ReadDword(); //30
         }
 
         public override void Process()

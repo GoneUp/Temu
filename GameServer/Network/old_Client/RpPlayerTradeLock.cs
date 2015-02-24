@@ -4,10 +4,10 @@
     {
         public override void Read()
         {
-            ReadQ(); // my uid
-            ReadQ(); //other uid
-            ReadD(); //trade Uid
-            ReadQ(); //my uid too
+            ReadLong(); // my uid
+            ReadLong(); //other uid
+            ReadDword(); //trade Uid
+            ReadLong(); //my uid too
         }
 
         public override void Process()

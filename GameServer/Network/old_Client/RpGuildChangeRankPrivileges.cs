@@ -8,10 +8,10 @@
 
         public override void Read()
         {
-            ReadH(); //unk
-            RankId = ReadD();
-            NewPrivileges = ReadD();
-            RankName = ReadS();
+            ReadWord(); //unk
+            RankId = ReadDword();
+            NewPrivileges = ReadDword();
+            RankName = ReadString();
         }
 
         public override void Process()

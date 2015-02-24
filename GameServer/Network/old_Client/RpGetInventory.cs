@@ -6,7 +6,7 @@ namespace Tera.Network.old_Client
     {
         public override void Read()
         {
-            ReadD(); //1 //mb type
+            ReadDword(); //1 //mb type
         }
 
         public override void Process()

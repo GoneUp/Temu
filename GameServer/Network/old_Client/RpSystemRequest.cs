@@ -15,19 +15,19 @@ namespace Tera.Network.old_Client
         public override void Read()
         {
             
-            short nameShift = (short)(ReadH() - 4);
-            short argumentShift = (short)(ReadH() - 4);
+            short nameShift = (short)(ReadWord() - 4);
+            short argumentShift = (short)(ReadWord() - 4);
 
-            ReadH(); //unk shift
+            ReadWord(); //unk shift
 
-            RequestType type = (RequestType)ReadH();
+            RequestType type = (RequestType)ReadWord();
 
             switch(type)
             {
                 case RequestType.GuildCreate:
                     {
                         Reader.BaseStream.Seek(argumentShift, SeekOrigin.Begin);
-                        String guildName = ReadS();
+                        String guildName = ReadString();
                         Reader.BaseStream.Seek(0, SeekOrigin.End);
                         
                         Request = new GuildCreate(guildName);
@@ -36,7 +36,7 @@ namespace Tera.Network.old_Client
                 case RequestType.GuildInvite:
                     {
                         Reader.BaseStream.Seek(nameShift, SeekOrigin.Begin);
-                        String name = ReadS();
+                        String name = ReadString();
                         Reader.BaseStream.Seek(0, SeekOrigin.End);
 
                         Player target = Global.PlayerService.GetPlayerByName(name);
@@ -46,7 +46,7 @@ namespace Tera.Network.old_Client
                 case RequestType.PartyInvite:
                     {
                         Reader.BaseStream.Seek(nameShift, SeekOrigin.Begin);
-                        String name = ReadS();
+                        String name = ReadString();
                         Reader.BaseStream.Seek(0, SeekOrigin.End);
 
                         Player target = Global.PlayerService.GetPlayerByName(name);
@@ -56,7 +56,7 @@ namespace Tera.Network.old_Client
                 case RequestType.Extraction:
                     {
                         Reader.BaseStream.Seek(argumentShift, SeekOrigin.Begin);
-                        int extractionType = ReadD();
+                        int extractionType = ReadDword();
                         Reader.BaseStream.Seek(0, SeekOrigin.End);
                         Request = new Extract(extractionType);
                     }
@@ -64,7 +64,7 @@ namespace Tera.Network.old_Client
                 case RequestType.DuelInvite:
                     {
                         Reader.BaseStream.Seek(nameShift, SeekOrigin.Begin);
-                        String name = ReadS();
+                        String name = ReadString();
                         Reader.BaseStream.Seek(0, SeekOrigin.End);
                         Player target = Global.PlayerService.GetPlayerByName(name);
                         Request = new DuelInvite(target);
@@ -73,7 +73,7 @@ namespace Tera.Network.old_Client
                 case RequestType.TradeStart:
                     {
                         Reader.BaseStream.Seek(nameShift, SeekOrigin.Begin);
-                        String name = ReadS();
+                        String name = ReadString();
                         Reader.BaseStream.Seek(0, SeekOrigin.End);
                         Player target = Global.PlayerService.GetPlayerByName(name);
                         Request = new TradeStart(target);

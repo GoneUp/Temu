@@ -17,27 +17,27 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            int tarCount = ReadH();
-            int tarShift = ReadH();
+            int tarCount = ReadWord();
+            int tarShift = ReadWord();
 
-            int posCount = ReadH();
-            int posShift = ReadH();
+            int posCount = ReadWord();
+            int posShift = ReadWord();
 
-            int skillId = ReadD() - 0x04000000;
+            int skillId = ReadDword() - 0x04000000;
 
-            float x = ReadF();
-            float y = ReadF();
-            float z = ReadF();
-            short heading = (short) ReadH();
+            float x = Single();
+            float y = Single();
+            float z = Single();
+            short heading = (short) ReadWord();
 
             if (tarCount > 0)
                 Reader.BaseStream.Seek(tarShift - 4, SeekOrigin.Begin);
 
             for (int i = 0; i < tarCount; i++)
             {
-                ReadD();
+                ReadDword();
 
-                long uniqueId = ReadQ();
+                long uniqueId = ReadLong();
 
                 Creature creature = TeraObject.GetObject(uniqueId) as Creature;
 
@@ -50,7 +50,7 @@ namespace Tera.Network.old_Client
 
             for (int i = 0; i < posCount; i++)
             {
-                ReadD();
+                ReadDword();
 
                 ArgsList.Add(
                     new UseSkillArgs
@@ -68,9 +68,9 @@ namespace Tera.Network.old_Client
                             TargetPosition =
                                 new WorldPosition
                                     {
-                                        X = ReadF(),
-                                        Y = ReadF(),
-                                        Z = ReadF(),
+                                        X = Single(),
+                                        Y = Single(),
+                                        Z = Single(),
                                         Heading = heading,
                                     },
                             Targets = Targets,

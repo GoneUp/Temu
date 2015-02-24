@@ -12,13 +12,13 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            PlayerUid = ReadQ();
-            ItemId = ReadD();
-            Unk = ReadB(28); //unk, zeros
-            Position.X = ReadF();
-            Position.Y = ReadF();
-            Position.Z = ReadF();
-            Position.Heading = (short)ReadH(); //think, that this is item slot
+            PlayerUid = ReadLong();
+            ItemId = ReadDword();
+            Unk = ReadByte(28); //unk, zeros
+            Position.X = Single();
+            Position.Y = Single();
+            Position.Z = Single();
+            Position.Heading = (short)ReadWord(); //think, that this is item slot
         }
 
         public override void Process()

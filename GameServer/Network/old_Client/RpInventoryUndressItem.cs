@@ -7,10 +7,10 @@
 
         public override void Read()
         {
-            ReadD(); //Unk
-            ReadD(); //Unk
-            From = ReadD();
-            To = ReadD();
+            ReadDword(); //Unk
+            ReadDword(); //Unk
+            From = ReadDword();
+            To = ReadDword();
         }
 
         public override void Process()

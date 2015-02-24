@@ -6,8 +6,8 @@
 
         public override void Read()
         {
-            ReadH();
-            NewMotd = ReadS();
+            ReadWord();
+            NewMotd = ReadString();
         }
 
         public override void Process()

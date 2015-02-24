@@ -150,6 +150,13 @@
     <Compile Include="Crypt\Sha.cs" />
     <Compile Include="Crypt\Utils.cs" />
     <Compile Include="Database\DbQuerys.cs" />
+    <Compile Include="Data\DAO\AccountDAO.cs" />
+    <Compile Include="Data\DAO\DAOManager.cs" />
+    <Compile Include="Data\DAO\GuildDAO.cs" />
+    <Compile Include="Data\DAO\InventoryDAO.cs" />
+    <Compile Include="Data\DAO\PlayerDAO.cs" />
+    <Compile Include="Data\DAO\QuestDAO.cs" />
+    <Compile Include="Data\DAO\SkillsDAO.cs" />
     <Compile Include="DungeonEngine\DungeonEngine.cs" />
     <Compile Include="DungeonEngine\Dungeons\ADungeon.cs" />
     <Compile Include="DungeonEngine\Dungeons\IoDDungeon.cs" />

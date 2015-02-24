@@ -9,13 +9,13 @@ namespace Tera.Network.Packets.ClientPackets
 
         public override void Read()
         {
-            ReadH(); //unk1
-            ReadH(); //unk2
-            int length = ReadH();
-            ReadB(5); //unk3
-            ReadD(); //unk4
-            AccountName = ReadS(); //AccountName !!! ???
-            Session = Encoding.ASCII.GetString(ReadB(length));
+            ReadWord(); //unk1
+            ReadWord(); //unk2
+            int length = ReadWord();
+            ReadByte(5); //unk3
+            ReadDword(); //unk4
+            AccountName = ReadString(); //AccountName !!! ???
+            Session = Encoding.ASCII.GetString(ReadByte(length));
         }
 
         public override void Process()

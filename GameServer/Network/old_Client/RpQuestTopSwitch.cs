@@ -8,9 +8,9 @@
 
         public override void Read()
         {
-            QuestId = ReadD();
-            VisiblitySwitch = (byte) ReadC();
-            Unk1 = ReadD();
+            QuestId = ReadDword();
+            VisiblitySwitch = (byte) ReadByte();
+            Unk1 = ReadDword();
         }
 
         public override void Process()

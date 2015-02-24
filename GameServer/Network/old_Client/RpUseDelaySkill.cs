@@ -10,14 +10,14 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            Args.SkillId = ReadD() - 0x4000000;
-            Args.IsDelayStart = ReadC() == 1;
+            Args.SkillId = ReadDword() - 0x4000000;
+            Args.IsDelayStart = ReadByte() == 1;
             Args.StartPosition = new WorldPosition
                                      {
-                                         X = ReadF(),
-                                         Y = ReadF(),
-                                         Z = ReadF(),
-                                         Heading = (short) ReadH()
+                                         X = Single(),
+                                         Y = Single(),
+                                         Z = Single(),
+                                         Heading = (short) ReadWord()
                                      };
         }
 

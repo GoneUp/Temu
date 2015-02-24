@@ -46,16 +46,18 @@ namespace Tera.Services
             }
         }
 
-        public void OnCheckVersion(IConnection connection, int version)
+        public void OnCheckVersion(IConnection connection, int[] version)
         {
             new SpSendVersion(version).Send(connection);
         }
 
         public void OnAuthorized(IConnection connection)
         {
-            //1725 EU
-            new SendPacket("C06100000000D92C0200").Send(connection);
-            new SendPacket("92B10100000001000000000001").Send(connection);
+            //1903 EU
+            new SendPacket("28DC01").Send(connection);
+            new SendPacket("1E520600000000000000").Send(connection);
+            new SendPacket("DEE901000200010000000000060000000100000000").Send(connection);
+            new SendPacket("C6AC0E00FC6C02000000000050006C0061006E0065007400440042005F00310033000000").Send(connection);
         }
 
         public void SendPlayerList(IConnection connection)

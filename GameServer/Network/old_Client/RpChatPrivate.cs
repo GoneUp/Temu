@@ -7,10 +7,10 @@
 
         public override void Read()
         {
-            ReadH(); //0x0800
-            ReadH(); //0x2800
-            Name = ReadS();
-            Message = ReadS();
+            ReadWord(); //0x0800
+            ReadWord(); //0x2800
+            Name = ReadString();
+            Message = ReadString();
         }
 
         public override void Process()

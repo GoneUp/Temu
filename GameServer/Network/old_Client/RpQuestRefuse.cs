@@ -6,9 +6,9 @@
 
         public override void Read()
         {
-            ReadD(); // Unk
-            ReadD(); // 8
-            QuestId = ReadD();
+            ReadDword(); // Unk
+            ReadDword(); // 8
+            QuestId = ReadDword();
         }
 
         public override void Process()

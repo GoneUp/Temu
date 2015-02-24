@@ -9,21 +9,21 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            Args.SkillId = ReadD() - 0x4000000;
+            Args.SkillId = ReadDword() - 0x4000000;
 
-            Args.StartPosition.Heading = (short)ReadH();
-            Args.StartPosition.X = ReadF();
-            Args.StartPosition.Y = ReadF();
-            Args.StartPosition.Z = ReadF();
+            Args.StartPosition.Heading = (short)ReadWord();
+            Args.StartPosition.X = Single();
+            Args.StartPosition.Y = Single();
+            Args.StartPosition.Z = Single();
 
-            Args.TargetPosition.X = ReadF();
-            Args.TargetPosition.Y = ReadF();
-            Args.TargetPosition.Z = ReadF();
+            Args.TargetPosition.X = Single();
+            Args.TargetPosition.Y = Single();
+            Args.TargetPosition.Z = Single();
 
-            ReadC(); //mb target count
-            ReadC(); //mb target count
-            ReadC(); //???
-            ReadQ(); //mb targetid
+            ReadByte(); //mb target count
+            ReadByte(); //mb target count
+            ReadByte(); //???
+            ReadLong(); //mb targetid
         }
 
         public override void Process()

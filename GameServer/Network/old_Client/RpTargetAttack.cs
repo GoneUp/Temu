@@ -9,36 +9,36 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            short targetCount = (short) ReadH();
-            ReadH(); //Shifts
-            ReadD(); //Shifts
+            short targetCount = (short) ReadWord();
+            ReadWord(); //Shifts
+            ReadDword(); //Shifts
 
-            Args.SkillId = ReadD() - 0x4000000;
+            Args.SkillId = ReadDword() - 0x4000000;
 
-            Args.StartPosition.X = ReadF();
-            Args.StartPosition.Y = ReadF();
-            Args.StartPosition.Z = ReadF();
-            Args.StartPosition.Heading = (short)ReadH();
-            ReadC(); //unk
+            Args.StartPosition.X = Single();
+            Args.StartPosition.Y = Single();
+            Args.StartPosition.Z = Single();
+            Args.StartPosition.Heading = (short)ReadWord();
+            ReadByte(); //unk
 
             if (targetCount-- > 0)
             {
-                ReadD(); //shifts
-                ReadD();
-                Args.AddTarget(ReadQ());
+                ReadDword(); //shifts
+                ReadDword();
+                Args.AddTarget(ReadLong());
             }
 
-            ReadD(); //shifts
-            Args.TargetPosition.X = ReadF();
-            Args.TargetPosition.Y = ReadF();
-            Args.TargetPosition.Z = ReadF();
+            ReadDword(); //shifts
+            Args.TargetPosition.X = Single();
+            Args.TargetPosition.Y = Single();
+            Args.TargetPosition.Z = Single();
 
             //Other Targets
             while (targetCount-- > 0)
             {
-                ReadD(); //shifts
-                ReadD();
-                ReadQ(); //TargetUid
+                ReadDword(); //shifts
+                ReadDword();
+                ReadLong(); //TargetUid
             }
         }
 

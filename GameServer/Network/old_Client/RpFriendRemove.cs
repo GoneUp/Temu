@@ -6,7 +6,7 @@
 
         public override void Read()
         {
-            FriendId = ReadD();
+            FriendId = ReadDword();
         }
 
         public override void Process()

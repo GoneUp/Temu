@@ -9,8 +9,8 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            ReadH(); // 6 Why is it here?
-            CharacterName = ReadS();
+            ReadWord(); // 6 Why is it here?
+            CharacterName = ReadString();
         }
 
         public override void Process()

@@ -80,7 +80,7 @@ namespace Tera
             //Initialize Server OpCodes
             OpCodes.Init();
             Console.WriteLine("----------------------------------------------------------------------------\n"
-                +"---===== OpCodes - Revision: " + OpCodes.Version + " EU initialized!");
+                +"---===== OpCodes - Revision: " + OpCodes.MainVersion + " EU initialized!");
             
             //Global Services
             #region global_components

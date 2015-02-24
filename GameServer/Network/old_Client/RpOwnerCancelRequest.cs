@@ -10,8 +10,8 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            ReadD(); // Request type
-            RequestId = ReadD();
+            ReadDword(); // Request type
+            RequestId = ReadDword();
         }
 
         public override void Process()

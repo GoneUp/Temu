@@ -9,10 +9,10 @@
 
         public override void Read()
         {
-            PlayerUid = ReadQ();
-            DialogUid = ReadD();
-            ItemId = ReadD();
-            ItemCounter = ReadD();
+            PlayerUid = ReadLong();
+            DialogUid = ReadDword();
+            ItemId = ReadDword();
+            ItemCounter = ReadDword();
         }
 
         public override void Process()

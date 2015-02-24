@@ -9,8 +9,8 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            Type = ReadD();
-            Unk = ReadD();
+            Type = ReadDword();
+            Unk = ReadDword();
         }
 
         public override void Process()

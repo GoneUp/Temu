@@ -6,7 +6,7 @@
 
         public override void Read()
         {
-            PlayerIndex = ReadD();
+            PlayerIndex = ReadDword();
         }
 
         public override void Process()

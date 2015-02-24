@@ -6,8 +6,8 @@
 
         public override void Read()
         {
-            ReadH();
-            NameOfFlooder = ReadS();
+            ReadWord();
+            NameOfFlooder = ReadString();
         }
 
         public override void Process()

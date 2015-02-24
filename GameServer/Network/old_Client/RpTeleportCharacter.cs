@@ -6,7 +6,7 @@
 
         public override void Read()
         {
-            TeleportId = ReadD();
+            TeleportId = ReadDword();
         }
 
         public override void Process()

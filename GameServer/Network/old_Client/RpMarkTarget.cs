@@ -11,8 +11,8 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            TargetUid = ReadQ();
-            SkillId = ReadD() - 0x4000000;
+            TargetUid = ReadLong();
+            SkillId = ReadDword() - 0x4000000;
         }
 
         public override void Process()

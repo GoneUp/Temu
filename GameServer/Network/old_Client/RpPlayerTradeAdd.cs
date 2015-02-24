@@ -8,13 +8,13 @@
 
         public override void Read()
         {
-            ReadQ(); // SellerUid 
-            ReadQ(); // TargetUid 
-            ReadD(); // Trade id
-            ReadQ(); //seller uid too
-            Slot = ReadD(); // omg... Slot - ??
-            Counter = ReadD();
-            Money = ReadQ(); // Money
+            ReadLong(); // SellerUid 
+            ReadLong(); // TargetUid 
+            ReadDword(); // Trade id
+            ReadLong(); //seller uid too
+            Slot = ReadDword(); // omg... Slot - ??
+            Counter = ReadDword();
+            Money = ReadLong(); // Money
         }
 
         public override void Process()

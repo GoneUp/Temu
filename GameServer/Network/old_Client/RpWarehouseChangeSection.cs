@@ -8,10 +8,10 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            ReadD();
-            ReadD();
-            ReadD();
-            Offset = ReadD();
+            ReadDword();
+            ReadDword();
+            ReadDword();
+            Offset = ReadDword();
         }
 
         public override void Process()

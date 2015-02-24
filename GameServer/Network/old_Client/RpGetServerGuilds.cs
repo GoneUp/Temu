@@ -4,7 +4,7 @@
     {
         public override void Read()
         {
-            ReadD();
+            ReadDword();
         }
 
         public override void Process()

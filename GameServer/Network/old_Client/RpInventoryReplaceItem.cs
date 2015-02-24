@@ -9,10 +9,10 @@
 
         public override void Read()
         {
-            Unk1 = ReadD(); //Unk
-            Unk2 = ReadD(); //Unk
-            From = ReadD();
-            To = ReadD();
+            Unk1 = ReadDword(); //Unk
+            Unk2 = ReadDword(); //Unk
+            From = ReadDword();
+            To = ReadDword();
         }
 
         public override void Process()

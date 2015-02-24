@@ -10,7 +10,7 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            CharacterId = ReadQ();
+            CharacterId = ReadLong();
         }
 
         public override void Process()

@@ -6,8 +6,8 @@
 
         public override void Read()
         {
-            ReadH(); //shift?
-            Name = ReadS();
+            ReadWord(); //shift?
+            Name = ReadString();
         }
 
         public override void Process()

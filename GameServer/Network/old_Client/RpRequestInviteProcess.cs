@@ -9,12 +9,12 @@
 
         public override void Read()
         {
-            ReadH(); //name shift
-            Type = ReadD();
-            DialogUid = ReadD();
-            ReadD();
-            IsAccept = ReadD() == 1; //1 - is accept, 2 - decline
-            PlayerName = ReadS();
+            ReadWord(); //name shift
+            Type = ReadDword();
+            DialogUid = ReadDword();
+            ReadDword();
+            IsAccept = ReadDword() == 1; //1 - is accept, 2 - decline
+            PlayerName = ReadString();
         }
 
         public override void Process()

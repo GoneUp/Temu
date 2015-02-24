@@ -6,8 +6,8 @@
 
         public override void Read()
         {
-            ReadD(); //11
-            PlayerId = ReadD();
+            ReadDword(); //11
+            PlayerId = ReadDword();
         }
 
         public override void Process()

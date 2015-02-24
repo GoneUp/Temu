@@ -9,10 +9,10 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            ReadC(); // 7
-            ReadC(); // 0
-            ReadC(); // 1
-            GuildName = ReadS();
+            ReadByte(); // 7
+            ReadByte(); // 0
+            ReadByte(); // 1
+            GuildName = ReadString();
         }
 
         public override void Process()

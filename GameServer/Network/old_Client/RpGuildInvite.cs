@@ -8,9 +8,9 @@
 
         public override void Read()
         {
-            Unk = ReadB(4);
-            InvitedName = ReadS();
-            Message = ReadS();
+            Unk = ReadByte(4);
+            InvitedName = ReadString();
+            Message = ReadString();
         }
 
         public override void Process()

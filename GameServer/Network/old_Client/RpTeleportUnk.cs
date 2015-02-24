@@ -9,7 +9,7 @@ namespace Tera.Network.old_Client
 
         public override void Read()
         {
-            ThreeInt = ReadB(12);
+            ThreeInt = ReadByte(12);
         }
 
         public override void Process()

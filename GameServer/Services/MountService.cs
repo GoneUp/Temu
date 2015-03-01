@@ -1,6 +1,6 @@
 ﻿using Tera.Communication.Interfaces;
-using Tera.Data.DAO;
 using Tera.Data.Structures.Player;
+using Tera.Database.DAO;
 using Tera.Network.old_Server;
 
 namespace Tera.Services

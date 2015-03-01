@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 using Tera.Data.Structures.Account;
 using Utils.Logger;
 
-namespace Tera.Data.DAO
+namespace Tera.Database.DAO
 {
     public class AccountDAO : DAOManager
     {

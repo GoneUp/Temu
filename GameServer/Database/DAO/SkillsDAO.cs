@@ -3,7 +3,7 @@ using MySql.Data.MySqlClient;
 using Tera.Data.Structures.Player;
 using Utils.Logger;
 
-namespace Tera.Data.DAO
+namespace Tera.Database.DAO
 {
     public class SkillsDAO : DAOManager
     {

@@ -6,7 +6,7 @@ using Tera.Data.Enums;
 using Tera.Data.Structures.Player;
 using Utils.Logger;
 
-namespace Tera.Data.DAO
+namespace Tera.Database.DAO
 {
     public class PlayerDAO : DAOManager
     {
@@ -28,7 +28,7 @@ namespace Tera.Data.DAO
 
         public List<Player> LoadAccountPlayers(string accName)
         {
-            string SqlQuery = "SELECT * FROM `character` WHERE AccountName=?username AND deleted = ?delete";
+            string SqlQuery = "SELECT * FROM `character` WHERE AccountName=?username AND PlayerDeleted = ?delete";
             MySqlCommand SqlCommand = new MySqlCommand(SqlQuery, PlayerDAOConnection);
             SqlCommand.Parameters.AddWithValue("?username", accName);
             SqlCommand.Parameters.AddWithValue("?delete", 0);
@@ -82,7 +82,7 @@ namespace Tera.Data.DAO
                             Details = HexToBytes(AccountReader.GetString(6)),
                         };
 
-                        player.Position = new Structures.World.WorldPosition()
+                        player.Position = new Data.Structures.World.WorldPosition()
                         {
                             MapId = AccountReader.GetInt32(7),
                             X = AccountReader.GetFloat(8),

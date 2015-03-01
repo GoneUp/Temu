@@ -51,8 +51,8 @@ namespace Tera.Communication.Logic
             if (p == null)
             { return; }
 
-            if (Cache.UsedNames.Contains(p.PlayerData.Name.ToLower()))
-                Cache.UsedNames.Remove(p.PlayerData.Name.ToLower());
+            if (UsedPlayerNames.Contains(p.PlayerData.Name.ToLower()))
+                UsedPlayerNames.Remove(p.PlayerData.Name.ToLower());
 
             PartyService.LeaveParty(p);
             GuildService.LeaveGuild(p, p.Guild);

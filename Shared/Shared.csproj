@@ -64,7 +64,6 @@
     <Compile Include="DatabaseManager\Database\Session_Details\QueryAdapter.cs" />
     <Compile Include="DatabaseManager\Database\Session_Details\TransactionQueryReactor.cs" />
     <Compile Include="DatabaseManager\Managers\Database\DatabaseServer.cs" />
-    <Compile Include="Data\Cache.cs" />
     <Compile Include="Data\Data.cs" />
     <Compile Include="Data\Enums\AttackStatus.cs" />
     <Compile Include="Data\Enums\AttackType.cs" />

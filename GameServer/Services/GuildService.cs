@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Tera.Communication;
 using Tera.Communication.Interfaces;
 using Tera.Data;
 using Tera.Data.Enums;
 using Tera.Data.Interfaces;
 using Tera.Data.Structures.Guild;
 using Tera.Data.Structures.Player;
+using Tera.Database.DAO;
 using Tera.Network;
 using Tera.Network.old_Server;
 using Utils;
@@ -36,7 +38,9 @@ namespace Tera.Services
             lock (GuildsLock)
             {
                 int check = 1;
-                foreach (KeyValuePair<int, Guild> guild in Cache.Guilds)
+
+                Dictionary<int, Guild> tmpList = DAOManager.guildDAO.LoadGuilds();
+                foreach (KeyValuePair<int, Guild> guild in tmpList)
                 {
                     if (!GuildListCache.ContainsKey(check))
                         GuildListCache.Add(check, new List<Guild>());
@@ -72,9 +76,9 @@ namespace Tera.Services
             }
 
             lock (GuildsLock)
-                Cache.Guilds.Add(g.GuildId, g);
+                 //DAOManager.guildDAO.SaveGuild(gu)
 
-            Cache.UsedGuildNames.Add(g.GuildName.ToLower());
+            Global.UsedGuildNames.Add(g.GuildName.ToLower());
         }
 
         public void AddMemberToGuild(Player player, Guild guild, Player inviter = null)
@@ -288,10 +292,10 @@ namespace Tera.Services
             guild.GuildMembers = null;
 
             lock (GuildsLock)
-                Cache.Guilds.Remove(guild.GuildId);
+                //Cache.Guilds.Remove(guild.GuildId);
 
-            if (Cache.UsedGuildNames.Contains(guild.GuildName.ToLower()))
-                Cache.UsedGuildNames.Remove(guild.GuildName.ToLower());
+            if (Global.UsedGuildNames.Contains(guild.GuildName.ToLower()))
+                Global.UsedGuildNames.Remove(guild.GuildName.ToLower());
         }
 
         public void ChangeAd(Player player, string newAd)
@@ -372,7 +376,7 @@ namespace Tera.Services
         public void SendServerGuilds(Player player, int tabId)
         {
             if (GuildListCache.ContainsKey(tabId))
-                new SpServerGuilds(GuildListCache[tabId], tabId, Cache.Guilds.Count, GuildListCache.Count).Send(player);
+                new SpServerGuilds(GuildListCache[tabId], tabId, DAOManager.guildDAO.LoadTotalGuilds(), GuildListCache.Count).Send(player);
         }
 
         public void HandleChatMessage(Player sender, string message)
@@ -438,9 +442,11 @@ namespace Tera.Services
 
         public void PraiseGuild(string name)
         {
+            /*
             lock (GuildsLock)
                 foreach (Guild guild in Cache.Guilds.Values.Where(guild => guild.GuildName == name))
                     guild.Praises++;
+              */
         }
         
         public bool CanUseName(string name)
@@ -448,7 +454,7 @@ namespace Tera.Services
             if (name.Length < 3 || name.Length > 15)
                 return false;
 
-            return !Cache.UsedGuildNames.Contains(name.ToLower());
+            return !Global.UsedGuildNames.Contains(name.ToLower());
         }
 
         private void SendGuildInformationToOnlineMembers(Guild guild)

@@ -7,7 +7,7 @@ using Tera.Data.Structures.Player;
 using Utils;
 using Utils.Logger;
 
-namespace Tera.Data.DAO
+namespace Tera.Database.DAO
 {
     public class GuildDAO : DAOManager
     {
@@ -77,6 +77,29 @@ namespace Tera.Data.DAO
 
             reader.Close();
             return count;
+        }
+
+        public Dictionary<int, Guild> LoadGuilds()
+        {
+            string SQL = "SELECT * FROM `guilds`";
+            MySqlCommand cmd = new MySqlCommand(SQL, GuildDAOConnection);
+            MySqlDataReader LoadGuildsReader = cmd.ExecuteReader();
+
+            Dictionary<int, Guild> guildlist = new Dictionary<int, Guild>();
+            if (LoadGuildsReader.HasRows)
+            {
+                while (LoadGuildsReader.Read())
+                {
+                    Guild tmpGuild = new Guild();
+                    {
+                        //TODO: 
+                    };
+                    guildlist.Add(tmpGuild.GuildId, tmpGuild);
+                }
+            }
+            LoadGuildsReader.Close();
+
+            return guildlist;
         }
 
         /*

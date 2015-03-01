@@ -54,10 +54,21 @@ namespace Tera.Services
         public void OnAuthorized(IConnection connection)
         {
             //1903 EU
-            new SendPacket("28DC01").Send(connection);
-            new SendPacket("1E520600000000000000").Send(connection);
-            new SendPacket("DEE901000200010000000000060000000100000000").Send(connection);
-            new SendPacket("C6AC0E00FC6C02000000000050006C0061006E0065007400440042005F00310033000000").Send(connection);
+
+            //LoginScreenshit
+            new SendPacket("FE8501").Send(connection);
+
+            //Playtime
+            new SendPacket("50C90600000000000000").Send(connection);
+
+            //Info? What info`?
+            new SendPacket("1AFC01000200010000000000060000000100000000").Send(connection);
+
+            //Auth Respionse
+            new SendPacket("45510E00FC6C02000000000050006C0061006E0065007400440042005F00310033000000").Send(connection);
+
+            //Premium Info
+            new SendPacket("6FDC0200080008001800B1010000232014550000000018000000B2010000FFFFFF7F00000000").Send(connection);
         }
 
         public void SendPlayerList(IConnection connection)

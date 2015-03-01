@@ -3,6 +3,8 @@ using System.Diagnostics;
 using Tera.Data.Interfaces;
 using Tera.Data.Structures.Account;
 using Tera.Data.Structures.Creature;
+using Tera.Database.DAO;
+using Tera.Network;
 
 namespace Tera.Communication.Logic
 {
@@ -15,7 +17,7 @@ namespace Tera.Communication.Logic
                 +"----------------------------------------------------------------------------");
             
             //Init DAO
-            //DAOManager.Initialize(str);
+            DAOManager.Initialize(str);
             
             Console.WriteLine("----------------------------------------------------------------------------\n"
                 +"---===== Loading Data Files.\n"
@@ -23,7 +25,6 @@ namespace Tera.Communication.Logic
             
             
             Data.Data.LoadAll();
-            Data.Cache.LoadData();
 
             StatsService.Init();
             GeoService.Init();
@@ -40,7 +41,8 @@ namespace Tera.Communication.Logic
 
         public static void OnServerShutdown()
         {
-            Data.Cache.SaveData();
+            //save something
+            
         }
 
         public static void PacketSent(GameAccount gameAccount, string name, byte[] buffer)

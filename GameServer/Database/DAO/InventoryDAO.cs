@@ -6,7 +6,7 @@ using Tera.Data.Structures.Account;
 using Tera.Data.Structures.Player;
 using Utils.Logger;
 
-namespace Tera.Data.DAO
+namespace Tera.Database.DAO
 {
     public class InventoryDAO : DAOManager
     {

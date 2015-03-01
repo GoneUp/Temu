@@ -15,8 +15,8 @@ namespace Tera.Network
 
         public static Dictionary<short, string> SendNames = new Dictionary<short, string>();
 
-        public static int MainVersion = 1725;
-        public static int[] Version = {11403, 15663};
+        public static int MainVersion = 3009;
+        public static int[] Version = {0, 0};
 
         public static void Init()
         {
@@ -24,14 +24,15 @@ namespace Tera.Network
 
             // Auth
             Recv.Add(unchecked((short) 0x4DBC), typeof (CpRequestVersion)); //all revs
-            Recv.Add(unchecked((short) 0xB114), typeof (CpRequestAuth)); //1905 EU
+            Recv.Add(unchecked((short) 0x7A51), typeof (CpRequestAuth)); //1905 EU
+            Recv.Add(unchecked((short) 0xBFA4), typeof(CpSystemInfo)); //1725 EU
 
-            Recv.Add(unchecked((short) 0xFFFF), typeof (CpRequestSystemInfo)); //1725 EU
-            Recv.Add(unchecked((short) 0x6CE4), typeof (CpSystemInfo)); //1725 EU
+            Recv.Add(unchecked((short) 0xE952), typeof (CpRequestSystemInfo)); //1725 EU
+        
 
 
             // Character
-            Recv.Add(unchecked((short) 0x96F1), typeof (CpRequestCharacterList)); //1905 EU
+            Recv.Add(unchecked((short) 0xFD24), typeof (CpRequestCharacterList)); //1905 EU
             Recv.Add(unchecked((short) 0x6755), typeof (CpCreateCharacter)); //1725 EU
             Recv.Add(unchecked((short) 0x8844), typeof (CpCheckName)); //1725 EU
             Recv.Add(unchecked((short) 0x7B3D), typeof (CpCheckNameForUse)); //1725 EU
@@ -190,7 +191,7 @@ namespace Tera.Network
 
 
             //Character
-            Send.Add(typeof(SpSendCharacterList), unchecked((short)0x65C6)); //1725 EU
+            Send.Add(typeof(SpSendCharacterList), unchecked((short) 0xFE7B)); //1725 EU
             Send.Add(typeof(SpCharacterCheckNameResult), unchecked((short)0xE315)); //1725 EU
             Send.Add(typeof(SpCharacterCreateResult), unchecked((short)0xC075)); //1725 EU
             Send.Add(typeof(SpCharacterDelete), unchecked((short)0xEFE4)); //1725 EU

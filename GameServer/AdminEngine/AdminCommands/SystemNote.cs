@@ -77,7 +77,7 @@ namespace Tera.AdminEngine.AdminCommands
                         break;
                     case "savecache":
                         new SpChatMessage("Manually saving Cache!", ChatType.Notice).Send(connection);
-                        Data.Cache.SaveData();
+                        //Data.Cache.SaveData();
 
                        
                         break;

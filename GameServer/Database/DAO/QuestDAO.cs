@@ -7,7 +7,7 @@ using Tera.Data.Structures.Player;
 using Tera.Data.Structures.Quest;
 using Utils.Logger;
 
-namespace Tera.Data.DAO
+namespace Tera.Database.DAO
 {
     public class QuestDAO : DAOManager
     {

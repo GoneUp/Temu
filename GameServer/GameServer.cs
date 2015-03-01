@@ -7,7 +7,6 @@ using Tera.Communication;
 using Tera.Communication.Logic;
 using Tera.Configuration;
 using Tera.Configuration.Configs;
-using Tera.Configuration.Systems;
 using Tera.Data.Enums;
 using Tera.Network;
 using Tera.Services;
@@ -24,8 +23,6 @@ namespace Tera
         public static TcpServer TcpServer;
         public static GameServerConfig gameserverConfig = new GameServerConfig();
         public static Logger logger = new Logger();
-        public static DatabaseSystem dbs = new DatabaseSystem();
-        public static DatabaseManager dbManager;
 
         #region Main
         public static void Main()
@@ -70,7 +67,6 @@ namespace Tera
             //init configs
             Config.Init_GS_Config();
             Config.Init_LOG_Config();
-            Config.Init_DB_Config();
 
 
             //Initialize TcpServer
@@ -119,7 +115,7 @@ namespace Tera
             #endregion
 
             //Set SqlDatabase Connection
-            GlobalLogic.ServerStart("");
+            GlobalLogic.ServerStart(gameserverConfig.DbConnectionString);
             Console.ForegroundColor = ConsoleColor.Gray;
 
             //Start Tcp-Server Listening

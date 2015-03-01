@@ -8,7 +8,6 @@ using Tera.Communication.Interfaces;
 using Tera.Communication.Logic;
 using Tera.Controllers;
 using Tera.Data;
-using Tera.Data.DAO;
 using Tera.Data.Enums;
 using Tera.Data.Enums.Item;
 using Tera.Data.Enums.Player;
@@ -20,6 +19,7 @@ using Tera.Data.Structures.Geometry;
 using Tera.Data.Structures.Npc;
 using Tera.Data.Structures.Player;
 using Tera.Data.Structures.World;
+using Tera.Database.DAO;
 using Tera.Extensions;
 using Tera.Network.old_Server;
 using Tera.Structures;
@@ -120,7 +120,7 @@ namespace Tera.Services
             if (!Regex.IsMatch(name, "^[a-z]|[a-z].[a-z]+$", RegexOptions.IgnoreCase))
                 return CheckNameResult.UnavaliableLatter;
 
-            if (Cache.UsedNames.Contains(name.ToLower()))
+            if (Global.UsedPlayerNames.Contains(name.ToLower()))
                 return CheckNameResult.ThisSsNotAcceptableCharacterName;
 
             return CheckNameResult.Ok;

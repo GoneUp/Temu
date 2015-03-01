@@ -152,6 +152,7 @@ namespace Tera.Configuration.Configs
             get { return _DbType; }
             set { _DbType = value; }
         }
+
         //Logging
         public uint LogLevel
         {

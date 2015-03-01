@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using Tera.Communication.Interfaces;
 using Tera.Data;
@@ -71,7 +72,12 @@ namespace Tera.Communication
 
         public static IQuestEngine QuestEngine;
 
-        //
+        //Cache
+
+        public static List<string> UsedPlayerNames;
+        public static List<string> UsedGuildNames; 
+
+        //Var
 
         protected static bool ShutdownIsStart = false;
 
@@ -107,11 +113,6 @@ namespace Tera.Communication
             {
                 try
                 {
-                    if (RandomUtilities.GetCurrentMilliseconds() - Cache.LastSaveUts > 600000) // Backup Every 10 Min
-                    {
-                        Cache.LastSaveUts = RandomUtilities.GetCurrentMilliseconds();
-                        Cache.SaveData();
-                    }
                     //Services:
 
                     FeedbackService.Action();
@@ -140,6 +141,10 @@ namespace Tera.Communication
                     AdminEngine.Action();
                     SkillEngine.Action();
                     QuestEngine.Action();
+
+                    //Cache
+                    UsedPlayerNames = new List<string>();
+                    UsedGuildNames = new List<string>();
 
                     //Others:
 

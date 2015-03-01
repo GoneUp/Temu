@@ -33,11 +33,6 @@ namespace Tera.Configuration
                 Logger.WriteLine(LogState.Info, "Logger Configuration initialized!"); }
             catch (Exception) { }
         }
-        public static void Init_DB_Config()
-        {
-            try { GameServer.dbs.Init(); Logger.WriteLine(LogState.Info, "DatabaseSystem initialized!"); }
-            catch (Exception) { }
-        }
         #endregion Functions
 
         #region Serialize/Deserialize

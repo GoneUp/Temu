@@ -81,7 +81,7 @@ namespace Tera.Communication.Logic
 
             FeedbackService.SendCreateCharacterResult(connection, true);
 
-            Cache.UsedNames.Add(playerData.Name.ToLower());
+            UsedPlayerNames.Add(playerData.Name.ToLower());
         }
 
         public static void SendBindPoint(IConnection connection)

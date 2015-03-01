@@ -3,7 +3,7 @@ using System.Linq;
 using MySql.Data.MySqlClient;
 using Utils.Logger;
 
-namespace Tera.Data.DAO
+namespace Tera.Database.DAO
 {
     public abstract class DAOManager
     {

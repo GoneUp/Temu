@@ -1,6 +1,6 @@
 ﻿using Tera.Communication.Interfaces;
-using Tera.Data.DAO;
 using Tera.Data.Interfaces;
+using Tera.Database.DAO;
 using Utils;
 
 namespace Tera.Services

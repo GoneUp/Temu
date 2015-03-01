@@ -130,7 +130,6 @@
     <Compile Include="Communication\Logic\GlobalLogic.cs" />
     <Compile Include="Communication\Logic\PlayerLogic.cs" />
     <Compile Include="Configuration\Configs\GameServerConfig.cs" />
-    <Compile Include="Configuration\Systems\DatabaseSystem.cs" />
     <Compile Include="Configuration\_Config.cs" />
     <Compile Include="Configuration\_TaskLoader.cs" />
     <Compile Include="Controllers\BattleController.cs" />
@@ -149,14 +148,13 @@
     <Compile Include="Crypt\Session.cs" />
     <Compile Include="Crypt\Sha.cs" />
     <Compile Include="Crypt\Utils.cs" />
-    <Compile Include="Database\DbQuerys.cs" />
-    <Compile Include="Data\DAO\AccountDAO.cs" />
-    <Compile Include="Data\DAO\DAOManager.cs" />
-    <Compile Include="Data\DAO\GuildDAO.cs" />
-    <Compile Include="Data\DAO\InventoryDAO.cs" />
-    <Compile Include="Data\DAO\PlayerDAO.cs" />
-    <Compile Include="Data\DAO\QuestDAO.cs" />
-    <Compile Include="Data\DAO\SkillsDAO.cs" />
+    <Compile Include="Database\DAO\AccountDAO.cs" />
+    <Compile Include="Database\DAO\DAOManager.cs" />
+    <Compile Include="Database\DAO\GuildDAO.cs" />
+    <Compile Include="Database\DAO\InventoryDAO.cs" />
+    <Compile Include="Database\DAO\PlayerDAO.cs" />
+    <Compile Include="Database\DAO\QuestDAO.cs" />
+    <Compile Include="Database\DAO\SkillsDAO.cs" />
     <Compile Include="DungeonEngine\DungeonEngine.cs" />
     <Compile Include="DungeonEngine\Dungeons\ADungeon.cs" />
     <Compile Include="DungeonEngine\Dungeons\IoDDungeon.cs" />
@@ -281,6 +279,7 @@
     <Compile Include="Network\Connection.cs" />
     <Compile Include="Network\Messages\GameMessage.cs" />
     <Compile Include="Network\OpCodes.cs" />
+    <Compile Include="Network\Packets\ServerPackets\SpPremiumInfo.cs" />
     <Compile Include="Network\Protocol\GameProtocol.cs" />
     <Compile Include="Network\old_Server\SpAbnormal.cs" />
     <Compile Include="Network\old_Server\SpAttack.cs" />

@@ -1,4 +1,5 @@
-﻿using Utils;
+﻿using Tera.Database.DAO;
+using Utils;
 
 namespace Tera.Network.old_Client
 {
@@ -14,6 +15,7 @@ namespace Tera.Network.old_Client
         public override void Process()
         {
             Connection.GameAccount.UiSettings = ByteUtilities.ByteArrayToString(UISettings);
+            DAOManager.accountDAO.SaveAccount(Connection.GameAccount);
         }
     }
 }

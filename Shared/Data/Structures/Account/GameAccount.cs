@@ -6,7 +6,6 @@ using Utils;
 
 namespace Tera.Data.Structures.Account
 {
-    [ProtoBuf.ProtoContract]
     public class GameAccount : TeraAccount
     {
         public IConnection Connection;
@@ -17,14 +16,13 @@ namespace Tera.Data.Structures.Account
         }
 
 
-        [ProtoBuf.ProtoMember(3)]
         public List<Player.Player> Players = new List<Player.Player>();
 
-        [ProtoBuf.ProtoMember(4)]
         public string UiSettings = null;
 
-        [ProtoBuf.ProtoMember(10)]
         public Storage AccountWarehouse = new Storage{StorageType = StorageType.AccountWarehouse};
+
+        public List<AccountItem> AccountItems = new List<AccountItem>();
 
         public DelayedAction ExitAction;
 

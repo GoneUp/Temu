@@ -25,21 +25,16 @@ namespace Tera.Network
             // Auth
             Recv.Add(unchecked((short) 0x4DBC), typeof (CpRequestVersion)); //all revs
             Recv.Add(unchecked((short) 0x7A51), typeof (CpRequestAuth)); //1905 EU
-            Recv.Add(unchecked((short) 0xBFA4), typeof(CpSystemInfo)); //1725 EU
 
-            Recv.Add(unchecked((short) 0xE952), typeof (CpRequestSystemInfo)); //1725 EU
+            Recv.Add(unchecked((short) 0xBF14), typeof(CpSystemInfo)); //1725 EU
+            Recv.Add(unchecked((short) 0xFD24), typeof (CpRequestSystemInfo)); //1725 EU
         
-
-
             // Character
-            Recv.Add(unchecked((short) 0xFD24), typeof (CpRequestCharacterList)); //1905 EU
+            Recv.Add(unchecked((short) 0xE952), typeof (CpRequestCharacterList)); //1905 EU
             Recv.Add(unchecked((short) 0x6755), typeof (CpCreateCharacter)); //1725 EU
             Recv.Add(unchecked((short) 0x8844), typeof (CpCheckName)); //1725 EU
             Recv.Add(unchecked((short) 0x7B3D), typeof (CpCheckNameForUse)); //1725 EU
             Recv.Add(unchecked((short) 0xBC40), typeof (CpDeleteCharacter)); //1725 EU
-
-
-
 
             // Enter World
             Recv.Add(unchecked((short) 0x8D6A), typeof (RpPlay)); //1725 EU
@@ -180,15 +175,15 @@ namespace Tera.Network
             Recv.Add(unchecked((short) 0x4F59), typeof (RpMountUnkQuestion)); //1725 EU
 
             //User interface
-            Recv.Add(unchecked((short) 0x7D1B), typeof (RpUISettings));
+            Recv.Add(unchecked((short) 0xE8EF), typeof (RpUISettings));
 
             #endregion
 
             #region Server packets
             
             // Auth
-            Send.Add(typeof (SpSendVersion), unchecked((short) 0x4DBD)); //all revs
-
+            Send.Add(typeof (SpSendVersion), unchecked((short)0x4DBD)); //all revs
+            Send.Add(typeof (SpAccountItems), unchecked((short)0xDC6F));
 
             //Character
             Send.Add(typeof(SpSendCharacterList), unchecked((short) 0xFE7B)); //1725 EU

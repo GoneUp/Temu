@@ -1,0 +1,16 @@
+﻿<Window x:Name="MainForm" x:Class="Tera.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="214.232" Width="741.404" Loaded="MainForm_Loaded" ResizeMode="NoResize" Background="#FF355870">
+    <Grid>
+        <ComboBox x:Name="languageComboBox" HorizontalAlignment="Left" Margin="603,116,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="languageComboBox_SelectionChanged"/>
+        <Image x:Name="languageImage" Margin="567,116,0,0" Height="22" Width="36" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Fill"/>
+        <Button x:Name="playButton" Content="Play" HorizontalAlignment="Left" Margin="648,66,0,0" VerticalAlignment="Top" Width="75" Click="playButton_Click"/>
+        <TextBox x:Name="_inputUsername" HorizontalAlignment="Left" Height="23" Margin="567,10,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="156" GotFocus="_inputUsername_GotFocus"/>
+        <PasswordBox x:Name="_inputPassword" HorizontalAlignment="Left" Margin="567,38,0,0" VerticalAlignment="Top" Width="156" Height="23" GotFocus="_inputPassword_GotFocus"/>
+        <Button x:Name="registerButton" Content="Register" HorizontalAlignment="Left" Margin="648,91,0,0" VerticalAlignment="Top" Width="75" Click="registerButton_Click"/>
+        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Left" Margin="648,66,0,0" VerticalAlignment="Top" Width="75" Click="loginButton_Click"/>
+        <ScrollViewer x:Name="_scrollviewerStatus" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" VerticalAlignment="Top" Width="552" CanContentScroll="True" IsHitTestVisible="True"/>
+
+    </Grid>
+</Window>

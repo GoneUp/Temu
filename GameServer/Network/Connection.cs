@@ -172,31 +172,36 @@ namespace Tera.Network
             Buffer = message.Data;
 
             if (OpCodes.Recv.ContainsKey(message.OpCode))
-            {
-               GlobalLogic.PacketReceived(GameAccount, OpCodes.Recv[message.OpCode], Buffer);
-
-                ((ARecvPacket)Activator.CreateInstance(OpCodes.Recv[message.OpCode])).Process(this);
-
+            {    
+                
                 string opCodeLittleEndianHex = BitConverter.GetBytes(message.OpCode).ToHex();
-                Logger.WriteLine(LogState.Debug, "GsPacket opCode: 0x{0}{1} [{2}]",
+                Logger.WriteLine(LogState.Debug, "C->S opCode: 0x{0}{1} [{2}]",
                                  opCodeLittleEndianHex.Substring(2),
                                  opCodeLittleEndianHex.Substring(0, 2),
                                  Buffer.Length);
 
                 Logger.WriteLine(LogState.Debug, "Data:\n{0}", Buffer.FormatHex());
 
+
+
+               GlobalLogic.PacketReceived(GameAccount, OpCodes.Recv[message.OpCode], Buffer);
+               ((ARecvPacket)Activator.CreateInstance(OpCodes.Recv[message.OpCode])).Process(this);
+
+           
             }
             else
             {
-                GlobalLogic.PacketReceived(GameAccount, null, Buffer);
-
                 string opCodeLittleEndianHex = BitConverter.GetBytes(message.OpCode).ToHex();
-                Logger.WriteLine(LogState.Debug, "Unknown GsPacket opCode: 0x{0}{1} [{2}]",
+                Logger.WriteLine(LogState.Debug, "C->S Unknown opCode: 0x{0}{1} [{2}]",
                                  opCodeLittleEndianHex.Substring(2),
                                  opCodeLittleEndianHex.Substring(0, 2),
                                  Buffer.Length);
 
                 Logger.WriteLine(LogState.Debug, "Data:\n{0}", Buffer.FormatHex());
+
+
+                GlobalLogic.PacketReceived(GameAccount, null, Buffer);
+
             }
         }
 

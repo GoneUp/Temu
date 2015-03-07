@@ -279,7 +279,7 @@
     <Compile Include="Network\Connection.cs" />
     <Compile Include="Network\Messages\GameMessage.cs" />
     <Compile Include="Network\OpCodes.cs" />
-    <Compile Include="Network\Packets\ServerPackets\SpPremiumInfo.cs" />
+    <Compile Include="Network\Packets\ServerPackets\SpAccountItems.cs" />
     <Compile Include="Network\Protocol\GameProtocol.cs" />
     <Compile Include="Network\old_Server\SpAbnormal.cs" />
     <Compile Include="Network\old_Server\SpAttack.cs" />

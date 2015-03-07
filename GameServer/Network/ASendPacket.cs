@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using Tera.Data.Enums.Gather;
 using Tera.Data.Interfaces;
@@ -62,6 +64,7 @@ namespace Tera.Network
 
                             Datas = stream.ToArray();
                             BitConverter.GetBytes((short) Datas.Length).CopyTo(Datas, 0);
+                            Logger.WriteLine(LogState.Debug, "S->C Packet Data:\n{0}", Datas.FormatHex());
                         }
                     }
                     catch (Exception ex)
@@ -132,6 +135,7 @@ namespace Tera.Network
             writer.Write(data);
         }
 
+        #region Gamestuff
         protected void WriteUid(BinaryWriter writer, Uid uid)
         {
             if (uid == null)
@@ -207,5 +211,27 @@ namespace Tera.Network
             WriteWord(writer, 0); //unk, mb bughunting
             WriteWord(writer, player.PlayerCraftStats.GetGatherStat(TypeName.Mine));
         }
+        #endregion
+
+
+        #region Pointer
+
+        public Dictionary<int, int> PointerDB = new Dictionary<int, int>();
+
+        public void CreatePointer(BinaryWriter writer, int id)
+        {
+            PointerDB.Add(id, Convert.ToInt32(writer.BaseStream.Position));
+            WriteWord(writer, 0);
+        }
+
+        public void SetPointer(BinaryWriter writer, int id)
+        {
+            writer.Seek(PointerDB[id], SeekOrigin.Begin);
+            WriteWord(writer, (short)writer.BaseStream.Length); 
+            writer.Seek(0, SeekOrigin.End);
+        }
+
+        #endregion
+
     }
 }

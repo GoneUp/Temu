@@ -66,9 +66,6 @@ namespace Tera.Services
 
             //Auth Respionse
             new SendPacket("45510E00FC6C02000000000050006C0061006E0065007400440042005F00310033000000").Send(connection);
-
-            //Premium Info
-            new SendPacket("6FDC0200080008001800B1010000232014550000000018000000B2010000FFFFFF7F00000000").Send(connection);
         }
 
         public void SendPlayerList(IConnection connection)
@@ -76,6 +73,11 @@ namespace Tera.Services
             new SpSendCharacterList(connection.GameAccount).Send(connection);
             if (connection.GameAccount.UiSettings != null)
                 new SpUISettings(ByteUtilities.StringToByteArray(connection.GameAccount.UiSettings)).Send(connection);
+
+
+            //Premium Info
+            //new SendPacket("6FDC0200080008001800B1010000232014550000000018000000B2010000FFFFFF7F00000000").Send(connection);
+            new SpAccountItems(connection.GameAccount).Send(connection);
         }
 
         public void SendCheckNameResult(IConnection connection, string name, short type, CheckNameResult result)

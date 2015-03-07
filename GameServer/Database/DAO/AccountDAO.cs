@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using MySql.Data.MySqlClient;
 using Tera.Data.Structures.Account;
+using Tera.Data.Structures.Player;
 using Utils.Logger;
 
 namespace Tera.Database.DAO
@@ -24,9 +25,9 @@ namespace Tera.Database.DAO
 
         public GameAccount LoadAccount(string username)
         {
-                string SqlQuery = "SELECT * FROM `accounts` WHERE `username` = ?username";
+                string SqlQuery = "SELECT * FROM `accounts` WHERE `username` = @username";
                 MySqlCommand SqlCommand = new MySqlCommand(SqlQuery, AccountDAOConnection);
-                SqlCommand.Parameters.AddWithValue("?username", username);
+                SqlCommand.Parameters.AddWithValue("@username", username);
                 MySqlDataReader AccountReader = SqlCommand.ExecuteReader();
 
                 GameAccount acc = new GameAccount();
@@ -49,6 +50,27 @@ namespace Tera.Database.DAO
                     }
                 }
                 AccountReader.Close();
+
+
+                SqlQuery = "SELECT * FROM `accout_items` WHERE `Id` = @ID";
+                SqlCommand = new MySqlCommand(SqlQuery, AccountDAOConnection);
+                SqlCommand.Parameters.AddWithValue("@Id", acc.AccountId);
+                AccountReader = SqlCommand.ExecuteReader();
+
+                if (AccountReader.HasRows)
+                {
+                    while (AccountReader.Read())
+                    {
+                        AccountItem tmpItem = new AccountItem();
+                        tmpItem.ItemId = AccountReader.GetInt32(1);
+                        tmpItem.Options = AccountReader.GetInt32(2);
+
+                        acc.AccountItems.Add(tmpItem);
+                    }
+                }
+                AccountReader.Close();
+
+
                 return (acc.Username == "") ? null : acc;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using Tera.Data.Enums;
 
 namespace Tera.Network.Packets.ServerPackets
 {
@@ -14,12 +15,15 @@ namespace Tera.Network.Packets.ServerPackets
 
         public override void Write(BinaryWriter writer)
         {
-            for (int i = 0; i < Version.Count(); i++)
+            if (GameServer.gameserverConfig.ServerMode == eServerMode.Release)
             {
-                
+                 WriteByte(writer, (byte) (Version == OpCodes.Version ? 1 : 0));
             }
-
-            WriteByte(writer, (byte) (Version == OpCodes.Version ? 1 : 0));
+            else
+            {
+                WriteByte(writer, 1);
+            }
+           
         }
     }
 }

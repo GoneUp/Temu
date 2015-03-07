@@ -148,6 +148,7 @@
     <Compile Include="Data\Structures\Npc\NpcShape.cs" />
     <Compile Include="Data\Structures\Objects\Projectile.cs" />
     <Compile Include="Data\Structures\Player\AchevesStats.cs" />
+    <Compile Include="Data\Structures\Player\AccountItem.cs" />
     <Compile Include="Data\Structures\Player\Player.cs" />
     <Compile Include="Data\Structures\Player\PlayerCraftStats.cs" />
     <Compile Include="Data\Structures\Player\PlayerData.cs" />
